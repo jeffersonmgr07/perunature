@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Destinos | Peru Nature</title>
+
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/footer.css" />
+  <link rel="stylesheet" href="assets/css/search-bar.css" />
+  <link rel="stylesheet" href="assets/css/cards.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Peru Nature">
+        <img src="assets/img/logo.svg" alt="Peru Nature" class="brand-logo" />
+        <span class="brand-name">Peru Nature</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="all-experiences.html">Destinos</a>
+        <a class="nav-link" href="viajes-promocion.html">Viajes de promoción</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="wa" href="https://wa.me/51929715269" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <img src="assets/img/whatsapp.svg" alt="" />
+          <span>WhatsApp</span>
+        </a>
+
+        <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div>
+          <h1>Destinos y experiencias</h1>
+          <p id="resultsSubtitle">
+            Explora opciones y filtra por destino o tipo.
+          </p>
+        </div>
+
+        <!-- Mini search bar para refinar -->
+        <div class="mini-search">
+          <div class="search-card search-card-mini">
+            <div class="search-tabs" role="tablist" aria-label="Tipo de búsqueda">
+              <button class="tab active" type="button" data-type="tours" role="tab" aria-selected="true">Tours</button>
+              <button class="tab" type="button" data-type="paquetes" role="tab" aria-selected="false">Paquetes</button>
+              <button class="tab" type="button" data-type="promo" role="tab" aria-selected="false">Promo</button>
+            </div>
+
+            <div class="search-form">
+              <label class="field">
+                <span class="field-label">Destino</span>
+                <select id="mctDestino" class="select">
+                  <optgroup label="Clásicos">
+                    <option value="machu-picchu">Machu Picchu</option>
+                    <option value="cusco">Cusco</option>
+                    <option value="lima">Lima</option>
+                    <option value="arequipa">Arequipa</option>
+                    <option value="puno">Puno / Lago Titicaca</option>
+                    <option value="ica">Ica / Huacachina</option>
+                    <option value="paracas">Paracas</option>
+                    <option value="nazca">Líneas de Nazca</option>
+                  </optgroup>
+
+                  <optgroup label="Norte">
+                    <option value="trujillo">Trujillo / Chan Chan</option>
+                    <option value="chiclayo">Chiclayo</option>
+                    <option value="cajamarca">Cajamarca</option>
+                    <option value="piura">Piura</option>
+                    <option value="mancora">Máncora</option>
+                    <option value="tumbes">Tumbes</option>
+                    <option value="tarapoto">Tarapoto</option>
+                  </optgroup>
+
+                  <optgroup label="Amazonía">
+                    <option value="iquitos">Iquitos</option>
+                    <option value="puerto-maldonado">Puerto Maldonado / Tambopata</option>
+                  </optgroup>
+
+                  <optgroup label="Aventura y naturaleza">
+                    <option value="huaraz">Huaraz</option>
+                    <option value="chachapoyas">Chachapoyas / Kuélap</option>
+                    <option value="ayacucho">Ayacucho</option>
+                    <option value="huancayo">Huancayo / Valle del Mantaro</option>
+                  </optgroup>
+
+                  <optgroup label="Internacionales (promo)">
+                    <option value="cartagena">Cartagena</option>
+                    <option value="orlando">Orlando</option>
+                    <option value="punta-cana">Punta Cana</option>
+                  </optgroup>
+
+                  <optgroup label="Otros">
+                    <option value="otros">Otros destinos</option>
+                  </optgroup>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Texto</span>
+                <input id="q" class="input" type="text" placeholder="Ej. aventura, cultura, playa..." />
+              </label>
+
+              <button id="applyFilters" class="btn btn-primary" type="button">Aplicar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="results-head">
+          <div class="results-pill" id="activeFilters">Mostrando: todos</div>
+          <div class="results-count" id="resultsCount"></div>
+        </div>
+
+        <div class="grid cards" id="resultsGrid"></div>
+
+        <div class="empty" id="emptyState" hidden>
+          <h3>No encontramos resultados con esos filtros.</h3>
+          <p>Prueba cambiando el destino o el tipo.</p>
+          <a class="btn btn-outline" href="all-experiences.html">Ver todo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/img/logo.svg" alt="Peru Nature" />
+        <p>Experiencias diseñadas con seguridad, organización y soporte 24/7.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="all-experiences.html">Destinos</a>
+        <a href="viajes-promocion.html">Viajes de promoción</a>
+      </div>
+
+      <div class="footer-contact">
+        <strong>Contacto</strong>
+        <a href="https://wa.me/51929715269" target="_blank" rel="noopener">+51 929 715 269</a>
+        <span>Lima, Perú</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Peru Nature. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/experiences.js"></script>
+</body>
+</html>
