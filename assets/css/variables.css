@@ -1,0 +1,28 @@
+:root {
+  /* 🎯 COLORES PRINCIPALES */
+  --color-primary: #0b3d2e;
+  --color-primary-light: #2f7d4a;
+  --color-accent: #7ed957;
+
+  /* 🎯 FONDOS */
+  --bg-dark: #071a12;
+  --bg-gradient: linear-gradient(135deg, #0b3d2e, #1f5c3f);
+
+  /* 🎯 TEXTO */
+  --text-main: #ffffff;
+  --text-secondary: rgba(255,255,255,0.7);
+
+  /* 🎯 TARJETAS (glass effect) */
+  --glass-bg: rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.1);
+  --glass-blur: blur(12px);
+
+  /* 🎯 BOTONES */
+  --btn-gradient: linear-gradient(135deg, #7ed957, #4caf50);
+
+  /* 🎯 SOMBRAS */
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.2);
+
+  /* 🎯 RADIOS */
+  --radius-lg: 20px;
+}
