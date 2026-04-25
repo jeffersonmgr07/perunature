@@ -1,0 +1,16 @@
+.btn-primary {
+  background: var(--btn-gradient);
+  border: none;
+  padding: 16px 32px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
