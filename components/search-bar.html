@@ -1,0 +1,43 @@
+<form class="pn-search" id="pnSearchForm">
+  <div class="pn-search-tabs">
+    <button type="button" class="pn-tab is-active" data-tab="tours">Tours</button>
+    <button type="button" class="pn-tab" data-tab="paquetes">Paquetes</button>
+    <button type="button" class="pn-tab" data-tab="hoteles">Hoteles</button>
+  </div>
+
+  <div class="pn-search-box">
+    <div class="pn-field">
+      <label>Destino</label>
+      <select id="pnDestino">
+        <option value="">¿A dónde quieres viajar?</option>
+        <option value="cusco">Cusco y Machu Picchu</option>
+        <option value="puno">Puno y Lago Titicaca</option>
+        <option value="arequipa">Arequipa y Colca</option>
+        <option value="iquitos">Iquitos</option>
+        <option value="tarapoto">Tarapoto</option>
+        <option value="paracas">Paracas e Ica</option>
+        <option value="huaraz">Huaraz</option>
+      </select>
+    </div>
+
+    <div class="pn-field">
+      <label>Fecha</label>
+      <input type="date" id="pnFecha">
+    </div>
+
+    <div class="pn-field">
+      <label>Viajeros</label>
+      <select id="pnViajeros">
+        <option value="1">1 viajero</option>
+        <option value="2" selected>2 viajeros</option>
+        <option value="3">3 viajeros</option>
+        <option value="4">4 viajeros</option>
+        <option value="5">5+ viajeros</option>
+      </select>
+    </div>
+
+    <button type="submit" class="pn-search-btn">
+      Buscar
+    </button>
+  </div>
+</form>
