@@ -1,44 +1,227 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Peru Nature</title>
+  <title>Peru Nature | Turismo sostenible en Perú</title>
+  <meta name="description" content="Explora destinos turísticos en todo el Perú con Peru Nature: naturaleza, cultura, aventura y paquetes personalizados." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./assets/css/variables.css">
-  <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="./assets/css/header.css">
-  <link rel="stylesheet" href="./assets/css/layout.css">
-  <link rel="stylesheet" href="./assets/css/buttons.css">
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/layout.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/search-bar.css" />
+  <link rel="stylesheet" href="./assets/css/destinations.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
 </head>
 
 <body>
 
-  <!-- HEADER -->
+  <!-- HEADER DINÁMICO -->
   <div id="header-container"></div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>PERU NATURE</h1>
-      <p>Turismo sostenible con impacto real</p>
+  <!-- WHATSAPP FLOAT -->
+  <a
+    class="wa-float"
+    href="https://wa.me/51900608980"
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
-      <button class="btn-primary">
-        Explorar destinos
-      </button>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <span class="shape shape-1"></span>
+      <span class="shape shape-2"></span>
+      <span class="shape shape-3"></span>
+      <span class="shape shape-4"></span>
+    </div>
+
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-kicker">
+          Turismo auténtico con impacto positivo
+        </span>
+
+        <h1>
+          Descubre el Perú natural, cultural y vivo
+        </h1>
+
+        <p>
+          Diseñamos viajes, tours y paquetes por todo el Perú: Andes, Amazonía,
+          costa, cultura ancestral y experiencias auténticas.
+        </p>
+
+        <div class="hero-actions">
+          <a href="./all-experiences.html" class="btn-primary">
+            Explorar experiencias
+          </a>
+
+          <a href="./quote-packages.html" class="btn-secondary">
+            Armar mi paquete
+          </a>
+        </div>
+
+        <!-- SEARCH BAR DINÁMICO -->
+        <div id="search-bar-container"></div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTENIDO -->
-  <section class="container">
-    <h2>Destinos en Perú</h2>
+  <!-- DESTINOS -->
+  <section class="destinations-section">
+    <div class="container">
+      <div class="section-heading">
+        <span>Explora Perú</span>
+        <h2>Destinos naturales y culturales</h2>
+        <p>
+          Viajes diseñados para descubrir lo mejor del Perú: Andes, Amazonía,
+          costa, cultura viva y experiencias auténticas.
+        </p>
+      </div>
+
+      <div class="destinations-grid">
+        <article class="destination-card">
+          <img src="./assets/img/destinations/cusco/cover.jpg" alt="Cusco y Machu Picchu" />
+          <div>
+            <span>Cusco</span>
+            <h3>Cusco y Machu Picchu</h3>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img src="./assets/img/destinations/arequipa/cover.jpg" alt="Arequipa y Colca" />
+          <div>
+            <span>Arequipa</span>
+            <h3>Colca y volcanes</h3>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img src="./assets/img/destinations/tarapoto/cover.jpg" alt="Tarapoto" />
+          <div>
+            <span>Amazonía</span>
+            <h3>Tarapoto natural</h3>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img src="./assets/img/destinations/puno/cover.jpg" alt="Puno y Lago Titicaca" />
+          <div>
+            <span>Puno</span>
+            <h3>Lago Titicaca</h3>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img src="./assets/img/destinations/iquitos/cover.jpg" alt="Iquitos" />
+          <div>
+            <span>Selva</span>
+            <h3>Iquitos y Amazonía</h3>
+          </div>
+        </article>
+
+        <article class="destination-card">
+          <img src="./assets/img/destinations/paracas/cover.jpg" alt="Paracas e Ica" />
+          <div>
+            <span>Costa</span>
+            <h3>Paracas, Ica y Nazca</h3>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- EXPERIENCIAS DESTACADAS -->
+  <section class="featured-section">
+    <div class="container">
+      <div class="section-heading">
+        <span>Experiencias recomendadas</span>
+        <h2>Viajes para empezar a descubrir Perú</h2>
+        <p>
+          Una selección inicial de tours y paquetes que luego conectaremos con
+          tu base de datos dinámica.
+        </p>
+      </div>
+
+      <div class="featured-grid" id="featuredExperiences">
+        <article class="featured-card">
+          <div class="featured-card__image">
+            <img src="./assets/img/destinations/cusco/cover.jpg" alt="Machu Picchu" />
+            <span>Top ventas</span>
+          </div>
+          <div class="featured-card__content">
+            <h3>Machu Picchu Full Day</h3>
+            <p>La experiencia clásica para conocer una de las maravillas del mundo.</p>
+            <a href="./all-experiences.html" class="card-link">Ver experiencia</a>
+          </div>
+        </article>
+
+        <article class="featured-card">
+          <div class="featured-card__image">
+            <img src="./assets/img/destinations/arequipa/cover.jpg" alt="Cañón del Colca" />
+            <span>Naturaleza</span>
+          </div>
+          <div class="featured-card__content">
+            <h3>Cañón del Colca</h3>
+            <p>Montañas, cóndores, pueblos tradicionales y paisajes andinos.</p>
+            <a href="./all-experiences.html" class="card-link">Ver experiencia</a>
+          </div>
+        </article>
+
+        <article class="featured-card">
+          <div class="featured-card__image">
+            <img src="./assets/img/destinations/tarapoto/cover.jpg" alt="Tarapoto" />
+            <span>Selva</span>
+          </div>
+          <div class="featured-card__content">
+            <h3>Tarapoto Natural</h3>
+            <p>Cataratas, lagunas, selva alta y experiencias amazónicas.</p>
+            <a href="./all-experiences.html" class="card-link">Ver experiencia</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div>
+          <span>Viaje personalizado</span>
+          <h2>¿Quieres armar un paquete a tu medida?</h2>
+          <p>
+            Cotiza fechas, destinos, hoteles, trenes y experiencias según tu estilo de viaje.
+          </p>
+        </div>
+
+        <a href="./quote-packages.html" class="btn-primary">
+          Cotizar paquete
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER DINÁMICO -->
   <div id="footer-container"></div>
 
+  <!-- JS -->
   <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/components/search-bar.js"></script>
+
 </body>
 </html>
