@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Experiencias en Perú | Peru Nature</title>
+  <meta name="description" content="Explora tours, actividades y paquetes turísticos en Perú con Peru Nature." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/all-experiences.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+</head>
+
+<body>
+  <div id="header-container"></div>
+
+  <main class="listing-page">
+    <section class="listing-hero">
+      <div class="container">
+        <span class="listing-kicker">Explora Perú</span>
+        <h1>Experiencias naturales y culturales</h1>
+        <p id="listingSummary">
+          Encuentra tours, actividades y paquetes seleccionados por destino.
+        </p>
+      </div>
+    </section>
+
+    <section class="listing-content">
+      <div class="container listing-layout">
+        <aside class="filters-panel">
+          <div class="filters-card">
+            <h2>Filtrar</h2>
+
+            <div class="filter-group">
+              <label for="filterSearch">Buscar</label>
+              <input type="text" id="filterSearch" placeholder="Machu Picchu, Colca, selva..." />
+            </div>
+
+            <div class="filter-group">
+              <label for="filterDestination">Destino</label>
+              <select id="filterDestination">
+                <option value="">Todos los destinos</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filterCategory">Tipo de experiencia</label>
+              <select id="filterCategory">
+                <option value="">Todas</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filterDifficulty">Dificultad</label>
+              <select id="filterDifficulty">
+                <option value="">Todas</option>
+                <option value="low">Fácil</option>
+                <option value="medium">Moderada</option>
+                <option value="high">Alta</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="filterSort">Ordenar por</label>
+              <select id="filterSort">
+                <option value="recommended">Recomendados</option>
+                <option value="price_asc">Precio menor a mayor</option>
+                <option value="price_desc">Precio mayor a menor</option>
+                <option value="rating_desc">Mejor calificados</option>
+              </select>
+            </div>
+
+            <button type="button" id="clearFiltersBtn" class="clear-filters-btn">
+              Limpiar filtros
+            </button>
+          </div>
+        </aside>
+
+        <section class="results-area">
+          <div class="results-top">
+            <div>
+              <h2 id="resultsTitle">Experiencias disponibles</h2>
+              <p id="resultsCount">Cargando experiencias...</p>
+            </div>
+          </div>
+
+          <div id="experiencesGrid" class="experiences-grid"></div>
+
+          <div id="emptyState" class="empty-state" hidden>
+            <i class="fa-solid fa-leaf"></i>
+            <h3>No encontramos experiencias</h3>
+            <p>Prueba con otro destino, categoría o palabra clave.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/pages/all-experiences.js"></script>
+</body>
+</html>
