@@ -1,39 +1,78 @@
 class PeruNatureSearchBar {
   constructor() {
-    this.form = document.getElementById("pnSearchForm");
-    this.tabs = document.querySelectorAll(".pn-tab");
-    this.currentTab = "tours";
+    this.input = document.getElementById("pnDestinoInput");
+    this.autocomplete = document.getElementById("pnAutocomplete");
+
+    this.destinations = [];
+    this.selectedDestination = "";
 
     this.init();
   }
 
-  init() {
-    if (!this.form) return;
+  async init() {
+    if (!this.input) return;
 
-    this.tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        this.currentTab = tab.dataset.tab;
+    await this.loadDestinations();
+    this.bindEvents();
+  }
 
-        this.tabs.forEach((item) => item.classList.remove("is-active"));
-        tab.classList.add("is-active");
-      });
+  async loadDestinations() {
+    try {
+      const res = await fetch("./assets/data/destinations.json");
+      const data = await res.json();
+      this.destinations = data.destinations || [];
+    } catch (e) {
+      console.error("Error cargando destinos", e);
+    }
+  }
+
+  bindEvents() {
+    this.input.addEventListener("input", () => {
+      const value = this.input.value.toLowerCase();
+
+      if (!value) {
+        this.autocomplete.classList.remove("is-active");
+        return;
+      }
+
+      const results = this.destinations.filter(d =>
+        d.name.toLowerCase().includes(value)
+      );
+
+      this.renderAutocomplete(results);
     });
 
-    this.form.addEventListener("submit", (event) => {
-      event.preventDefault();
+    document.addEventListener("click", (e) => {
+      if (!this.input.contains(e.target) && !this.autocomplete.contains(e.target)) {
+        this.autocomplete.classList.remove("is-active");
+      }
+    });
+  }
 
-      const destino = document.getElementById("pnDestino").value;
-      const fecha = document.getElementById("pnFecha").value;
-      const viajeros = document.getElementById("pnViajeros").value;
+  renderAutocomplete(results) {
+    if (!results.length) {
+      this.autocomplete.classList.remove("is-active");
+      return;
+    }
 
-      const params = new URLSearchParams({
-        tipo: this.currentTab,
-        destino,
-        fecha,
-        viajeros
+    this.autocomplete.innerHTML = results.map(d => `
+      <div class="pn-autocomplete-item" data-code="${d.code}">
+        ${d.name}
+      </div>
+    `).join("");
+
+    this.autocomplete.classList.add("is-active");
+
+    this.autocomplete.querySelectorAll(".pn-autocomplete-item").forEach(item => {
+      item.addEventListener("click", () => {
+        const code = item.dataset.code;
+        const destination = this.destinations.find(d => d.code === code);
+
+        this.input.value = destination.name;
+        this.selectedDestination = code;
+
+        this.autocomplete.classList.remove("is-active");
       });
-
-      window.location.href = `./all-experiences.html?${params.toString()}`;
     });
   }
 }
