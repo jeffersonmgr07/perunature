@@ -1,43 +1,94 @@
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-main);
-}
-
-/* HERO */
 .hero {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  padding: 150px 0 90px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background: var(--bg-gradient);
-  position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 75% 20%, rgba(126, 217, 87, .22), transparent 32%),
+    radial-gradient(circle at 20% 80%, rgba(47, 125, 74, .34), transparent 34%),
+    linear-gradient(135deg, #06160f 0%, #0b3d2e 48%, #123f2b 100%);
+  color: #fff;
 }
 
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(126,217,87,0.2), transparent 60%);
+  background:
+    linear-gradient(90deg, rgba(6, 22, 15, .92), rgba(6, 22, 15, .48), rgba(6, 22, 15, .82));
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
+  max-width: 880px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 14px;
+  margin-bottom: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: rgba(255, 255, 255, .84);
+  font-size: .85rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
 .hero h1 {
-  font-size: 4rem;
-  font-weight: 900;
-  margin-bottom: 10px;
+  max-width: 860px;
+  margin: 0 0 20px;
+  font-size: clamp(2.7rem, 7vw, 6.2rem);
+  letter-spacing: -.07em;
+  color: #fff;
 }
 
 .hero p {
-  color: var(--text-secondary);
+  max-width: 660px;
+  margin: 0 0 32px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
   margin-bottom: 30px;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 42px;
+}
+
+.section-heading span {
+  color: #2f7d4a;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  margin: 10px 0 14px;
+  color: #0b3d2e;
+  letter-spacing: -.04em;
+}
+
+.section-heading p {
+  color: #526155;
+  line-height: 1.75;
 }
