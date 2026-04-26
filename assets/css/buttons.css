@@ -1,16 +1,35 @@
-.btn-primary {
-  background: var(--btn-gradient);
-  border: none;
-  padding: 16px 32px;
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 22px;
   border-radius: 999px;
-  color: #fff;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: .94rem;
+  transition: .22s ease;
   cursor: pointer;
-  box-shadow: var(--shadow-soft);
-  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #ffffff;
+  color: #102414;
+  border: 1px solid rgba(255, 255, 255, .18);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  opacity: 0.9;
+  background: #dff7d1;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .22);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, .08);
 }
