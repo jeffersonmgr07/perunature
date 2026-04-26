@@ -1,0 +1,48 @@
+{
+  "destinations": [
+    {
+      "code": "cusco",
+      "name": "Cusco y Machu Picchu",
+      "region": "andes",
+      "type": ["cultural", "histórico"],
+      "featured": true
+    },
+    {
+      "code": "arequipa",
+      "name": "Arequipa y Cañón del Colca",
+      "region": "andes",
+      "type": ["naturaleza", "aventura"]
+    },
+    {
+      "code": "puno",
+      "name": "Puno y Lago Titicaca",
+      "region": "andes",
+      "type": ["cultural"]
+    },
+    {
+      "code": "tarapoto",
+      "name": "Tarapoto",
+      "region": "amazonia",
+      "type": ["naturaleza", "selva"],
+      "featured": true
+    },
+    {
+      "code": "iquitos",
+      "name": "Iquitos y Amazonía",
+      "region": "amazonia",
+      "type": ["selva", "aventura"]
+    },
+    {
+      "code": "paracas",
+      "name": "Paracas e Ica",
+      "region": "costa",
+      "type": ["playa", "aventura"]
+    },
+    {
+      "code": "huaraz",
+      "name": "Huaraz",
+      "region": "andes",
+      "type": ["montaña", "trekking"]
+    }
+  ]
+}
