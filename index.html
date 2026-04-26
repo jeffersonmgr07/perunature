@@ -43,43 +43,40 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg-shapes" aria-hidden="true">
-      <span class="shape shape-1"></span>
-      <span class="shape shape-2"></span>
-      <span class="shape shape-3"></span>
-      <span class="shape shape-4"></span>
+    <div class="hero-slider" aria-hidden="true">
+      <div class="hero-slide is-active" style="background-image: url('./assets/img/hero/hero-1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('./assets/img/hero/hero-2.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('./assets/img/hero/hero-3.jpg');"></div>
     </div>
-
+  
+    <div class="hero-overlay"></div>
+  
     <div class="container hero-container">
       <div class="hero-content">
-        <span class="hero-kicker">
-          Turismo auténtico con impacto positivo
-        </span>
-
-        <h1>
-          Descubre el Perú natural, cultural y vivo
-        </h1>
-
+        <span class="hero-kicker">Perú natural · cultural · auténtico</span>
+  
+        <h1>Explora Perú con experiencias únicas</h1>
+  
         <p>
-          Diseñamos viajes, tours y paquetes por todo el Perú: Andes, Amazonía,
-          costa, cultura ancestral y experiencias auténticas.
+          Tours, paquetes y viajes personalizados por los destinos más increíbles del Perú.
         </p>
-
+  
         <div class="hero-actions">
-          <a href="./all-experiences.html" class="btn-primary">
-            Explorar experiencias
-          </a>
-
-          <a href="./quote-packages.html" class="btn-secondary">
-            Armar mi paquete
-          </a>
+          <a href="./all-experiences.html" class="btn-primary">Explorar experiencias</a>
+          <a href="./quote-packages.html" class="btn-secondary">Armar mi paquete</a>
         </div>
-
-        <!-- SEARCH BAR DINÁMICO -->
+  
         <div id="search-bar-container"></div>
       </div>
+  
+      <div class="hero-promo-card">
+        <span>Nueva temporada</span>
+        <h2>Amazonía peruana</h2>
+        <p>Tarapoto, Iquitos y Tambopata con experiencias naturales seleccionadas.</p>
+        <a href="./all-experiences.html?destino=tarapoto">Ver destinos</a>
+      </div>
     </div>
-  </section>
+</section>
 
   <!-- DESTINOS -->
   <section class="destinations-section">
