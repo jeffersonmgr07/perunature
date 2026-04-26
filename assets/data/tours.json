@@ -1,0 +1,231 @@
+{
+  "version": "1.0.0",
+  "market": "peru",
+  "currency": "USD",
+
+  "categories": [
+    { "code": "full_day", "label": "Full Day" },
+    { "code": "half_day", "label": "Medio día" },
+    { "code": "multi_day", "label": "Paquetes" },
+    { "code": "adventure", "label": "Aventura" },
+    { "code": "nature", "label": "Naturaleza" },
+    { "code": "cultural", "label": "Cultural" }
+  ],
+
+  "destinations": [
+    { "code": "cusco", "name": "Cusco" },
+    { "code": "arequipa", "name": "Arequipa" },
+    { "code": "puno", "name": "Puno" },
+    { "code": "tarapoto", "name": "Tarapoto" },
+    { "code": "iquitos", "name": "Iquitos" },
+    { "code": "paracas", "name": "Paracas" },
+    { "code": "huaraz", "name": "Huaraz" }
+  ],
+
+  "tours": [
+    {
+      "id": "tour_cusco_machu_picchu_full_day",
+      "slug": "machu-picchu-full-day-desde-cusco",
+
+      "title": "Machu Picchu Full Day desde Cusco",
+      "shortDescription": "Visita la maravilla del mundo en un tour completo desde Cusco.",
+      "description": "Descubre Machu Picchu en una experiencia completa que incluye transporte, guía y acceso oficial. Ideal para quienes tienen pocos días y desean conocer lo esencial.",
+
+      "destination": "cusco",
+      "location": "Cusco / Machu Picchu",
+
+      "categories": ["full_day", "cultural"],
+      "tags": ["machu picchu", "historia", "imperdible"],
+
+      "duration": {
+        "type": "full_day",
+        "hours": 14,
+        "label": "Full Day"
+      },
+
+      "difficulty": "low",
+
+      "pricing": {
+        "basePrice": 120,
+        "currency": "USD",
+        "priceLabel": "Desde $120 por persona"
+      },
+
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 1240
+      },
+
+      "images": {
+        "cover": "./assets/img/tours/machu-picchu/cover.jpg",
+        "gallery": [
+          "./assets/img/tours/machu-picchu/1.jpg",
+          "./assets/img/tours/machu-picchu/2.jpg",
+          "./assets/img/tours/machu-picchu/3.jpg"
+        ]
+      },
+
+      "highlights": [
+        "Ingreso a Machu Picchu",
+        "Guía profesional",
+        "Transporte completo",
+        "Paisajes andinos"
+      ],
+
+      "includes": [
+        "Transporte turístico",
+        "Guía profesional",
+        "Ingreso a Machu Picchu"
+      ],
+
+      "excludes": [
+        "Alimentación",
+        "Propinas"
+      ],
+
+      "itinerary": [
+        {
+          "time": "04:00",
+          "title": "Salida desde Cusco",
+          "description": "Traslado hacia estación de tren."
+        },
+        {
+          "time": "08:30",
+          "title": "Llegada a Machu Picchu",
+          "description": "Ingreso y visita guiada."
+        }
+      ],
+
+      "availability": {
+        "daily": true,
+        "startTimes": ["04:00"]
+      },
+
+      "featured": true
+    },
+
+    {
+      "id": "tour_arequipa_colca_full_day",
+      "slug": "canon-del-colca-full-day",
+
+      "title": "Cañón del Colca Full Day",
+      "shortDescription": "Explora uno de los cañones más profundos del mundo.",
+      "description": "Viaja desde Arequipa hacia el impresionante Cañón del Colca y observa el vuelo del cóndor en su hábitat natural.",
+
+      "destination": "arequipa",
+      "location": "Arequipa / Colca",
+
+      "categories": ["full_day", "nature"],
+      "tags": ["naturaleza", "cóndor", "montañas"],
+
+      "duration": {
+        "type": "full_day",
+        "hours": 12,
+        "label": "Full Day"
+      },
+
+      "difficulty": "medium",
+
+      "pricing": {
+        "basePrice": 45,
+        "currency": "USD",
+        "priceLabel": "Desde $45 por persona"
+      },
+
+      "rating": {
+        "score": 4.7,
+        "reviewsCount": 890
+      },
+
+      "images": {
+        "cover": "./assets/img/tours/colca/cover.jpg",
+        "gallery": [
+          "./assets/img/tours/colca/1.jpg",
+          "./assets/img/tours/colca/2.jpg"
+        ]
+      },
+
+      "highlights": [
+        "Mirador Cruz del Cóndor",
+        "Paisajes andinos",
+        "Fauna local"
+      ],
+
+      "includes": [
+        "Transporte",
+        "Guía profesional"
+      ],
+
+      "excludes": [
+        "Ingreso al Colca",
+        "Alimentación"
+      ],
+
+      "itinerary": [],
+
+      "availability": {
+        "daily": true,
+        "startTimes": ["03:00"]
+      }
+    },
+
+    {
+      "id": "tour_tarapoto_cataratas",
+      "slug": "cataratas-de-tarapoto",
+
+      "title": "Cataratas de Tarapoto",
+      "shortDescription": "Descubre cascadas y naturaleza en la selva alta.",
+      "description": "Tour ideal para conectar con la naturaleza, visitar cataratas y disfrutar del clima tropical de Tarapoto.",
+
+      "destination": "tarapoto",
+      "location": "Tarapoto",
+
+      "categories": ["half_day", "nature"],
+      "tags": ["selva", "cascadas"],
+
+      "duration": {
+        "type": "half_day",
+        "hours": 6,
+        "label": "Medio día"
+      },
+
+      "difficulty": "low",
+
+      "pricing": {
+        "basePrice": 25,
+        "currency": "USD",
+        "priceLabel": "Desde $25 por persona"
+      },
+
+      "rating": {
+        "score": 4.6,
+        "reviewsCount": 340
+      },
+
+      "images": {
+        "cover": "./assets/img/tours/tarapoto/cover.jpg",
+        "gallery": []
+      },
+
+      "highlights": [
+        "Cataratas",
+        "Selva amazónica",
+        "Naturaleza"
+      ],
+
+      "includes": [
+        "Transporte",
+        "Guía"
+      ],
+
+      "excludes": [],
+
+      "itinerary": [],
+
+      "availability": {
+        "daily": true,
+        "startTimes": ["09:00", "14:00"]
+      }
+    }
+  ]
+}
