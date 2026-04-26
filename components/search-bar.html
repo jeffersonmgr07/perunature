@@ -6,18 +6,17 @@
   </div>
 
   <div class="pn-search-box">
-    <div class="pn-field">
+    <div class="pn-field pn-field--search">
       <label>Destino</label>
-      <select id="pnDestino">
-        <option value="">¿A dónde quieres viajar?</option>
-        <option value="cusco">Cusco y Machu Picchu</option>
-        <option value="puno">Puno y Lago Titicaca</option>
-        <option value="arequipa">Arequipa y Colca</option>
-        <option value="iquitos">Iquitos</option>
-        <option value="tarapoto">Tarapoto</option>
-        <option value="paracas">Paracas e Ica</option>
-        <option value="huaraz">Huaraz</option>
-      </select>
+    
+      <input
+        type="text"
+        id="pnDestinoInput"
+        placeholder="¿A dónde quieres viajar?"
+        autocomplete="off"
+      />
+    
+      <div class="pn-autocomplete" id="pnAutocomplete"></div>
     </div>
 
     <div class="pn-field">
