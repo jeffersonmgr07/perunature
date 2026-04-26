@@ -90,3 +90,34 @@
     min-height: 56px;
   }
 }
+.pn-field--search {
+  position: relative;
+}
+
+.pn-autocomplete {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  overflow: hidden;
+  z-index: 10;
+  display: none;
+}
+
+.pn-autocomplete.is-active {
+  display: block;
+}
+
+.pn-autocomplete-item {
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: .2s;
+  font-weight: 600;
+}
+
+.pn-autocomplete-item:hover {
+  background: #f2f5ef;
+}
