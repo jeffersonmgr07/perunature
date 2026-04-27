@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Detalle de experiencia | Peru Nature</title>
+  <meta
+    name="description"
+    content="Descubre experiencias turísticas en Perú con Peru Nature. Tours, destinos naturales, cultura, aventura y viajes personalizados."
+  />
+
+  <!-- Favicon opcional -->
+  <link rel="icon" href="./assets/img/logo/favicon.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome para íconos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-d0CoknKx3gkW3pr6KjzQ3zYhXU8gkN+9SxR3bA2lZ6lJ+QfVb0XWcU6lR6pX5O9+6xU9IY9y5G0nW6vQ8l9fA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- CSS globales del proyecto -->
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/layout.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+
+  <!-- CSS propio de product.html -->
+  <link rel="stylesheet" href="./assets/css/product-page.css" />
+</head>
+
+<body>
+  <!-- Header dinámico -->
+  <div id="header"></div>
+
+  <main class="product-page">
+    <!-- Estado de carga -->
+    <section id="productLoading" class="product-loading">
+      <div class="container">
+        <div class="loading-card">
+          <div class="loading-spinner"></div>
+          <p>Cargando experiencia...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error si el tour no existe -->
+    <section id="productError" class="product-error hidden">
+      <div class="container">
+        <div class="error-card">
+          <span class="error-icon">
+            <i class="fa-solid fa-leaf"></i>
+          </span>
+
+          <h1>Experiencia no encontrada</h1>
+
+          <p>
+            No pudimos encontrar la experiencia que estás buscando. Es posible
+            que el enlace haya cambiado o que el tour ya no esté disponible.
+          </p>
+
+          <a href="./all-experiences.html" class="btn btn-primary">
+            Ver todas las experiencias
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contenido principal del producto -->
+    <section id="productContent" class="product-content hidden">
+      <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="product-breadcrumb" aria-label="Ruta de navegación">
+          <a href="./index.html">Inicio</a>
+          <span>/</span>
+          <a href="./all-experiences.html">Experiencias</a>
+          <span>/</span>
+          <span id="breadcrumbTitle">Detalle</span>
+        </nav>
+
+        <!-- Cabecera del producto -->
+        <header class="product-hero-header">
+          <div class="product-hero-info">
+            <div class="product-badges" id="productBadges">
+              <!-- Badges dinámicos -->
+            </div>
+
+            <h1 id="productTitle">Título de la experiencia</h1>
+
+            <p id="productShortDescription" class="product-short-description">
+              Descripción breve de la experiencia.
+            </p>
+
+            <div class="product-meta-row">
+              <div class="product-rating" id="productRating">
+                <!-- Rating dinámico -->
+              </div>
+
+              <div class="product-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="productLocation">Ubicación</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Galería superior -->
+        <section class="product-gallery" aria-label="Galería de imágenes">
+          <div class="gallery-main">
+            <img
+              id="galleryMainImage"
+              src="./assets/img/placeholder/tour-placeholder.jpg"
+              alt="Imagen principal de la experiencia"
+            />
+          </div>
+
+          <div class="gallery-thumbs" id="galleryThumbs">
+            <!-- Miniaturas dinámicas -->
+          </div>
+        </section>
+
+        <!-- Navegación interna -->
+        <nav class="product-section-nav" aria-label="Navegación interna">
+          <a href="#descripcion">Descripción</a>
+          <a href="#detalles">Detalles</a>
+          <a href="#incluye">Incluye</a>
+          <a href="#itinerario">Itinerario</a>
+          <a href="#horarios">Horarios</a>
+        </nav>
+
+        <!-- Layout principal -->
+        <div class="product-layout">
+          <!-- Columna izquierda -->
+          <div class="product-main">
+            <!-- Descripción -->
+            <section id="descripcion" class="product-section">
+              <h2>Descripción</h2>
+              <p id="productDescription">
+                Aquí irá la descripción completa de la experiencia.
+              </p>
+            </section>
+
+            <!-- Highlights -->
+            <section class="product-section">
+              <h2>Lo más destacado</h2>
+              <div id="productHighlights" class="highlights-grid">
+                <!-- Highlights dinámicos -->
+              </div>
+            </section>
+
+            <!-- Detalles -->
+            <section id="detalles" class="product-section">
+              <h2>Detalles de la experiencia</h2>
+
+              <div class="details-grid">
+                <article class="detail-card">
+                  <span class="detail-icon">
+                    <i class="fa-regular fa-clock"></i>
+                  </span>
+                  <div>
+                    <h3>Duración</h3>
+                    <p id="productDuration">Por confirmar</p>
+                  </div>
+                </article>
+
+                <article class="detail-card">
+                  <span class="detail-icon">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </span>
+                  <div>
+                    <h3>Destino</h3>
+                    <p id="productDestination">Por confirmar</p>
+                  </div>
+                </article>
+
+                <article class="detail-card">
+                  <span class="detail-icon">
+                    <i class="fa-solid fa-person-hiking"></i>
+                  </span>
+                  <div>
+                    <h3>Dificultad</h3>
+                    <p id="productDifficulty">Por confirmar</p>
+                  </div>
+                </article>
+
+                <article class="detail-card" id="languageDetailCard">
+                  <span class="detail-icon">
+                    <i class="fa-solid fa-language"></i>
+                  </span>
+                  <div>
+                    <h3>Idioma</h3>
+                    <p id="productLanguage">Español</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <!-- Incluye / No incluye -->
+            <section id="incluye" class="product-section">
+              <div class="includes-layout">
+                <div class="includes-card">
+                  <h2>Incluye</h2>
+                  <ul id="productIncludes" class="check-list">
+                    <!-- Incluye dinámico -->
+                  </ul>
+                </div>
+
+                <div class="includes-card">
+                  <h2>No incluye</h2>
+                  <ul id="productExcludes" class="x-list">
+                    <!-- No incluye dinámico -->
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- Itinerario -->
+            <section id="itinerario" class="product-section">
+              <h2>Itinerario</h2>
+              <div id="productItinerary" class="itinerary-list">
+                <!-- Itinerario dinámico -->
+              </div>
+            </section>
+
+            <!-- Horarios disponibles -->
+            <section id="horarios" class="product-section">
+              <h2>Horarios disponibles</h2>
+              <div id="productAvailability" class="availability-list">
+                <!-- Horarios dinámicos -->
+              </div>
+            </section>
+          </div>
+
+          <!-- Sidebar derecha -->
+          <aside class="product-sidebar">
+            <div class="booking-card">
+              <div class="booking-card-header">
+                <span>Desde</span>
+                <strong id="productPrice">Consultar</strong>
+                <small id="productPriceNote">por persona</small>
+              </div>
+
+              <div class="booking-summary">
+                <div>
+                  <i class="fa-regular fa-clock"></i>
+                  <span id="bookingDuration">Duración</span>
+                </div>
+
+                <div>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span id="bookingLocation">Ubicación</span>
+                </div>
+
+                <div>
+                  <i class="fa-solid fa-person-hiking"></i>
+                  <span id="bookingDifficulty">Dificultad</span>
+                </div>
+              </div>
+
+              <a
+                id="whatsappButton"
+                href="https://wa.me/51900608980"
+                target="_blank"
+                rel="noopener"
+                class="booking-whatsapp-btn"
+              >
+                <i class="fa-brands fa-whatsapp"></i>
+                Consultar por WhatsApp
+              </a>
+
+              <a href="./all-experiences.html" class="booking-secondary-btn">
+                Volver al catálogo
+              </a>
+
+              <p class="booking-note">
+                Te responderemos con disponibilidad, tarifas actualizadas y
+                opciones personalizadas para tu viaje.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer dinámico -->
+  <div id="footer"></div>
+
+  <!-- JS principal del proyecto -->
+  <script src="./assets/js/app.js"></script>
+
+  <!-- JS propio de product.html -->
+  <script src="./assets/js/pages/product.js"></script>
+</body>
+</html>
