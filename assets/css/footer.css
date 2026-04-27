@@ -105,3 +105,14 @@
     flex-direction: column;
   }
 }
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.footer-logo img {
+  width: 160px;
+  height: auto;
+  display: block;
+}
