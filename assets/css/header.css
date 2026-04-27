@@ -73,3 +73,14 @@
     display: none;
   }
 }
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 54px;
+  width: auto;
+  display: block;
+}
