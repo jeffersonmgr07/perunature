@@ -1,0 +1,285 @@
+{
+  "version": "1.0",
+  "type": "documentary_tours",
+  "currency": "USD",
+  "maxGroupDefault": 20,
+
+  "tours": [
+    {
+      "id": 1,
+      "slug": "ausangate-machu-picchu-expedicion-documental-mayo",
+      "title": "Expedición Documental Ausangate & Machu Picchu",
+      "destination": "Cusco",
+      "route": "Ausangate Trek + Machu Picchu",
+
+      "startDate": "2026-05-23",
+      "endDate": "2026-05-31",
+      "duration": 8,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 6,
+
+      "difficulty": "alta",
+      "type": "trekking",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 890,
+        "deposit": 250
+      },
+
+      "images": [
+        "./assets/img/tours/ausangate/1.jpg",
+        "./assets/img/tours/ausangate/2.jpg",
+        "./assets/img/tours/ausangate/3.jpg"
+      ],
+
+      "highlights": [
+        "Caminata alrededor del nevado Ausangate",
+        "Lagunas turquesas y paisajes de alta montaña",
+        "Experiencia auténtica con comunidades andinas",
+        "Ingreso a Machu Picchu al final del recorrido"
+      ]
+    },
+
+    {
+      "id": 2,
+      "slug": "tambopata-expedicion-amazonica-junio-1",
+      "title": "Expedición Documental Amazonía Tambopata",
+      "destination": "Madre de Dios",
+      "route": "Reserva Nacional Tambopata",
+
+      "startDate": "2026-06-10",
+      "endDate": "2026-06-16",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 4,
+
+      "difficulty": "media",
+      "type": "naturaleza",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 720,
+        "deposit": 200
+      },
+
+      "images": [
+        "./assets/img/tours/tambopata/1.jpg",
+        "./assets/img/tours/tambopata/2.jpg"
+      ],
+
+      "highlights": [
+        "Avistamiento de fauna amazónica",
+        "Collpas de guacamayos",
+        "Exploración de la selva profunda",
+        "Experiencia en lodge ecológico"
+      ]
+    },
+
+    {
+      "id": 3,
+      "slug": "tambopata-expedicion-amazonica-junio-2",
+      "title": "Expedición Documental Amazonía Tambopata (Salida 2)",
+      "destination": "Madre de Dios",
+      "route": "Reserva Nacional Tambopata",
+
+      "startDate": "2026-06-20",
+      "endDate": "2026-06-26",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 2,
+
+      "difficulty": "media",
+      "type": "naturaleza",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 720,
+        "deposit": 200
+      },
+
+      "images": [
+        "./assets/img/tours/tambopata/1.jpg"
+      ],
+
+      "highlights": [
+        "Segunda salida del mes",
+        "Mayor probabilidad de fauna activa",
+        "Grupo reducido para mejor experiencia"
+      ]
+    },
+
+    {
+      "id": 4,
+      "slug": "inca-jungle-expedicion-julio",
+      "title": "Expedición Documental Inca Jungle",
+      "destination": "Cusco",
+      "route": "Inca Jungle Trek",
+
+      "startDate": "2026-07-12",
+      "endDate": "2026-07-18",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 8,
+
+      "difficulty": "media",
+      "type": "aventura",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 650,
+        "deposit": 180
+      },
+
+      "images": [
+        "./assets/img/tours/inca-jungle/1.jpg"
+      ],
+
+      "highlights": [
+        "Bicicleta, trekking y selva",
+        "Ruta alternativa a Machu Picchu",
+        "Experiencia multiaventura"
+      ]
+    },
+
+    {
+      "id": 5,
+      "slug": "nazca-expedicion-misterios-agosto",
+      "title": "Expedición Documental Misterios de Nazca",
+      "destination": "Ica",
+      "route": "Líneas de Nazca + Paracas",
+
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-15",
+      "duration": 6,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 5,
+
+      "difficulty": "baja",
+      "type": "cultural",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 580,
+        "deposit": 150
+      },
+
+      "images": [
+        "./assets/img/tours/nazca/1.jpg"
+      ],
+
+      "highlights": [
+        "Sobrevuelo de las líneas de Nazca",
+        "Islas Ballestas",
+        "Historia y misterio del desierto peruano"
+      ]
+    },
+
+    {
+      "id": 6,
+      "slug": "huaraz-cordillera-blanca-agosto-2",
+      "title": "Expedición Documental Cordillera Blanca",
+      "destination": "Huaraz",
+      "route": "Laguna 69 + Nevados",
+
+      "startDate": "2026-08-22",
+      "endDate": "2026-08-28",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 3,
+
+      "difficulty": "media",
+      "type": "trekking",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 620,
+        "deposit": 180
+      },
+
+      "images": [
+        "./assets/img/tours/huaraz/1.jpg"
+      ],
+
+      "highlights": [
+        "Laguna 69",
+        "Nevados de la Cordillera Blanca",
+        "Paisajes de alta montaña"
+      ]
+    },
+
+    {
+      "id": 7,
+      "slug": "arequipa-colca-septiembre-1",
+      "title": "Expedición Documental Cañón del Colca",
+      "destination": "Arequipa",
+      "route": "Colca + Condores",
+
+      "startDate": "2026-09-12",
+      "endDate": "2026-09-18",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 7,
+
+      "difficulty": "media",
+      "type": "naturaleza",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 540,
+        "deposit": 150
+      },
+
+      "images": [
+        "./assets/img/tours/colca/1.jpg"
+      ],
+
+      "highlights": [
+        "Vuelo de cóndores",
+        "Uno de los cañones más profundos del mundo",
+        "Cultura andina"
+      ]
+    },
+
+    {
+      "id": 8,
+      "slug": "puno-titicaca-septiembre-2",
+      "title": "Expedición Documental Lago Titicaca",
+      "destination": "Puno",
+      "route": "Islas Uros + Amantani",
+
+      "startDate": "2026-09-22",
+      "endDate": "2026-09-28",
+      "duration": 7,
+
+      "maxGroupSize": 20,
+      "bookedSeats": 4,
+
+      "difficulty": "baja",
+      "type": "cultural",
+
+      "pricing": {
+        "currency": "USD",
+        "total": 520,
+        "deposit": 140
+      },
+
+      "images": [
+        "./assets/img/tours/titicaca/1.jpg"
+      ],
+
+      "highlights": [
+        "Islas flotantes de los Uros",
+        "Experiencia vivencial",
+        "Cultura ancestral"
+      ]
+    }
+  ]
+}
