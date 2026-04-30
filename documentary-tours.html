@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Tours documentales programados | Peru Nature</title>
+  <meta
+    name="description"
+    content="Tours documentales programados por Perú con fechas fijas, grupos reducidos y cupos limitados. Reserva tu experiencia con Peru Nature."
+  />
+
+  <link rel="icon" href="./assets/img/logo/favicon.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- CSS globales -->
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/layout.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+
+  <!-- CSS de esta página -->
+  <link rel="stylesheet" href="./assets/css/documentary-tours.css" />
+</head>
+
+<body>
+  <!-- Header dinámico -->
+  <div id="header"></div>
+
+  <main class="documentary-page">
+    <!-- Hero -->
+    <section class="documentary-hero">
+      <div class="container documentary-hero-inner">
+        <span class="documentary-eyebrow">
+          Tours documentales programados
+        </span>
+
+        <h1>
+          Expediciones reales por el Perú para viajeros que buscan algo diferente.
+        </h1>
+
+        <p>
+          Viajes con fechas fijas, grupos reducidos y rutas diseñadas para vivir,
+          registrar y contar historias de naturaleza, cultura y aventura.
+        </p>
+
+        <div class="documentary-hero-actions">
+          <a href="#documentaryToursSection" class="documentary-hero-btn">
+            Ver próximas salidas
+          </a>
+
+          <a href="https://wa.me/51900608980" target="_blank" rel="noopener" class="documentary-hero-link">
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="documentary-intro">
+      <div class="container documentary-intro-grid">
+        <article>
+          <span>01</span>
+          <h2>Fechas programadas</h2>
+          <p>
+            Cada salida tiene fecha de inicio y retorno definida para que puedas
+            planificar con anticipación.
+          </p>
+        </article>
+
+        <article>
+          <span>02</span>
+          <h2>Cupos limitados</h2>
+          <p>
+            Grupos pequeños de máximo 20 personas para mantener una experiencia
+            más cercana, segura y personalizada.
+          </p>
+        </article>
+
+        <article>
+          <span>03</span>
+          <h2>Reserva con anticipo</h2>
+          <p>
+            Separa tu cupo con un anticipo. El saldo restante se coordina antes
+            o durante la experiencia según el programa.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Tours -->
+    <section id="documentaryToursSection" class="documentary-tours-section">
+      <div class="container">
+        <div class="section-heading">
+          <span>Próximas salidas</span>
+          <h2>Tours documentales disponibles</h2>
+          <p>
+            Explora las próximas expediciones programadas y reserva tu cupo antes
+            de que se agoten.
+          </p>
+        </div>
+
+        <!-- Loading -->
+        <div id="documentaryToursLoading" class="documentary-loading">
+          <div class="documentary-spinner"></div>
+          <p>Cargando salidas programadas...</p>
+        </div>
+
+        <!-- Empty -->
+        <div id="documentaryToursEmpty" class="documentary-empty hidden">
+          <h3>No hay salidas disponibles por ahora</h3>
+          <p>
+            Estamos preparando nuevas expediciones documentales. Escríbenos para
+            recibir información anticipada.
+          </p>
+          <a href="https://wa.me/51900608980" target="_blank" rel="noopener">
+            Consultar próximas fechas
+          </a>
+        </div>
+
+        <!-- Cards dinámicas -->
+        <div id="documentaryToursContainer" class="documentary-tours-grid hidden">
+          <!-- JS renderiza aquí -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer dinámico -->
+  <div id="footer"></div>
+
+  <!-- JS global -->
+  <script src="./assets/js/app.js"></script>
+
+  <!-- JS de esta página -->
+  <script src="./assets/js/pages/documentary-tours.js"></script>
+</body>
+</html>
