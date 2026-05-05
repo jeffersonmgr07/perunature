@@ -77,19 +77,36 @@ class PeruNatureProductPage {
   }
 
   async loadTours() {
-    try {
-      const response = await fetch("./assets/data/tours.json");
+    const sources = [
+      "./assets/data/tours.json",
+      "./assets/data/tours-peru-catalog.json",
+      "./assets/data/tours-peru-batch-01.json",
+      "./assets/data/tours-peru-batch-02.json",
+      "./assets/data/tours-reservas-peru.json",
+      "./assets/data/packages-peru.json"
+    ];
 
-      if (!response.ok) {
-        throw new Error("No se pudo cargar tours.json");
-      }
+    const productsBySlug = new Map();
 
-      const data = await response.json();
-      this.tours = Array.isArray(data.tours) ? data.tours : [];
-    } catch (error) {
-      console.error("Error cargando tours:", error);
-      this.tours = [];
-    }
+    const results = await Promise.allSettled(
+      sources.map(async (source) => {
+        const response = await fetch(source, { cache: "no-store" });
+        if (!response.ok) return [];
+        const data = await response.json();
+        return Array.isArray(data.tours) ? data.tours : Array.isArray(data.products) ? data.products : Array.isArray(data.packages) ? data.packages : [];
+      })
+    );
+
+    results.forEach((result) => {
+      if (result.status !== "fulfilled") return;
+      result.value.forEach((tour) => {
+        if (tour?.slug && !productsBySlug.has(tour.slug)) {
+          productsBySlug.set(tour.slug, tour);
+        }
+      });
+    });
+
+    this.tours = Array.from(productsBySlug.values());
   }
 
   findTourBySlug(slug) {
@@ -227,6 +244,41 @@ class PeruNatureProductPage {
       alt: "Experiencia Peru Nature"
     };
 
+    if (!images) return [placeholder];
+
+    if (typeof images === "string") {
+      return [{ src: images, alt: "Imagen principal de la experiencia" }];
+    }
+
+    if (images && !Array.isArray(images) && typeof images === "object") {
+      const normalized = [];
+
+      if (images.cover) {
+        normalized.push({
+          src: images.cover,
+          alt: images.alt || images.title || "Imagen principal de la experiencia"
+        });
+      }
+
+      if (Array.isArray(images.gallery)) {
+        images.gallery.forEach((image, index) => {
+          if (typeof image === "string") {
+            normalized.push({ src: image, alt: `Imagen ${index + 1} de la experiencia` });
+            return;
+          }
+
+          if (image && typeof image === "object") {
+            normalized.push({
+              src: image.src || image.url || placeholder.src,
+              alt: image.alt || image.title || `Imagen ${index + 1} de la experiencia`
+            });
+          }
+        });
+      }
+
+      return normalized.length ? normalized : [placeholder];
+    }
+
     if (!Array.isArray(images) || images.length === 0) {
       return [placeholder];
     }
@@ -240,7 +292,7 @@ class PeruNatureProductPage {
       }
 
       return {
-        src: image.src || image.url || placeholder.src,
+        src: image.src || image.url || image.cover || placeholder.src,
         alt: image.alt || image.title || `Imagen ${index + 1} de la experiencia`
       };
     });
