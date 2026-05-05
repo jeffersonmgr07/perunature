@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Experiencias en Perú | Peru Nature</title>
-  <meta name="description" content="Explora tours, actividades y paquetes turísticos en Perú con Peru Nature." />
+  <meta name="description" content="Explora tours, paquetes, reservas naturales, trekkings y expediciones documentales por todo el Perú con Peru Nature." />
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -23,12 +23,20 @@
 
   <main class="listing-page">
     <section class="listing-hero">
-      <div class="container">
-        <span class="listing-kicker">Explora Perú</span>
-        <h1>Experiencias naturales y culturales</h1>
+      <div class="container listing-hero__inner">
+        <span class="listing-kicker">Catálogo nacional</span>
+        <h1>Tours, paquetes y expediciones por todo el Perú</h1>
         <p id="listingSummary">
-          Encuentra tours, actividades y paquetes seleccionados por destino.
+          Explora experiencias seleccionadas en costa, Andes, Amazonía y norte del Perú. Encuentra tours planos, paquetes por destino, trekkings, reservas naturales y próximas salidas documentales.
         </p>
+
+        <div class="listing-hero__chips" aria-label="Categorías principales">
+          <a href="./all-experiences.html?region=costa">Costa</a>
+          <a href="./all-experiences.html?region=andes">Andes</a>
+          <a href="./all-experiences.html?region=amazonia">Amazonía</a>
+          <a href="./all-experiences.html?categoria=reserve">Reservas naturales</a>
+          <a href="./all-experiences.html?tipo=package">Paquetes</a>
+        </div>
       </div>
     </section>
 
@@ -36,67 +44,114 @@
       <div class="container listing-layout">
         <aside class="filters-panel">
           <div class="filters-card">
-            <h2>Filtrar</h2>
+            <div class="filters-card__header">
+              <div>
+                <span>Explorar</span>
+                <h2>Filtrar experiencias</h2>
+              </div>
+              <button type="button" id="clearFiltersBtn" class="clear-filters-btn" aria-label="Limpiar filtros">
+                Limpiar
+              </button>
+            </div>
 
-            <div class="filter-group">
+            <div class="filter-group filter-group--full">
               <label for="filterSearch">Buscar</label>
-              <input type="text" id="filterSearch" placeholder="Machu Picchu, Colca, selva..." />
+              <input type="text" id="filterSearch" placeholder="Laguna 69, Tambopata, Paracas..." />
+            </div>
+
+            <div class="filters-grid-mini">
+              <div class="filter-group">
+                <label for="filterRegion">Región</label>
+                <select id="filterRegion">
+                  <option value="">Todas</option>
+                  <option value="costa">Costa</option>
+                  <option value="andes">Andes</option>
+                  <option value="amazonia">Amazonía</option>
+                  <option value="norte">Norte</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label for="filterProductKind">Tipo</label>
+                <select id="filterProductKind">
+                  <option value="">Todos</option>
+                  <option value="tour">Tours</option>
+                  <option value="package">Paquetes</option>
+                </select>
+              </div>
             </div>
 
             <div class="filter-group">
-              <label for="filterDestination">Destino</label>
+              <label for="filterDestination">Destino o departamento</label>
               <select id="filterDestination">
                 <option value="">Todos los destinos</option>
               </select>
             </div>
 
-            <div class="filter-group">
-              <label for="filterCategory">Tipo de experiencia</label>
-              <select id="filterCategory">
-                <option value="">Todas</option>
-              </select>
+            <div class="filters-grid-mini">
+              <div class="filter-group">
+                <label for="filterCategory">Categoría</label>
+                <select id="filterCategory">
+                  <option value="">Todas</option>
+                </select>
+              </div>
+
+              <div class="filter-group">
+                <label for="filterDuration">Duración</label>
+                <select id="filterDuration">
+                  <option value="">Todas</option>
+                  <option value="half_day">Medio día</option>
+                  <option value="full_day">Full Day</option>
+                  <option value="multi_day">2+ días</option>
+                </select>
+              </div>
             </div>
 
-            <div class="filter-group">
-              <label for="filterDifficulty">Dificultad</label>
-              <select id="filterDifficulty">
-                <option value="">Todas</option>
-                <option value="low">Fácil</option>
-                <option value="medium">Moderada</option>
-                <option value="high">Alta</option>
-              </select>
-            </div>
+            <div class="filters-grid-mini">
+              <div class="filter-group">
+                <label for="filterDifficulty">Dificultad</label>
+                <select id="filterDifficulty">
+                  <option value="">Todas</option>
+                  <option value="low">Fácil</option>
+                  <option value="medium">Moderada</option>
+                  <option value="high">Alta</option>
+                  <option value="very_high">Muy alta</option>
+                </select>
+              </div>
 
-            <div class="filter-group">
-              <label for="filterSort">Ordenar por</label>
-              <select id="filterSort">
-                <option value="recommended">Recomendados</option>
-                <option value="price_asc">Precio menor a mayor</option>
-                <option value="price_desc">Precio mayor a menor</option>
-                <option value="rating_desc">Mejor calificados</option>
-              </select>
+              <div class="filter-group">
+                <label for="filterSort">Orden</label>
+                <select id="filterSort">
+                  <option value="recommended">Recomendados</option>
+                  <option value="rank_desc">Ranking</option>
+                  <option value="price_asc">Menor precio</option>
+                  <option value="price_desc">Mayor precio</option>
+                  <option value="duration_asc">Duración</option>
+                  <option value="name_asc">Nombre A-Z</option>
+                </select>
+              </div>
             </div>
-
-            <button type="button" id="clearFiltersBtn" class="clear-filters-btn">
-              Limpiar filtros
-            </button>
           </div>
         </aside>
 
         <section class="results-area">
           <div class="results-top">
             <div>
+              <span id="resultsEyebrow" class="results-eyebrow">Vitrina de excursiones</span>
               <h2 id="resultsTitle">Experiencias disponibles</h2>
               <p id="resultsCount">Cargando experiencias...</p>
             </div>
           </div>
 
-          <div id="experiencesGrid" class="experiences-grid"></div>
+          <div id="activeFilters" class="active-filters" hidden></div>
+
+          <div id="experiencesGrid" class="experiences-grid" aria-live="polite"></div>
 
           <div id="emptyState" class="empty-state" hidden>
             <i class="fa-solid fa-leaf"></i>
             <h3>No encontramos experiencias</h3>
-            <p>Prueba con otro destino, categoría o palabra clave.</p>
+            <p>Prueba con otro destino, región, categoría o palabra clave.</p>
+            <button type="button" id="emptyClearBtn">Ver todo el catálogo</button>
           </div>
         </section>
       </div>
