@@ -43,13 +43,13 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 46px;
   align-items: center;
 }
 
 .hero-content {
-  max-width: 760px;
+  max-width: 900px;
 }
 
 .hero-kicker {
