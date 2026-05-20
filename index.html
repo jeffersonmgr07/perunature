@@ -53,12 +53,12 @@
   
     <div class="container hero-container">
       <div class="hero-content">
-        <span class="hero-kicker">Perú natural · cultural · auténtico</span>
+        <span class="hero-kicker" data-i18n="home.heroKicker">Perú natural · cultural · auténtico</span>
   
-        <h1>Explora Perú con experiencias únicas</h1>
+        <h1 data-i18n="home.heroTitle">Explora Perú con experiencias únicas</h1>
   
         <p>
-          Tours, paquetes y viajes personalizados por los destinos más increíbles del Perú.
+          <span data-i18n="home.heroSubtitle">Tours, paquetes y viajes personalizados por los destinos más increíbles del Perú.</span>
         </p>
   
         <div id="search-bar-container"></div>
@@ -71,12 +71,9 @@
   <section class="destinations-section">
     <div class="container">
       <div class="section-heading">
-        <span>Explora Perú</span>
-        <h2>Destinos naturales y culturales</h2>
-        <p>
-          Viajes diseñados para descubrir lo mejor del Perú: Andes, Amazonía,
-          costa, cultura viva y experiencias auténticas.
-        </p>
+        <span data-i18n="home.exploreEyebrow">Explora Perú</span>
+        <h2 class="one-line-heading" data-i18n="home.destinationsTitle">Destinos naturales y culturales</h2>
+        <p class="one-line-text" data-i18n="home.destinationsText">Viajes diseñados para descubrir lo mejor del Perú: Andes, Amazonía, costa, cultura viva y experiencias auténticas.</p>
       </div>
 
       <div class="destinations-grid">
@@ -135,12 +132,9 @@
   <section class="featured-section">
     <div class="container">
       <div class="section-heading">
-        <span>Experiencias recomendadas</span>
-        <h2>Viajes para empezar a descubrir Perú</h2>
-        <p>
-          Una selección inicial de tours y paquetes que luego conectaremos con
-          tu base de datos dinámica.
-        </p>
+        <span data-i18n="home.featuredEyebrow">Experiencias recomendadas</span>
+        <h2 data-i18n="home.featuredTitle">Viajes para empezar a descubrir Perú</h2>
+        <p class="one-line-text" data-i18n="home.featuredText">Elige entre tours de un día, escapadas naturales y paquetes completos para vivir lo mejor del Perú a tu ritmo.</p>
       </div>
 
       <div class="featured-grid" id="featuredExperiences">
@@ -207,6 +201,7 @@
 
   <!-- JS -->
   <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
   <script src="./assets/js/components/search-bar.js"></script>
 
 </body>

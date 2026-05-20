@@ -140,3 +140,14 @@
     display: none;
   }
 }
+
+.one-line-heading,
+.one-line-text {
+  white-space: nowrap;
+  max-width: 100%;
+}
+.one-line-text { overflow-wrap: normal; }
+@media (max-width: 860px) {
+  .one-line-heading,
+  .one-line-text { white-space: normal; }
+}

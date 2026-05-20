@@ -1,17 +1,36 @@
 <header class="header">
   <div class="header-inner">
-    <a href="./index.html" class="logo">
+    <a href="./index.html" class="logo" aria-label="Peru Nature">
       <img src="./assets/img/logos/logo-header.png" alt="Peru Nature">
     </a>
 
-    <nav>
-      <a href="./index.html">Inicio</a>
-      <a href="./all-experiences.html">Destinos</a>
-      <a href="./quote-packages.html">Paquetes</a>
-      <a href="./mi-reserva.html">Mi reserva</a>
-      <a href="https://wa.me/51900608980" target="_blank" rel="noopener" class="header-cta">
-        Contactar
-      </a>
+    <nav class="nav" id="mainNavigation" aria-label="Menú principal">
+      <a href="./all-experiences.html" data-i18n="nav.destinations">Destinos</a>
+      <a href="./all-experiences.html?tipo=package" data-i18n="nav.packages">Paquetes</a>
+      <a href="./all-experiences.html?tipo=tour" data-i18n="nav.tours">Tours</a>
+      <a href="./all-experiences.html?categoria=naturaleza" data-i18n="nav.travelStyles">Estilos de viaje</a>
+      <a href="./mi-reserva.html" data-i18n="nav.myReservation">Mi reserva</a>
+      <a href="./login.html" class="header-cta" data-i18n="nav.login">Iniciar sesión o registrarse</a>
     </nav>
+
+    <div class="header-actions">
+      <div class="lang-switcher" aria-label="Selector de idioma">
+        <button type="button" class="lang-switcher__toggle" aria-expanded="false">
+          <i class="fa-solid fa-globe"></i>
+          <span data-current-lang>ES</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="lang-switcher__menu" hidden>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+      </div>
+      <a class="wa-header" href="https://wa.me/51900608980" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNavigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
   </div>
 </header>

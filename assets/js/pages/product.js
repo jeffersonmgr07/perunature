@@ -8,6 +8,7 @@ class PeruNatureProductPage {
     this.tours = [];
     this.currentTour = null;
     this.whatsappNumber = "51900608980";
+    this.booking = { adults: 2, children: 0, discountPercent: 0, coupon: "" };
 
     this.slug = this.getSlugFromURL();
 
@@ -46,6 +47,19 @@ class PeruNatureProductPage {
       bookingDuration: document.getElementById("bookingDuration"),
       bookingLocation: document.getElementById("bookingLocation"),
       bookingDifficulty: document.getElementById("bookingDifficulty"),
+      bookingForm: document.getElementById("bookingForm"),
+      bookingDate: document.getElementById("bookingDate"),
+      bookingTime: document.getElementById("bookingTime"),
+      adultsCount: document.getElementById("adultsCount"),
+      childrenCount: document.getElementById("childrenCount"),
+      adultsTotal: document.getElementById("adultsTotal"),
+      childrenTotal: document.getElementById("childrenTotal"),
+      discountRow: document.getElementById("discountRow"),
+      discountTotal: document.getElementById("discountTotal"),
+      bookingTotal: document.getElementById("bookingTotal"),
+      coupon: document.getElementById("bookingCoupon"),
+      applyDiscountBtn: document.getElementById("applyDiscountBtn"),
+      discountMessage: document.getElementById("discountMessage"),
 
       whatsappButton: document.getElementById("whatsappButton")
     };
@@ -128,6 +142,7 @@ class PeruNatureProductPage {
     this.renderItinerary(tour);
     this.renderAvailability(tour);
     this.renderBookingCard(tour);
+    this.initBookingPanel(tour);
     this.renderWhatsAppButton(tour);
   }
 
@@ -301,7 +316,7 @@ class PeruNatureProductPage {
   renderDescription(tour) {
     this.setText(
       this.elements.description,
-      tour.description || tour.shortDescription || "Pronto agregaremos más información sobre esta experiencia."
+      tour.description || tour.shortDescription || "Te compartiremos más detalles y recomendaciones al momento de confirmar tu viaje."
     );
   }
 
@@ -491,6 +506,145 @@ class PeruNatureProductPage {
     this.setText(this.elements.bookingDuration, this.formatDuration(tour.duration));
     this.setText(this.elements.bookingLocation, tour.location || tour.destination || "Perú");
     this.setText(this.elements.bookingDifficulty, this.formatText(tour.difficulty || "Por confirmar"));
+    this.renderBookingTimeOptions(tour);
+    this.updateBookingTotals();
+  }
+
+  renderBookingTimeOptions(tour) {
+    if (!this.elements.bookingTime) return;
+
+    const times = this.extractAvailabilityItems(tour).map((item) => {
+      if (typeof item === "string") return item;
+      return item.time || item.label || item.day || "Consultar horario";
+    });
+
+    const uniqueTimes = [...new Set(times.length ? times : ["Consultar horario"] )];
+    this.elements.bookingTime.innerHTML = `
+      <option value="">${this.getTranslation("booking.selectTime", "Selecciona un horario")}</option>
+      ${uniqueTimes.map((time) => `<option value="${this.escapeHTML(time)}">${this.escapeHTML(time)}</option>`).join("")}
+    `;
+  }
+
+  initBookingPanel(tour) {
+    if (this.bookingPanelReady || !this.elements.bookingForm) return;
+    this.bookingPanelReady = true;
+
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    if (this.elements.bookingDate) {
+      this.elements.bookingDate.min = today.toISOString().split("T")[0];
+    }
+
+    document.querySelectorAll(".qty-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.target;
+        const action = button.dataset.action;
+        const min = target === "adults" ? 1 : 0;
+        const current = this.booking[target] || 0;
+        this.booking[target] = action === "plus" ? current + 1 : Math.max(min, current - 1);
+        this.updateBookingTotals();
+      });
+    });
+
+    this.elements.applyDiscountBtn?.addEventListener("click", () => this.applyDiscountCoupon());
+    this.elements.coupon?.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        this.applyDiscountCoupon();
+      }
+    });
+
+    this.elements.bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.sendBookingToWhatsApp(tour);
+    });
+  }
+
+  applyDiscountCoupon() {
+    const coupon = String(this.elements.coupon?.value || "").trim().toUpperCase();
+    if (coupon === "PERUNATURE10") {
+      this.booking.discountPercent = 10;
+      this.booking.coupon = coupon;
+      this.setText(this.elements.discountMessage, this.getTranslation("booking.validCoupon", "Cupón aplicado: 10% de descuento."));
+    } else {
+      this.booking.discountPercent = 0;
+      this.booking.coupon = "";
+      this.setText(this.elements.discountMessage, this.getTranslation("booking.invalidCoupon", "Cupón no válido para esta experiencia."));
+    }
+    this.updateBookingTotals();
+  }
+
+  updateBookingTotals() {
+    const basePrice = this.getBasePrice(this.currentTour?.pricing);
+    const currency = this.currentTour?.pricing?.currency || "USD";
+    const childPrice = Math.round(basePrice * 0.7);
+    const adultsSubtotal = this.booking.adults * basePrice;
+    const childrenSubtotal = this.booking.children * childPrice;
+    const subtotal = adultsSubtotal + childrenSubtotal;
+    const discount = Math.round(subtotal * (this.booking.discountPercent / 100));
+    const total = Math.max(0, subtotal - discount);
+
+    this.setText(this.elements.adultsCount, this.booking.adults);
+    this.setText(this.elements.childrenCount, this.booking.children);
+    this.setText(this.elements.adultsTotal, this.formatMoney(adultsSubtotal, currency));
+    this.setText(this.elements.childrenTotal, this.formatMoney(childrenSubtotal, currency));
+    this.setText(this.elements.discountTotal, `- ${this.formatMoney(discount, currency)}`);
+    this.setText(this.elements.bookingTotal, this.formatMoney(total, currency));
+
+    if (this.elements.discountRow) this.elements.discountRow.hidden = discount <= 0;
+  }
+
+  sendBookingToWhatsApp(tour) {
+    const currency = tour?.pricing?.currency || "USD";
+    const basePrice = this.getBasePrice(tour?.pricing);
+    const childPrice = Math.round(basePrice * 0.7);
+    const adultsSubtotal = this.booking.adults * basePrice;
+    const childrenSubtotal = this.booking.children * childPrice;
+    const subtotal = adultsSubtotal + childrenSubtotal;
+    const discount = Math.round(subtotal * (this.booking.discountPercent / 100));
+    const total = Math.max(0, subtotal - discount);
+
+    const message = [
+      "Hola Peru Nature, quiero reservar esta experiencia:",
+      "",
+      `Tour: ${tour.title}`,
+      `Destino: ${this.formatText(tour.destination || "Perú")}`,
+      `Fecha: ${this.elements.bookingDate?.value || "Por definir"}`,
+      `Horario: ${this.elements.bookingTime?.value || "Por definir"}`,
+      `Adultos: ${this.booking.adults}`,
+      `Niños: ${this.booking.children}`,
+      this.booking.coupon ? `Cupón: ${this.booking.coupon}` : null,
+      `Total estimado: ${this.formatMoney(total, currency)}`,
+      "",
+      "¿Me pueden confirmar disponibilidad y siguientes pasos?"
+    ].filter(Boolean).join("\n");
+
+    window.open(`https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+  }
+
+  extractAvailabilityItems(tour) {
+    const availability = tour?.availability;
+    if (Array.isArray(availability)) return availability;
+    if (availability?.times && Array.isArray(availability.times)) return availability.times;
+    if (availability?.schedule && Array.isArray(availability.schedule)) return availability.schedule;
+    if (availability?.days && Array.isArray(availability.days)) return availability.days;
+    return [];
+  }
+
+  getBasePrice(pricing) {
+    if (!pricing) return 0;
+    const amount = pricing.from || pricing.amount || pricing.price || pricing.adult || pricing.basePrice || 0;
+    return Number(String(amount).replace(/[^0-9.]/g, "")) || 0;
+  }
+
+  formatMoney(amount, currency = "USD") {
+    const symbol = this.getCurrencySymbol(currency);
+    return `${symbol}${Number(amount || 0).toLocaleString("en-US")}`;
+  }
+
+  getTranslation(key, fallback) {
+    const lang = window.PeruNatureI18n?.getLang?.() || "es";
+    return window.PeruNatureI18n?.translations?.[lang]?.[key] || fallback;
   }
 
   renderWhatsAppButton(tour) {

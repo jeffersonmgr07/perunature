@@ -1,17 +1,15 @@
 async function loadComponent(id, file) {
   const target = document.getElementById(id);
-  if (!target) return;
+  if (!target) return false;
 
   try {
     const response = await fetch(file, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error(`No se pudo cargar ${file}`);
-    }
-
+    if (!response.ok) throw new Error(`No se pudo cargar ${file}`);
     target.innerHTML = await response.text();
+    return true;
   } catch (error) {
     console.error(error);
+    return false;
   }
 }
 
@@ -20,7 +18,6 @@ function initHeroSlider() {
   if (!slides.length) return;
 
   let index = 0;
-
   setInterval(() => {
     slides[index].classList.remove("is-active");
     index = (index + 1) % slides.length;
@@ -28,14 +25,29 @@ function initHeroSlider() {
   }, 5200);
 }
 
+function initMobileMenu() {
+  const button = document.querySelector('.mobile-menu-btn');
+  const nav = document.getElementById('mainNavigation');
+  if (!button || !nav) return;
+
+  button.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    button.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadComponent("header-container", "./components/header.html");
-  await loadComponent("search-bar-container", "./components/search-bar.html");
-  await loadComponent("footer-container", "./components/footer.html");
+  await Promise.all([
+    loadComponent("header-container", "./components/header.html"),
+    loadComponent("header", "./components/header.html"),
+    loadComponent("search-bar-container", "./components/search-bar.html"),
+    loadComponent("footer-container", "./components/footer.html"),
+    loadComponent("footer", "./components/footer.html")
+  ]);
 
-  if (window.PeruNatureSearchBar) {
-    new PeruNatureSearchBar();
-  }
+  initMobileMenu();
+  document.dispatchEvent(new CustomEvent('peruNature:componentsReady'));
 
+  if (window.PeruNatureSearchBar) new PeruNatureSearchBar();
   initHeroSlider();
 });

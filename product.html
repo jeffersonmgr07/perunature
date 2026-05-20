@@ -22,15 +22,10 @@
   />
 
   <!-- Font Awesome para íconos -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-d0CoknKx3gkW3pr6KjzQ3zYhXU8gkN+9SxR3bA2lZ6lJ+QfVb0XWcU6lR6pX5O9+6xU9IY9y5G0nW6vQ8l9fA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- CSS globales del proyecto -->
+  <link rel="stylesheet" href="./assets/css/variables.css" />
   <link rel="stylesheet" href="./assets/css/main.css" />
   <link rel="stylesheet" href="./assets/css/layout.css" />
   <link rel="stylesheet" href="./assets/css/header.css" />
@@ -83,9 +78,9 @@
       <div class="container">
         <!-- Breadcrumb -->
         <nav class="product-breadcrumb" aria-label="Ruta de navegación">
-          <a href="./index.html">Inicio</a>
+          <a href="./index.html" data-i18n="common.home">Inicio</a>
           <span>/</span>
-          <a href="./all-experiences.html">Experiencias</a>
+          <a href="./all-experiences.html" data-i18n="common.experiences">Experiencias</a>
           <span>/</span>
           <span id="breadcrumbTitle">Detalle</span>
         </nav>
@@ -245,48 +240,87 @@
 
           <!-- Sidebar derecha -->
           <aside class="product-sidebar">
-            <div class="booking-card">
+            <div class="booking-card booking-panel">
               <div class="booking-card-header">
-                <span>Desde</span>
+                <span data-i18n="booking.from">Desde</span>
                 <strong id="productPrice">Consultar</strong>
-                <small id="productPriceNote">por persona</small>
+                <small id="productPriceNote" data-i18n="booking.perPerson">por persona</small>
               </div>
 
-              <div class="booking-summary">
-                <div>
-                  <i class="fa-regular fa-clock"></i>
-                  <span id="bookingDuration">Duración</span>
+              <form class="booking-form" id="bookingForm">
+                <div class="booking-field">
+                  <label for="bookingDate" data-i18n="booking.date">Fecha de viaje</label>
+                  <input type="date" id="bookingDate" required />
                 </div>
 
-                <div>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <span id="bookingLocation">Ubicación</span>
+                <div class="booking-field">
+                  <label for="bookingTime" data-i18n="booking.time">Horario</label>
+                  <select id="bookingTime">
+                    <option value="" data-i18n="booking.selectTime">Selecciona un horario</option>
+                  </select>
                 </div>
 
-                <div>
-                  <i class="fa-solid fa-person-hiking"></i>
-                  <span id="bookingDifficulty">Dificultad</span>
+                <div class="booking-travelers" aria-label="Pasajeros">
+                  <div class="booking-traveler-row">
+                    <div>
+                      <strong data-i18n="booking.adults">Adultos</strong>
+                      <small data-i18n="booking.adultsHelp">13 años a más</small>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="minus" data-target="adults">−</button>
+                      <span id="adultsCount">2</span>
+                      <button type="button" class="qty-btn" data-action="plus" data-target="adults">+</button>
+                    </div>
+                  </div>
+
+                  <div class="booking-traveler-row">
+                    <div>
+                      <strong data-i18n="booking.children">Niños</strong>
+                      <small data-i18n="booking.childrenHelp">3 a 12 años</small>
+                    </div>
+                    <div class="qty-control">
+                      <button type="button" class="qty-btn" data-action="minus" data-target="children">−</button>
+                      <span id="childrenCount">0</span>
+                      <button type="button" class="qty-btn" data-action="plus" data-target="children">+</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              <a
-                id="whatsappButton"
-                href="https://wa.me/51900608980"
-                target="_blank"
-                rel="noopener"
-                class="booking-whatsapp-btn"
-              >
-                <i class="fa-brands fa-whatsapp"></i>
-                Consultar por WhatsApp
-              </a>
+                <div class="booking-discount-box">
+                  <label for="bookingCoupon" data-i18n="booking.coupon">Cupón de descuento</label>
+                  <div class="booking-discount-row">
+                    <input type="text" id="bookingCoupon" placeholder="PERUNATURE10" />
+                    <button type="button" id="applyDiscountBtn" data-i18n="booking.apply">Aplicar</button>
+                  </div>
+                  <p class="booking-discount-message" id="discountMessage"></p>
+                </div>
 
-              <a href="./all-experiences.html" class="booking-secondary-btn">
-                Volver al catálogo
-              </a>
+                <div class="booking-mini-summary">
+                  <div><span data-i18n="booking.duration">Duración</span><strong id="bookingDuration">Duración</strong></div>
+                  <div><span data-i18n="booking.location">Destino</span><strong id="bookingLocation">Ubicación</strong></div>
+                  <div><span data-i18n="booking.difficulty">Dificultad</span><strong id="bookingDifficulty">Dificultad</strong></div>
+                </div>
 
-              <p class="booking-note">
-                Te responderemos con disponibilidad, tarifas actualizadas y
-                opciones personalizadas para tu viaje.
+                <div class="booking-summary-wrap">
+                  <div class="booking-summary-title" data-i18n="booking.paymentDetails">Detalle estimado</div>
+                  <div class="booking-summary booking-price-summary">
+                    <div><span data-i18n="booking.adultsTotal">Adultos</span><strong id="adultsTotal">USD 0</strong></div>
+                    <div><span data-i18n="booking.childrenTotal">Niños</span><strong id="childrenTotal">USD 0</strong></div>
+                    <div id="discountRow" hidden><span data-i18n="booking.discount">Descuento</span><strong id="discountTotal">- USD 0</strong></div>
+                    <div class="booking-summary__total"><span data-i18n="booking.total">Total</span><strong id="bookingTotal">USD 0</strong></div>
+                  </div>
+                </div>
+
+                <button type="submit" class="booking-whatsapp-btn">
+                  <i class="fa-brands fa-whatsapp"></i>
+                  <span data-i18n="booking.reserveWhatsApp">Reservar por WhatsApp</span>
+                </button>
+              </form>
+
+              <a href="./all-experiences.html" class="booking-secondary-btn" data-i18n="booking.backCatalog">Volver al catálogo</a>
+
+              <p class="booking-note" data-i18n="booking.note">
+                Confirma tu fecha, viajeros y horario. Un asesor validará disponibilidad antes de cerrar la reserva.
               </p>
             </div>
           </aside>
@@ -300,6 +334,7 @@
 
   <!-- JS principal del proyecto -->
   <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
 
   <!-- JS propio de product.html -->
   <script src="./assets/js/pages/product.js"></script>
