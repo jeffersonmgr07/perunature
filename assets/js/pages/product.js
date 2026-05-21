@@ -7,7 +7,7 @@ class PeruNatureProductPage {
   constructor() {
     this.tours = [];
     this.currentTour = null;
-    this.whatsappNumber = "51900608980";
+    this.whatsappNumber = "51929715296";
     this.booking = { adults: 2, children: 0, discountPercent: 0, coupon: "" };
 
     this.slug = this.getSlugFromURL();

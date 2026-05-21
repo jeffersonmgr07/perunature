@@ -174,7 +174,7 @@
   padding: 0 18px;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--pn-green-500, #2f8f5b), var(--pn-green-600, #0f6f4c));
+  background: var(--btn-gradient);
   color: #fff;
   font-weight: 900;
   font-size: .92rem;
@@ -184,14 +184,14 @@
   gap: 8px;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 12px 28px rgba(47, 143, 91, .26);
+  box-shadow: 0 12px 28px rgba(76, 175, 80, .28);
   transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
 
 .reservation-menu__toggle:hover {
   transform: translateY(-1px);
   filter: brightness(1.04);
-  box-shadow: 0 16px 34px rgba(47, 143, 91, .32);
+  box-shadow: 0 16px 34px rgba(76, 175, 80, .36);
 }
 
 .reservation-menu__toggle i {

@@ -6,7 +6,7 @@
 class PeruNatureDocumentaryTours {
   constructor() {
     this.tours = [];
-    this.whatsappNumber = "51900608980";
+    this.whatsappNumber = "51929715296";
 
     this.elements = {
       container: document.getElementById("documentaryToursContainer"),
