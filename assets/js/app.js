@@ -25,6 +25,36 @@ function initHeroSlider() {
   }, 5200);
 }
 
+
+function initReservationMenu() {
+  document.querySelectorAll('.reservation-menu').forEach((menu) => {
+    const toggle = menu.querySelector('.reservation-menu__toggle');
+    const dropdown = menu.querySelector('.reservation-menu__dropdown');
+    if (!toggle || !dropdown) return;
+
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = !dropdown.hidden;
+      document.querySelectorAll('.reservation-menu__dropdown').forEach((otherDropdown) => {
+        otherDropdown.hidden = true;
+        otherDropdown.closest('.reservation-menu')?.classList.remove('is-open');
+        otherDropdown.closest('.reservation-menu')?.querySelector('.reservation-menu__toggle')?.setAttribute('aria-expanded', 'false');
+      });
+      dropdown.hidden = isOpen;
+      menu.classList.toggle('is-open', !isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.reservation-menu__dropdown').forEach((dropdown) => {
+      dropdown.hidden = true;
+      dropdown.closest('.reservation-menu')?.classList.remove('is-open');
+      dropdown.closest('.reservation-menu')?.querySelector('.reservation-menu__toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 function initMobileMenu() {
   const button = document.querySelector('.mobile-menu-btn');
   const nav = document.getElementById('mainNavigation');
@@ -46,6 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ]);
 
   initMobileMenu();
+  initReservationMenu();
   document.dispatchEvent(new CustomEvent('peruNature:componentsReady'));
 
   if (window.PeruNatureSearchBar) new PeruNatureSearchBar();

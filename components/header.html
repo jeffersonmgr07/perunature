@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header-inner">
     <a href="./index.html" class="logo" aria-label="Peru Nature">
-      <img src="./assets/img/logos/logo-header.png" alt="Peru Nature">
+      <img src="./assets/img/logo-header.png" alt="Peru Nature">
     </a>
 
     <nav class="nav" id="mainNavigation" aria-label="Menú principal">
@@ -9,8 +9,17 @@
       <a href="./all-experiences.html?tipo=package" data-i18n="nav.packages">Paquetes</a>
       <a href="./all-experiences.html?tipo=tour" data-i18n="nav.tours">Tours</a>
       <a href="./all-experiences.html?categoria=naturaleza" data-i18n="nav.travelStyles">Estilos de viaje</a>
-      <a href="./mi-reserva.html" data-i18n="nav.myReservation">Mi reserva</a>
-      <a href="./login.html" class="header-cta" data-i18n="nav.login">Iniciar sesión o registrarse</a>
+      <div class="reservation-menu">
+        <button type="button" class="reservation-menu__toggle" aria-expanded="false" aria-haspopup="true">
+          <span data-i18n="nav.myReservation">Mi reserva</span>
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="reservation-menu__dropdown" hidden>
+          <a href="./mi-reserva.html" data-i18n="nav.viewReservation">Ver mi reserva</a>
+          <a href="./login.html" data-i18n="nav.loginShort">Iniciar sesión</a>
+          <a href="./login.html?mode=register" data-i18n="nav.register">Registrarme</a>
+        </div>
+      </div>
     </nav>
 
     <div class="header-actions">
@@ -25,9 +34,6 @@
           <button type="button" data-lang="en">English</button>
         </div>
       </div>
-      <a class="wa-header" href="https://wa.me/51900608980" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
       <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNavigation">
         <i class="fa-solid fa-bars"></i>
       </button>

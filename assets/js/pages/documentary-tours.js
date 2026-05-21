@@ -224,14 +224,14 @@ class PeruNatureDocumentaryTours {
 
   getMainImage(tour) {
     if (!Array.isArray(tour.images) || tour.images.length === 0) {
-      return "./assets/img/placeholder/tour-placeholder.jpg";
+      return "./assets/img/tour-placeholder.jpg";
     }
 
     const image = tour.images[0];
 
     if (typeof image === "string") return image;
 
-    return image.src || image.url || "./assets/img/placeholder/tour-placeholder.jpg";
+    return image.src || image.url || "./assets/img/tour-placeholder.jpg";
   }
 
   createWhatsAppURL(tour, availableSeats) {

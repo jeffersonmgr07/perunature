@@ -4,7 +4,7 @@
 (function () {
   const translations = {
     es: {
-      "nav.destinations": "Destinos", "nav.packages": "Paquetes", "nav.tours": "Tours", "nav.travelStyles": "Estilos de viaje", "nav.myReservation": "Mi reserva", "nav.login": "Iniciar sesión o registrarse",
+      "nav.destinations": "Destinos", "nav.packages": "Paquetes", "nav.tours": "Tours", "nav.travelStyles": "Estilos de viaje", "nav.myReservation": "Mi reserva", "nav.viewReservation": "Ver mi reserva", "nav.loginShort": "Iniciar sesión", "nav.register": "Registrarme", "nav.login": "Iniciar sesión o registrarse",
       "common.home": "Inicio", "common.experiences": "Experiencias",
       "home.heroKicker": "Perú natural · cultural · auténtico", "home.heroTitle": "Explora Perú con experiencias únicas", "home.heroSubtitle": "Tours, paquetes y viajes personalizados por los destinos más increíbles del Perú.",
       "home.exploreEyebrow": "Explora Perú", "home.destinationsTitle": "Destinos naturales y culturales", "home.destinationsText": "Viajes diseñados para descubrir lo mejor del Perú: Andes, Amazonía, costa, cultura viva y experiencias auténticas.",
@@ -13,7 +13,7 @@
       "booking.from": "Desde", "booking.perPerson": "por persona", "booking.date": "Fecha de viaje", "booking.time": "Horario", "booking.selectTime": "Selecciona un horario", "booking.adults": "Adultos", "booking.adultsHelp": "13 años a más", "booking.children": "Niños", "booking.childrenHelp": "3 a 12 años", "booking.coupon": "Cupón de descuento", "booking.apply": "Aplicar", "booking.duration": "Duración", "booking.location": "Destino", "booking.difficulty": "Dificultad", "booking.paymentDetails": "Detalle estimado", "booking.adultsTotal": "Adultos", "booking.childrenTotal": "Niños", "booking.discount": "Descuento", "booking.total": "Total", "booking.reserveWhatsApp": "Reservar por WhatsApp", "booking.backCatalog": "Volver al catálogo", "booking.note": "Confirma tu fecha, viajeros y horario. Un asesor validará disponibilidad antes de cerrar la reserva.", "booking.validCoupon": "Cupón aplicado: 10% de descuento.", "booking.invalidCoupon": "Cupón no válido para esta experiencia."
     },
     en: {
-      "nav.destinations": "Destinations", "nav.packages": "Packages", "nav.tours": "Tours", "nav.travelStyles": "Travel styles", "nav.myReservation": "My booking", "nav.login": "Sign in or register",
+      "nav.destinations": "Destinations", "nav.packages": "Packages", "nav.tours": "Tours", "nav.travelStyles": "Travel styles", "nav.myReservation": "My booking", "nav.viewReservation": "View my booking", "nav.loginShort": "Sign in", "nav.register": "Register", "nav.login": "Sign in or register",
       "common.home": "Home", "common.experiences": "Experiences",
       "home.heroKicker": "Natural · cultural · authentic Peru", "home.heroTitle": "Explore Peru through unique experiences", "home.heroSubtitle": "Tours, packages and tailor-made trips across Peru’s most incredible destinations.",
       "home.exploreEyebrow": "Explore Peru", "home.destinationsTitle": "Natural and cultural destinations", "home.destinationsText": "Trips designed to discover the best of Peru: Andes, Amazon, coast, living culture and authentic experiences.",

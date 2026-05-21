@@ -319,11 +319,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/paracas-ballestas/cover.jpg",
+        "cover": "./assets/img/tours/paracas-ballestas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/paracas-ballestas/1.jpg",
-          "./assets/img/tours/paracas-ballestas/2.jpg",
-          "./assets/img/tours/paracas-ballestas/3.jpg"
+          "./assets/img/tours/paracas-ballestas-img1.jpg",
+          "./assets/img/tours/paracas-ballestas-img2.jpg",
+          "./assets/img/tours/paracas-ballestas-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -458,11 +458,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/paracas-huacachina/cover.jpg",
+        "cover": "./assets/img/tours/paracas-huacachina-cover.jpg",
         "gallery": [
-          "./assets/img/tours/paracas-huacachina/1.jpg",
-          "./assets/img/tours/paracas-huacachina/2.jpg",
-          "./assets/img/tours/paracas-huacachina/3.jpg"
+          "./assets/img/tours/paracas-huacachina-img1.jpg",
+          "./assets/img/tours/paracas-huacachina-img2.jpg",
+          "./assets/img/tours/paracas-huacachina-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -598,11 +598,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/huacachina-buggy/cover.jpg",
+        "cover": "./assets/img/tours/huacachina-buggy-cover.jpg",
         "gallery": [
-          "./assets/img/tours/huacachina-buggy/1.jpg",
-          "./assets/img/tours/huacachina-buggy/2.jpg",
-          "./assets/img/tours/huacachina-buggy/3.jpg"
+          "./assets/img/tours/huacachina-buggy-img1.jpg",
+          "./assets/img/tours/huacachina-buggy-img2.jpg",
+          "./assets/img/tours/huacachina-buggy-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -727,11 +727,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/nazca-sobrevuelo/cover.jpg",
+        "cover": "./assets/img/tours/nazca-sobrevuelo-cover.jpg",
         "gallery": [
-          "./assets/img/tours/nazca-sobrevuelo/1.jpg",
-          "./assets/img/tours/nazca-sobrevuelo/2.jpg",
-          "./assets/img/tours/nazca-sobrevuelo/3.jpg"
+          "./assets/img/tours/nazca-sobrevuelo-img1.jpg",
+          "./assets/img/tours/nazca-sobrevuelo-img2.jpg",
+          "./assets/img/tours/nazca-sobrevuelo-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -856,11 +856,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/colca-full-day/cover.jpg",
+        "cover": "./assets/img/tours/colca-full-day-cover.jpg",
         "gallery": [
-          "./assets/img/tours/colca-full-day/1.jpg",
-          "./assets/img/tours/colca-full-day/2.jpg",
-          "./assets/img/tours/colca-full-day/3.jpg"
+          "./assets/img/tours/colca-full-day-img1.jpg",
+          "./assets/img/tours/colca-full-day-img2.jpg",
+          "./assets/img/tours/colca-full-day-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -998,11 +998,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/colca-2d1n/cover.jpg",
+        "cover": "./assets/img/tours/colca-2d1n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/colca-2d1n/1.jpg",
-          "./assets/img/tours/colca-2d1n/2.jpg",
-          "./assets/img/tours/colca-2d1n/3.jpg"
+          "./assets/img/tours/colca-2d1n-img1.jpg",
+          "./assets/img/tours/colca-2d1n-img2.jpg",
+          "./assets/img/tours/colca-2d1n-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -1119,11 +1119,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/uros-taquile/cover.jpg",
+        "cover": "./assets/img/tours/uros-taquile-cover.jpg",
         "gallery": [
-          "./assets/img/tours/uros-taquile/1.jpg",
-          "./assets/img/tours/uros-taquile/2.jpg",
-          "./assets/img/tours/uros-taquile/3.jpg"
+          "./assets/img/tours/uros-taquile-img1.jpg",
+          "./assets/img/tours/uros-taquile-img2.jpg",
+          "./assets/img/tours/uros-taquile-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -1264,11 +1264,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/titicaca-vivencial/cover.jpg",
+        "cover": "./assets/img/tours/titicaca-vivencial-cover.jpg",
         "gallery": [
-          "./assets/img/tours/titicaca-vivencial/1.jpg",
-          "./assets/img/tours/titicaca-vivencial/2.jpg",
-          "./assets/img/tours/titicaca-vivencial/3.jpg"
+          "./assets/img/tours/titicaca-vivencial-img1.jpg",
+          "./assets/img/tours/titicaca-vivencial-img2.jpg",
+          "./assets/img/tours/titicaca-vivencial-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -1388,11 +1388,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/laguna-69/cover.jpg",
+        "cover": "./assets/img/tours/laguna-69-cover.jpg",
         "gallery": [
-          "./assets/img/tours/laguna-69/1.jpg",
-          "./assets/img/tours/laguna-69/2.jpg",
-          "./assets/img/tours/laguna-69/3.jpg"
+          "./assets/img/tours/laguna-69-img1.jpg",
+          "./assets/img/tours/laguna-69-img2.jpg",
+          "./assets/img/tours/laguna-69-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -1526,11 +1526,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/llanganuco-yungay/cover.jpg",
+        "cover": "./assets/img/tours/llanganuco-yungay-cover.jpg",
         "gallery": [
-          "./assets/img/tours/llanganuco-yungay/1.jpg",
-          "./assets/img/tours/llanganuco-yungay/2.jpg",
-          "./assets/img/tours/llanganuco-yungay/3.jpg"
+          "./assets/img/tours/llanganuco-yungay-img1.jpg",
+          "./assets/img/tours/llanganuco-yungay-img2.jpg",
+          "./assets/img/tours/llanganuco-yungay-img3.jpg"
         ]
       },
       "badge": "Reserva natural",
@@ -1663,11 +1663,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/pastoruri/cover.jpg",
+        "cover": "./assets/img/tours/pastoruri-cover.jpg",
         "gallery": [
-          "./assets/img/tours/pastoruri/1.jpg",
-          "./assets/img/tours/pastoruri/2.jpg",
-          "./assets/img/tours/pastoruri/3.jpg"
+          "./assets/img/tours/pastoruri-img1.jpg",
+          "./assets/img/tours/pastoruri-img2.jpg",
+          "./assets/img/tours/pastoruri-img3.jpg"
         ]
       },
       "badge": "Reserva natural",
@@ -1796,11 +1796,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/santa-cruz-trek/cover.jpg",
+        "cover": "./assets/img/tours/santa-cruz-trek-cover.jpg",
         "gallery": [
-          "./assets/img/tours/santa-cruz-trek/1.jpg",
-          "./assets/img/tours/santa-cruz-trek/2.jpg",
-          "./assets/img/tours/santa-cruz-trek/3.jpg"
+          "./assets/img/tours/santa-cruz-trek-img1.jpg",
+          "./assets/img/tours/santa-cruz-trek-img2.jpg",
+          "./assets/img/tours/santa-cruz-trek-img3.jpg"
         ]
       },
       "badge": "Reserva natural",
@@ -1931,11 +1931,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/laguna-azul/cover.jpg",
+        "cover": "./assets/img/tours/laguna-azul-cover.jpg",
         "gallery": [
-          "./assets/img/tours/laguna-azul/1.jpg",
-          "./assets/img/tours/laguna-azul/2.jpg",
-          "./assets/img/tours/laguna-azul/3.jpg"
+          "./assets/img/tours/laguna-azul-img1.jpg",
+          "./assets/img/tours/laguna-azul-img2.jpg",
+          "./assets/img/tours/laguna-azul-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -2075,11 +2075,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/ahuashiyacu-lamas/cover.jpg",
+        "cover": "./assets/img/tours/ahuashiyacu-lamas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/ahuashiyacu-lamas/1.jpg",
-          "./assets/img/tours/ahuashiyacu-lamas/2.jpg",
-          "./assets/img/tours/ahuashiyacu-lamas/3.jpg"
+          "./assets/img/tours/ahuashiyacu-lamas-img1.jpg",
+          "./assets/img/tours/ahuashiyacu-lamas-img2.jpg",
+          "./assets/img/tours/ahuashiyacu-lamas-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -2215,11 +2215,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tarapoto-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/tarapoto-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tarapoto-3d2n/1.jpg",
-          "./assets/img/tours/tarapoto-3d2n/2.jpg",
-          "./assets/img/tours/tarapoto-3d2n/3.jpg"
+          "./assets/img/tours/tarapoto-3d2n-img1.jpg",
+          "./assets/img/tours/tarapoto-3d2n-img2.jpg",
+          "./assets/img/tours/tarapoto-3d2n-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -2344,11 +2344,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tambopata-lago-sandoval/cover.jpg",
+        "cover": "./assets/img/tours/tambopata-lago-sandoval-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tambopata-lago-sandoval/1.jpg",
-          "./assets/img/tours/tambopata-lago-sandoval/2.jpg",
-          "./assets/img/tours/tambopata-lago-sandoval/3.jpg"
+          "./assets/img/tours/tambopata-lago-sandoval-img1.jpg",
+          "./assets/img/tours/tambopata-lago-sandoval-img2.jpg",
+          "./assets/img/tours/tambopata-lago-sandoval-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -2476,11 +2476,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tambopata-collpa-chuncho/cover.jpg",
+        "cover": "./assets/img/tours/tambopata-collpa-chuncho-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tambopata-collpa-chuncho/1.jpg",
-          "./assets/img/tours/tambopata-collpa-chuncho/2.jpg",
-          "./assets/img/tours/tambopata-collpa-chuncho/3.jpg"
+          "./assets/img/tours/tambopata-collpa-chuncho-img1.jpg",
+          "./assets/img/tours/tambopata-collpa-chuncho-img2.jpg",
+          "./assets/img/tours/tambopata-collpa-chuncho-img3.jpg"
         ]
       },
       "badge": "Reserva natural",
@@ -2612,11 +2612,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/iquitos-lodge/cover.jpg",
+        "cover": "./assets/img/tours/iquitos-lodge-cover.jpg",
         "gallery": [
-          "./assets/img/tours/iquitos-lodge/1.jpg",
-          "./assets/img/tours/iquitos-lodge/2.jpg",
-          "./assets/img/tours/iquitos-lodge/3.jpg"
+          "./assets/img/tours/iquitos-lodge-img1.jpg",
+          "./assets/img/tours/iquitos-lodge-img2.jpg",
+          "./assets/img/tours/iquitos-lodge-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -2742,11 +2742,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/pacaya-samiria/cover.jpg",
+        "cover": "./assets/img/tours/pacaya-samiria-cover.jpg",
         "gallery": [
-          "./assets/img/tours/pacaya-samiria/1.jpg",
-          "./assets/img/tours/pacaya-samiria/2.jpg",
-          "./assets/img/tours/pacaya-samiria/3.jpg"
+          "./assets/img/tours/pacaya-samiria-img1.jpg",
+          "./assets/img/tours/pacaya-samiria-img2.jpg",
+          "./assets/img/tours/pacaya-samiria-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -2876,11 +2876,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/kuelap/cover.jpg",
+        "cover": "./assets/img/tours/kuelap-cover.jpg",
         "gallery": [
-          "./assets/img/tours/kuelap/1.jpg",
-          "./assets/img/tours/kuelap/2.jpg",
-          "./assets/img/tours/kuelap/3.jpg"
+          "./assets/img/tours/kuelap-img1.jpg",
+          "./assets/img/tours/kuelap-img2.jpg",
+          "./assets/img/tours/kuelap-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3007,11 +3007,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/gocta/cover.jpg",
+        "cover": "./assets/img/tours/gocta-cover.jpg",
         "gallery": [
-          "./assets/img/tours/gocta/1.jpg",
-          "./assets/img/tours/gocta/2.jpg",
-          "./assets/img/tours/gocta/3.jpg"
+          "./assets/img/tours/gocta-img1.jpg",
+          "./assets/img/tours/gocta-img2.jpg",
+          "./assets/img/tours/gocta-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3140,11 +3140,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/chachapoyas-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/chachapoyas-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/chachapoyas-3d2n/1.jpg",
-          "./assets/img/tours/chachapoyas-3d2n/2.jpg",
-          "./assets/img/tours/chachapoyas-3d2n/3.jpg"
+          "./assets/img/tours/chachapoyas-3d2n-img1.jpg",
+          "./assets/img/tours/chachapoyas-3d2n-img2.jpg",
+          "./assets/img/tours/chachapoyas-3d2n-img3.jpg"
         ]
       },
       "badge": "Top ventas",
@@ -3267,11 +3267,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/lima-historico/cover.jpg",
+        "cover": "./assets/img/tours/lima-historico-cover.jpg",
         "gallery": [
-          "./assets/img/tours/lima-historico/1.jpg",
-          "./assets/img/tours/lima-historico/2.jpg",
-          "./assets/img/tours/lima-historico/3.jpg"
+          "./assets/img/tours/lima-historico-img1.jpg",
+          "./assets/img/tours/lima-historico-img2.jpg",
+          "./assets/img/tours/lima-historico-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3397,11 +3397,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/lima-larco/cover.jpg",
+        "cover": "./assets/img/tours/lima-larco-cover.jpg",
         "gallery": [
-          "./assets/img/tours/lima-larco/1.jpg",
-          "./assets/img/tours/lima-larco/2.jpg",
-          "./assets/img/tours/lima-larco/3.jpg"
+          "./assets/img/tours/lima-larco-img1.jpg",
+          "./assets/img/tours/lima-larco-img2.jpg",
+          "./assets/img/tours/lima-larco-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3527,11 +3527,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/pachacamac-larco/cover.jpg",
+        "cover": "./assets/img/tours/pachacamac-larco-cover.jpg",
         "gallery": [
-          "./assets/img/tours/pachacamac-larco/1.jpg",
-          "./assets/img/tours/pachacamac-larco/2.jpg",
-          "./assets/img/tours/pachacamac-larco/3.jpg"
+          "./assets/img/tours/pachacamac-larco-img1.jpg",
+          "./assets/img/tours/pachacamac-larco-img2.jpg",
+          "./assets/img/tours/pachacamac-larco-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3663,11 +3663,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/islas-palomino/cover.jpg",
+        "cover": "./assets/img/tours/islas-palomino-cover.jpg",
         "gallery": [
-          "./assets/img/tours/islas-palomino/1.jpg",
-          "./assets/img/tours/islas-palomino/2.jpg",
-          "./assets/img/tours/islas-palomino/3.jpg"
+          "./assets/img/tours/islas-palomino-img1.jpg",
+          "./assets/img/tours/islas-palomino-img2.jpg",
+          "./assets/img/tours/islas-palomino-img3.jpg"
         ]
       },
       "badge": "Experiencia",
@@ -3797,11 +3797,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/trujillo-chan-chan-huacas/cover.jpg",
+        "cover": "./assets/img/tours/trujillo-chan-chan-huacas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/trujillo-chan-chan-huacas/1.jpg",
-          "./assets/img/tours/trujillo-chan-chan-huacas/2.jpg",
-          "./assets/img/tours/trujillo-chan-chan-huacas/3.jpg"
+          "./assets/img/tours/trujillo-chan-chan-huacas-img1.jpg",
+          "./assets/img/tours/trujillo-chan-chan-huacas-img2.jpg",
+          "./assets/img/tours/trujillo-chan-chan-huacas-img3.jpg"
         ]
       },
       "badge": "Arqueología norte",
@@ -3944,11 +3944,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/el-brujo-museo-cao/cover.jpg",
+        "cover": "./assets/img/tours/el-brujo-museo-cao-cover.jpg",
         "gallery": [
-          "./assets/img/tours/el-brujo-museo-cao/1.jpg",
-          "./assets/img/tours/el-brujo-museo-cao/2.jpg",
-          "./assets/img/tours/el-brujo-museo-cao/3.jpg"
+          "./assets/img/tours/el-brujo-museo-cao-img1.jpg",
+          "./assets/img/tours/el-brujo-museo-cao-img2.jpg",
+          "./assets/img/tours/el-brujo-museo-cao-img3.jpg"
         ]
       },
       "badge": "Cultura Moche",
@@ -4087,11 +4087,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/trujillo-historico-huanchaco/cover.jpg",
+        "cover": "./assets/img/tours/trujillo-historico-huanchaco-cover.jpg",
         "gallery": [
-          "./assets/img/tours/trujillo-historico-huanchaco/1.jpg",
-          "./assets/img/tours/trujillo-historico-huanchaco/2.jpg",
-          "./assets/img/tours/trujillo-historico-huanchaco/3.jpg"
+          "./assets/img/tours/trujillo-historico-huanchaco-img1.jpg",
+          "./assets/img/tours/trujillo-historico-huanchaco-img2.jpg",
+          "./assets/img/tours/trujillo-historico-huanchaco-img3.jpg"
         ]
       },
       "badge": "City + costa",
@@ -4227,11 +4227,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/sipan-tumbas-reales/cover.jpg",
+        "cover": "./assets/img/tours/sipan-tumbas-reales-cover.jpg",
         "gallery": [
-          "./assets/img/tours/sipan-tumbas-reales/1.jpg",
-          "./assets/img/tours/sipan-tumbas-reales/2.jpg",
-          "./assets/img/tours/sipan-tumbas-reales/3.jpg"
+          "./assets/img/tours/sipan-tumbas-reales-img1.jpg",
+          "./assets/img/tours/sipan-tumbas-reales-img2.jpg",
+          "./assets/img/tours/sipan-tumbas-reales-img3.jpg"
         ]
       },
       "badge": "Museo top",
@@ -4372,11 +4372,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tucume-tumbas-reales/cover.jpg",
+        "cover": "./assets/img/tours/tucume-tumbas-reales-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tucume-tumbas-reales/1.jpg",
-          "./assets/img/tours/tucume-tumbas-reales/2.jpg",
-          "./assets/img/tours/tucume-tumbas-reales/3.jpg"
+          "./assets/img/tours/tucume-tumbas-reales-img1.jpg",
+          "./assets/img/tours/tucume-tumbas-reales-img2.jpg",
+          "./assets/img/tours/tucume-tumbas-reales-img3.jpg"
         ]
       },
       "badge": "Arqueología",
@@ -4511,11 +4511,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/bosque-pomac-tucume/cover.jpg",
+        "cover": "./assets/img/tours/bosque-pomac-tucume-cover.jpg",
         "gallery": [
-          "./assets/img/tours/bosque-pomac-tucume/1.jpg",
-          "./assets/img/tours/bosque-pomac-tucume/2.jpg",
-          "./assets/img/tours/bosque-pomac-tucume/3.jpg"
+          "./assets/img/tours/bosque-pomac-tucume-img1.jpg",
+          "./assets/img/tours/bosque-pomac-tucume-img2.jpg",
+          "./assets/img/tours/bosque-pomac-tucume-img3.jpg"
         ]
       },
       "badge": "Naturaleza + cultura",
@@ -4657,11 +4657,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/chiclayo-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/chiclayo-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/chiclayo-3d2n/1.jpg",
-          "./assets/img/tours/chiclayo-3d2n/2.jpg",
-          "./assets/img/tours/chiclayo-3d2n/3.jpg"
+          "./assets/img/tours/chiclayo-3d2n-img1.jpg",
+          "./assets/img/tours/chiclayo-3d2n-img2.jpg",
+          "./assets/img/tours/chiclayo-3d2n-img3.jpg"
         ]
       },
       "badge": "Paquete plano",
@@ -4796,11 +4796,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/mancora-nado-tortugas/cover.jpg",
+        "cover": "./assets/img/tours/mancora-nado-tortugas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/mancora-nado-tortugas/1.jpg",
-          "./assets/img/tours/mancora-nado-tortugas/2.jpg",
-          "./assets/img/tours/mancora-nado-tortugas/3.jpg"
+          "./assets/img/tours/mancora-nado-tortugas-img1.jpg",
+          "./assets/img/tours/mancora-nado-tortugas-img2.jpg",
+          "./assets/img/tours/mancora-nado-tortugas-img3.jpg"
         ]
       },
       "badge": "Fauna marina",
@@ -4938,11 +4938,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/mancora-ballenas-tortugas/cover.jpg",
+        "cover": "./assets/img/tours/mancora-ballenas-tortugas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/mancora-ballenas-tortugas/1.jpg",
-          "./assets/img/tours/mancora-ballenas-tortugas/2.jpg",
-          "./assets/img/tours/mancora-ballenas-tortugas/3.jpg"
+          "./assets/img/tours/mancora-ballenas-tortugas-img1.jpg",
+          "./assets/img/tours/mancora-ballenas-tortugas-img2.jpg",
+          "./assets/img/tours/mancora-ballenas-tortugas-img3.jpg"
         ]
       },
       "badge": "Temporada",
@@ -5086,11 +5086,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/playas-norte-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/playas-norte-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/playas-norte-3d2n/1.jpg",
-          "./assets/img/tours/playas-norte-3d2n/2.jpg",
-          "./assets/img/tours/playas-norte-3d2n/3.jpg"
+          "./assets/img/tours/playas-norte-3d2n-img1.jpg",
+          "./assets/img/tours/playas-norte-3d2n-img2.jpg",
+          "./assets/img/tours/playas-norte-3d2n-img3.jpg"
         ]
       },
       "badge": "Playa",
@@ -5223,11 +5223,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/manglares-tumbes-puerto-pizarro/cover.jpg",
+        "cover": "./assets/img/tours/manglares-tumbes-puerto-pizarro-cover.jpg",
         "gallery": [
-          "./assets/img/tours/manglares-tumbes-puerto-pizarro/1.jpg",
-          "./assets/img/tours/manglares-tumbes-puerto-pizarro/2.jpg",
-          "./assets/img/tours/manglares-tumbes-puerto-pizarro/3.jpg"
+          "./assets/img/tours/manglares-tumbes-puerto-pizarro-img1.jpg",
+          "./assets/img/tours/manglares-tumbes-puerto-pizarro-img2.jpg",
+          "./assets/img/tours/manglares-tumbes-puerto-pizarro-img3.jpg"
         ]
       },
       "badge": "Manglares",
@@ -5372,11 +5372,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/punta-sal-zorritos/cover.jpg",
+        "cover": "./assets/img/tours/punta-sal-zorritos-cover.jpg",
         "gallery": [
-          "./assets/img/tours/punta-sal-zorritos/1.jpg",
-          "./assets/img/tours/punta-sal-zorritos/2.jpg",
-          "./assets/img/tours/punta-sal-zorritos/3.jpg"
+          "./assets/img/tours/punta-sal-zorritos-img1.jpg",
+          "./assets/img/tours/punta-sal-zorritos-img2.jpg",
+          "./assets/img/tours/punta-sal-zorritos-img3.jpg"
         ]
       },
       "badge": "Playa",
@@ -5517,11 +5517,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tumbes-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/tumbes-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tumbes-3d2n/1.jpg",
-          "./assets/img/tours/tumbes-3d2n/2.jpg",
-          "./assets/img/tours/tumbes-3d2n/3.jpg"
+          "./assets/img/tours/tumbes-3d2n-img1.jpg",
+          "./assets/img/tours/tumbes-3d2n-img2.jpg",
+          "./assets/img/tours/tumbes-3d2n-img3.jpg"
         ]
       },
       "badge": "Paquete playa",
@@ -5653,11 +5653,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/chanchamayo-bayoz-velo/cover.jpg",
+        "cover": "./assets/img/tours/chanchamayo-bayoz-velo-cover.jpg",
         "gallery": [
-          "./assets/img/tours/chanchamayo-bayoz-velo/1.jpg",
-          "./assets/img/tours/chanchamayo-bayoz-velo/2.jpg",
-          "./assets/img/tours/chanchamayo-bayoz-velo/3.jpg"
+          "./assets/img/tours/chanchamayo-bayoz-velo-img1.jpg",
+          "./assets/img/tours/chanchamayo-bayoz-velo-img2.jpg",
+          "./assets/img/tours/chanchamayo-bayoz-velo-img3.jpg"
         ]
       },
       "badge": "Selva central",
@@ -5803,11 +5803,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/catarata-tirol-san-ramon/cover.jpg",
+        "cover": "./assets/img/tours/catarata-tirol-san-ramon-cover.jpg",
         "gallery": [
-          "./assets/img/tours/catarata-tirol-san-ramon/1.jpg",
-          "./assets/img/tours/catarata-tirol-san-ramon/2.jpg",
-          "./assets/img/tours/catarata-tirol-san-ramon/3.jpg"
+          "./assets/img/tours/catarata-tirol-san-ramon-img1.jpg",
+          "./assets/img/tours/catarata-tirol-san-ramon-img2.jpg",
+          "./assets/img/tours/catarata-tirol-san-ramon-img3.jpg"
         ]
       },
       "badge": "Catarata",
@@ -5944,11 +5944,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/selva-central-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/selva-central-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/selva-central-3d2n/1.jpg",
-          "./assets/img/tours/selva-central-3d2n/2.jpg",
-          "./assets/img/tours/selva-central-3d2n/3.jpg"
+          "./assets/img/tours/selva-central-3d2n-img1.jpg",
+          "./assets/img/tours/selva-central-3d2n-img2.jpg",
+          "./assets/img/tours/selva-central-3d2n-img3.jpg"
         ]
       },
       "badge": "Paquete selva",
@@ -6083,11 +6083,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n/1.jpg",
-          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n/2.jpg",
-          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n/3.jpg"
+          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n-img1.jpg",
+          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n-img2.jpg",
+          "./assets/img/tours/oxapampa-pozuzo-villarica-3d2n-img3.jpg"
         ]
       },
       "badge": "Selva central",
@@ -6221,11 +6221,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/yanachaga-san-alberto/cover.jpg",
+        "cover": "./assets/img/tours/yanachaga-san-alberto-cover.jpg",
         "gallery": [
-          "./assets/img/tours/yanachaga-san-alberto/1.jpg",
-          "./assets/img/tours/yanachaga-san-alberto/2.jpg",
-          "./assets/img/tours/yanachaga-san-alberto/3.jpg"
+          "./assets/img/tours/yanachaga-san-alberto-img1.jpg",
+          "./assets/img/tours/yanachaga-san-alberto-img2.jpg",
+          "./assets/img/tours/yanachaga-san-alberto-img3.jpg"
         ]
       },
       "badge": "Área natural",
@@ -6367,11 +6367,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/villa-rica-ruta-cafe/cover.jpg",
+        "cover": "./assets/img/tours/villa-rica-ruta-cafe-cover.jpg",
         "gallery": [
-          "./assets/img/tours/villa-rica-ruta-cafe/1.jpg",
-          "./assets/img/tours/villa-rica-ruta-cafe/2.jpg",
-          "./assets/img/tours/villa-rica-ruta-cafe/3.jpg"
+          "./assets/img/tours/villa-rica-ruta-cafe-img1.jpg",
+          "./assets/img/tours/villa-rica-ruta-cafe-img2.jpg",
+          "./assets/img/tours/villa-rica-ruta-cafe-img3.jpg"
         ]
       },
       "badge": "Café",
@@ -6511,11 +6511,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/padre-abad-velo-ducha/cover.jpg",
+        "cover": "./assets/img/tours/padre-abad-velo-ducha-cover.jpg",
         "gallery": [
-          "./assets/img/tours/padre-abad-velo-ducha/1.jpg",
-          "./assets/img/tours/padre-abad-velo-ducha/2.jpg",
-          "./assets/img/tours/padre-abad-velo-ducha/3.jpg"
+          "./assets/img/tours/padre-abad-velo-ducha-img1.jpg",
+          "./assets/img/tours/padre-abad-velo-ducha-img2.jpg",
+          "./assets/img/tours/padre-abad-velo-ducha-img3.jpg"
         ]
       },
       "badge": "Cataratas",
@@ -6661,11 +6661,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/yarinacocha-shipibo/cover.jpg",
+        "cover": "./assets/img/tours/yarinacocha-shipibo-cover.jpg",
         "gallery": [
-          "./assets/img/tours/yarinacocha-shipibo/1.jpg",
-          "./assets/img/tours/yarinacocha-shipibo/2.jpg",
-          "./assets/img/tours/yarinacocha-shipibo/3.jpg"
+          "./assets/img/tours/yarinacocha-shipibo-img1.jpg",
+          "./assets/img/tours/yarinacocha-shipibo-img2.jpg",
+          "./assets/img/tours/yarinacocha-shipibo-img3.jpg"
         ]
       },
       "badge": "Amazonía",
@@ -6801,11 +6801,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tingo-maria-cueva-lechuzas/cover.jpg",
+        "cover": "./assets/img/tours/tingo-maria-cueva-lechuzas-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tingo-maria-cueva-lechuzas/1.jpg",
-          "./assets/img/tours/tingo-maria-cueva-lechuzas/2.jpg",
-          "./assets/img/tours/tingo-maria-cueva-lechuzas/3.jpg"
+          "./assets/img/tours/tingo-maria-cueva-lechuzas-img1.jpg",
+          "./assets/img/tours/tingo-maria-cueva-lechuzas-img2.jpg",
+          "./assets/img/tours/tingo-maria-cueva-lechuzas-img3.jpg"
         ]
       },
       "badge": "Parque nacional",
@@ -6951,11 +6951,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tingo-maria-tres-mayo/cover.jpg",
+        "cover": "./assets/img/tours/tingo-maria-tres-mayo-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tingo-maria-tres-mayo/1.jpg",
-          "./assets/img/tours/tingo-maria-tres-mayo/2.jpg",
-          "./assets/img/tours/tingo-maria-tres-mayo/3.jpg"
+          "./assets/img/tours/tingo-maria-tres-mayo-img1.jpg",
+          "./assets/img/tours/tingo-maria-tres-mayo-img2.jpg",
+          "./assets/img/tours/tingo-maria-tres-mayo-img3.jpg"
         ]
       },
       "badge": "Naturaleza",
@@ -7094,11 +7094,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/huanuco-kotosh/cover.jpg",
+        "cover": "./assets/img/tours/huanuco-kotosh-cover.jpg",
         "gallery": [
-          "./assets/img/tours/huanuco-kotosh/1.jpg",
-          "./assets/img/tours/huanuco-kotosh/2.jpg",
-          "./assets/img/tours/huanuco-kotosh/3.jpg"
+          "./assets/img/tours/huanuco-kotosh-img1.jpg",
+          "./assets/img/tours/huanuco-kotosh-img2.jpg",
+          "./assets/img/tours/huanuco-kotosh-img3.jpg"
         ]
       },
       "badge": "Arqueología",
@@ -7231,11 +7231,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/ayacucho-millpu/cover.jpg",
+        "cover": "./assets/img/tours/ayacucho-millpu-cover.jpg",
         "gallery": [
-          "./assets/img/tours/ayacucho-millpu/1.jpg",
-          "./assets/img/tours/ayacucho-millpu/2.jpg",
-          "./assets/img/tours/ayacucho-millpu/3.jpg"
+          "./assets/img/tours/ayacucho-millpu-img1.jpg",
+          "./assets/img/tours/ayacucho-millpu-img2.jpg",
+          "./assets/img/tours/ayacucho-millpu-img3.jpg"
         ]
       },
       "badge": "Top fotos",
@@ -7373,11 +7373,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/vilcashuaman-pumacocha/cover.jpg",
+        "cover": "./assets/img/tours/vilcashuaman-pumacocha-cover.jpg",
         "gallery": [
-          "./assets/img/tours/vilcashuaman-pumacocha/1.jpg",
-          "./assets/img/tours/vilcashuaman-pumacocha/2.jpg",
-          "./assets/img/tours/vilcashuaman-pumacocha/3.jpg"
+          "./assets/img/tours/vilcashuaman-pumacocha-img1.jpg",
+          "./assets/img/tours/vilcashuaman-pumacocha-img2.jpg",
+          "./assets/img/tours/vilcashuaman-pumacocha-img3.jpg"
         ]
       },
       "badge": "Ruta Inca",
@@ -7514,11 +7514,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/wari-quinua-pampa/cover.jpg",
+        "cover": "./assets/img/tours/wari-quinua-pampa-cover.jpg",
         "gallery": [
-          "./assets/img/tours/wari-quinua-pampa/1.jpg",
-          "./assets/img/tours/wari-quinua-pampa/2.jpg",
-          "./assets/img/tours/wari-quinua-pampa/3.jpg"
+          "./assets/img/tours/wari-quinua-pampa-img1.jpg",
+          "./assets/img/tours/wari-quinua-pampa-img2.jpg",
+          "./assets/img/tours/wari-quinua-pampa-img3.jpg"
         ]
       },
       "badge": "Cultura",
@@ -7657,11 +7657,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/cajamarca-cumbemayo/cover.jpg",
+        "cover": "./assets/img/tours/cajamarca-cumbemayo-cover.jpg",
         "gallery": [
-          "./assets/img/tours/cajamarca-cumbemayo/1.jpg",
-          "./assets/img/tours/cajamarca-cumbemayo/2.jpg",
-          "./assets/img/tours/cajamarca-cumbemayo/3.jpg"
+          "./assets/img/tours/cajamarca-cumbemayo-img1.jpg",
+          "./assets/img/tours/cajamarca-cumbemayo-img2.jpg",
+          "./assets/img/tours/cajamarca-cumbemayo-img3.jpg"
         ]
       },
       "badge": "Clásico",
@@ -7795,11 +7795,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/otuzco-banos-inca/cover.jpg",
+        "cover": "./assets/img/tours/otuzco-banos-inca-cover.jpg",
         "gallery": [
-          "./assets/img/tours/otuzco-banos-inca/1.jpg",
-          "./assets/img/tours/otuzco-banos-inca/2.jpg",
-          "./assets/img/tours/otuzco-banos-inca/3.jpg"
+          "./assets/img/tours/otuzco-banos-inca-img1.jpg",
+          "./assets/img/tours/otuzco-banos-inca-img2.jpg",
+          "./assets/img/tours/otuzco-banos-inca-img3.jpg"
         ]
       },
       "badge": "Termal",
@@ -7939,11 +7939,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/cajamarca-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/cajamarca-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/cajamarca-3d2n/1.jpg",
-          "./assets/img/tours/cajamarca-3d2n/2.jpg",
-          "./assets/img/tours/cajamarca-3d2n/3.jpg"
+          "./assets/img/tours/cajamarca-3d2n-img1.jpg",
+          "./assets/img/tours/cajamarca-3d2n-img2.jpg",
+          "./assets/img/tours/cajamarca-3d2n-img3.jpg"
         ]
       },
       "badge": "Paquete andino",
@@ -8073,11 +8073,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/moquegua-pisco-vino/cover.jpg",
+        "cover": "./assets/img/tours/moquegua-pisco-vino-cover.jpg",
         "gallery": [
-          "./assets/img/tours/moquegua-pisco-vino/1.jpg",
-          "./assets/img/tours/moquegua-pisco-vino/2.jpg",
-          "./assets/img/tours/moquegua-pisco-vino/3.jpg"
+          "./assets/img/tours/moquegua-pisco-vino-img1.jpg",
+          "./assets/img/tours/moquegua-pisco-vino-img2.jpg",
+          "./assets/img/tours/moquegua-pisco-vino-img3.jpg"
         ]
       },
       "badge": "Pisco y vino",
@@ -8213,11 +8213,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/ilo-punta-coles/cover.jpg",
+        "cover": "./assets/img/tours/ilo-punta-coles-cover.jpg",
         "gallery": [
-          "./assets/img/tours/ilo-punta-coles/1.jpg",
-          "./assets/img/tours/ilo-punta-coles/2.jpg",
-          "./assets/img/tours/ilo-punta-coles/3.jpg"
+          "./assets/img/tours/ilo-punta-coles-img1.jpg",
+          "./assets/img/tours/ilo-punta-coles-img2.jpg",
+          "./assets/img/tours/ilo-punta-coles-img3.jpg"
         ]
       },
       "badge": "Fauna marina",
@@ -8354,11 +8354,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tacna-city-alto-alianza/cover.jpg",
+        "cover": "./assets/img/tours/tacna-city-alto-alianza-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tacna-city-alto-alianza/1.jpg",
-          "./assets/img/tours/tacna-city-alto-alianza/2.jpg",
-          "./assets/img/tours/tacna-city-alto-alianza/3.jpg"
+          "./assets/img/tours/tacna-city-alto-alianza-img1.jpg",
+          "./assets/img/tours/tacna-city-alto-alianza-img2.jpg",
+          "./assets/img/tours/tacna-city-alto-alianza-img3.jpg"
         ]
       },
       "badge": "Histórico",
@@ -8492,11 +8492,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tacna-valle-viejo-miculla/cover.jpg",
+        "cover": "./assets/img/tours/tacna-valle-viejo-miculla-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tacna-valle-viejo-miculla/1.jpg",
-          "./assets/img/tours/tacna-valle-viejo-miculla/2.jpg",
-          "./assets/img/tours/tacna-valle-viejo-miculla/3.jpg"
+          "./assets/img/tours/tacna-valle-viejo-miculla-img1.jpg",
+          "./assets/img/tours/tacna-valle-viejo-miculla-img2.jpg",
+          "./assets/img/tours/tacna-valle-viejo-miculla-img3.jpg"
         ]
       },
       "badge": "Campiña",
@@ -8632,11 +8632,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tacna-3d2n/cover.jpg",
+        "cover": "./assets/img/tours/tacna-3d2n-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tacna-3d2n/1.jpg",
-          "./assets/img/tours/tacna-3d2n/2.jpg",
-          "./assets/img/tours/tacna-3d2n/3.jpg"
+          "./assets/img/tours/tacna-3d2n-img1.jpg",
+          "./assets/img/tours/tacna-3d2n-img2.jpg",
+          "./assets/img/tours/tacna-3d2n-img3.jpg"
         ]
       },
       "badge": "Paquete sur",
@@ -8767,11 +8767,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tren-macho-huancavelica/cover.jpg",
+        "cover": "./assets/img/tours/tren-macho-huancavelica-cover.jpg",
         "gallery": [
-          "./assets/img/tours/tren-macho-huancavelica/1.jpg",
-          "./assets/img/tours/tren-macho-huancavelica/2.jpg",
-          "./assets/img/tours/tren-macho-huancavelica/3.jpg"
+          "./assets/img/tours/tren-macho-huancavelica-img1.jpg",
+          "./assets/img/tours/tren-macho-huancavelica-img2.jpg",
+          "./assets/img/tours/tren-macho-huancavelica-img3.jpg"
         ]
       },
       "badge": "Ruta en tren",
@@ -8894,11 +8894,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/mina-santa-barbara/cover.jpg",
+        "cover": "./assets/img/tours/mina-santa-barbara-cover.jpg",
         "gallery": [
-          "./assets/img/tours/mina-santa-barbara/1.jpg",
-          "./assets/img/tours/mina-santa-barbara/2.jpg",
-          "./assets/img/tours/mina-santa-barbara/3.jpg"
+          "./assets/img/tours/mina-santa-barbara-img1.jpg",
+          "./assets/img/tours/mina-santa-barbara-img2.jpg",
+          "./assets/img/tours/mina-santa-barbara-img3.jpg"
         ]
       },
       "badge": "Historia",
@@ -9030,11 +9030,11 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/sachapite-uchkus-inkanan/cover.jpg",
+        "cover": "./assets/img/tours/sachapite-uchkus-inkanan-cover.jpg",
         "gallery": [
-          "./assets/img/tours/sachapite-uchkus-inkanan/1.jpg",
-          "./assets/img/tours/sachapite-uchkus-inkanan/2.jpg",
-          "./assets/img/tours/sachapite-uchkus-inkanan/3.jpg"
+          "./assets/img/tours/sachapite-uchkus-inkanan-img1.jpg",
+          "./assets/img/tours/sachapite-uchkus-inkanan-img2.jpg",
+          "./assets/img/tours/sachapite-uchkus-inkanan-img3.jpg"
         ]
       },
       "badge": "Naturaleza + arqueología",
@@ -9173,7 +9173,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/manu-zona-cultural-4-dias-3-noches-desde-cusco/cover.jpg",
+        "cover": "./assets/img/tours/manu-zona-cultural-4-dias-3-noches-desde-cusco-cover.jpg",
         "gallery": []
       },
       "badge": "Reserva natural",
@@ -9312,7 +9312,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/manu-zona-reservada-rio-manu-7-dias-6-noches/cover.jpg",
+        "cover": "./assets/img/tours/manu-zona-reservada-rio-manu-7-dias-6-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Expedición",
@@ -9467,7 +9467,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/pacaya-samiria-yanayacu-pucate-4-dias-3-noches/cover.jpg",
+        "cover": "./assets/img/tours/pacaya-samiria-yanayacu-pucate-4-dias-3-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Amazonía",
@@ -9606,7 +9606,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/pacaya-samiria-cocha-el-dorado-5-dias-4-noches/cover.jpg",
+        "cover": "./assets/img/tours/pacaya-samiria-cocha-el-dorado-5-dias-4-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Fauna",
@@ -9748,7 +9748,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/tambopata-lago-sandoval-collpa-chuncho-5-dias-4-noches/cover.jpg",
+        "cover": "./assets/img/tours/tambopata-lago-sandoval-collpa-chuncho-5-dias-4-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Top Amazonía",
@@ -9893,7 +9893,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/bahuaja-sonene-expedicion-amazonica-5-dias-4-noches/cover.jpg",
+        "cover": "./assets/img/tours/bahuaja-sonene-expedicion-amazonica-5-dias-4-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Bajo solicitud",
@@ -10032,7 +10032,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/reserva-allpahuayo-mishana-full-day-desde-iquitos/cover.jpg",
+        "cover": "./assets/img/tours/reserva-allpahuayo-mishana-full-day-desde-iquitos-cover.jpg",
         "gallery": []
       },
       "badge": "Cerca de Iquitos",
@@ -10171,7 +10171,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/cordillera-azul-expedicion-4-dias-3-noches-desde-tarapoto/cover.jpg",
+        "cover": "./assets/img/tours/cordillera-azul-expedicion-4-dias-3-noches-desde-tarapoto-cover.jpg",
         "gallery": []
       },
       "badge": "Bajo solicitud",
@@ -10308,7 +10308,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/santa-cruz-trek-parque-nacional-huascaran-4-dias-3-noches/cover.jpg",
+        "cover": "./assets/img/tours/santa-cruz-trek-parque-nacional-huascaran-4-dias-3-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Trekking",
@@ -10443,7 +10443,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/reserva-nacional-matses-expedicion-6-dias-5-noches/cover.jpg",
+        "cover": "./assets/img/tours/reserva-nacional-matses-expedicion-6-dias-5-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Remoto",
@@ -10589,7 +10589,7 @@
         "reviewsCount": 0
       },
       "images": {
-        "cover": "./assets/img/tours/parque-nacional-yaguas-expedicion-7-dias-6-noches/cover.jpg",
+        "cover": "./assets/img/tours/parque-nacional-yaguas-expedicion-7-dias-6-noches-cover.jpg",
         "gallery": []
       },
       "badge": "Expedición remota",

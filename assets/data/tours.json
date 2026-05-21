@@ -57,11 +57,11 @@
       },
 
       "images": {
-        "cover": "./assets/img/tours/machu-picchu/cover.jpg",
+        "cover": "./assets/img/tours/machu-picchu-cover.jpg",
         "gallery": [
-          "./assets/img/tours/machu-picchu/1.jpg",
-          "./assets/img/tours/machu-picchu/2.jpg",
-          "./assets/img/tours/machu-picchu/3.jpg"
+          "./assets/img/tours/machu-picchu-img1.jpg",
+          "./assets/img/tours/machu-picchu-img2.jpg",
+          "./assets/img/tours/machu-picchu-img3.jpg"
         ]
       },
 
@@ -138,10 +138,10 @@
       },
 
       "images": {
-        "cover": "./assets/img/tours/colca/cover.jpg",
+        "cover": "./assets/img/tours/colca-cover.jpg",
         "gallery": [
-          "./assets/img/tours/colca/1.jpg",
-          "./assets/img/tours/colca/2.jpg"
+          "./assets/img/tours/colca-img1.jpg",
+          "./assets/img/tours/colca-img2.jpg"
         ]
       },
 
@@ -203,7 +203,7 @@
       },
 
       "images": {
-        "cover": "./assets/img/tours/tarapoto/cover.jpg",
+        "cover": "./assets/img/tours/tarapoto-cover.jpg",
         "gallery": []
       },
 

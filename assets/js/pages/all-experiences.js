@@ -148,7 +148,7 @@ class PeruNatureExperiencesPage {
             currency: tour.pricing?.currency || data.currency || "USD",
             priceLabel: tour.pricing?.total ? `Desde $${tour.pricing.total} por persona` : "Consultar"
           },
-          images: { cover: Array.isArray(tour.images) ? tour.images[0] : "./assets/img/placeholder/tour-placeholder.jpg", gallery: Array.isArray(tour.images) ? tour.images : [] },
+          images: { cover: Array.isArray(tour.images) ? tour.images[0] : "./assets/img/tour-placeholder.jpg", gallery: Array.isArray(tour.images) ? tour.images : [] },
           badge: "Tour documental",
           rankScore: 88
         }));
@@ -560,7 +560,7 @@ class PeruNatureExperiencesPage {
   }
 
   cardTemplate(product) {
-    const image = product.image || "./assets/img/placeholder/tour-placeholder.jpg";
+    const image = product.image || "./assets/img/tour-placeholder.jpg";
     const badge = product.badge || this.getDefaultBadge(product.productKind, product.categories);
     const price = product.pricing?.priceLabel || this.formatPrice(product.pricing);
     const duration = product.duration?.label || "Duración por confirmar";
@@ -573,7 +573,7 @@ class PeruNatureExperiencesPage {
     return `
       <article class="experience-card" data-kind="${this.escapeHtml(product.productKind)}" data-region="${this.escapeHtml(product.region)}">
         <div class="experience-card__image">
-          <img src="${this.escapeHtml(image)}" alt="${this.escapeHtml(product.title)}" loading="lazy" onerror="this.src='./assets/img/placeholder/tour-placeholder.jpg'">
+          <img src="${this.escapeHtml(image)}" alt="${this.escapeHtml(product.title)}" loading="lazy" onerror="this.src='./assets/img/tour-placeholder.jpg'">
           <span class="experience-card__badge">${this.escapeHtml(badge)}</span>
           <span class="experience-card__region">${this.escapeHtml(region)}</span>
         </div>
@@ -666,7 +666,7 @@ class PeruNatureExperiencesPage {
       if (Array.isArray(images.gallery) && images.gallery[0]) return images.gallery[0];
     }
 
-    return "./assets/img/placeholder/tour-placeholder.jpg";
+    return "./assets/img/tour-placeholder.jpg";
   }
 
   getPrice(product) {

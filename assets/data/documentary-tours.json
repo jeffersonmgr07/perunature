@@ -29,9 +29,9 @@
       },
 
       "images": [
-        "./assets/img/tours/ausangate/1.jpg",
-        "./assets/img/tours/ausangate/2.jpg",
-        "./assets/img/tours/ausangate/3.jpg"
+        "./assets/img/tours/ausangate-img1.jpg",
+        "./assets/img/tours/ausangate-img2.jpg",
+        "./assets/img/tours/ausangate-img3.jpg"
       ],
 
       "highlights": [
@@ -66,8 +66,8 @@
       },
 
       "images": [
-        "./assets/img/tours/tambopata/1.jpg",
-        "./assets/img/tours/tambopata/2.jpg"
+        "./assets/img/tours/tambopata-img1.jpg",
+        "./assets/img/tours/tambopata-img2.jpg"
       ],
 
       "highlights": [
@@ -102,7 +102,7 @@
       },
 
       "images": [
-        "./assets/img/tours/tambopata/1.jpg"
+        "./assets/img/tours/tambopata-img1.jpg"
       ],
 
       "highlights": [
@@ -136,7 +136,7 @@
       },
 
       "images": [
-        "./assets/img/tours/inca-jungle/1.jpg"
+        "./assets/img/tours/inca-jungle-img1.jpg"
       ],
 
       "highlights": [
@@ -170,7 +170,7 @@
       },
 
       "images": [
-        "./assets/img/tours/nazca/1.jpg"
+        "./assets/img/tours/nazca-img1.jpg"
       ],
 
       "highlights": [
@@ -204,7 +204,7 @@
       },
 
       "images": [
-        "./assets/img/tours/huaraz/1.jpg"
+        "./assets/img/tours/huaraz-img1.jpg"
       ],
 
       "highlights": [
@@ -238,7 +238,7 @@
       },
 
       "images": [
-        "./assets/img/tours/colca/1.jpg"
+        "./assets/img/tours/colca-img1.jpg"
       ],
 
       "highlights": [
@@ -272,7 +272,7 @@
       },
 
       "images": [
-        "./assets/img/tours/titicaca/1.jpg"
+        "./assets/img/tours/titicaca-img1.jpg"
       ],
 
       "highlights": [

@@ -255,7 +255,7 @@ class PeruNatureProductPage {
 
   normalizeImages(images) {
     const placeholder = {
-      src: "./assets/img/placeholder/tour-placeholder.jpg",
+      src: "./assets/img/tour-placeholder.jpg",
       alt: "Experiencia Peru Nature"
     };
 
