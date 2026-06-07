@@ -648,6 +648,7 @@ class PeruNatureProductPage {
 
     this.elements.printItineraryBtn?.addEventListener("click", () => this.printItinerary());
     this.elements.modalWhatsappBtn?.addEventListener("click", () => {
+      if (!this.validatePrimaryPassengerData(true)) return;
       this.saveReservationToGoogleSheet({ paymentStatus: "pending", paypalId: "" });
       this.sendBookingToWhatsApp(this.currentTour, true);
     });
@@ -1062,6 +1063,7 @@ class PeruNatureProductPage {
     for (let i = 1; i <= total; i += 1) {
       const isAdult = i <= this.booking.adults;
       const isHolder = i === 1 && customer;
+      const isContact = i === 1;
       const firstName = isHolder ? this.getCustomerValue(customer, ["names", "firstName", "name"]) : "";
       const lastName = isHolder ? this.getCustomerValue(customer, ["lastnames", "lastName", "lastname"]) : "";
       const documentType = isHolder ? this.getCustomerValue(customer, ["documentType"]) : "";
@@ -1070,55 +1072,83 @@ class PeruNatureProductPage {
       const birthdate = isHolder ? this.getCustomerValue(customer, ["birthdate"]) : "";
       const gender = isHolder ? this.getCustomerValue(customer, ["gender"]) : "";
       const language = isHolder ? this.getCustomerValue(customer, ["language"], "es") : "";
+      const email = isHolder ? this.getCustomerValue(customer, ["email"]) : "";
+      const whatsapp = isHolder ? this.getCustomerValue(customer, ["whatsapp", "phone"]) : "";
+      const collapsed = i > 1;
+      const required = i === 1 ? " required" : "";
 
       cards.push(`
-        <article class="pn-passenger-card">
-          <h4>Pasajero ${i} ${isAdult ? "Adulto" : "Niño"}${isHolder ? " · Titular" : ""}</h4>
-          <div class="pn-passenger-grid">
-            <label>Nombre(s)<input type="text" name="passenger_${i}_name" placeholder="Nombre completo" value="${this.escapeHTML(firstName)}"></label>
-            <label>Apellido(s)<input type="text" name="passenger_${i}_lastname" placeholder="Apellidos" value="${this.escapeHTML(lastName)}"></label>
-            <label>Tipo de documento
-              <select name="passenger_${i}_doctype">
-                <option value="">Seleccionar</option>
-                <option value="DNI" ${documentType === "DNI" ? "selected" : ""}>DNI</option>
-                <option value="Pasaporte" ${documentType === "Pasaporte" ? "selected" : ""}>Pasaporte</option>
-                <option value="Carné de extranjería" ${documentType === "Carné de extranjería" ? "selected" : ""}>Carné de extranjería</option>
-              </select>
-            </label>
-            <label>Número de documento<input type="text" name="passenger_${i}_doc" placeholder="Documento" value="${this.escapeHTML(documentNumber)}"></label>
-            <label>Nacionalidad<input type="text" name="passenger_${i}_nationality" placeholder="País" value="${this.escapeHTML(nationality)}"></label>
-            <label>Fecha de nacimiento<input type="date" name="passenger_${i}_birthdate" value="${this.escapeHTML(birthdate)}"></label>
-            <label>Género
-              <select name="passenger_${i}_gender">
-                <option value="">Seleccionar</option>
-                <option value="Femenino" ${gender === "Femenino" ? "selected" : ""}>Femenino</option>
-                <option value="Masculino" ${gender === "Masculino" ? "selected" : ""}>Masculino</option>
-                <option value="No especifica" ${gender === "No especifica" ? "selected" : ""}>Prefiero no especificar</option>
-              </select>
-            </label>
-            <label>Idioma
-              <select name="passenger_${i}_language">
-                <option value="">Seleccionar</option>
-                <option value="es" ${language === "es" ? "selected" : ""}>Español</option>
-                <option value="en" ${language === "en" ? "selected" : ""}>English</option>
-              </select>
-            </label>
+        <article class="pn-passenger-card${collapsed ? " is-collapsed" : ""}" data-passenger-card="${i}">
+          <div class="pn-passenger-card__head">
+            <h4>Pasajero ${i} · ${isAdult ? "Adulto" : "Niño"}${isContact ? " · Contacto principal" : ""}${isHolder ? " · Titular" : ""}</h4>
+            <button type="button" class="pn-passenger-toggle" data-passenger-toggle aria-expanded="${collapsed ? "false" : "true"}" aria-label="Desplegar o replegar pasajero ${i}">
+              <i class="fa-solid fa-chevron-${collapsed ? "down" : "up"}"></i>
+            </button>
+          </div>
+          <div class="pn-passenger-card__body">
+            <div class="pn-passenger-grid">
+              <label>Nombre(s)<input type="text" name="passenger_${i}_name" placeholder="Nombre completo" value="${this.escapeHTML(firstName)}"${required}></label>
+              <label>Apellido(s)<input type="text" name="passenger_${i}_lastname" placeholder="Apellidos" value="${this.escapeHTML(lastName)}"${required}></label>
+              <label>Tipo de documento
+                <select name="passenger_${i}_doctype"${required}>
+                  <option value="">Seleccionar</option>
+                  <option value="DNI" ${documentType === "DNI" ? "selected" : ""}>DNI</option>
+                  <option value="Pasaporte" ${documentType === "Pasaporte" ? "selected" : ""}>Pasaporte</option>
+                  <option value="Carné de extranjería" ${documentType === "Carné de extranjería" ? "selected" : ""}>Carné de extranjería</option>
+                </select>
+              </label>
+              <label>Número de documento<input type="text" name="passenger_${i}_doc" placeholder="Documento" value="${this.escapeHTML(documentNumber)}"${required}></label>
+              <label>Nacionalidad<input type="text" name="passenger_${i}_nationality" placeholder="País" value="${this.escapeHTML(nationality)}"${required}></label>
+              <label>Fecha de nacimiento<input type="date" name="passenger_${i}_birthdate" value="${this.escapeHTML(birthdate)}"${required}></label>
+              <label>Género
+                <select name="passenger_${i}_gender"${required}>
+                  <option value="">Seleccionar</option>
+                  <option value="Femenino" ${gender === "Femenino" ? "selected" : ""}>Femenino</option>
+                  <option value="Masculino" ${gender === "Masculino" ? "selected" : ""}>Masculino</option>
+                  <option value="No especifica" ${gender === "No especifica" ? "selected" : ""}>Prefiero no especificar</option>
+                </select>
+              </label>
+              <label>Idioma
+                <select name="passenger_${i}_language"${required}>
+                  <option value="">Seleccionar</option>
+                  <option value="es" ${language === "es" ? "selected" : ""}>Español</option>
+                  <option value="en" ${language === "en" ? "selected" : ""}>English</option>
+                </select>
+              </label>
+              ${isContact ? `
+                <label>Email de contacto<input type="email" name="contact_email" placeholder="correo@ejemplo.com" value="${this.escapeHTML(email)}" required></label>
+                <label>WhatsApp de contacto<input type="tel" name="contact_phone" placeholder="+51 999 999 999" value="${this.escapeHTML(whatsapp)}" required></label>
+              ` : ""}
+            </div>
           </div>
         </article>
       `);
     }
 
-    cards.push(`
-      <article class="pn-passenger-card">
-        <h4>Contacto principal</h4>
-        <div class="pn-passenger-grid">
-          <label>Email<input type="email" name="contact_email" placeholder="correo@ejemplo.com" value="${this.escapeHTML(customer?.email || "")}"></label>
-          <label>WhatsApp<input type="tel" name="contact_phone" placeholder="+51 999 999 999" value="${this.escapeHTML(customer?.whatsapp || customer?.phone || "")}"></label>
-        </div>
-      </article>
-    `);
-
     this.elements.passengerForms.innerHTML = cards.join("");
+    this.bindPassengerCardToggles();
+    this.bindPassengerValidationWatcher();
+  }
+
+  bindPassengerCardToggles() {
+    this.elements.passengerForms?.querySelectorAll("[data-passenger-toggle]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".pn-passenger-card");
+        const collapsed = card?.classList.toggle("is-collapsed");
+        button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        const icon = button.querySelector("i");
+        if (icon) icon.className = `fa-solid fa-chevron-${collapsed ? "down" : "up"}`;
+      });
+    });
+  }
+
+  bindPassengerValidationWatcher() {
+    if (!this.elements.passengerForms) return;
+    const clearIfValid = () => {
+      if (this.validatePrimaryPassengerData(false)) this.setText(this.elements.paypalStatus, "");
+    };
+    this.elements.passengerForms.oninput = clearIfValid;
+    this.elements.passengerForms.onchange = clearIfValid;
   }
 
   renderModalSummary(totals = this.calculateTotals()) {
@@ -1147,6 +1177,53 @@ class PeruNatureProductPage {
     this.paypalTimer = window.setTimeout(() => this.renderPayPalButtons(totals), 250);
   }
 
+  getPrimaryPassengerRequiredFields() {
+    const root = this.elements.passengerForms;
+    if (!root) return [];
+    return [
+      { label: "nombre(s)", el: root.querySelector("input[name='passenger_1_name']") },
+      { label: "apellido(s)", el: root.querySelector("input[name='passenger_1_lastname']") },
+      { label: "tipo de documento", el: root.querySelector("select[name='passenger_1_doctype']") },
+      { label: "número de documento", el: root.querySelector("input[name='passenger_1_doc']") },
+      { label: "nacionalidad", el: root.querySelector("input[name='passenger_1_nationality']") },
+      { label: "fecha de nacimiento", el: root.querySelector("input[name='passenger_1_birthdate']") },
+      { label: "género", el: root.querySelector("select[name='passenger_1_gender']") },
+      { label: "idioma", el: root.querySelector("select[name='passenger_1_language']") },
+      { label: "email de contacto", el: root.querySelector("input[name='contact_email']") },
+      { label: "WhatsApp de contacto", el: root.querySelector("input[name='contact_phone']") }
+    ];
+  }
+
+  validatePrimaryPassengerData(showMessage = true) {
+    const missing = this.getPrimaryPassengerRequiredFields().filter((field) => !String(field.el?.value || "").trim());
+    const email = this.elements.passengerForms?.querySelector("input[name='contact_email']");
+    const emailValue = String(email?.value || "").trim();
+    const invalidEmail = emailValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+
+    this.getPrimaryPassengerRequiredFields().forEach((field) => field.el?.classList.remove("pn-field-error"));
+    email?.classList.remove("pn-field-error");
+
+    if (!missing.length && !invalidEmail) return true;
+
+    if (showMessage) {
+      const first = missing[0]?.el || email;
+      missing.forEach((field) => field.el?.classList.add("pn-field-error"));
+      if (invalidEmail) email?.classList.add("pn-field-error");
+      const card = first?.closest(".pn-passenger-card");
+      if (card?.classList.contains("is-collapsed")) {
+        const toggle = card.querySelector("[data-passenger-toggle]");
+        toggle?.click();
+      }
+      first?.focus({ preventScroll: false });
+      const message = invalidEmail
+        ? "Revisa el email de contacto del pasajero 1 antes de continuar al pago."
+        : `Completa los datos obligatorios del pasajero 1 antes de continuar al pago: ${missing.map((field) => field.label).join(", ")}.`;
+      this.setText(this.elements.paypalStatus, message);
+    }
+
+    return false;
+  }
+
   renderPayPalButtons(totals = this.calculateTotals()) {
     if (!this.elements.paypalButtons) return;
     this.elements.paypalButtons.innerHTML = "";
@@ -1162,7 +1239,14 @@ class PeruNatureProductPage {
 
     const buttons = window.paypal.Buttons({
       style: { layout: "vertical", shape: "pill", label: "pay" },
+      onClick: (_data, actions) => {
+        if (!this.validatePrimaryPassengerData(true)) return actions.reject();
+        return actions.resolve();
+      },
       createOrder: async (_data, actions) => {
+        if (!this.validatePrimaryPassengerData(true)) {
+          throw new Error("Completa los datos obligatorios del pasajero 1 antes de continuar al pago.");
+        }
         const amount = Math.max(1, Number(totals.total || 0)).toFixed(2);
         if (this.reservationEndpoint) {
           try {
