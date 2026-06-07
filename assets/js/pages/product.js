@@ -7,11 +7,15 @@ class PeruNatureProductPage {
   constructor() {
     this.tours = [];
     this.packageHotels = {};
+    this.coupons = [];
     this.currentTour = null;
     this.whatsappNumber = "51929715296";
     this.reservationCode = "";
     this.paypalRenderedKey = "";
     this.paypalRendering = false;
+    this.pendingHotelId = "";
+    this.reservationEndpoint = ""; // Pega aquí tu URL Web App de Google Apps Script para guardar reservas.
+    this.couponEndpoint = ""; // Opcional: misma URL Web App para validar cupones desde Google Sheets.
     this.booking = {
       adults: 2,
       children: 0,
@@ -73,7 +77,16 @@ class PeruNatureProductPage {
       coupon: document.getElementById("bookingCoupon"),
       applyDiscountBtn: document.getElementById("applyDiscountBtn"),
       discountMessage: document.getElementById("discountMessage"),
+      hotelSidebarRow: document.getElementById("hotelSidebarRow"),
+      hotelSidebarTotal: document.getElementById("hotelSidebarTotal"),
       whatsappButton: document.getElementById("whatsappButton"),
+      productPrintBtn: document.getElementById("productPrintBtn"),
+      productHotelSection: document.getElementById("hoteles"),
+      productHotelOptions: document.getElementById("productHotelOptions"),
+      roomModal: document.getElementById("roomModal"),
+      roomModalTitle: document.getElementById("roomModalTitle"),
+      roomModalSubtitle: document.getElementById("roomModalSubtitle"),
+      productRoomOptions: document.getElementById("productRoomOptions"),
 
       modal: document.getElementById("reservationModal"),
       modalTitle: document.getElementById("reservationModalTitle"),
@@ -103,7 +116,7 @@ class PeruNatureProductPage {
       return;
     }
 
-    await Promise.all([this.loadTours(), this.loadPackageHotels()]);
+    await Promise.all([this.loadTours(), this.loadPackageHotels(), this.loadCoupons()]);
     this.currentTour = this.findTourBySlug(this.slug);
 
     if (!this.currentTour) {
@@ -166,6 +179,18 @@ class PeruNatureProductPage {
     }
   }
 
+  async loadCoupons() {
+    try {
+      const response = await fetch("./assets/data/coupons.json", { cache: "no-store" });
+      if (!response.ok) return;
+      const data = await response.json();
+      this.coupons = Array.isArray(data.coupons) ? data.coupons : [];
+    } catch (error) {
+      console.warn("[Peru Nature] No se pudo cargar coupons.json", error);
+      this.coupons = [];
+    }
+  }
+
   findTourBySlug(slug) {
     return this.tours.find((tour) => tour.slug === slug);
   }
@@ -183,6 +208,7 @@ class PeruNatureProductPage {
     this.renderIncludes(tour);
     this.renderExcludes(tour);
     this.renderItinerary(tour);
+    this.renderProductHotelOptions();
     this.renderAvailability(tour);
     this.renderBookingCard(tour);
     this.initBookingPanel(tour);
@@ -587,6 +613,7 @@ class PeruNatureProductPage {
       });
     });
 
+    this.elements.productPrintBtn?.addEventListener("click", () => this.printItinerary());
     this.elements.applyDiscountBtn?.addEventListener("click", () => this.applyDiscountCoupon());
     this.elements.coupon?.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
@@ -615,45 +642,70 @@ class PeruNatureProductPage {
       }
     });
 
-    document.querySelectorAll(".modal-qty-btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        this.changeTravelers(button.dataset.target, button.dataset.action);
-        this.renderPassengerForms();
-        this.renderHotelSelection();
-      });
-    });
-
-    this.elements.modalBookingDate?.addEventListener("change", () => {
-      this.booking.date = this.elements.modalBookingDate.value;
-      if (this.elements.bookingDate) this.elements.bookingDate.value = this.booking.date;
-    });
-
-    this.elements.modalBookingTime?.addEventListener("change", () => {
-      this.booking.time = this.elements.modalBookingTime.value;
-      if (this.elements.bookingTime) this.elements.bookingTime.value = this.booking.time;
+    this.elements.roomModal?.querySelectorAll("[data-close-room-modal]").forEach((button) => {
+      button.addEventListener("click", () => this.closeRoomModal());
     });
 
     this.elements.printItineraryBtn?.addEventListener("click", () => this.printItinerary());
-    this.elements.modalWhatsappBtn?.addEventListener("click", () => this.sendBookingToWhatsApp(this.currentTour, true));
+    this.elements.modalWhatsappBtn?.addEventListener("click", () => {
+      this.saveReservationToGoogleSheet({ paymentStatus: "pending", paypalId: "" });
+      this.sendBookingToWhatsApp(this.currentTour, true);
+    });
   }
 
   changeTravelers(target, action) {
     const min = target === "adults" ? 1 : 0;
     const current = this.booking[target] || 0;
     this.booking[target] = action === "plus" ? current + 1 : Math.max(min, current - 1);
+    this.ensureSelectedRoomStillValid();
+    this.renderProductHotelOptions();
     this.updateBookingTotals();
   }
 
-  applyDiscountCoupon() {
+  async applyDiscountCoupon() {
     const coupon = String(this.elements.coupon?.value || "").trim().toUpperCase();
-    if (coupon === "PERUNATURE10") {
-      this.booking.discountPercent = 10;
-      this.booking.coupon = coupon;
-      this.setText(this.elements.discountMessage, this.getTranslation("booking.validCoupon", "Cupón aplicado: 10% de descuento."));
-    } else {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (!coupon) {
       this.booking.discountPercent = 0;
       this.booking.coupon = "";
-      this.setText(this.elements.discountMessage, this.getTranslation("booking.invalidCoupon", "Cupón no válido para esta experiencia."));
+      this.setText(this.elements.discountMessage, "Ingresa un cupón para validar.");
+      this.updateBookingTotals();
+      return;
+    }
+
+    let found = null;
+    let sheetStatus = "";
+
+    if (this.couponEndpoint) {
+      try {
+        const url = `${this.couponEndpoint}?action=coupon&code=${encodeURIComponent(coupon)}`;
+        const response = await fetch(url, { cache: "no-store" });
+        const data = await response.json();
+        if (data.ok) found = { code: data.code, percent: data.percent, expiresAt: data.expiresAt, active: true };
+        else sheetStatus = data.status || "not_found";
+      } catch (error) {
+        console.warn("[Peru Nature] No se pudo validar cupón en Google Sheets. Se usará coupons.json.", error);
+      }
+    }
+
+    if (!found) {
+      found = this.coupons.find((item) => String(item.code || "").trim().toUpperCase() === coupon && item.active !== false);
+    }
+
+    if (!found) {
+      this.booking.discountPercent = 0;
+      this.booking.coupon = "";
+      this.setText(this.elements.discountMessage, sheetStatus === "expired" ? "Este cupón ya está caducado." : "Cupón no válido para esta experiencia.");
+    } else if (found.expiresAt && new Date(`${found.expiresAt}T23:59:59`) < today) {
+      this.booking.discountPercent = 0;
+      this.booking.coupon = "";
+      this.setText(this.elements.discountMessage, "Este cupón ya está caducado.");
+    } else {
+      this.booking.discountPercent = Number(found.percent || 0);
+      this.booking.coupon = coupon;
+      this.setText(this.elements.discountMessage, `Cupón aplicado: ${this.booking.discountPercent}% de descuento.`);
     }
     this.updateBookingTotals();
   }
@@ -668,8 +720,10 @@ class PeruNatureProductPage {
     this.setText(this.elements.adultsTotal, this.formatMoney(totals.adultsSubtotal, totals.currency));
     this.setText(this.elements.childrenTotal, this.formatMoney(totals.childrenSubtotal, totals.currency));
     this.setText(this.elements.discountTotal, `- ${this.formatMoney(totals.discount, totals.currency)}`);
+    this.setText(this.elements.hotelSidebarTotal, this.formatMoney(totals.hotelSubtotal, totals.currency));
     this.setText(this.elements.bookingTotal, this.formatMoney(totals.total, totals.currency));
 
+    if (this.elements.hotelSidebarRow) this.elements.hotelSidebarRow.hidden = totals.hotelSubtotal <= 0;
     if (this.elements.discountRow) this.elements.discountRow.hidden = totals.discount <= 0;
 
     this.renderModalSummary(totals);
@@ -697,16 +751,10 @@ class PeruNatureProductPage {
   openReservationModal(tour) {
     if (!this.elements.modal) return;
 
-    this.booking.date = this.elements.bookingDate?.value || this.booking.date || "";
-    this.booking.time = this.elements.bookingTime?.value || this.booking.time || "";
-    if (this.elements.modalBookingDate) this.elements.modalBookingDate.value = this.booking.date;
-    if (this.elements.modalBookingTime) this.elements.modalBookingTime.value = this.booking.time;
-
     if (!this.reservationCode) this.reservationCode = this.createReservationCode();
     this.setText(this.elements.reservationCodeLabel, `Código de reserva: ${this.reservationCode}`);
     this.setText(this.elements.modalTitle, tour?.productKind === "package" ? "Reserva tu paquete" : "Reserva tu experiencia");
 
-    this.renderHotelSelection();
     this.renderPassengerForms();
     this.updateBookingTotals();
 
@@ -721,6 +769,111 @@ class PeruNatureProductPage {
     this.elements.modal.classList.add("hidden");
     this.elements.modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+  }
+
+
+  renderProductHotelOptions() {
+    const section = this.elements.productHotelSection;
+    const container = this.elements.productHotelOptions;
+    if (!section || !container) return;
+
+    const hotels = this.getHotelOptionsForTour();
+    const nights = this.getHotelNights();
+    if (!hotels.length || nights <= 0) {
+      section.hidden = true;
+      return;
+    }
+
+    section.hidden = false;
+    container.innerHTML = hotels.map((hotel) => {
+      const minRate = Math.min(...Object.values(hotel.roomRates || {}).map(Number).filter(Boolean));
+      const selected = hotel.id === this.booking.selectedHotelId;
+      const roomCombo = selected ? this.getSelectedRoomCombo() : null;
+      const comboText = selected && roomCombo
+        ? `${roomCombo.label} · ${this.formatMoney(this.getRoomComboPrice(roomCombo, hotel) * nights, "USD")} por ${nights} noche${nights > 1 ? "s" : ""}`
+        : `Desde ${this.formatMoney(minRate * nights, "USD")} por ${nights} noche${nights > 1 ? "s" : ""}`;
+      const includes = Array.isArray(hotel.includes) && hotel.includes.length
+        ? `<ul>${hotel.includes.slice(0, 4).map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul>`
+        : "";
+      return `
+        <article class="product-hotel-card ${selected ? "selected" : ""}">
+          <div>
+            <span class="product-hotel-tier">${this.escapeHTML(hotel.tier || hotel.category || "Hotel")}</span>
+            <h3>${this.escapeHTML(hotel.name)}</h3>
+            <p>${this.escapeHTML(hotel.description || "")}</p>
+            ${includes}
+          </div>
+          <div class="product-hotel-price">
+            <strong>${this.escapeHTML(comboText)}</strong>
+            ${selected ? `<small>Hotel seleccionado</small>` : `<small>Opcional</small>`}
+            <button type="button" class="booking-whatsapp-btn product-hotel-select" data-hotel-id="${this.escapeHTML(hotel.id)}">
+              ${selected ? "Editar acomodación" : "Ver acomodaciones"}
+            </button>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    container.querySelectorAll("[data-hotel-id]").forEach((button) => {
+      button.addEventListener("click", () => this.openRoomModal(button.dataset.hotelId));
+    });
+  }
+
+  openRoomModal(hotelId) {
+    const hotel = this.getHotelOptionsForTour().find((item) => item.id === hotelId);
+    if (!hotel || !this.elements.roomModal) return;
+    this.pendingHotelId = hotelId;
+    this.setText(this.elements.roomModalTitle, hotel.name);
+    this.setText(this.elements.roomModalSubtitle, `${hotel.category || "Hotel"}. Tarifas calculadas para ${this.getHotelNights()} noche(s) y ${this.getTravelerCount()} viajero(s).`);
+    this.renderProductRoomOptions(hotel);
+    this.elements.roomModal.classList.remove("hidden");
+    this.elements.roomModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  closeRoomModal() {
+    if (!this.elements.roomModal) return;
+    this.elements.roomModal.classList.add("hidden");
+    this.elements.roomModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = this.elements.modal && !this.elements.modal.classList.contains("hidden") ? "hidden" : "";
+  }
+
+  renderProductRoomOptions(hotel) {
+    if (!this.elements.productRoomOptions) return;
+    const nights = this.getHotelNights();
+    const combos = this.getRoomCombinations(this.getTravelerCount());
+    this.elements.productRoomOptions.innerHTML = combos.map((combo) => {
+      const nightly = this.getRoomComboPrice(combo, hotel);
+      const selected = hotel.id === this.booking.selectedHotelId && combo.key === this.booking.selectedRoomKey;
+      return `
+        <label class="pn-room-card ${selected ? "selected" : ""}">
+          <input type="radio" name="productRoomOption" value="${this.escapeHTML(combo.key)}" ${selected ? "checked" : ""}>
+          <span>
+            <strong>${this.escapeHTML(combo.label)}</strong>
+            <small>${this.escapeHTML(combo.description)}</small>
+          </span>
+          <em>${this.formatMoney(nightly * nights, "USD")} total</em>
+        </label>
+      `;
+    }).join("");
+
+    this.elements.productRoomOptions.querySelectorAll("input[name='productRoomOption']").forEach((input) => {
+      input.addEventListener("change", () => {
+        this.booking.selectedHotelId = hotel.id;
+        this.booking.selectedRoomKey = input.value;
+        this.renderProductHotelOptions();
+        this.updateBookingTotals();
+        this.closeRoomModal();
+      });
+    });
+  }
+
+  ensureSelectedRoomStillValid() {
+    if (!this.booking.selectedRoomKey) return;
+    const combos = this.getRoomCombinations(this.getTravelerCount());
+    if (!combos.some((combo) => combo.key === this.booking.selectedRoomKey)) {
+      this.booking.selectedRoomKey = "";
+    }
   }
 
   renderHotelSelection() {
@@ -980,6 +1133,7 @@ class PeruNatureProductPage {
       onApprove: async (_data, actions) => {
         const details = await actions.order.capture();
         this.setText(this.elements.paypalStatus, `Pago aprobado. ID: ${details?.id || "confirmado"}`);
+        this.saveReservationToGoogleSheet({ paymentStatus: "paid", paypalId: details?.id || "" });
       },
       onCancel: () => this.setText(this.elements.paypalStatus, "Pago cancelado. Puedes intentarlo nuevamente o consultar por WhatsApp."),
       onError: () => this.setText(this.elements.paypalStatus, "No se pudo procesar PayPal. Verifica el Client ID o intenta nuevamente.")
@@ -1046,6 +1200,7 @@ class PeruNatureProductPage {
     const hotelText = totals.hotel && totals.roomCombo
       ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} noches)`
       : "Alojamiento no agregado / por confirmar";
+    const heroImage = this.normalizeImages(tour.images)[0]?.src || "./assets/img/tour-placeholder.jpg";
 
     const html = `
       <!doctype html>
@@ -1054,13 +1209,13 @@ class PeruNatureProductPage {
         <meta charset="utf-8">
         <title>${this.escapeHTML(tour.title)} | ${this.escapeHTML(this.reservationCode || "Reserva")}</title>
         <style>
-          *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}main{max-width:980px;margin:0 auto;padding:34px}.hero{border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}.hero small{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:7px 12px;font-weight:900}.hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}.day{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #dfe7dd}.badge{background:#0b3d2e;color:#fff;border-radius:18px;min-height:60px;display:grid;place-items:center;text-align:center;font-weight:900}.day h2{margin:0;color:#0b3d2e;font-size:20px}.day p{line-height:1.65}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}@media print{main{padding:0}.hero{border-radius:0}.no-print{display:none}.day{break-inside:avoid}.box{break-inside:avoid}}@media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.day{grid-template-columns:1fr}}
+          *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}main{max-width:980px;margin:0 auto;padding:34px}.hero{position:relative;overflow:hidden;border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,61,46,.82),rgba(11,61,46,.86)),url('${this.escapeHTML(heroImage)}') center/cover;z-index:0}.hero>*{position:relative;z-index:1}.hero small{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:7px 12px;font-weight:900}.hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}.day{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #dfe7dd}.badge{background:#0b3d2e;color:#fff;border-radius:18px;min-height:60px;display:grid;place-items:center;text-align:center;font-weight:900}.day h2{margin:0;color:#0b3d2e;font-size:20px}.day p{line-height:1.65}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}@media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day{break-inside:avoid}.box{break-inside:avoid}}@media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.day{grid-template-columns:1fr}}
         </style>
       </head>
       <body>
         <main>
           <section class="hero">
-            <small>${this.escapeHTML(this.reservationCode || "Peru Nature")}</small>
+            <small>Código de reserva: ${this.escapeHTML(this.reservationCode || "Por generar")}</small>
             <h1>${this.escapeHTML(tour.title)}</h1>
             <p>${this.escapeHTML(tour.shortDescription || tour.description || "Experiencia Peru Nature")}</p>
           </section>
@@ -1102,10 +1257,70 @@ class PeruNatureProductPage {
     win.document.close();
   }
 
+
+  collectPassengerData() {
+    const data = [];
+    this.elements.passengerForms?.querySelectorAll(".pn-passenger-card").forEach((card, index) => {
+      if (card.querySelector("input[name='contact_email']")) return;
+      data.push({
+        passenger: index + 1,
+        name: card.querySelector("input[name$='_name']")?.value || "",
+        lastname: card.querySelector("input[name$='_lastname']")?.value || "",
+        documentType: card.querySelector("select[name$='_doctype']")?.value || "",
+        documentNumber: card.querySelector("input[name$='_doc']")?.value || "",
+        nationality: card.querySelector("input[name$='_nationality']")?.value || "",
+        birthdate: card.querySelector("input[name$='_birthdate']")?.value || ""
+      });
+    });
+    return data;
+  }
+
+  getContactData() {
+    return {
+      email: this.elements.passengerForms?.querySelector("input[name='contact_email']")?.value || "",
+      phone: this.elements.passengerForms?.querySelector("input[name='contact_phone']")?.value || ""
+    };
+  }
+
+  async saveReservationToGoogleSheet(extra = {}) {
+    if (!this.reservationEndpoint) return;
+    const totals = this.calculateTotals();
+    const payload = {
+      code: this.reservationCode || this.createReservationCode(),
+      createdAt: new Date().toISOString(),
+      tourSlug: this.currentTour?.slug || "",
+      tourTitle: this.currentTour?.title || "",
+      destination: this.currentTour?.destination || this.currentTour?.location || "",
+      adults: this.booking.adults,
+      children: this.booking.children,
+      coupon: this.booking.coupon,
+      discountPercent: this.booking.discountPercent,
+      hotel: totals.hotel?.name || "",
+      room: totals.roomCombo?.label || "",
+      hotelSubtotal: totals.hotelSubtotal,
+      total: totals.total,
+      currency: totals.currency,
+      contact: this.getContactData(),
+      passengers: this.collectPassengerData(),
+      ...extra
+    };
+
+    try {
+      await fetch(this.reservationEndpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      console.warn("[Peru Nature] No se pudo guardar la reserva en Google Sheet", error);
+    }
+  }
+
   createReservationCode() {
     const hex = Math.floor(Math.random() * 0xffffff).toString(16).toUpperCase().padStart(6, "0");
     const tail = Date.now().toString(16).slice(-4).toUpperCase();
-    return `OP-NAT-${hex}-${tail}`;
+    return `PNBAT${hex}${tail}`;
   }
 
   extractAvailabilityItems(tour) {

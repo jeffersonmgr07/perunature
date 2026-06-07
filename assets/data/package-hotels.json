@@ -23,7 +23,9 @@
             "matrimonial": 46,
             "triple": 62,
             "quadruple": 82
-          }
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-huaraz-basico.jpg"
         },
         {
           "id": "huaraz-comfort-mountain",
@@ -42,7 +44,9 @@
             "matrimonial": 68,
             "triple": 88,
             "quadruple": 112
-          }
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-huaraz-intermedio.jpg"
         },
         {
           "id": "huaraz-boutique-andino",
@@ -61,7 +65,9 @@
             "matrimonial": 96,
             "triple": 128,
             "quadruple": 158
-          }
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-huaraz-comfort.jpg"
         }
       ]
     }

@@ -132,6 +132,7 @@
           <a href="#detalles">Detalles</a>
           <a href="#incluye">Incluye</a>
           <a href="#itinerario">Itinerario</a>
+          <a href="#hoteles">Hoteles</a>
           <a href="#horarios">Horarios</a>
         </nav>
 
@@ -229,6 +230,17 @@
               </div>
             </section>
 
+            <!-- Hoteles opcionales -->
+            <section id="hoteles" class="product-section product-hotel-section" hidden>
+              <div class="section-title-row">
+                <div>
+                  <h2>Opciones de hoteles</h2>
+                  <p>Elige un hotel y luego selecciona la acomodación que deseas agregar a tu reserva.</p>
+                </div>
+              </div>
+              <div id="productHotelOptions" class="product-hotel-options"></div>
+            </section>
+
             <!-- Horarios disponibles -->
             <section id="horarios" class="product-section">
               <h2>Horarios disponibles</h2>
@@ -295,6 +307,7 @@
                   <p class="booking-discount-message" id="discountMessage"></p>
                 </div>
 
+                <div class="booking-mini-title">Detalles de la experiencia</div>
                 <div class="booking-mini-summary">
                   <div><span data-i18n="booking.duration">Duración</span><strong id="bookingDuration">Duración</strong></div>
                   <div><span data-i18n="booking.location">Destino</span><strong id="bookingLocation">Ubicación</strong></div>
@@ -302,10 +315,11 @@
                 </div>
 
                 <div class="booking-summary-wrap">
-                  <div class="booking-summary-title" data-i18n="booking.paymentDetails">Detalle estimado</div>
+                  <div class="booking-summary-title" data-i18n="booking.paymentDetails">Detalle de reserva</div>
                   <div class="booking-summary booking-price-summary">
                     <div><span data-i18n="booking.adultsTotal">Adultos</span><strong id="adultsTotal">USD 0</strong></div>
                     <div><span data-i18n="booking.childrenTotal">Niños</span><strong id="childrenTotal">USD 0</strong></div>
+                    <div id="hotelSidebarRow" hidden><span>Hoteles</span><strong id="hotelSidebarTotal">USD 0</strong></div>
                     <div id="discountRow" hidden><span data-i18n="booking.discount">Descuento</span><strong id="discountTotal">- USD 0</strong></div>
                     <div class="booking-summary__total"><span data-i18n="booking.total">Total</span><strong id="bookingTotal">USD 0</strong></div>
                   </div>
@@ -317,7 +331,12 @@
                 </button>
               </form>
 
-              <a href="./all-experiences.html" class="booking-secondary-btn" data-i18n="booking.backCatalog">Volver al catálogo</a>
+              <button type="button" id="productPrintBtn" class="booking-secondary-btn">
+                <i class="fa-solid fa-print"></i>
+                Imprimir itinerario
+              </button>
+
+              <a href="./all-experiences.html" class="booking-secondary-btn" data-i18n="booking.backCatalog">Ver otras experiencias</a>
 
               <p class="booking-note" data-i18n="booking.note">
                 Confirma tu fecha, viajeros y horario. Un asesor validará disponibilidad antes de cerrar la reserva.
@@ -347,65 +366,6 @@
       <div class="pn-reservation-modal__body">
         <section class="pn-reservation-block">
           <div class="pn-reservation-block__title">
-            <i class="fa-solid fa-route"></i>
-            <div>
-              <h3>Detalles del paquete</h3>
-              <p>Confirma fecha, horario y número de pasajeros.</p>
-            </div>
-          </div>
-
-          <div class="pn-reservation-grid">
-            <label class="pn-reservation-field">
-              <span>Fecha de viaje</span>
-              <input type="date" id="modalBookingDate" required />
-            </label>
-            <label class="pn-reservation-field">
-              <span>Horario</span>
-              <select id="modalBookingTime"></select>
-            </label>
-          </div>
-
-          <div class="pn-reservation-travelers">
-            <div class="booking-traveler-row">
-              <div>
-                <strong>Adultos</strong>
-                <small>13 años a más</small>
-              </div>
-              <div class="qty-control">
-                <button type="button" class="qty-btn modal-qty-btn" data-action="minus" data-target="adults">−</button>
-                <span id="modalAdultsCount">2</span>
-                <button type="button" class="qty-btn modal-qty-btn" data-action="plus" data-target="adults">+</button>
-              </div>
-            </div>
-
-            <div class="booking-traveler-row">
-              <div>
-                <strong>Niños</strong>
-                <small>3 a 12 años</small>
-              </div>
-              <div class="qty-control">
-                <button type="button" class="qty-btn modal-qty-btn" data-action="minus" data-target="children">−</button>
-                <span id="modalChildrenCount">0</span>
-                <button type="button" class="qty-btn modal-qty-btn" data-action="plus" data-target="children">+</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="pn-reservation-block" id="hotelSelectionBlock" hidden>
-          <div class="pn-reservation-block__title">
-            <i class="fa-solid fa-hotel"></i>
-            <div>
-              <h3>Alojamiento opcional</h3>
-              <p id="hotelNightsLabel">Selecciona hotel y combinación de habitaciones.</p>
-            </div>
-          </div>
-          <div id="hotelOptions" class="pn-hotel-options"></div>
-          <div id="roomOptions" class="pn-room-options"></div>
-        </section>
-
-        <section class="pn-reservation-block">
-          <div class="pn-reservation-block__title">
             <i class="fa-solid fa-users"></i>
             <div>
               <h3>Datos de pasajeros</h3>
@@ -418,6 +378,7 @@
         <aside class="pn-reservation-summary">
           <div class="booking-summary-title">Resumen de pago</div>
           <div id="modalBookingSummary" class="booking-summary booking-price-summary"></div>
+          <p class="pn-summary-note">La cantidad de adultos, niños y alojamiento se toma del resumen de la página. Para cambiarlo, cierra este modal y ajusta la reserva en el producto.</p>
 
           <div class="pn-payment-box">
             <h3>Pago con PayPal</h3>
@@ -437,6 +398,34 @@
             </button>
           </div>
         </aside>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal de acomodación de hotel -->
+  <div id="roomModal" class="pn-reservation-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle">
+    <div class="pn-reservation-modal__backdrop" data-close-room-modal></div>
+    <div class="pn-reservation-modal__dialog pn-room-modal__dialog">
+      <button type="button" class="pn-reservation-modal__close" data-close-room-modal aria-label="Cerrar acomodación">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="pn-reservation-modal__header">
+        <span class="pn-reservation-modal__kicker">Alojamiento opcional</span>
+        <h2 id="roomModalTitle">Elige tu acomodación</h2>
+        <p id="roomModalSubtitle">Tarifas por habitación y por noche.</p>
+      </div>
+      <div class="pn-reservation-modal__body pn-room-modal__body">
+        <section class="pn-reservation-block">
+          <div class="pn-reservation-block__title">
+            <i class="fa-solid fa-bed"></i>
+            <div>
+              <h3>Opciones de habitaciones</h3>
+              <p>Selecciona la combinación según el número de viajeros elegido en el resumen.</p>
+            </div>
+          </div>
+          <div id="productRoomOptions" class="pn-room-options"></div>
+        </section>
       </div>
     </div>
   </div>

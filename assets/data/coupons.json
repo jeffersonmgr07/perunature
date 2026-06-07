@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "notes": "Cupones locales de respaldo. Para producción puedes reemplazar esta fuente por Google Sheets + Apps Script.",
+  "coupons": [
+    {
+      "code": "PERUNATURE10",
+      "percent": 10,
+      "expiresAt": "2026-12-31",
+      "active": true
+    },
+    {
+      "code": "HUARAZ15",
+      "percent": 15,
+      "expiresAt": "2026-09-30",
+      "active": true
+    }
+  ]
+}
