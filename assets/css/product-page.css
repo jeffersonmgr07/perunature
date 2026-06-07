@@ -842,3 +842,212 @@ body {
 @media (max-width: 480px) {
   .booking-discount-row { grid-template-columns: 1fr; }
 }
+
+/* =========================================================
+   RESERVA DE PAQUETES + HOTEL + PAYPAL
+   Se agregan estilos complementarios sin alterar las cards existentes.
+========================================================= */
+.pn-reservation-modal.hidden { display: none; }
+.pn-reservation-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+}
+.pn-reservation-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 28, 22, .58);
+  backdrop-filter: blur(4px);
+}
+.pn-reservation-modal__dialog {
+  position: relative;
+  width: min(1120px, 100%);
+  max-height: min(92vh, 920px);
+  overflow: auto;
+  background: var(--pn-white);
+  border-radius: 28px;
+  border: 1px solid var(--pn-border);
+  box-shadow: 0 24px 70px rgba(6, 28, 22, .22);
+}
+.pn-reservation-modal__close {
+  position: sticky;
+  top: 14px;
+  left: calc(100% - 58px);
+  z-index: 3;
+  width: 42px;
+  height: 42px;
+  margin: 14px 14px -42px auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--pn-border);
+  border-radius: 999px;
+  background: var(--pn-white);
+  color: var(--pn-green);
+  cursor: pointer;
+}
+.pn-reservation-modal__header {
+  padding: 34px 34px 22px;
+  border-bottom: 1px solid var(--pn-border);
+  background: linear-gradient(180deg, rgba(126,217,87,.12), rgba(255,255,255,0));
+}
+.pn-reservation-modal__kicker {
+  color: var(--pn-green);
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.pn-reservation-modal__header h2 {
+  margin: 8px 0 8px;
+  color: var(--pn-green);
+  font-size: clamp(26px, 4vw, 40px);
+  letter-spacing: -.04em;
+}
+.pn-reservation-modal__header p { margin: 0; color: var(--pn-muted); font-weight: 700; }
+.pn-reservation-modal__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 20px;
+  padding: 24px;
+}
+.pn-reservation-block,
+.pn-reservation-summary {
+  border: 1px solid var(--pn-border);
+  border-radius: 22px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 12px 34px rgba(11,61,46,.06);
+}
+.pn-reservation-block { display: grid; gap: 18px; }
+.pn-reservation-block + .pn-reservation-block { margin-top: 18px; }
+.pn-reservation-block__title {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+.pn-reservation-block__title i {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(126,217,87,.16);
+  color: var(--pn-green);
+}
+.pn-reservation-block__title h3,
+.pn-payment-box h3 { margin: 0; color: var(--pn-green); font-size: 18px; }
+.pn-reservation-block__title p,
+.pn-payment-box p { margin: 4px 0 0; color: var(--pn-muted); line-height: 1.55; font-size: 13px; }
+.pn-reservation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.pn-reservation-field { display: grid; gap: 7px; color: var(--pn-green); font-weight: 800; font-size: 14px; }
+.pn-reservation-field input,
+.pn-reservation-field select,
+.pn-passenger-card input,
+.pn-passenger-card select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--pn-border);
+  border-radius: 14px;
+  background: #fbfcf8;
+  padding: 0 13px;
+  color: var(--pn-text);
+  font-weight: 700;
+  outline: none;
+}
+.pn-reservation-travelers { display: grid; gap: 10px; }
+.pn-hotel-options,
+.pn-room-options { display: grid; gap: 10px; }
+.pn-hotel-card,
+.pn-room-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--pn-border);
+  border-radius: 16px;
+  background: #fbfcf8;
+  cursor: pointer;
+}
+.pn-hotel-card input,
+.pn-room-card input { accent-color: var(--pn-green); }
+.pn-hotel-card strong,
+.pn-room-card strong { display: block; color: var(--pn-green); }
+.pn-hotel-card small,
+.pn-room-card small { color: var(--pn-muted); font-weight: 700; }
+.pn-hotel-card em,
+.pn-room-card em { color: var(--pn-green); font-style: normal; font-weight: 900; white-space: nowrap; }
+.pn-passenger-forms { display: grid; gap: 12px; }
+.pn-passenger-card {
+  padding: 15px;
+  border: 1px solid var(--pn-border);
+  border-radius: 18px;
+  background: #fbfcf8;
+}
+.pn-passenger-card h4 { margin: 0 0 12px; color: var(--pn-green); }
+.pn-passenger-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.pn-passenger-grid label { display: grid; gap: 6px; color: var(--pn-muted); font-size: 12px; font-weight: 900; }
+.pn-reservation-summary {
+  position: sticky;
+  top: 14px;
+  align-self: start;
+}
+.pn-payment-box {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px dashed rgba(11,61,46,.24);
+  border-radius: 18px;
+  background: rgba(126,217,87,.10);
+}
+.pn-paypal-buttons { margin-top: 12px; min-height: 42px; }
+.pn-paypal-status { color: var(--pn-green); font-size: 13px; font-weight: 800; }
+.pn-reservation-actions { display: grid; gap: 10px; margin-top: 14px; }
+.itinerary-details {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--pn-muted);
+  line-height: 1.65;
+}
+.itinerary-extra {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.itinerary-extra span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(126,217,87,.14);
+  color: var(--pn-green);
+  font-size: 12px;
+  font-weight: 900;
+}
+@media (max-width: 980px) {
+  .pn-reservation-modal__body { grid-template-columns: 1fr; }
+  .pn-reservation-summary { position: static; }
+}
+@media (max-width: 640px) {
+  .pn-reservation-modal { padding: 10px; }
+  .pn-reservation-modal__header { padding: 28px 20px 18px; }
+  .pn-reservation-modal__body { padding: 16px; }
+  .pn-reservation-grid,
+  .pn-passenger-grid { grid-template-columns: 1fr; }
+  .pn-hotel-card,
+  .pn-room-card { grid-template-columns: auto 1fr; }
+  .pn-hotel-card em,
+  .pn-room-card em { grid-column: 2; }
+}

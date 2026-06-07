@@ -1,0 +1,69 @@
+{
+  "brand": "Peru Nature",
+  "currency": "USD",
+  "version": "1.0.0",
+  "notes": "Tarifas referenciales para cotización dinámica. Reemplazar por hoteles contratados y tarifas netas cuando se confirme operador.",
+  "destinations": {
+    "huaraz-ancash": {
+      "label": "Huaraz / Áncash",
+      "hotels": [
+        {
+          "id": "huaraz-standard-central",
+          "name": "Hotel estándar céntrico en Huaraz",
+          "category": "Estándar 3★",
+          "description": "Opción funcional cerca del centro, recomendada para paquetes de aventura y salidas tempranas.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 46,
+            "matrimonial": 46,
+            "triple": 62,
+            "quadruple": 82
+          }
+        },
+        {
+          "id": "huaraz-comfort-mountain",
+          "name": "Hotel comfort vista montaña",
+          "category": "Comfort 3★ superior",
+          "description": "Mayor comodidad, habitaciones amplias y mejor ubicación para viajeros que desean descansar entre excursiones.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 52,
+            "double": 68,
+            "matrimonial": 68,
+            "triple": 88,
+            "quadruple": 112
+          }
+        },
+        {
+          "id": "huaraz-boutique-andino",
+          "name": "Hotel boutique andino",
+          "category": "Boutique / superior",
+          "description": "Alternativa más cuidada para clientes que buscan una experiencia más cómoda y cálida en Huaraz.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 74,
+            "double": 96,
+            "matrimonial": 96,
+            "triple": 128,
+            "quadruple": 158
+          }
+        }
+      ]
+    }
+  }
+}

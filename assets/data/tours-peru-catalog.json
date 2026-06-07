@@ -1753,143 +1753,6 @@
       }
     },
     {
-      "id": "trek_ancash_santa_cruz_4d3n",
-      "slug": "santa-cruz-trek-4-dias-cordillera-blanca",
-      "title": "Santa Cruz Trek 4D/3N Cordillera Blanca",
-      "productKind": "package",
-      "productFamily": "trekking-package",
-      "shortDescription": "Una de las rutas de trekking más famosas del Perú, entre lagunas, pasos altos y nevados de la Cordillera Blanca.",
-      "description": "El Santa Cruz Trek es una travesía clásica dentro del Parque Nacional Huascarán para viajeros que buscan una experiencia de montaña más profunda. Durante cuatro días se camina entre quebradas, campamentos, lagunas turquesas y pasos de altura con vistas de picos nevados como Alpamayo, Taulliraju y Artesonraju según la ruta.",
-      "destination": "huaraz-ancash",
-      "department": "ancash",
-      "region": "andes",
-      "location": "Huaraz / Cordillera Blanca",
-      "categories": [
-        "multi_day",
-        "trekking",
-        "nature",
-        "reserve"
-      ],
-      "tags": [
-        "santa cruz trek",
-        "cordillera blanca",
-        "huaraz",
-        "trekking peru",
-        "huascaran"
-      ],
-      "duration": {
-        "type": "multi_day",
-        "days": 4,
-        "nights": 3,
-        "label": "4D/3N"
-      },
-      "difficulty": "high",
-      "pricing": {
-        "basePrice": 399,
-        "currency": "USD",
-        "priceLabel": "Desde $399 por persona",
-        "note": "por persona",
-        "pricingStatus": "reference_pending_operator"
-      },
-      "rating": {
-        "score": 4.7,
-        "reviewsCount": 0
-      },
-      "images": {
-        "cover": "./assets/img/tours/santa-cruz-trek-cover.jpg",
-        "gallery": [
-          "./assets/img/tours/santa-cruz-trek-img1.jpg",
-          "./assets/img/tours/santa-cruz-trek-img2.jpg",
-          "./assets/img/tours/santa-cruz-trek-img3.jpg"
-        ]
-      },
-      "badge": "Reserva natural",
-      "rankScore": 85,
-      "featured": false,
-      "highlights": [
-        "Trekking clásico de la Cordillera Blanca",
-        "Campamentos de montaña",
-        "Lagunas glaciares",
-        "Paso de altura Punta Unión"
-      ],
-      "includes": [
-        "Transporte terrestre",
-        "Guía de trekking",
-        "Equipo de campamento grupal",
-        "Cocinero y alimentación durante el trekking según modalidad",
-        "Arrieros o apoyo logístico según operador"
-      ],
-      "excludes": [
-        "Ingreso al Parque Nacional Huascarán",
-        "Equipo personal",
-        "Saco de dormir",
-        "Bastones",
-        "Seguro de viaje",
-        "Propinas"
-      ],
-      "itinerary": [
-        {
-          "time": "Día 1",
-          "title": "Huaraz - Cashapampa - campamento",
-          "description": "Traslado e inicio de caminata por la quebrada Santa Cruz."
-        },
-        {
-          "time": "Día 2",
-          "title": "Lagunas y campamento alto",
-          "description": "Caminata entre paisajes de montaña y vistas de nevados."
-        },
-        {
-          "time": "Día 3",
-          "title": "Paso Punta Unión",
-          "description": "Jornada principal cruzando el paso de altura y descenso al valle."
-        },
-        {
-          "time": "Día 4",
-          "title": "Final de trekking - Huaraz",
-          "description": "Última caminata, recojo y retorno a Huaraz."
-        }
-      ],
-      "availability": {
-        "daily": false,
-        "startTimes": [
-          "Consultar salidas grupales"
-        ]
-      },
-      "language": [
-        "Español"
-      ],
-      "search": {
-        "kind": "package",
-        "destinations": [
-          "huaraz-ancash",
-          "huaraz-cordillera-blanca"
-        ],
-        "durationKeys": [
-          "multi_day",
-          "4d/3n"
-        ],
-        "themes": [
-          "multi_day",
-          "trekking",
-          "nature",
-          "reserve"
-        ],
-        "keywords": [
-          "santa cruz trek",
-          "cordillera blanca",
-          "huaraz",
-          "trekking peru",
-          "huascaran"
-        ],
-        "department": "ancash",
-        "region": "andes"
-      },
-      "internalNotes": {
-        "pricingUse": "Precio referencial para vitrina. Validar con operador, ingresos, temporada, comisiones y disponibilidad antes de publicar como tarifa final.",
-        "contentStatus": "draft_ready_for_review"
-      }
-    },
-    {
       "id": "tour_san_martin_laguna_azul_full_day",
       "slug": "laguna-azul-sauce-full-day-desde-tarapoto",
       "title": "Laguna Azul Full Day desde Tarapoto",
@@ -10265,30 +10128,32 @@
       }
     },
     {
-      "id": "reserve_huascaran_santa_cruz_4d3n",
+      "id": "santa_cruz_trek_parque_nacional_huascaran_4_dias_3_noches",
       "slug": "santa-cruz-trek-parque-nacional-huascaran-4-dias-3-noches",
       "title": "Santa Cruz Trek en Parque Nacional Huascarán 4D/3N",
       "productKind": "package",
       "productFamily": "trekking-reserve",
-      "shortDescription": "Trekking clásico de la Cordillera Blanca entre lagunas, quebradas y nevados dentro del Parque Nacional Huascarán.",
-      "description": "El Santa Cruz Trek es una de las rutas de trekking más conocidas de la Cordillera Blanca. Recorre quebradas altoandinas, pasos de montaña, lagunas y vistas de nevados dentro del Parque Nacional Huascarán.",
-      "destination": "huascaran",
+      "destination": "huaraz-ancash",
       "department": "ancash",
       "region": "andes",
-      "location": "Huaraz / Parque Nacional Huascarán / Cordillera Blanca",
+      "location": "Huaraz / Cordillera Blanca / Parque Nacional Huascarán",
       "categories": [
         "multi_day",
         "trekking",
         "nature",
         "reserve",
-        "mountain"
+        "mountain",
+        "expedition"
       ],
       "tags": [
         "santa cruz trek",
         "huascaran",
         "cordillera blanca",
         "huaraz",
-        "trekking"
+        "trekking",
+        "punta union",
+        "cashapampa",
+        "vaqueria"
       ],
       "duration": {
         "type": "multi_day",
@@ -10300,103 +10165,155 @@
       "pricing": {
         "basePrice": 399,
         "currency": "USD",
-        "priceLabel": "Desde $399 por persona",
+        "priceLabel": "Desde $399 por persona sin hotel",
+        "note": "tour base sin alojamiento",
         "pricingStatus": "reference_pending_operator"
+      },
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "huaraz-ancash",
+        "nights": 3,
+        "currency": "USD",
+        "note": "Opcional para noches pre/post en Huaraz. En la ruta Santa Cruz las noches principales son en campamento; validar distribución final con asesor."
       },
       "rating": {
         "score": 4.8,
         "reviewsCount": 0
       },
-      "images": {
-        "cover": "./assets/img/tours/santa-cruz-trek-parque-nacional-huascaran-4-dias-3-noches-cover.jpg",
-        "gallery": []
-      },
       "badge": "Trekking",
-      "rankScore": 90,
+      "rankScore": 96,
       "featured": true,
-      "highlights": [
-        "Trekking clásico de la Cordillera Blanca",
-        "Paisajes altoandinos y nevados",
-        "Campamentos de montaña",
-        "Ruta dentro del Parque Nacional Huascarán"
-      ],
-      "includes": [
-        "Transporte desde/hacia Huaraz",
-        "Guía de trekking",
-        "Equipo de campamento según operador",
-        "Alimentación durante ruta",
-        "Arriero y apoyo logístico"
-      ],
-      "excludes": [
-        "Vuelos nacionales o internacionales",
-        "Seguro de viaje",
-        "Bebidas alcohólicas",
-        "Propinas",
-        "Gastos personales",
-        "Servicios no mencionados"
-      ],
-      "itinerary": [
-        {
-          "time": "Día 1",
-          "title": "Huaraz a inicio de trekking",
-          "description": "Traslado a la zona de inicio y caminata al primer campamento."
-        },
-        {
-          "time": "Día 2",
-          "title": "Quebrada y campamento",
-          "description": "Caminata entre montañas, ríos y vistas de nevados."
-        },
-        {
-          "time": "Día 3",
-          "title": "Paso de montaña",
-          "description": "Jornada más exigente con ascenso a paso alto."
-        },
-        {
-          "time": "Día 4",
-          "title": "Fin de trekking",
-          "description": "Última caminata y retorno a Huaraz."
-        }
-      ],
       "availability": {
-        "daily": false,
+        "daily": true,
         "schedule": [
-          "Bajo solicitud o salidas programadas"
+          "Salidas diarias bajo disponibilidad",
+          "Horario referencial 08:30",
+          "Recojo en hotel céntrico"
         ]
       },
       "language": [
         "Español",
         "Inglés bajo solicitud"
       ],
+      "internalNotes": {
+        "pricingUse": "Precio referencial de tour base sin alojamiento. Validar tarifa final con operador local, ingresos, temporada, comisiones y disponibilidad antes de confirmar.",
+        "contentStatus": "draft_ready_for_review"
+      },
+      "shortDescription": "Trekking clásico de la Cordillera Blanca con campamentos, lagunas glaciares y cruce del paso Punta Unión.",
+      "description": "Programa de montaña para viajeros aclimatados que desean vivir una travesía real dentro del Parque Nacional Huascarán. La ruta Santa Cruz conecta quebradas, comunidades andinas, campamentos de altura, lagunas glaciares y vistas de nevados como Taulliraju, Artesonraju, Alpamayo y Huascarán según condiciones climáticas. Es una opción exigente y escénica, ideal para quienes buscan trekking de varios días.",
+      "highlights": [
+        "Ruta clásica Santa Cruz Trek",
+        "Paso Punta Unión a 4,750 m",
+        "Campamentos de montaña",
+        "Vistas de nevados y lagunas glaciares",
+        "Experiencia exigente para viajeros aclimatados"
+      ],
+      "includes": [
+        "Briefing previo en Huaraz",
+        "Transporte turístico Huaraz – inicio de ruta – Huaraz",
+        "Guía de trekking",
+        "Equipo de campamento grupal: carpas comedor, cocina y menaje",
+        "Carpa doble compartida durante la ruta según disponibilidad",
+        "Cocinero y alimentación durante el trekking: desayunos, almuerzos y cenas de ruta",
+        "Arrieros, burros o apoyo logístico según modalidad confirmada",
+        "Botiquín básico y asistencia durante la caminata"
+      ],
+      "excludes": [
+        "Alojamiento en hotel en Huaraz antes o después del trekking",
+        "Ingreso al Parque Nacional Huascarán",
+        "Saco de dormir, bastones y equipo personal",
+        "Primer desayuno y última cena en Huaraz",
+        "Seguro de viaje o seguro médico",
+        "Propinas y gastos personales",
+        "Servicios no mencionados"
+      ],
+      "itinerary": [
+        {
+          "time": "Día 1",
+          "title": "Huaraz – Llanganuco – Vaquería – Paria",
+          "description": "Salida temprana desde Huaraz por el Callejón de Huaylas, pasando por Yungay y el sector Llanganuco. Después del ingreso al Parque Nacional Huascarán se continúa hacia Vaquería, donde inicia la caminata por valles andinos hasta el primer campamento en Paria.",
+          "details": [
+            "Altitud referencial: Huaraz 3,050 m / Vaquería 3,700 m / Paria 3,870 m.",
+            "Caminata aproximada: 3 a 4 horas, ritmo de aclimatación.",
+            "Paisaje principal: pueblos altoandinos, quebradas verdes y primeras vistas de la Cordillera Blanca."
+          ],
+          "meals": "Almuerzo y cena de campamento",
+          "distance": "Aprox. 10–11 km"
+        },
+        {
+          "time": "Día 2",
+          "title": "Paria – Paso Punta Unión – Taullipampa",
+          "description": "Jornada principal del trekking. Se asciende de forma progresiva hasta el paso Punta Unión, el punto más alto de la ruta, con vistas panorámicas de montañas, lagunas y quebradas glaciares. Luego se desciende hacia el campamento de Taullipampa.",
+          "details": [
+            "Altitud máxima referencial: Punta Unión 4,750 m.",
+            "Día exigente por altura y desnivel; se recomienda buena aclimatación.",
+            "Vistas posibles de Taulliraju, Artesonraju, Rinrijirca y otros nevados según clima."
+          ],
+          "meals": "Desayuno, almuerzo y cena de campamento",
+          "distance": "Aprox. 12–13 km"
+        },
+        {
+          "time": "Día 3",
+          "title": "Taullipampa – miradores de montaña – Llamacorral",
+          "description": "Caminata por la quebrada Santa Cruz entre lagunas, riachuelos y miradores naturales. Según el ritmo del grupo, se pueden realizar desvíos cortos o paradas panorámicas para observar nevados y lagunas antes de llegar al campamento de Llamacorral.",
+          "details": [
+            "Ruta escénica con menor exigencia que el día de Punta Unión, pero siempre en altura.",
+            "Posibles vistas de Alpamayo y lagunas altoandinas según ruta y clima.",
+            "Tiempo de caminata referencial: 5 a 6 horas."
+          ],
+          "meals": "Desayuno, almuerzo y cena de campamento",
+          "distance": "Aprox. 12 km"
+        },
+        {
+          "time": "Día 4",
+          "title": "Llamacorral – Cashapampa – retorno a Huaraz",
+          "description": "Última caminata de descenso por la quebrada hasta Cashapampa. Encuentro con el transporte y retorno a Huaraz por carretera. Llegada durante la tarde y fin de servicios del trekking.",
+          "details": [
+            "Caminata final aproximada: 3 a 4 horas.",
+            "Descenso progresivo hacia el poblado de Cashapampa.",
+            "Llegada a Huaraz sujeta al ritmo del grupo y condiciones de ruta."
+          ],
+          "meals": "Desayuno y snack/almuerzo de ruta",
+          "distance": "Aprox. 10 km"
+        }
+      ],
       "search": {
         "kind": "package",
         "destinations": [
           "huaraz",
+          "huaraz-ancash",
           "huascaran",
           "cordillera-blanca"
         ],
         "durationKeys": [
           "4d3n",
           "4-dias",
-          "3-noches"
+          "3-noches",
+          "multi_day"
         ],
         "themes": [
           "trekking",
           "montaña",
           "reserva",
-          "nevados"
+          "nevados",
+          "campamento"
         ],
         "keywords": [
           "santa cruz trek",
           "trekking huascaran",
-          "cordillera blanca 4 dias"
+          "cordillera blanca 4 dias",
+          "punta union",
+          "cashapampa",
+          "vaqueria"
         ]
       },
-      "internalNotes": {
-        "researchSources": [
-          "SERNANP Huascarán",
-          "Huaraz Turismo Santa Cruz Trek"
-        ],
-        "operatorValidation": "required"
+      "images": {
+        "cover": "./assets/img/tours/santa-cruz-trek-parque-nacional-huascaran-4-dias-3-noches-cover.jpg",
+        "gallery": [
+          "./assets/img/tours/santa-cruz-trek-img1.jpg",
+          "./assets/img/tours/santa-cruz-trek-img2.jpg",
+          "./assets/img/tours/santa-cruz-trek-img3.jpg"
+        ]
       }
     },
     {
@@ -10695,6 +10612,375 @@
           "MINAM Parque Nacional Yaguas"
         ],
         "operatorValidation": "required"
+      }
+    },
+    {
+      "id": "huaraz_clasico_caminatas_cortas_4_dias_3_noches",
+      "slug": "huaraz-clasico-caminatas-cortas-4-dias-3-noches",
+      "title": "Huaraz Clásico 4D/3N: lagunas, cultura y caminatas cortas",
+      "productKind": "package",
+      "productFamily": "huaraz-package",
+      "destination": "huaraz-ancash",
+      "department": "ancash",
+      "region": "andes",
+      "location": "Huaraz / Cordillera Blanca / Parque Nacional Huascarán",
+      "categories": [
+        "multi_day",
+        "nature",
+        "cultural",
+        "reserve",
+        "mountain"
+      ],
+      "tags": [
+        "huaraz",
+        "llanganuco",
+        "pastoruri",
+        "chavin",
+        "laguna paron",
+        "caminatas cortas",
+        "paquete suave"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 4,
+        "nights": 3,
+        "label": "4D/3N"
+      },
+      "difficulty": "low",
+      "pricing": {
+        "basePrice": 189,
+        "currency": "USD",
+        "priceLabel": "Desde $189 por persona sin hotel",
+        "note": "tour base sin alojamiento",
+        "pricingStatus": "reference_pending_operator"
+      },
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "huaraz-ancash",
+        "nights": 3,
+        "currency": "USD",
+        "note": "Alojamiento opcional por 3 noches en Huaraz. Tarifas referenciales por habitación y por noche."
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "badge": "Caminatas suaves",
+      "rankScore": 94,
+      "featured": true,
+      "availability": {
+        "daily": true,
+        "schedule": [
+          "Salidas diarias bajo disponibilidad",
+          "Horario referencial 08:30",
+          "Recojo en hotel céntrico"
+        ]
+      },
+      "language": [
+        "Español",
+        "Inglés bajo solicitud"
+      ],
+      "internalNotes": {
+        "pricingUse": "Precio referencial de tour base sin alojamiento. Validar tarifa final con operador local, ingresos, temporada, comisiones y disponibilidad antes de confirmar.",
+        "contentStatus": "draft_ready_for_review"
+      },
+      "shortDescription": "Opción cómoda sin trekking fuerte: Llanganuco, Pastoruri, Chavín y Laguna Parón con caminatas cortas y paisajes de montaña.",
+      "description": "Paquete pensado para viajeros que desean conocer lo más representativo de Huaraz sin realizar caminatas largas ni rutas técnicas. Combina lagunas, miradores, cultura andina, el complejo arqueológico de Chavín de Huántar y paisajes de la Cordillera Blanca, manteniendo recorridos accesibles y caminatas breves para disfrutar con calma.",
+      "highlights": [
+        "Sin trekking fuerte",
+        "Lagunas de Llanganuco y Callejón de Huaylas",
+        "Glaciar Pastoruri con caminata corta de altura",
+        "Templo de Chavín de Huántar",
+        "Laguna Parón y miradores accesibles"
+      ],
+      "includes": [
+        "Traslado terminal o aeropuerto local – hotel – terminal en Huaraz según horario",
+        "Tours compartidos o privados según modalidad elegida",
+        "Guía local en español",
+        "Recojo diario desde hotel céntrico",
+        "Asistencia de Peru Nature antes y durante el viaje",
+        "Botiquín básico en excursiones"
+      ],
+      "excludes": [
+        "Alojamiento en Huaraz, se agrega como adicional en la reserva",
+        "Ingresos turísticos y boleto al Parque Nacional Huascarán",
+        "Alimentación no indicada",
+        "Paseos opcionales en bote o actividades no programadas",
+        "Bus Lima – Huaraz – Lima o vuelos nacionales",
+        "Seguro de viaje y gastos personales"
+      ],
+      "itinerary": [
+        {
+          "time": "Día 1",
+          "title": "Llegada a Huaraz – aclimatación suave – mirador o baños termales",
+          "description": "Recepción en Huaraz y traslado al hotel seleccionado si se agrega alojamiento. Día de aclimatación con caminata ligera por la ciudad, visita panorámica a miradores cercanos o salida opcional a Monterrey/Chancos según hora de llegada.",
+          "details": [
+            "Recomendado para adaptarse a la altitud antes de visitar zonas más altas.",
+            "Actividades flexibles según llegada del bus o vuelo.",
+            "Caminatas cortas, sin esfuerzo físico prolongado."
+          ],
+          "meals": "No incluye alimentación",
+          "distance": "Caminata urbana ligera"
+        },
+        {
+          "time": "Día 2",
+          "title": "Lagunas de Llanganuco – Yungay – Caraz",
+          "description": "Salida por el Callejón de Huaylas hacia Yungay. Visita al Campo Santo y continuación al sector Llanganuco para conocer la laguna Chinancocha, rodeada por los nevados Huascarán y Huandoy. Paradas en Caraz o Taricá para productos locales y retorno a Huaraz.",
+          "details": [
+            "Caminatas cortas para fotos y miradores.",
+            "Ideal para viajeros que buscan paisaje sin trekking exigente.",
+            "Posible paseo en bote opcional en temporada y según operación local."
+          ],
+          "meals": "Desayuno si el hotel lo incluye",
+          "distance": "Caminatas cortas en miradores"
+        },
+        {
+          "time": "Día 3",
+          "title": "Pastoruri: Ruta del Cambio Climático",
+          "description": "Excursión hacia el sector sur del Parque Nacional Huascarán. En ruta se observan paisajes altoandinos, lagunas, ojos de agua y puyas Raimondi. La visita a Pastoruri implica una caminata corta de altura, con opción de tomar caballo según disponibilidad local.",
+          "details": [
+            "Altitud alta; se recomienda ir despacio y llevar abrigo.",
+            "Caminata aproximada de 40 a 60 minutos según ritmo.",
+            "Enfoque escénico y educativo sobre glaciares y cambio climático."
+          ],
+          "meals": "Desayuno si el hotel lo incluye",
+          "distance": "Caminata corta de altura"
+        },
+        {
+          "time": "Día 4",
+          "title": "Chavín de Huántar o Laguna Parón – retorno",
+          "description": "Según preferencia y disponibilidad, se programa visita cultural al templo de Chavín de Huántar o salida paisajística a Laguna Parón. Ambas opciones permiten cerrar el viaje con historia, naturaleza y paradas fotográficas antes del retorno a Huaraz y conexión al terminal.",
+          "details": [
+            "Chavín recomendado para viajeros interesados en arqueología y cultura preinca.",
+            "Parón recomendado para paisajes de laguna turquesa y miradores cortos.",
+            "El orden de tours puede variar por clima, feriados o disponibilidad del operador."
+          ],
+          "meals": "Desayuno si el hotel lo incluye",
+          "distance": "Caminatas cortas"
+        }
+      ],
+      "search": {
+        "kind": "package",
+        "destinations": [
+          "huaraz",
+          "huaraz-ancash",
+          "huascaran",
+          "cordillera-blanca"
+        ],
+        "durationKeys": [
+          "4d3n",
+          "4-dias",
+          "3-noches",
+          "multi_day"
+        ],
+        "themes": [
+          "caminatas cortas",
+          "suave",
+          "naturaleza",
+          "cultural",
+          "lagunas"
+        ],
+        "keywords": [
+          "huaraz sin trekking",
+          "llanganuco",
+          "pastoruri",
+          "chavin",
+          "laguna paron",
+          "caminatas cortas"
+        ]
+      },
+      "images": {
+        "cover": "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg",
+        "gallery": [
+          "./assets/img/tours/huaraz-llanganuco-img1.jpg",
+          "./assets/img/tours/huaraz-pastoruri-img1.jpg",
+          "./assets/img/tours/huaraz-chavin-img1.jpg"
+        ]
+      }
+    },
+    {
+      "id": "huaraz_lagunas_trekking_laguna_69_4_dias_3_noches",
+      "slug": "huaraz-lagunas-trekking-laguna-69-4-dias-3-noches",
+      "title": "Huaraz Lagunas + Trekking Laguna 69 4D/3N",
+      "productKind": "package",
+      "productFamily": "huaraz-package",
+      "destination": "huaraz-ancash",
+      "department": "ancash",
+      "region": "andes",
+      "location": "Huaraz / Cordillera Blanca / Parque Nacional Huascarán",
+      "categories": [
+        "multi_day",
+        "trekking",
+        "nature",
+        "reserve",
+        "mountain",
+        "adventure"
+      ],
+      "tags": [
+        "huaraz",
+        "laguna 69",
+        "llanganuco",
+        "paron",
+        "pastoruri",
+        "trekking un dia",
+        "cordillera blanca"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 4,
+        "nights": 3,
+        "label": "4D/3N"
+      },
+      "difficulty": "medium",
+      "pricing": {
+        "basePrice": 239,
+        "currency": "USD",
+        "priceLabel": "Desde $239 por persona sin hotel",
+        "note": "tour base sin alojamiento",
+        "pricingStatus": "reference_pending_operator"
+      },
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "huaraz-ancash",
+        "nights": 3,
+        "currency": "USD",
+        "note": "Alojamiento opcional por 3 noches en Huaraz. Tarifas referenciales por habitación y por noche."
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "badge": "Mixto aventura",
+      "rankScore": 95,
+      "featured": true,
+      "availability": {
+        "daily": true,
+        "schedule": [
+          "Salidas diarias bajo disponibilidad",
+          "Horario referencial 08:30",
+          "Recojo en hotel céntrico"
+        ]
+      },
+      "language": [
+        "Español",
+        "Inglés bajo solicitud"
+      ],
+      "internalNotes": {
+        "pricingUse": "Precio referencial de tour base sin alojamiento. Validar tarifa final con operador local, ingresos, temporada, comisiones y disponibilidad antes de confirmar.",
+        "contentStatus": "draft_ready_for_review"
+      },
+      "shortDescription": "Programa combinado con estadía en Huaraz, lagunas escénicas y un día fuerte de trekking a Laguna 69.",
+      "description": "Opción equilibrada para viajeros que desean conocer Huaraz con base cómoda en la ciudad y dedicar un día completo a una caminata retadora. Combina aclimatación, Llanganuco o Parón, Pastoruri o Chavín y el trekking a Laguna 69, una de las caminatas más famosas de la Cordillera Blanca.",
+      "highlights": [
+        "Un día fuerte de trekking a Laguna 69",
+        "Base en Huaraz con hotel opcional",
+        "Lagunas de la Cordillera Blanca",
+        "Aclimatación antes del trekking",
+        "Ideal para viajeros activos con tiempo limitado"
+      ],
+      "includes": [
+        "Traslado terminal o aeropuerto local – hotel – terminal en Huaraz según horario",
+        "Tours diarios desde Huaraz según itinerario",
+        "Guía local para excursiones y trekking",
+        "Transporte turístico compartido o privado según modalidad",
+        "Recojo en hotel céntrico",
+        "Asistencia de Peru Nature y botiquín básico"
+      ],
+      "excludes": [
+        "Alojamiento en Huaraz, se agrega como adicional en la reserva",
+        "Ingresos al Parque Nacional Huascarán y atractivos turísticos",
+        "Alimentación, box lunch y bebidas",
+        "Bastones de trekking o equipo personal",
+        "Bus Lima – Huaraz – Lima o vuelos nacionales",
+        "Seguro de viaje, propinas y gastos personales"
+      ],
+      "itinerary": [
+        {
+          "time": "Día 1",
+          "title": "Llegada a Huaraz – aclimatación y paseo suave",
+          "description": "Recepción y traslado al hotel seleccionado si se agrega alojamiento. Tarde libre para aclimatar o paseo suave por Huaraz, miradores cercanos o baños termales según hora de llegada.",
+          "details": [
+            "Día importante para adaptarse antes de Laguna 69.",
+            "Se recomienda hidratarse, comer ligero y evitar esfuerzos fuertes.",
+            "Actividad flexible según llegada del pasajero."
+          ],
+          "meals": "No incluye alimentación",
+          "distance": "Caminata ligera opcional"
+        },
+        {
+          "time": "Día 2",
+          "title": "Llanganuco, Yungay y miradores de Cordillera Blanca",
+          "description": "Salida hacia el Callejón de Huaylas para visitar Yungay, el Campo Santo y las lagunas de Llanganuco. Jornada escénica de aclimatación con paradas fotográficas, caminatas cortas y vistas de nevados.",
+          "details": [
+            "Sirve como aclimatación progresiva.",
+            "Caminatas suaves alrededor de miradores y lagunas.",
+            "Retorno a Huaraz por la tarde."
+          ],
+          "meals": "Desayuno si el hotel lo incluye",
+          "distance": "Caminatas cortas"
+        },
+        {
+          "time": "Día 3",
+          "title": "Trekking Laguna 69 – día fuerte de montaña",
+          "description": "Salida de madrugada hacia Cebollapampa, pasando por Llanganuco. Inicio de caminata hacia Laguna 69, ubicada aproximadamente a 4,600 m, con ascenso progresivo entre quebradas, cascadas y vistas glaciares. Tiempo libre para fotos y retorno a Huaraz.",
+          "details": [
+            "Caminata retadora por altitud; requiere condición física moderada y aclimatación previa.",
+            "Duración referencial de caminata: 5 a 7 horas ida y vuelta según ritmo.",
+            "Llevar snack, agua, ropa de abrigo, impermeable y protector solar."
+          ],
+          "meals": "Desayuno si el hotel lo incluye; box lunch no incluido",
+          "distance": "Aprox. 12–14 km ida y vuelta"
+        },
+        {
+          "time": "Día 4",
+          "title": "Pastoruri o Laguna Parón – cierre de viaje",
+          "description": "Última excursión antes del retorno. Se puede programar Pastoruri para ver paisajes altoandinos y la ruta del cambio climático, o Laguna Parón para una visita paisajística con caminatas cortas y miradores. Traslado final al terminal según horario.",
+          "details": [
+            "La elección final se valida según clima, condición física y disponibilidad.",
+            "Pastoruri tiene caminata corta de altura; Parón es más escénico y flexible.",
+            "El orden de los días puede variar por operación local."
+          ],
+          "meals": "Desayuno si el hotel lo incluye",
+          "distance": "Caminata corta o media según opción"
+        }
+      ],
+      "search": {
+        "kind": "package",
+        "destinations": [
+          "huaraz",
+          "huaraz-ancash",
+          "huascaran",
+          "cordillera-blanca"
+        ],
+        "durationKeys": [
+          "4d3n",
+          "4-dias",
+          "3-noches",
+          "multi_day"
+        ],
+        "themes": [
+          "trekking",
+          "laguna 69",
+          "lagunas",
+          "aventura moderada",
+          "naturaleza"
+        ],
+        "keywords": [
+          "laguna 69",
+          "huaraz combinado",
+          "trekking un dia",
+          "llanganuco",
+          "pastoruri",
+          "laguna paron"
+        ]
+      },
+      "images": {
+        "cover": "./assets/img/tours/huaraz-laguna-69-paquete-cover.jpg",
+        "gallery": [
+          "./assets/img/tours/laguna-69-img1.jpg",
+          "./assets/img/tours/llanganuco-yungay-img1.jpg",
+          "./assets/img/tours/pastoruri-img1.jpg"
+        ]
       }
     }
   ],
