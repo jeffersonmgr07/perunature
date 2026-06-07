@@ -751,11 +751,11 @@ body {
 .booking-field select,
 .booking-discount-row input {
   width: 100%;
-  min-height: 46px;
+  min-height: 42px;
   border: 1px solid var(--pn-border);
   border-radius: 14px;
   background: #fbfcf8;
-  padding: 0 13px;
+  padding: 0 12px;
   color: var(--pn-text);
   font-weight: 700;
   outline: none;
@@ -926,7 +926,7 @@ body {
   padding: 20px;
   box-shadow: 0 12px 34px rgba(11,61,46,.06);
 }
-.pn-reservation-block { display: grid; gap: 10px; }
+.pn-reservation-block { display: grid; gap: 10px; align-content: start; align-self: start; }
 .pn-reservation-block + .pn-reservation-block { margin-top: 18px; }
 .pn-reservation-block__title {
   display: flex;
@@ -957,11 +957,11 @@ body {
 .pn-passenger-card input,
 .pn-passenger-card select {
   width: 100%;
-  min-height: 46px;
+  min-height: 42px;
   border: 1px solid var(--pn-border);
   border-radius: 14px;
   background: #fbfcf8;
-  padding: 0 13px;
+  padding: 0 12px;
   color: var(--pn-text);
   font-weight: 700;
   outline: none;
@@ -989,20 +989,40 @@ body {
 .pn-room-card small { color: var(--pn-muted); font-weight: 700; }
 .pn-hotel-card em,
 .pn-room-card em { color: var(--pn-green); font-style: normal; font-weight: 900; white-space: nowrap; }
-.pn-passenger-forms { display: grid; gap: 10px; margin-top: -4px; }
+.pn-passenger-forms { display: grid; gap: 8px; margin-top: 0; align-content: start; }
 .pn-passenger-card {
-  padding: 12px;
+  padding: 10px;
   border: 1px solid var(--pn-border);
   border-radius: 18px;
   background: #fbfcf8;
 }
-.pn-passenger-card h4 { margin: 0 0 12px; color: var(--pn-green); }
+.pn-passenger-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.pn-passenger-card h4 { margin: 0; color: var(--pn-green); font-size: 16px; }
+.pn-passenger-toggle {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid var(--pn-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--pn-green);
+  cursor: pointer;
+}
+.pn-passenger-card__body { margin-top: 10px; }
+.pn-passenger-card.is-collapsed .pn-passenger-card__body { display: none; }
 .pn-passenger-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px 10px;
 }
-.pn-passenger-grid label { display: grid; gap: 6px; color: var(--pn-muted); font-size: 12px; font-weight: 900; }
+.pn-passenger-grid label { display: grid; gap: 5px; color: var(--pn-muted); font-size: 12px; font-weight: 900; }
 .pn-reservation-summary {
   position: sticky;
   top: 14px;
@@ -1015,8 +1035,8 @@ body {
   line-height: 1.45;
 }
 .pn-payment-box {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 12px;
+  padding: 14px;
   border: 1px dashed rgba(11,61,46,.24);
   border-radius: 18px;
   background: rgba(126,217,87,.10);
@@ -1132,4 +1152,13 @@ body {
   .pn-room-card { grid-template-columns: auto 1fr; }
   .pn-hotel-card em,
   .pn-room-card em { grid-column: 2; }
+}
+
+.pn-field-error {
+  border-color: #b42318 !important;
+  background: #fff7f5 !important;
+}
+.pn-paypal-status {
+  min-height: 18px;
+  line-height: 1.4;
 }
