@@ -25,6 +25,45 @@ function initHeroSlider() {
   }, 5200);
 }
 
+function getPeruNatureCustomer() {
+  try {
+    return JSON.parse(localStorage.getItem('pn_customer') || 'null');
+  } catch (_error) {
+    return null;
+  }
+}
+
+function initCustomerHeader() {
+  const customer = getPeruNatureCustomer();
+  const profileLink = document.querySelector('[data-auth-link="profile"]');
+  const loginLink = document.querySelector('[data-auth-link="login"]');
+  const registerLink = document.querySelector('[data-auth-link="register"]');
+
+  if (profileLink) {
+    profileLink.href = customer ? './perfil.html' : './login.html?redirect=perfil.html';
+    profileLink.setAttribute('data-i18n', 'nav.viewReservation');
+  }
+
+  if (loginLink) {
+    loginLink.href = customer ? './perfil.html' : './login.html';
+    loginLink.setAttribute('data-i18n', customer ? 'nav.profile' : 'nav.loginShort');
+  }
+
+  if (registerLink) {
+    registerLink.href = customer ? '#' : './registro.html';
+    registerLink.setAttribute('data-i18n', customer ? 'nav.logout' : 'nav.register');
+    registerLink.onclick = customer
+      ? (event) => {
+          event.preventDefault();
+          localStorage.removeItem('pn_customer');
+          document.dispatchEvent(new CustomEvent('peruNature:customerChanged'));
+          window.location.href = './login.html';
+        }
+      : null;
+  }
+
+  if (window.PeruNatureI18n?.translate) window.PeruNatureI18n.translate();
+}
 
 function initReservationMenu() {
   document.querySelectorAll('.reservation-menu').forEach((menu) => {
@@ -77,8 +116,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   initMobileMenu();
   initReservationMenu();
+  initCustomerHeader();
   document.dispatchEvent(new CustomEvent('peruNature:componentsReady'));
 
   if (window.PeruNatureSearchBar) new PeruNatureSearchBar();
   initHeroSlider();
 });
+
+document.addEventListener('peruNature:customerChanged', initCustomerHeader);
+document.addEventListener('peruNature:languageChanged', initCustomerHeader);

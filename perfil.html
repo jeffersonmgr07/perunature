@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi perfil | Peru Nature</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="auth-page">
+    <div class="container">
+      <section class="profile-card">
+        <div class="profile-top">
+          <div>
+            <h1 data-i18n="profile.title">Mi perfil</h1>
+            <p data-i18n="profile.intro">Consulta tus datos registrados, próximas reservas e historial de viajes.</p>
+          </div>
+          <button id="logoutButton" class="auth-button auth-button--ghost" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span data-i18n="profile.logout">Cerrar sesión</span></button>
+        </div>
+        <div id="profileCustomerInfo" class="profile-meta"></div>
+      </section>
+
+      <div class="profile-shell" style="margin-top:24px">
+        <section class="profile-panel">
+          <h2 data-i18n="profile.upcoming">Próximas reservas</h2>
+          <div id="upcomingReservations" class="booking-list"><p data-i18n="profile.loading">Cargando reservas...</p></div>
+        </section>
+        <section class="profile-panel">
+          <h2 data-i18n="profile.history">Historial de viajes</h2>
+          <div id="pastReservations" class="booking-list"><p data-i18n="profile.loading">Cargando reservas...</p></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "";</script>
+  <script src="./assets/js/pages/profile.js"></script>
+</body>
+</html>

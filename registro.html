@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro | Peru Nature</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="auth-page">
+    <div class="container auth-shell">
+      <section class="auth-card">
+        <h1 data-i18n="auth.registerTitle">Crear cuenta</h1>
+        <p data-i18n="auth.registerIntro">Registra tus datos para completar más rápido tus reservas y consultar tu historial de viajes en Peru Nature.</p>
+
+        <form id="registerForm" class="auth-form">
+          <label><span data-i18n="auth.names">Nombre(s)</span><input type="text" name="names" required></label>
+          <label><span data-i18n="auth.lastnames">Apellidos</span><input type="text" name="lastnames" required></label>
+          <label><span data-i18n="auth.email">Correo electrónico</span><input type="email" name="email" required data-i18n-placeholder="auth.emailPlaceholder"></label>
+          <label><span data-i18n="auth.password">Contraseña</span><input type="password" name="password" required minlength="6" data-i18n-placeholder="auth.passwordPlaceholder"></label>
+          <label><span data-i18n="auth.whatsapp">WhatsApp</span><input type="tel" name="whatsapp" placeholder="+51 999 999 999" data-i18n-placeholder="auth.whatsappPlaceholder"></label>
+          <label><span data-i18n="auth.birthdate">Fecha de nacimiento</span><input type="date" name="birthdate"></label>
+          <label><span data-i18n="auth.gender">Género</span><select name="gender"><option value="" data-i18n="auth.select">Seleccionar</option><option value="Femenino" data-i18n="auth.female">Femenino</option><option value="Masculino" data-i18n="auth.male">Masculino</option><option value="No especifica" data-i18n="auth.unspecified">No especifica</option></select></label>
+          <label><span data-i18n="auth.nationality">Nacionalidad</span><input type="text" name="nationality" placeholder="País" data-i18n-placeholder="auth.countryPlaceholder"></label>
+          <label><span data-i18n="auth.language">Idioma</span><select name="language"><option value="es">Español</option><option value="en">English</option></select></label>
+          <label><span data-i18n="auth.documentType">Tipo de documento</span><select name="documentType"><option value="" data-i18n="auth.select">Seleccionar</option><option>DNI</option><option value="Pasaporte" data-i18n="auth.passport">Pasaporte</option><option value="Carné de extranjería" data-i18n="auth.foreignCard">Carné de extranjería</option></select></label>
+          <label class="full"><span data-i18n="auth.documentNumber">Número de documento</span><input type="text" name="documentNumber"></label>
+          <button type="submit"><i class="fa-solid fa-user-plus"></i> <span data-i18n="auth.createAccountButton">Crear cuenta</span></button>
+        </form>
+
+        <div class="auth-links">
+          <span><span data-i18n="auth.haveAccount">¿Ya tienes una cuenta?</span> <a href="./login.html" data-i18n="auth.signInHere">Inicia sesión aquí</a></span>
+        </div>
+
+        <p id="authStatus" class="auth-status" aria-live="polite"></p>
+      </section>
+
+      <aside class="auth-side-card">
+        <h2 data-i18n="auth.registerSideTitle">Datos del titular</h2>
+        <p data-i18n="auth.registerSideText">Cuando inicies sesión, los datos del primer pasajero se completarán automáticamente al iniciar una reserva.</p>
+        <a class="auth-button auth-button--ghost" href="./login.html"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="auth.signInButton">Ingresar</span></a>
+      </aside>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "";</script>
+  <script src="./assets/js/pages/customer-auth.js"></script>
+</body>
+</html>

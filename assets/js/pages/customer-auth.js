@@ -2,9 +2,35 @@
   const endpoint = window.PN_APPS_SCRIPT_URL || '';
   const loginForm = document.getElementById('loginForm');
   const registerForm = document.getElementById('registerForm');
-  const tabs = document.querySelectorAll('[data-auth-tab]');
-  const panels = document.querySelectorAll('[data-auth-panel]');
   const status = document.getElementById('authStatus');
+
+  function lang() {
+    return window.PeruNatureI18n?.getLang?.() || localStorage.getItem('pn_lang') || document.documentElement.lang || 'es';
+  }
+
+  function t(key) {
+    const dict = {
+      es: {
+        missingEndpoint: 'Falta configurar la URL de Apps Script.',
+        validating: 'Validando acceso...',
+        loginError: 'No se pudo iniciar sesión.',
+        loginOk: 'Sesión iniciada correctamente.',
+        creating: 'Creando cuenta...',
+        registerError: 'No se pudo registrar.',
+        registerOk: 'Cuenta creada correctamente.'
+      },
+      en: {
+        missingEndpoint: 'Apps Script URL is not configured.',
+        validating: 'Checking access...',
+        loginError: 'Could not sign in.',
+        loginOk: 'Signed in successfully.',
+        creating: 'Creating account...',
+        registerError: 'Could not register.',
+        registerOk: 'Account created successfully.'
+      }
+    };
+    return (dict[lang()] || dict.es)[key] || key;
+  }
 
   function setStatus(message, ok = false) {
     if (!status) return;
@@ -12,13 +38,20 @@
     status.classList.toggle('is-ok', ok);
   }
 
-  function showPanel(panel) {
-    tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.authTab === panel));
-    panels.forEach((item) => item.hidden = item.dataset.authPanel !== panel);
+  function redirectTarget() {
+    const params = new URLSearchParams(location.search);
+    return params.get('redirect') || './perfil.html';
+  }
+
+  function saveCustomerSession(json) {
+    const customer = json.customer || {};
+    if (json.token) customer.token = json.token;
+    localStorage.setItem('pn_customer', JSON.stringify(customer));
+    document.dispatchEvent(new CustomEvent('peruNature:customerChanged'));
   }
 
   async function post(action, payload) {
-    if (!endpoint) throw new Error('Falta configurar window.PN_APPS_SCRIPT_URL.');
+    if (!endpoint) throw new Error(t('missingEndpoint'));
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -27,19 +60,21 @@
     return response.json();
   }
 
-  tabs.forEach((tab) => tab.addEventListener('click', () => showPanel(tab.dataset.authTab)));
-
   loginForm?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const form = new FormData(loginForm);
-    setStatus('Validando acceso...');
+    setStatus(t('validating'));
     try {
-      const json = await post('loginCustomer', { email: form.get('email'), password: form.get('password') });
-      if (!json.ok) throw new Error(json.message || 'No se pudo iniciar sesión.');
-      localStorage.setItem('pn_customer', JSON.stringify(json.customer));
-      setStatus('Sesión iniciada correctamente. Tus datos se usarán para la reserva.', true);
+      const json = await post('loginCustomer', {
+        email: form.get('email'),
+        password: form.get('password')
+      });
+      if (!json.ok) throw new Error(json.message || t('loginError'));
+      saveCustomerSession(json);
+      setStatus(t('loginOk'), true);
+      window.setTimeout(() => { window.location.href = redirectTarget(); }, 450);
     } catch (error) {
-      setStatus(error.message);
+      setStatus(error.message || t('loginError'));
     }
   });
 
@@ -47,17 +82,15 @@
     event.preventDefault();
     const form = new FormData(registerForm);
     const customer = Object.fromEntries(form.entries());
-    setStatus('Creando cuenta...');
+    setStatus(t('creating'));
     try {
       const json = await post('registerCustomer', { customer });
-      if (!json.ok) throw new Error(json.message || 'No se pudo registrar.');
-      localStorage.setItem('pn_customer', JSON.stringify(json.customer));
-      setStatus('Cuenta creada correctamente. Ya puedes iniciar una reserva con tus datos precargados.', true);
+      if (!json.ok) throw new Error(json.message || t('registerError'));
+      saveCustomerSession(json);
+      setStatus(t('registerOk'), true);
+      window.setTimeout(() => { window.location.href = './perfil.html'; }, 550);
     } catch (error) {
-      setStatus(error.message);
+      setStatus(error.message || t('registerError'));
     }
   });
-
-  const params = new URLSearchParams(location.search);
-  showPanel(params.get('mode') === 'register' ? 'register' : 'login');
 })();
