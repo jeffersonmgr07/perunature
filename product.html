@@ -378,11 +378,8 @@
         <aside class="pn-reservation-summary">
           <div class="booking-summary-title">Resumen de pago</div>
           <div id="modalBookingSummary" class="booking-summary booking-price-summary"></div>
-          <p class="pn-summary-note">La cantidad de adultos, niños y alojamiento se toma del resumen de la página. Para cambiarlo, cierra este modal y ajusta la reserva en el producto.</p>
-
           <div class="pn-payment-box">
             <h3>Pago con PayPal</h3>
-            <p>El botón se mostrará con el total actualizado en USD.</p>
             <div id="paypalButtons" class="pn-paypal-buttons"></div>
             <p id="paypalStatus" class="pn-paypal-status"></p>
           </div>
@@ -440,11 +437,11 @@
 
   <!-- Configuración Peru Nature: pega aquí la URL de tu Web App de Apps Script cuando la publiques -->
   <script>
-    window.PN_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQPTMlnuoMUra2-LyZ_IHGOuiYzYXwORuAKKYqx_XJm04d3whsA_XetdPUI9cLF4Mq/exec";
+    window.PN_APPS_SCRIPT_URL = "";
   </script>
 
   <!-- PayPal sandbox: reemplazar client-id=sb por el Client ID real de Peru Nature al pasar a producción -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AUdRf58xVpVo-Iv_L_Je8UgE6ukF79cLynwRXUk3wU9WA4bfremVO0yRpkS3kFTUOE7O5ZOfoWMw8TlJ&currency=USD&components=buttons" data-namespace="paypal"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&components=buttons" data-namespace="paypal"></script>
 
   <!-- JS propio de product.html -->
   <script src="./assets/js/pages/product.js"></script>
