@@ -11,13 +11,50 @@
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <style>.simple-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.simple-card{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:42px;box-shadow:0 18px 45px rgba(11,61,46,.08)}.simple-card h1{margin:0 0 14px;color:#0b3d2e;font-size:clamp(32px,5vw,54px)}.simple-card p{color:#65736b;line-height:1.75;font-size:18px;max-width:760px}.simple-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.simple-actions a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 20px;font-weight:900}.simple-primary{background:#0b3d2e;color:#fff}.simple-secondary{border:1px solid rgba(11,61,46,.18);color:#0b3d2e}</style>
+  <style>
+    .auth-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.auth-card{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:34px;box-shadow:0 18px 45px rgba(11,61,46,.08);max-width:980px;margin:0 auto}.auth-card h1{margin:0 0 10px;color:#0b3d2e;font-size:clamp(30px,5vw,50px)}.auth-card p{color:#65736b;line-height:1.7}.auth-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.auth-tabs button{border:1px solid rgba(11,61,46,.16);background:#fff;color:#0b3d2e;border-radius:999px;padding:12px 18px;font-weight:900;cursor:pointer}.auth-tabs button.is-active{background:#0b3d2e;color:#fff}.auth-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.auth-form label{font-weight:800;color:#0b3d2e;font-size:14px}.auth-form input,.auth-form select{width:100%;margin-top:6px;border:1px solid rgba(11,61,46,.16);border-radius:14px;padding:12px;font:inherit}.auth-form .full{grid-column:1/-1}.auth-form button{grid-column:1/-1;border:0;border-radius:999px;background:#0b3d2e;color:#fff;padding:14px 20px;font-weight:900;cursor:pointer}.auth-status{margin-top:18px;color:#9b4b00;font-weight:800}.auth-status.is-ok{color:#0b6b3a}@media(max-width:720px){.auth-form{grid-template-columns:1fr}.auth-card{padding:24px}}
+  </style>
 </head>
 <body>
   <div id="header-container"></div>
-  <main class="simple-page"><div class="container"><section class="simple-card"><h1>Inicia sesión o regístrate</h1><p>Muy pronto podrás guardar tus viajes favoritos, revisar cotizaciones y gestionar tus reservas desde tu cuenta de Peru Nature.</p><div class="simple-actions"><a class="simple-primary" href="https://wa.me/51929715296" target="_blank" rel="noopener">Hablar con un asesor</a><a class="simple-secondary" href="./all-experiences.html">Explorar destinos</a></div></section></div></main>
+  <main class="auth-page">
+    <div class="container">
+      <section class="auth-card">
+        <h1>Clientes Peru Nature</h1>
+        <p>Regístrate o inicia sesión para que los datos del titular se completen automáticamente al iniciar una reserva.</p>
+        <div class="auth-tabs">
+          <button type="button" data-auth-tab="login">Iniciar sesión</button>
+          <button type="button" data-auth-tab="register">Registrarme</button>
+        </div>
+
+        <form id="loginForm" class="auth-form" data-auth-panel="login">
+          <label class="full">Correo electrónico<input type="email" name="email" required placeholder="correo@ejemplo.com"></label>
+          <label class="full">Contraseña<input type="password" name="password" required placeholder="Tu contraseña"></label>
+          <button type="submit">Ingresar</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" data-auth-panel="register" hidden>
+          <label>Nombre(s)<input type="text" name="names" required></label>
+          <label>Apellidos<input type="text" name="lastnames" required></label>
+          <label>Correo electrónico<input type="email" name="email" required></label>
+          <label>Contraseña<input type="password" name="password" required minlength="6"></label>
+          <label>WhatsApp<input type="tel" name="whatsapp" placeholder="+51 999 999 999"></label>
+          <label>Fecha de nacimiento<input type="date" name="birthdate"></label>
+          <label>Género<select name="gender"><option value="">Seleccionar</option><option>Femenino</option><option>Masculino</option><option>No especifica</option></select></label>
+          <label>Nacionalidad<input type="text" name="nationality" placeholder="País"></label>
+          <label>Idioma<select name="language"><option value="es">Español</option><option value="en">English</option></select></label>
+          <label>Tipo de documento<select name="documentType"><option value="">Seleccionar</option><option>DNI</option><option>Pasaporte</option><option>Carné de extranjería</option></select></label>
+          <label class="full">Número de documento<input type="text" name="documentNumber"></label>
+          <button type="submit">Crear cuenta</button>
+        </form>
+        <p id="authStatus" class="auth-status"></p>
+      </section>
+    </div>
+  </main>
   <div id="footer-container"></div>
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "";</script>
+  <script src="./assets/js/pages/customer-auth.js"></script>
 </body>
 </html>

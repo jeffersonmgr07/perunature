@@ -14,8 +14,8 @@ class PeruNatureProductPage {
     this.paypalRenderedKey = "";
     this.paypalRendering = false;
     this.pendingHotelId = "";
-    this.reservationEndpoint = ""; // Pega aquí tu URL Web App de Google Apps Script para guardar reservas.
-    this.couponEndpoint = ""; // Opcional: misma URL Web App para validar cupones desde Google Sheets.
+    this.reservationEndpoint = window.PN_APPS_SCRIPT_URL || ""; // Pega aquí tu URL Web App de Google Apps Script para guardar reservas.
+    this.couponEndpoint = window.PN_APPS_SCRIPT_URL || ""; // Opcional: misma URL Web App para validar cupones desde Google Sheets.
     this.booking = {
       adults: 2,
       children: 0,
@@ -1037,30 +1037,72 @@ class PeruNatureProductPage {
     }, 0);
   }
 
+  getLoggedCustomer() {
+    try {
+      return JSON.parse(localStorage.getItem("pn_customer") || "null") || null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  getCustomerValue(customer, keys, fallback = "") {
+    if (!customer) return fallback;
+    for (const key of keys) {
+      if (customer[key]) return customer[key];
+    }
+    return fallback;
+  }
+
   renderPassengerForms() {
     if (!this.elements.passengerForms) return;
     const total = this.getTravelerCount();
+    const customer = this.getLoggedCustomer();
     const cards = [];
 
     for (let i = 1; i <= total; i += 1) {
       const isAdult = i <= this.booking.adults;
+      const isHolder = i === 1 && customer;
+      const firstName = isHolder ? this.getCustomerValue(customer, ["names", "firstName", "name"]) : "";
+      const lastName = isHolder ? this.getCustomerValue(customer, ["lastnames", "lastName", "lastname"]) : "";
+      const documentType = isHolder ? this.getCustomerValue(customer, ["documentType"]) : "";
+      const documentNumber = isHolder ? this.getCustomerValue(customer, ["documentNumber"]) : "";
+      const nationality = isHolder ? this.getCustomerValue(customer, ["nationality"]) : "";
+      const birthdate = isHolder ? this.getCustomerValue(customer, ["birthdate"]) : "";
+      const gender = isHolder ? this.getCustomerValue(customer, ["gender"]) : "";
+      const language = isHolder ? this.getCustomerValue(customer, ["language"], "es") : "";
+
       cards.push(`
         <article class="pn-passenger-card">
-          <h4>Pasajero ${i} ${isAdult ? "Adulto" : "Niño"}</h4>
+          <h4>Pasajero ${i} ${isAdult ? "Adulto" : "Niño"}${isHolder ? " · Titular" : ""}</h4>
           <div class="pn-passenger-grid">
-            <label>Nombre(s)<input type="text" name="passenger_${i}_name" placeholder="Nombre completo"></label>
-            <label>Apellido(s)<input type="text" name="passenger_${i}_lastname" placeholder="Apellidos"></label>
+            <label>Nombre(s)<input type="text" name="passenger_${i}_name" placeholder="Nombre completo" value="${this.escapeHTML(firstName)}"></label>
+            <label>Apellido(s)<input type="text" name="passenger_${i}_lastname" placeholder="Apellidos" value="${this.escapeHTML(lastName)}"></label>
             <label>Tipo de documento
               <select name="passenger_${i}_doctype">
                 <option value="">Seleccionar</option>
-                <option value="DNI">DNI</option>
-                <option value="Pasaporte">Pasaporte</option>
-                <option value="Carné de extranjería">Carné de extranjería</option>
+                <option value="DNI" ${documentType === "DNI" ? "selected" : ""}>DNI</option>
+                <option value="Pasaporte" ${documentType === "Pasaporte" ? "selected" : ""}>Pasaporte</option>
+                <option value="Carné de extranjería" ${documentType === "Carné de extranjería" ? "selected" : ""}>Carné de extranjería</option>
               </select>
             </label>
-            <label>Número de documento<input type="text" name="passenger_${i}_doc" placeholder="Documento"></label>
-            <label>Nacionalidad<input type="text" name="passenger_${i}_nationality" placeholder="País"></label>
-            <label>Fecha de nacimiento<input type="date" name="passenger_${i}_birthdate"></label>
+            <label>Número de documento<input type="text" name="passenger_${i}_doc" placeholder="Documento" value="${this.escapeHTML(documentNumber)}"></label>
+            <label>Nacionalidad<input type="text" name="passenger_${i}_nationality" placeholder="País" value="${this.escapeHTML(nationality)}"></label>
+            <label>Fecha de nacimiento<input type="date" name="passenger_${i}_birthdate" value="${this.escapeHTML(birthdate)}"></label>
+            <label>Género
+              <select name="passenger_${i}_gender">
+                <option value="">Seleccionar</option>
+                <option value="Femenino" ${gender === "Femenino" ? "selected" : ""}>Femenino</option>
+                <option value="Masculino" ${gender === "Masculino" ? "selected" : ""}>Masculino</option>
+                <option value="No especifica" ${gender === "No especifica" ? "selected" : ""}>Prefiero no especificar</option>
+              </select>
+            </label>
+            <label>Idioma
+              <select name="passenger_${i}_language">
+                <option value="">Seleccionar</option>
+                <option value="es" ${language === "es" ? "selected" : ""}>Español</option>
+                <option value="en" ${language === "en" ? "selected" : ""}>English</option>
+              </select>
+            </label>
           </div>
         </article>
       `);
@@ -1070,8 +1112,8 @@ class PeruNatureProductPage {
       <article class="pn-passenger-card">
         <h4>Contacto principal</h4>
         <div class="pn-passenger-grid">
-          <label>Email<input type="email" name="contact_email" placeholder="correo@ejemplo.com"></label>
-          <label>WhatsApp<input type="tel" name="contact_phone" placeholder="+51 999 999 999"></label>
+          <label>Email<input type="email" name="contact_email" placeholder="correo@ejemplo.com" value="${this.escapeHTML(customer?.email || "")}"></label>
+          <label>WhatsApp<input type="tel" name="contact_phone" placeholder="+51 999 999 999" value="${this.escapeHTML(customer?.whatsapp || customer?.phone || "")}"></label>
         </div>
       </article>
     `);
@@ -1120,8 +1162,21 @@ class PeruNatureProductPage {
 
     const buttons = window.paypal.Buttons({
       style: { layout: "vertical", shape: "pill", label: "pay" },
-      createOrder: (_data, actions) => {
+      createOrder: async (_data, actions) => {
         const amount = Math.max(1, Number(totals.total || 0)).toFixed(2);
+        if (this.reservationEndpoint) {
+          try {
+            const response = await fetch(this.reservationEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify({ action: "createPayPalOrder", reservation: this.buildReservationPayload({ paymentStatus: "created" }) })
+            });
+            const json = await response.json();
+            if (json?.ok && json?.orderID) return json.orderID;
+          } catch (error) {
+            console.warn("[Peru Nature] PayPal server-side no disponible, se usará creación en navegador.", error);
+          }
+        }
         return actions.order.create({
           purchase_units: [{
             reference_id: this.reservationCode || this.createReservationCode(),
@@ -1130,10 +1185,26 @@ class PeruNatureProductPage {
           }]
         });
       },
-      onApprove: async (_data, actions) => {
-        const details = await actions.order.capture();
-        this.setText(this.elements.paypalStatus, `Pago aprobado. ID: ${details?.id || "confirmado"}`);
-        this.saveReservationToGoogleSheet({ paymentStatus: "paid", paypalId: details?.id || "" });
+      onApprove: async (data, actions) => {
+        let details = null;
+        if (this.reservationEndpoint && data?.orderID) {
+          try {
+            const response = await fetch(this.reservationEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify({ action: "capturePayPalOrder", orderID: data.orderID, reservation: this.buildReservationPayload({ paymentStatus: "paid", paypalId: data.orderID }) })
+            });
+            details = await response.json();
+          } catch (error) {
+            console.warn("[Peru Nature] No se pudo capturar PayPal desde Apps Script. Intentando captura del navegador.", error);
+          }
+        }
+        if (!details?.ok && actions?.order) {
+          details = await actions.order.capture();
+        }
+        const paypalId = details?.id || details?.orderID || data?.orderID || "confirmado";
+        this.setText(this.elements.paypalStatus, `Pago aprobado. ID: ${paypalId}`);
+        this.saveReservationToGoogleSheet({ paymentStatus: "paid", paypalId });
       },
       onCancel: () => this.setText(this.elements.paypalStatus, "Pago cancelado. Puedes intentarlo nuevamente o consultar por WhatsApp."),
       onError: () => this.setText(this.elements.paypalStatus, "No se pudo procesar PayPal. Verifica el Client ID o intenta nuevamente.")
@@ -1209,13 +1280,16 @@ class PeruNatureProductPage {
         <meta charset="utf-8">
         <title>${this.escapeHTML(tour.title)} | ${this.escapeHTML(this.reservationCode || "Reserva")}</title>
         <style>
-          *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}main{max-width:980px;margin:0 auto;padding:34px}.hero{position:relative;overflow:hidden;border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,61,46,.82),rgba(11,61,46,.86)),url('${this.escapeHTML(heroImage)}') center/cover;z-index:0}.hero>*{position:relative;z-index:1}.hero small{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:7px 12px;font-weight:900}.hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}.day{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #dfe7dd}.badge{background:#0b3d2e;color:#fff;border-radius:18px;min-height:60px;display:grid;place-items:center;text-align:center;font-weight:900}.day h2{margin:0;color:#0b3d2e;font-size:20px}.day p{line-height:1.65}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}@media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day{break-inside:avoid}.box{break-inside:avoid}}@media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.day{grid-template-columns:1fr}}
+          *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}main{max-width:980px;margin:0 auto;padding:34px}.hero{position:relative;overflow:hidden;border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,61,46,.82),rgba(11,61,46,.86)),url('${this.escapeHTML(heroImage)}') center/cover;z-index:0}.hero>*{position:relative;z-index:1}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}.hero-logo{background:#fff;border-radius:18px;padding:10px 16px;max-width:190px}.hero-logo img{display:block;max-width:155px;height:auto}.code-badge{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:9px 14px;font-weight:900;white-space:nowrap}.hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}.day{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #dfe7dd}.badge{background:#0b3d2e;color:#fff;border-radius:18px;min-height:60px;display:grid;place-items:center;text-align:center;font-weight:900}.day h2{margin:0;color:#0b3d2e;font-size:20px}.day p{line-height:1.65}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}@media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day{break-inside:avoid}.box{break-inside:avoid}}@media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.day{grid-template-columns:1fr}.hero-top{align-items:flex-start;flex-direction:column}}
         </style>
       </head>
       <body>
         <main>
           <section class="hero">
-            <small>Código de reserva: ${this.escapeHTML(this.reservationCode || "Por generar")}</small>
+            <div class="hero-top">
+              <div class="hero-logo"><img src="./assets/img/logos/logo-header.png" alt="Peru Nature"></div>
+              <div class="code-badge">Código de reserva: ${this.escapeHTML(this.reservationCode || "Por generar")}</div>
+            </div>
             <h1>${this.escapeHTML(tour.title)}</h1>
             <p>${this.escapeHTML(tour.shortDescription || tour.description || "Experiencia Peru Nature")}</p>
           </section>
@@ -1269,7 +1343,9 @@ class PeruNatureProductPage {
         documentType: card.querySelector("select[name$='_doctype']")?.value || "",
         documentNumber: card.querySelector("input[name$='_doc']")?.value || "",
         nationality: card.querySelector("input[name$='_nationality']")?.value || "",
-        birthdate: card.querySelector("input[name$='_birthdate']")?.value || ""
+        birthdate: card.querySelector("input[name$='_birthdate']")?.value || "",
+        gender: card.querySelector("select[name$='_gender']")?.value || "",
+        language: card.querySelector("select[name$='_language']")?.value || ""
       });
     });
     return data;
@@ -1282,10 +1358,9 @@ class PeruNatureProductPage {
     };
   }
 
-  async saveReservationToGoogleSheet(extra = {}) {
-    if (!this.reservationEndpoint) return;
+  buildReservationPayload(extra = {}) {
     const totals = this.calculateTotals();
-    const payload = {
+    return {
       code: this.reservationCode || this.createReservationCode(),
       createdAt: new Date().toISOString(),
       tourSlug: this.currentTour?.slug || "",
@@ -1298,19 +1373,27 @@ class PeruNatureProductPage {
       hotel: totals.hotel?.name || "",
       room: totals.roomCombo?.label || "",
       hotelSubtotal: totals.hotelSubtotal,
+      baseSubtotal: totals.adultsSubtotal + totals.childrenSubtotal,
+      discount: totals.discount,
       total: totals.total,
       currency: totals.currency,
       contact: this.getContactData(),
+      customer: this.getLoggedCustomer(),
       passengers: this.collectPassengerData(),
       ...extra
     };
+  }
+
+  async saveReservationToGoogleSheet(extra = {}) {
+    if (!this.reservationEndpoint) return;
+    const payload = this.buildReservationPayload(extra);
 
     try {
       await fetch(this.reservationEndpoint, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ action: "saveReservation", reservation: payload })
       });
     } catch (error) {
       console.warn("[Peru Nature] No se pudo guardar la reserva en Google Sheet", error);
@@ -1318,9 +1401,8 @@ class PeruNatureProductPage {
   }
 
   createReservationCode() {
-    const hex = Math.floor(Math.random() * 0xffffff).toString(16).toUpperCase().padStart(6, "0");
-    const tail = Date.now().toString(16).slice(-4).toUpperCase();
-    return `PNBAT${hex}${tail}`;
+    const hexFromTimestamp = Date.now().toString(16).toUpperCase().slice(-8);
+    return `PNAT${hexFromTimestamp}`;
   }
 
   extractAvailabilityItems(tour) {

@@ -2,8 +2,678 @@
   "brand": "Peru Nature",
   "currency": "USD",
   "version": "1.0.0",
-  "notes": "Tarifas referenciales para cotización dinámica. Reemplazar por hoteles contratados y tarifas netas cuando se confirme operador.",
+  "notes": "Tarifas referenciales. Cada destino queda preparado con 3 niveles de hotel: básico, intermedio y comfort. Reemplazar nombres/tarifas por hoteles contratados.",
   "destinations": {
+    "allpahuayo-mishana": {
+      "label": "Reserva Nacional Allpahuayo Mishana",
+      "hotels": [
+        {
+          "id": "allpahuayo-mishana-basico",
+          "name": "Hotel básico en Reserva Nacional Allpahuayo Mishana",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "allpahuayo-mishana-intermedio",
+          "name": "Hotel intermedio en Reserva Nacional Allpahuayo Mishana",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "allpahuayo-mishana-comfort",
+          "name": "Hotel comfort en Reserva Nacional Allpahuayo Mishana",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "arequipa-colca": {
+      "label": "Arequipa / Colca",
+      "hotels": [
+        {
+          "id": "arequipa-colca-basico",
+          "name": "Hotel básico en Arequipa",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "arequipa-colca-intermedio",
+          "name": "Hotel intermedio en Arequipa",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "arequipa-colca-comfort",
+          "name": "Hotel comfort en Arequipa",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "ayacucho": {
+      "label": "Ayacucho",
+      "hotels": [
+        {
+          "id": "ayacucho-basico",
+          "name": "Hotel básico en Ayacucho",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "ayacucho-intermedio",
+          "name": "Hotel intermedio en Ayacucho",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "ayacucho-comfort",
+          "name": "Hotel comfort en Ayacucho",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "bahuaja-sonene": {
+      "label": "Bahuaja Sonene / Madre de Dios",
+      "hotels": [
+        {
+          "id": "bahuaja-sonene-basico",
+          "name": "Hotel básico en Bahuaja Sonene",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "bahuaja-sonene-intermedio",
+          "name": "Hotel intermedio en Bahuaja Sonene",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "bahuaja-sonene-comfort",
+          "name": "Hotel comfort en Bahuaja Sonene",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "cajamarca": {
+      "label": "Cajamarca",
+      "hotels": [
+        {
+          "id": "cajamarca-basico",
+          "name": "Hotel básico en Cajamarca",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "cajamarca-intermedio",
+          "name": "Hotel intermedio en Cajamarca",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "cajamarca-comfort",
+          "name": "Hotel comfort en Cajamarca",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "chachapoyas-amazonas": {
+      "label": "Chachapoyas / Amazonas",
+      "hotels": [
+        {
+          "id": "chachapoyas-amazonas-basico",
+          "name": "Hotel básico en Chachapoyas",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "chachapoyas-amazonas-intermedio",
+          "name": "Hotel intermedio en Chachapoyas",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "chachapoyas-amazonas-comfort",
+          "name": "Hotel comfort en Chachapoyas",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "chiclayo-lambayeque": {
+      "label": "Chiclayo / Lambayeque",
+      "hotels": [
+        {
+          "id": "chiclayo-lambayeque-basico",
+          "name": "Hotel básico en Chiclayo",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "chiclayo-lambayeque-intermedio",
+          "name": "Hotel intermedio en Chiclayo",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "chiclayo-lambayeque-comfort",
+          "name": "Hotel comfort en Chiclayo",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "cordillera-azul": {
+      "label": "Parque Nacional Cordillera Azul",
+      "hotels": [
+        {
+          "id": "cordillera-azul-basico",
+          "name": "Hotel básico en Parque Nacional Cordillera Azul",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "cordillera-azul-intermedio",
+          "name": "Hotel intermedio en Parque Nacional Cordillera Azul",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "cordillera-azul-comfort",
+          "name": "Hotel comfort en Parque Nacional Cordillera Azul",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "huancavelica": {
+      "label": "Huancavelica",
+      "hotels": [
+        {
+          "id": "huancavelica-basico",
+          "name": "Hotel básico en Huancavelica",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "huancavelica-intermedio",
+          "name": "Hotel intermedio en Huancavelica",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "huancavelica-comfort",
+          "name": "Hotel comfort en Huancavelica",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "huanuco-ciudad": {
+      "label": "Huánuco",
+      "hotels": [
+        {
+          "id": "huanuco-ciudad-basico",
+          "name": "Hotel básico en Huánuco",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "huanuco-ciudad-intermedio",
+          "name": "Hotel intermedio en Huánuco",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "huanuco-ciudad-comfort",
+          "name": "Hotel comfort en Huánuco",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
     "huaraz-ancash": {
       "label": "Huaraz / Áncash",
       "hotels": [
@@ -68,6 +738,1413 @@
           },
           "tier": "Comfort",
           "image": "./assets/img/tours/hotel-huaraz-comfort.jpg"
+        }
+      ]
+    },
+    "huascaran": {
+      "label": "Parque Nacional Huascarán",
+      "hotels": [
+        {
+          "id": "huascaran-basico",
+          "name": "Hotel básico en Parque Nacional Huascarán",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "huascaran-intermedio",
+          "name": "Hotel intermedio en Parque Nacional Huascarán",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "huascaran-comfort",
+          "name": "Hotel comfort en Parque Nacional Huascarán",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "iquitos-loreto": {
+      "label": "Iquitos / Loreto",
+      "hotels": [
+        {
+          "id": "iquitos-loreto-basico",
+          "name": "Hotel básico en Iquitos",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "iquitos-loreto-intermedio",
+          "name": "Hotel intermedio en Iquitos",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "iquitos-loreto-comfort",
+          "name": "Hotel comfort en Iquitos",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "lima": {
+      "label": "Lima",
+      "hotels": [
+        {
+          "id": "lima-basico",
+          "name": "Hotel básico en Lima",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "lima-intermedio",
+          "name": "Hotel intermedio en Lima",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "lima-comfort",
+          "name": "Hotel comfort en Lima",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "mancora-piura": {
+      "label": "Máncora y Piura",
+      "hotels": [
+        {
+          "id": "mancora-piura-basico",
+          "name": "Hotel básico en Máncora y Piura",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "mancora-piura-intermedio",
+          "name": "Hotel intermedio en Máncora y Piura",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "mancora-piura-comfort",
+          "name": "Hotel comfort en Máncora y Piura",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "manu": {
+      "label": "Manu / Madre de Dios",
+      "hotels": [
+        {
+          "id": "manu-basico",
+          "name": "Hotel básico en Manu",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "manu-intermedio",
+          "name": "Hotel intermedio en Manu",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "manu-comfort",
+          "name": "Hotel comfort en Manu",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "matses": {
+      "label": "Reserva Nacional Matsés",
+      "hotels": [
+        {
+          "id": "matses-basico",
+          "name": "Hotel básico en Reserva Nacional Matsés",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "matses-intermedio",
+          "name": "Hotel intermedio en Reserva Nacional Matsés",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "matses-comfort",
+          "name": "Hotel comfort en Reserva Nacional Matsés",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "moquegua-ilo": {
+      "label": "Moquegua e Ilo",
+      "hotels": [
+        {
+          "id": "moquegua-ilo-basico",
+          "name": "Hotel básico en Moquegua e Ilo",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "moquegua-ilo-intermedio",
+          "name": "Hotel intermedio en Moquegua e Ilo",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "moquegua-ilo-comfort",
+          "name": "Hotel comfort en Moquegua e Ilo",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "oxapampa-pasco": {
+      "label": "Oxapampa, Pozuzo y Villa Rica",
+      "hotels": [
+        {
+          "id": "oxapampa-pasco-basico",
+          "name": "Hotel básico en Oxapampa, Pozuzo y Villa Rica",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "oxapampa-pasco-intermedio",
+          "name": "Hotel intermedio en Oxapampa, Pozuzo y Villa Rica",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "oxapampa-pasco-comfort",
+          "name": "Hotel comfort en Oxapampa, Pozuzo y Villa Rica",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "pacaya-samiria": {
+      "label": "Reserva Nacional Pacaya Samiria",
+      "hotels": [
+        {
+          "id": "pacaya-samiria-basico",
+          "name": "Hotel básico en Reserva Nacional Pacaya Samiria",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "pacaya-samiria-intermedio",
+          "name": "Hotel intermedio en Reserva Nacional Pacaya Samiria",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "pacaya-samiria-comfort",
+          "name": "Hotel comfort en Reserva Nacional Pacaya Samiria",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "paracas-ica": {
+      "label": "Ica / Paracas",
+      "hotels": [
+        {
+          "id": "paracas-ica-basico",
+          "name": "Hotel básico en Ica",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "paracas-ica-intermedio",
+          "name": "Hotel intermedio en Ica",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "paracas-ica-comfort",
+          "name": "Hotel comfort en Ica",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "pucallpa-ucayali": {
+      "label": "Pucallpa y Ucayali",
+      "hotels": [
+        {
+          "id": "pucallpa-ucayali-basico",
+          "name": "Hotel básico en Pucallpa y Ucayali",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "pucallpa-ucayali-intermedio",
+          "name": "Hotel intermedio en Pucallpa y Ucayali",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "pucallpa-ucayali-comfort",
+          "name": "Hotel comfort en Pucallpa y Ucayali",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "puno-titicaca": {
+      "label": "Puno y Lago Titicaca",
+      "hotels": [
+        {
+          "id": "puno-titicaca-basico",
+          "name": "Hotel básico en Puno y Lago Titicaca",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "puno-titicaca-intermedio",
+          "name": "Hotel intermedio en Puno y Lago Titicaca",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "puno-titicaca-comfort",
+          "name": "Hotel comfort en Puno y Lago Titicaca",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "selva-central-junin": {
+      "label": "Chanchamayo / Selva Central",
+      "hotels": [
+        {
+          "id": "selva-central-junin-basico",
+          "name": "Hotel básico en Chanchamayo",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "selva-central-junin-intermedio",
+          "name": "Hotel intermedio en Chanchamayo",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "selva-central-junin-comfort",
+          "name": "Hotel comfort en Chanchamayo",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tacna": {
+      "label": "Tacna",
+      "hotels": [
+        {
+          "id": "tacna-basico",
+          "name": "Hotel básico en Tacna",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tacna-intermedio",
+          "name": "Hotel intermedio en Tacna",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tacna-comfort",
+          "name": "Hotel comfort en Tacna",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tambopata": {
+      "label": "Tambopata / Madre de Dios",
+      "hotels": [
+        {
+          "id": "tambopata-basico",
+          "name": "Hotel básico en Tambopata",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tambopata-intermedio",
+          "name": "Hotel intermedio en Tambopata",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tambopata-comfort",
+          "name": "Hotel comfort en Tambopata",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tambopata-madre-de-dios": {
+      "label": "Madre de Dios",
+      "hotels": [
+        {
+          "id": "tambopata-madre-de-dios-basico",
+          "name": "Hotel básico en Madre de Dios",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tambopata-madre-de-dios-intermedio",
+          "name": "Hotel intermedio en Madre de Dios",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tambopata-madre-de-dios-comfort",
+          "name": "Hotel comfort en Madre de Dios",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tarapoto-san-martin": {
+      "label": "Tarapoto y San Martín",
+      "hotels": [
+        {
+          "id": "tarapoto-san-martin-basico",
+          "name": "Hotel básico en Tarapoto y San Martín",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tarapoto-san-martin-intermedio",
+          "name": "Hotel intermedio en Tarapoto y San Martín",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tarapoto-san-martin-comfort",
+          "name": "Hotel comfort en Tarapoto y San Martín",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tingo-maria-huanuco": {
+      "label": "Tingo María / Huánuco",
+      "hotels": [
+        {
+          "id": "tingo-maria-huanuco-basico",
+          "name": "Hotel básico en Tingo María",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tingo-maria-huanuco-intermedio",
+          "name": "Hotel intermedio en Tingo María",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tingo-maria-huanuco-comfort",
+          "name": "Hotel comfort en Tingo María",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "trujillo-la-libertad": {
+      "label": "Trujillo y La Libertad",
+      "hotels": [
+        {
+          "id": "trujillo-la-libertad-basico",
+          "name": "Hotel básico en Trujillo y La Libertad",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "trujillo-la-libertad-intermedio",
+          "name": "Hotel intermedio en Trujillo y La Libertad",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "trujillo-la-libertad-comfort",
+          "name": "Hotel comfort en Trujillo y La Libertad",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "tumbes-manglares": {
+      "label": "Tumbes, Manglares y Punta Sal",
+      "hotels": [
+        {
+          "id": "tumbes-manglares-basico",
+          "name": "Hotel básico en Tumbes, Manglares y Punta Sal",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "tumbes-manglares-intermedio",
+          "name": "Hotel intermedio en Tumbes, Manglares y Punta Sal",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "tumbes-manglares-comfort",
+          "name": "Hotel comfort en Tumbes, Manglares y Punta Sal",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
+        }
+      ]
+    },
+    "yaguas": {
+      "label": "Parque Nacional Yaguas",
+      "hotels": [
+        {
+          "id": "yaguas-basico",
+          "name": "Hotel básico en Parque Nacional Yaguas",
+          "category": "Estándar 3★",
+          "description": "Opción funcional y céntrica para viajeros que buscan una tarifa accesible sin perder comodidad básica.",
+          "includes": [
+            "Desayuno sujeto a horario del hotel",
+            "Baño privado",
+            "Wi-Fi"
+          ],
+          "roomRates": {
+            "single": 35,
+            "double": 48,
+            "matrimonial": 48,
+            "triple": 65,
+            "quadruple": 86
+          },
+          "tier": "Básico",
+          "image": "./assets/img/tours/hotel-peru-basico.jpg"
+        },
+        {
+          "id": "yaguas-intermedio",
+          "name": "Hotel intermedio en Parque Nacional Yaguas",
+          "category": "Comfort 3★ superior",
+          "description": "Alternativa recomendada para descansar mejor entre excursiones, con ubicación práctica y servicios más completos.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Recepción 24 horas"
+          ],
+          "roomRates": {
+            "single": 55,
+            "double": 74,
+            "matrimonial": 74,
+            "triple": 98,
+            "quadruple": 128
+          },
+          "tier": "Intermedio",
+          "image": "./assets/img/tours/hotel-peru-intermedio.jpg"
+        },
+        {
+          "id": "yaguas-comfort",
+          "name": "Hotel comfort en Parque Nacional Yaguas",
+          "category": "Comfort / boutique",
+          "description": "Opción superior para clientes que desean mayor comodidad, ambientes más cuidados y mejor experiencia de descanso.",
+          "includes": [
+            "Desayuno",
+            "Baño privado",
+            "Wi-Fi",
+            "Ambientes de descanso"
+          ],
+          "roomRates": {
+            "single": 82,
+            "double": 112,
+            "matrimonial": 112,
+            "triple": 148,
+            "quadruple": 188
+          },
+          "tier": "Comfort",
+          "image": "./assets/img/tours/hotel-peru-comfort.jpg"
         }
       ]
     }

@@ -11,13 +11,33 @@
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <style>.simple-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.simple-card{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:42px;box-shadow:0 18px 45px rgba(11,61,46,.08)}.simple-card h1{margin:0 0 14px;color:#0b3d2e;font-size:clamp(32px,5vw,54px)}.simple-card p{color:#65736b;line-height:1.75;font-size:18px;max-width:760px}.simple-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.simple-actions a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 20px;font-weight:900}.simple-primary{background:#0b3d2e;color:#fff}.simple-secondary{border:1px solid rgba(11,61,46,.18);color:#0b3d2e}</style>
+  <style>
+    .lookup-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.lookup-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}.lookup-card,.lookup-form{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:32px;box-shadow:0 18px 45px rgba(11,61,46,.08)}.lookup-form h1{margin:0 0 12px;color:#0b3d2e;font-size:clamp(30px,5vw,50px)}.lookup-form p{color:#65736b;line-height:1.7}.lookup-form label{display:block;margin-top:14px;font-weight:800;color:#0b3d2e}.lookup-form input{width:100%;margin-top:7px;border:1px solid rgba(11,61,46,.16);border-radius:14px;padding:12px;font:inherit}.lookup-form button{margin-top:18px;width:100%;border:0;border-radius:999px;background:#0b3d2e;color:#fff;padding:14px 20px;font-weight:900;cursor:pointer}.lookup-card h2,.lookup-card h3{color:#0b3d2e;margin-top:0}.lookup-card p,.lookup-card li{color:#48564d;line-height:1.65}@media(max-width:860px){.lookup-shell{grid-template-columns:1fr}.lookup-card,.lookup-form{padding:24px}}
+  </style>
 </head>
 <body>
   <div id="header-container"></div>
-  <main class="simple-page"><div class="container"><section class="simple-card"><h1>Consulta tu reserva</h1><p>Ingresa desde aquí para revisar el estado de tu viaje, coordinar datos de pasajeros o conversar con un asesor de Peru Nature.</p><div class="simple-actions"><a class="simple-primary" href="https://wa.me/51929715296" target="_blank" rel="noopener">Consultar por WhatsApp</a><a class="simple-secondary" href="./all-experiences.html">Ver experiencias</a></div></section></div></main>
+  <main class="lookup-page">
+    <div class="container lookup-shell">
+      <section class="lookup-form">
+        <h1>Consulta tu reserva</h1>
+        <p>Ingresa tu código de reserva y el apellido de uno de los pasajeros para ver el estado de tu viaje.</p>
+        <form id="reservationLookupForm">
+          <label>Código de reserva<input type="text" name="code" required placeholder="PNATD3F1C0"></label>
+          <label>Apellido del pasajero<input type="text" name="lastname" required placeholder="Apellido"></label>
+          <button type="submit">Buscar reserva</button>
+        </form>
+      </section>
+      <section id="reservationLookupResult" class="lookup-card">
+        <h2>Estado de reserva</h2>
+        <p>El detalle aparecerá aquí después de buscar.</p>
+      </section>
+    </div>
+  </main>
   <div id="footer-container"></div>
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "";</script>
+  <script src="./assets/js/pages/mi-reserva.js"></script>
 </body>
 </html>

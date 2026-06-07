@@ -345,10 +345,16 @@ class PeruNatureExperiencesPage {
 
   getDestinationOptions() {
     const merged = new Map([...this.destinations, ...this.departments]);
+    const hiddenDestinations = new Set(["callao"]);
+    const labelOverrides = {
+      "tambopata-madre-de-dios": "Madre de Dios",
+      "madre-de-dios": "Madre de Dios",
+      "cusco-madre-de-dios": "Madre de Dios"
+    };
 
     return Array.from(merged.entries())
-      .filter(([value]) => value && value !== "peru")
-      .map(([value, label]) => ({ value, label }))
+      .filter(([value]) => value && value !== "peru" && !hiddenDestinations.has(value))
+      .map(([value, label]) => ({ value, label: labelOverrides[value] || label }))
       .sort((a, b) => a.label.localeCompare(b.label, "es"));
   }
 

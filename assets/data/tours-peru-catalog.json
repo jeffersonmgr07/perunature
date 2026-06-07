@@ -117,7 +117,7 @@
     },
     {
       "code": "tambopata-madre-de-dios",
-      "name": "Tambopata y Madre de Dios",
+      "name": "Madre de Dios",
       "department": "madre-de-dios",
       "region": "amazonia"
     },
@@ -137,12 +137,6 @@
       "code": "lima",
       "name": "Lima",
       "department": "lima",
-      "region": "costa"
-    },
-    {
-      "code": "callao",
-      "name": "Callao",
-      "department": "callao",
       "region": "costa"
     },
     {
@@ -241,7 +235,7 @@
     },
     {
       "code": "tambopata",
-      "name": "Reserva Nacional Tambopata",
+      "name": "Tambopata",
       "region": "amazonia"
     },
     {
@@ -3612,10 +3606,7 @@
         "department": "callao",
         "region": "costa"
       },
-      "internalNotes": {
-        "pricingUse": "Precio referencial para vitrina. Validar con operador, ingresos, temporada, comisiones y disponibilidad antes de publicar como tarifa final.",
-        "contentStatus": "draft_ready_for_review"
-      }
+      "internalNotes": "{\"pricingUse\": \"Precio referencial para vitrina. Validar con operador, ingresos, temporada, comisiones y disponibilidad antes de publicar como tarifa final.\", \"contentStatus\": \"draft_ready_for_review\"} | Oculto temporalmente de filtros de destino."
     },
     {
       "id": "tour_la_libertad_ruta_moche_chimu_full_day",
@@ -9002,7 +8993,7 @@
       "shortDescription": "Viaje amazónico desde Cusco hacia el bosque nuboso y la selva del Manu, ideal para una primera inmersión en naturaleza, aves y navegación fluvial.",
       "description": "Explora la puerta de entrada al Parque Nacional del Manu en una ruta de cuatro días que desciende desde los Andes de Cusco hacia el bosque nuboso y la Amazonía. Es una experiencia perfecta para viajeros que buscan selva, aves, paisajes vivos y lodge amazónico sin llegar a las zonas más remotas del parque.",
       "destination": "manu",
-      "department": "cusco-madre-de-dios",
+      "department": "madre-de-dios",
       "region": "amazonia",
       "location": "Cusco / Paucartambo / Bosque nuboso / Atalaya / Manu",
       "categories": [
@@ -9140,7 +9131,7 @@
       "shortDescription": "Expedición profunda al Manu para navegar el río Manu, visitar cochas amazónicas y buscar fauna emblemática como lobos de río, caimanes, monos y guacamayos.",
       "description": "Una de las experiencias amazónicas más completas del Perú. Este programa ingresa a sectores más profundos del Manu, combinando navegación fluvial, cochas, caminatas, torres de observación y búsqueda de fauna silvestre.",
       "destination": "manu",
-      "department": "cusco-madre-de-dios",
+      "department": "madre-de-dios",
       "region": "amazonia",
       "location": "Cusco / Río Manu / Cocha Salvador / Cocha Otorongo",
       "categories": [
