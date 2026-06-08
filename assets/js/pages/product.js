@@ -600,10 +600,17 @@ class PeruNatureProductPage {
     this.bookingPanelReady = true;
 
     const today = new Date();
-    today.setDate(today.getDate() + 1);
-    const minDate = today.toISOString().split("T")[0];
-    if (this.elements.bookingDate) this.elements.bookingDate.min = minDate;
-    if (this.elements.modalBookingDate) this.elements.modalBookingDate.min = minDate;
+    today.setHours(0, 0, 0, 0);
+    today.setDate(today.getDate() + 3);
+    const minDate = this.formatDateInput(today);
+    if (this.elements.bookingDate) {
+      this.elements.bookingDate.min = minDate;
+      if (this.elements.bookingDate.value && this.elements.bookingDate.value < minDate) this.elements.bookingDate.value = "";
+    }
+    if (this.elements.modalBookingDate) {
+      this.elements.modalBookingDate.min = minDate;
+      if (this.elements.modalBookingDate.value && this.elements.modalBookingDate.value < minDate) this.elements.modalBookingDate.value = "";
+    }
 
     document.querySelectorAll(".booking-form .qty-btn").forEach((button) => {
       button.addEventListener("click", () => {
@@ -754,7 +761,7 @@ class PeruNatureProductPage {
 
     if (!this.reservationCode) this.reservationCode = this.createReservationCode();
     this.setText(this.elements.reservationCodeLabel, `Código de reserva: ${this.reservationCode}`);
-    this.setText(this.elements.modalTitle, tour?.productKind === "package" ? "Reserva tu paquete" : "Reserva tu experiencia");
+    this.setText(this.elements.modalTitle, "Datos de tu reserva");
 
     this.renderPassengerForms();
     this.updateBookingTotals();
@@ -1315,7 +1322,6 @@ class PeruNatureProductPage {
       `Tour: ${tour.title}`,
       `Destino: ${this.formatText(tour.destination || "Perú")}`,
       `Fecha: ${this.booking.date || this.elements.bookingDate?.value || "Por definir"}`,
-      `Horario: ${this.booking.time || this.elements.bookingTime?.value || "Por definir"}`,
       `Adultos: ${this.booking.adults}`,
       `Niños: ${this.booking.children}`,
       `Hotel: ${hotelText}`,
@@ -1355,7 +1361,25 @@ class PeruNatureProductPage {
     const hotelText = totals.hotel && totals.roomCombo
       ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} noches)`
       : "Alojamiento no agregado / por confirmar";
-    const heroImage = this.normalizeImages(tour.images)[0]?.src || "./assets/img/tour-placeholder.jpg";
+    const normalizedImages = this.normalizeImages(tour.images).map((image) => image.src).filter(Boolean);
+    const heroImage = normalizedImages[0] || "./assets/img/tour-placeholder.jpg";
+    const itineraryHtml = itinerary.map((item, index) => {
+      const dayLabel = this.getPrintDayLabel(item, index);
+      const imageSrc = item.image || item.imageSrc || item.photo || normalizedImages[index + 1] || normalizedImages[index % normalizedImages.length] || heroImage;
+      const title = item.title || `Día ${index + 1}`;
+      return `
+        <article class="day">
+          <div class="day-heading">
+            <span class="day-badge">${this.escapeHTML(dayLabel)}</span>
+            <h2>${this.escapeHTML(title)}</h2>
+          </div>
+          ${imageSrc ? `<img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}">` : ""}
+          <p>${this.escapeHTML(item.description || "")}</p>
+          ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map((d) => `<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
+          ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance, item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
+        </article>
+      `;
+    }).join("");
 
     const html = `
       <!doctype html>
@@ -1364,7 +1388,28 @@ class PeruNatureProductPage {
         <meta charset="utf-8">
         <title>${this.escapeHTML(tour.title)} | ${this.escapeHTML(this.reservationCode || "Reserva")}</title>
         <style>
-          *{box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}main{max-width:980px;margin:0 auto;padding:34px}.hero{position:relative;overflow:hidden;border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,61,46,.82),rgba(11,61,46,.86)),url('${this.escapeHTML(heroImage)}') center/cover;z-index:0}.hero>*{position:relative;z-index:1}.hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}.hero-logo{background:#fff;border-radius:18px;padding:10px 16px;max-width:190px}.hero-logo img{display:block;max-width:155px;height:auto}.code-badge{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:9px 14px;font-weight:900;white-space:nowrap}.hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}.day{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #dfe7dd}.badge{background:#0b3d2e;color:#fff;border-radius:18px;min-height:60px;display:grid;place-items:center;text-align:center;font-weight:900}.day h2{margin:0;color:#0b3d2e;font-size:20px}.day p{line-height:1.65}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}@media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day{break-inside:avoid}.box{break-inside:avoid}}@media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.day{grid-template-columns:1fr}.hero-top{align-items:flex-start;flex-direction:column}}
+          *{box-sizing:border-box}
+          body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}
+          main{max-width:980px;margin:0 auto;padding:34px}
+          .hero{position:relative;overflow:hidden;border-radius:24px;background:#0b3d2e;color:#fff;padding:30px;margin-bottom:24px}
+          .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,61,46,.82),rgba(11,61,46,.86)),url('${this.escapeHTML(heroImage)}') center/cover;z-index:0}
+          .hero>*{position:relative;z-index:1}
+          .hero-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:16px}
+          .hero-logo{background:transparent;border-radius:0;padding:0;max-width:190px}
+          .hero-logo img{display:block;max-width:165px;height:auto;filter:drop-shadow(0 8px 18px rgba(0,0,0,.22))}
+          .code-badge{display:inline-block;background:#7ed957;color:#0b3d2e;border-radius:999px;padding:9px 14px;font-weight:900;white-space:nowrap}
+          .hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}
+          .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+          .summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}
+          .day{padding:20px 0;border-bottom:1px solid #dfe7dd;break-inside:avoid}
+          .day-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+          .day-badge{display:inline-flex;align-items:center;justify-content:center;background:#0b3d2e;color:#fff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;white-space:nowrap}
+          .day h2{margin:0;color:#0b3d2e;font-size:20px;line-height:1.25}
+          .day-image{width:100%;height:230px;object-fit:cover;border-radius:18px;margin:0 0 12px;border:1px solid #dfe7dd;display:block}
+          .day p{line-height:1.65;margin:0 0 8px}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.day-meta{color:#0b3d2e}
+          .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}
+          @media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day,.box{break-inside:avoid}.day-image{height:190px}}
+          @media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.hero-top{align-items:flex-start;flex-direction:column}}
         </style>
       </head>
       <body>
@@ -1385,17 +1430,7 @@ class PeruNatureProductPage {
           </section>
           <section class="box"><h2>Alojamiento</h2><p>${this.escapeHTML(hotelText)}</p></section>
           <h2>Itinerario detallado</h2>
-          ${itinerary.map((item, index) => `
-            <article class="day">
-              <div class="badge">${this.escapeHTML(item.time || `Día ${index + 1}`)}</div>
-              <div>
-                <h2>${this.escapeHTML(item.title || `Día ${index + 1}`)}</h2>
-                <p>${this.escapeHTML(item.description || "")}</p>
-                ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map((d) => `<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
-                ${item.distance || item.meals ? `<p><strong>${this.escapeHTML([item.distance, item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
-              </div>
-            </article>
-          `).join("")}
+          ${itineraryHtml}
           <section class="cols">
             <div class="box"><h2>Incluye</h2><ul>${includes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
             <div class="box"><h2>No incluye</h2><ul>${excludes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
@@ -1485,8 +1520,21 @@ class PeruNatureProductPage {
   }
 
   createReservationCode() {
-    const hexFromTimestamp = Date.now().toString(16).toUpperCase().slice(-8);
-    return `PNAT${hexFromTimestamp}`;
+    const hexFromTimestamp = Date.now().toString(16).toUpperCase().slice(-6).padStart(6, "0");
+    return `PER${hexFromTimestamp}`;
+  }
+
+  formatDateInput(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  getPrintDayLabel(item, index) {
+    const time = String(item?.time || "").trim();
+    if (/d[ií]a\s*\d+/i.test(time)) return time;
+    return `Día ${index + 1}`;
   }
 
   extractAvailabilityItems(tour) {
