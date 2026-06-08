@@ -25,7 +25,7 @@
       "auth.passwordPlaceholder": "Tu contraseña",
       "auth.whatsappPlaceholder": "+51 999 999 999",
       "auth.countryPlaceholder": "País",
-      "lookup.codePlaceholder": "PNATD3F1C0",
+      "lookup.codePlaceholder": "PERD3F1C0",
       "lookup.lastnamePlaceholder": "Apellido",
       "auth.signInButton": "Ingresar",
       "auth.noAccount": "¿Aún no tienes una cuenta?",
@@ -128,7 +128,7 @@
       "booking.reserveWhatsApp": "Reservar por WhatsApp",
       "booking.startReservation": "Iniciar reserva",
       "booking.backCatalog": "Ver otras experiencias",
-      "booking.note": "Confirma tu fecha, viajeros y horario. Un asesor validará disponibilidad antes de cerrar la reserva.",
+      "booking.note": "Confirma tu fecha y viajeros. Un asesor validará disponibilidad antes de cerrar la reserva.",
       "booking.validCoupon": "Cupón aplicado: 10% de descuento.",
       "booking.invalidCoupon": "Cupón no válido para esta experiencia."
     },
@@ -154,7 +154,7 @@
       "auth.passwordPlaceholder": "Your password",
       "auth.whatsappPlaceholder": "+1 555 000 0000",
       "auth.countryPlaceholder": "Country",
-      "lookup.codePlaceholder": "PNATD3F1C0",
+      "lookup.codePlaceholder": "PERD3F1C0",
       "lookup.lastnamePlaceholder": "Last name",
       "auth.signInButton": "Sign in",
       "auth.noAccount": "Don’t have an account yet?",
@@ -257,7 +257,7 @@
       "booking.reserveWhatsApp": "Book via WhatsApp",
       "booking.startReservation": "Start booking",
       "booking.backCatalog": "See more experiences",
-      "booking.note": "Confirm your date, travelers and departure time. An advisor will validate availability before closing the booking.",
+      "booking.note": "Confirm your date and travelers. An advisor will validate availability before finalizing the booking.",
       "booking.validCoupon": "Coupon applied: 10% discount.",
       "booking.invalidCoupon": "Coupon not valid for this experience."
     }
