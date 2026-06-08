@@ -36,13 +36,13 @@ En el header, **Ver mi reserva** envía al login si el cliente no ha iniciado se
 El código se genera con este formato:
 
 ```text
-PNAT + fecha/hora en hexadecimal
+PER + fecha/hora en hexadecimal de 6 dígitos
 ```
 
 Ejemplo:
 
 ```text
-PNATD3F1C0A2
+PERD3F1C0
 ```
 
 ## 4. Hoteles por destino
