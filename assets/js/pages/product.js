@@ -763,7 +763,8 @@ class PeruNatureProductPage {
     const hotelNights = this.getHotelNights();
     const hotelSubtotal = hotel && roomCombo ? this.getRoomComboPrice(roomCombo, hotel) * hotelNights : 0;
     const subtotal = adultsSubtotal + childrenSubtotal + hotelSubtotal;
-    const discount = Math.round((adultsSubtotal + childrenSubtotal) * (this.booking.discountPercent / 100));
+    const discountableSubtotal = subtotal;
+    const discount = Math.round(discountableSubtotal * (this.booking.discountPercent / 100) * 100) / 100;
     const total = Math.max(0, subtotal - discount);
 
     return { currency, basePrice, childPrice, adultsSubtotal, childrenSubtotal, hotelSubtotal, subtotal, discount, total, hotel, roomCombo, hotelNights };
@@ -1094,7 +1095,7 @@ class PeruNatureProductPage {
   }
 
   normalizeHotelImages(hotel) {
-    const fallback = "./assets/img/hotels/hotel-3star-1.jpg";
+    const fallback = "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg";
     const raw = Array.isArray(hotel?.images)
       ? hotel.images
       : Array.isArray(hotel?.gallery)
@@ -1126,7 +1127,7 @@ class PeruNatureProductPage {
               src="${this.escapeHTML(image.src)}"
               alt="${this.escapeHTML(image.alt)}"
               loading="lazy"
-              onerror="this.src='./assets/img/hotels/hotel-3star-1.jpg'"
+              onerror="this.src='./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg'"
             >
           `).join("")}
         </div>

@@ -2,9 +2,9 @@
   "brand": "Peru Nature",
   "currency": "USD",
   "version": "2.0.0",
-  "updatedAt": "2026-06-09",
+  "updatedAt": "2026-06-10",
   "source": "peru_nature_catalogo_hoteles_google_sheets.xlsx",
-  "notes": "Catálogo generado desde hoja maestra. Tarifas de venta referenciales tomadas de OTAs/promedios públicos; tarifa neta = venta -10% en la hoja. No copiar fotos de OTAs sin autorización.",
+  "notes": "Catálogo generado desde hoja maestra. Tarifas de venta referenciales tomadas de OTAs/promedios públicos; tarifa neta = venta -10% en la hoja. No copiar fotos de OTAs sin autorización. Huaraz actualizado con Sosa House Hotel Boutique, Hospedaje Turístico Everest y Cordillera Hotel; tarifas calculadas desde BORRADOR HAURAZ.rtf con FX 3.3, cupón 15% y PayPal 5.4%.",
   "destinations": {
     "allpahuayo-mishana": {
       "label": "Reserva Nacional Allpahuayo Mishana",
@@ -1874,25 +1874,26 @@
       "hotels": [
         {
           "id": "HTL-HUARAZ-01",
-          "name": "Sosa Andina House",
+          "name": "Sosa House Hotel Boutique",
           "category": "2★",
           "tier": "Económico",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción económica y funcional para viajeros que priorizan ubicación y precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hotel boutique funcional para paquetes en Huaraz, con habitaciones simples, dobles/matrimoniales y triples según disponibilidad.",
           "includes": [
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 29.75,
-            "double": 35.0,
-            "matrimonial": 35.0,
-            "triple": 43.75,
-            "matri_adicional": 47.25,
-            "quadruple": 56.0,
-            "familiar_5": 66.5
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -1900,48 +1901,48 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 29.75,
-                "double": 35.0,
-                "matrimonial": 35.0,
-                "triple": 43.75,
-                "matri_adicional": 47.25,
-                "quadruple": 56.0,
-                "familiar_5": 66.5
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-2star-1.jpg",
-            "./assets/img/hotels/hotel-2star-2.jpg",
-            "./assets/img/hotels/hotel-2star-3.jpg"
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-2.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-2star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/huaraz.es.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUARAZ-02",
-          "name": "Hotel Turístico Everest",
+          "name": "Hospedaje Turístico Everest",
           "category": "3★",
           "tier": "Estándar",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción recomendada para clientes que buscan buena relación calidad-precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hospedaje turístico recomendado para viajeros que buscan buena relación precio-comodidad en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 49.3,
-            "double": 58.0,
-            "matrimonial": 58.0,
-            "triple": 72.5,
-            "matri_adicional": 78.3,
-            "quadruple": 92.8,
-            "familiar_5": 110.2
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -1949,25 +1950,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 49.3,
-                "double": 58.0,
-                "matrimonial": 58.0,
-                "triple": 72.5,
-                "matri_adicional": 78.3,
-                "quadruple": 92.8,
-                "familiar_5": 110.2
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-3star-1.jpg",
-            "./assets/img/hotels/hotel-3star-2.jpg",
-            "./assets/img/hotels/hotel-3star-3.jpg"
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-2.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-3star-1.jpg",
-          "sourceUrl": "https://www.booking.com/threestars/city/pe/huaraz-departamento-de-ancash.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUARAZ-03",
@@ -1975,23 +1976,23 @@
           "category": "4★",
           "tier": "Superior",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción superior para clientes que prefieren mayor comodidad y mejores servicios.",
+          "location": "Huaraz, Áncash",
+          "description": "Opción superior para pasajeros que prefieren mayor comodidad y mejores servicios durante su estadía en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
+            "Agua caliente",
+            "TV cable",
             "Wi-Fi",
-            "Recepción 24 horas",
-            "Mejor ubicación/servicios"
+            "Servicios superiores según disponibilidad"
           ],
           "roomRates": {
-            "single": 94.35,
-            "double": 111.0,
-            "matrimonial": 111.0,
-            "triple": 138.75,
-            "matri_adicional": 149.85,
-            "quadruple": 177.6,
-            "familiar_5": 210.9
+            "single": 97.98,
+            "double": 113.06,
+            "matrimonial": 113.06,
+            "triple": 169.59,
+            "matri_adicional": 169.59,
+            "quadruple": 226.12,
+            "familiar_5": 282.65
           },
           "ratePlans": [
             {
@@ -1999,25 +2000,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 94.35,
-                "double": 111.0,
-                "matrimonial": 111.0,
-                "triple": 138.75,
-                "matri_adicional": 149.85,
-                "quadruple": 177.6,
-                "familiar_5": 210.9
+                "single": 97.98,
+                "double": 113.06,
+                "matrimonial": 113.06,
+                "triple": 169.59,
+                "matri_adicional": 169.59,
+                "quadruple": 226.12,
+                "familiar_5": 282.65
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-4star-1.jpg",
-            "./assets/img/hotels/hotel-4star-2.jpg",
-            "./assets/img/hotels/hotel-4star-3.jpg"
+            "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-2.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-4star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/ancash.en-gb.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         }
       ]
     },
@@ -2029,25 +2030,26 @@
       "hotels": [
         {
           "id": "HTL-HUARAZ-ANCAS-01",
-          "name": "Sosa Andina House",
+          "name": "Sosa House Hotel Boutique",
           "category": "2★",
           "tier": "Económico",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción económica y funcional para viajeros que priorizan ubicación y precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hotel boutique funcional para paquetes en Huaraz, con habitaciones simples, dobles/matrimoniales y triples según disponibilidad.",
           "includes": [
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 29.75,
-            "double": 35.0,
-            "matrimonial": 35.0,
-            "triple": 43.75,
-            "matri_adicional": 47.25,
-            "quadruple": 56.0,
-            "familiar_5": 66.5
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -2055,48 +2057,48 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 29.75,
-                "double": 35.0,
-                "matrimonial": 35.0,
-                "triple": 43.75,
-                "matri_adicional": 47.25,
-                "quadruple": 56.0,
-                "familiar_5": 66.5
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-2star-1.jpg",
-            "./assets/img/hotels/hotel-2star-2.jpg",
-            "./assets/img/hotels/hotel-2star-3.jpg"
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-2.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-2star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/huaraz.es.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUARAZ-ANCAS-02",
-          "name": "Hotel Turístico Everest",
+          "name": "Hospedaje Turístico Everest",
           "category": "3★",
           "tier": "Estándar",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción recomendada para clientes que buscan buena relación calidad-precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hospedaje turístico recomendado para viajeros que buscan buena relación precio-comodidad en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 49.3,
-            "double": 58.0,
-            "matrimonial": 58.0,
-            "triple": 72.5,
-            "matri_adicional": 78.3,
-            "quadruple": 92.8,
-            "familiar_5": 110.2
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -2104,25 +2106,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 49.3,
-                "double": 58.0,
-                "matrimonial": 58.0,
-                "triple": 72.5,
-                "matri_adicional": 78.3,
-                "quadruple": 92.8,
-                "familiar_5": 110.2
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-3star-1.jpg",
-            "./assets/img/hotels/hotel-3star-2.jpg",
-            "./assets/img/hotels/hotel-3star-3.jpg"
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-2.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-3star-1.jpg",
-          "sourceUrl": "https://www.booking.com/threestars/city/pe/huaraz-departamento-de-ancash.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUARAZ-ANCAS-03",
@@ -2130,23 +2132,23 @@
           "category": "4★",
           "tier": "Superior",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción superior para clientes que prefieren mayor comodidad y mejores servicios.",
+          "location": "Huaraz, Áncash",
+          "description": "Opción superior para pasajeros que prefieren mayor comodidad y mejores servicios durante su estadía en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
+            "Agua caliente",
+            "TV cable",
             "Wi-Fi",
-            "Recepción 24 horas",
-            "Mejor ubicación/servicios"
+            "Servicios superiores según disponibilidad"
           ],
           "roomRates": {
-            "single": 94.35,
-            "double": 111.0,
-            "matrimonial": 111.0,
-            "triple": 138.75,
-            "matri_adicional": 149.85,
-            "quadruple": 177.6,
-            "familiar_5": 210.9
+            "single": 97.98,
+            "double": 113.06,
+            "matrimonial": 113.06,
+            "triple": 169.59,
+            "matri_adicional": 169.59,
+            "quadruple": 226.12,
+            "familiar_5": 282.65
           },
           "ratePlans": [
             {
@@ -2154,25 +2156,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 94.35,
-                "double": 111.0,
-                "matrimonial": 111.0,
-                "triple": 138.75,
-                "matri_adicional": 149.85,
-                "quadruple": 177.6,
-                "familiar_5": 210.9
+                "single": 97.98,
+                "double": 113.06,
+                "matrimonial": 113.06,
+                "triple": 169.59,
+                "matri_adicional": 169.59,
+                "quadruple": 226.12,
+                "familiar_5": 282.65
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-4star-1.jpg",
-            "./assets/img/hotels/hotel-4star-2.jpg",
-            "./assets/img/hotels/hotel-4star-3.jpg"
+            "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-2.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-4star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/ancash.en-gb.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         }
       ]
     },
@@ -2184,25 +2186,26 @@
       "hotels": [
         {
           "id": "HTL-HUASCARAN-01",
-          "name": "Sosa Andina House",
+          "name": "Sosa House Hotel Boutique",
           "category": "2★",
           "tier": "Económico",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción económica y funcional para viajeros que priorizan ubicación y precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hotel boutique funcional para paquetes en Huaraz, con habitaciones simples, dobles/matrimoniales y triples según disponibilidad.",
           "includes": [
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 29.75,
-            "double": 35.0,
-            "matrimonial": 35.0,
-            "triple": 43.75,
-            "matri_adicional": 47.25,
-            "quadruple": 56.0,
-            "familiar_5": 66.5
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -2210,48 +2213,48 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 29.75,
-                "double": 35.0,
-                "matrimonial": 35.0,
-                "triple": 43.75,
-                "matri_adicional": 47.25,
-                "quadruple": 56.0,
-                "familiar_5": 66.5
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-2star-1.jpg",
-            "./assets/img/hotels/hotel-2star-2.jpg",
-            "./assets/img/hotels/hotel-2star-3.jpg"
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-2.jpg",
+            "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-2star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/huaraz.es.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/sosa-house-hotel-boutique-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUASCARAN-02",
-          "name": "Hotel Turístico Everest",
+          "name": "Hospedaje Turístico Everest",
           "category": "3★",
           "tier": "Estándar",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción recomendada para clientes que buscan buena relación calidad-precio.",
+          "location": "Huaraz, Áncash",
+          "description": "Hospedaje turístico recomendado para viajeros que buscan buena relación precio-comodidad en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
-            "Wi-Fi",
-            "Recepción"
+            "Agua caliente",
+            "TV cable",
+            "Wi-Fi"
           ],
           "roomRates": {
-            "single": 49.3,
-            "double": 58.0,
-            "matrimonial": 58.0,
-            "triple": 72.5,
-            "matri_adicional": 78.3,
-            "quadruple": 92.8,
-            "familiar_5": 110.2
+            "single": 33.92,
+            "double": 45.22,
+            "matrimonial": 45.22,
+            "triple": 67.83,
+            "matri_adicional": 67.83,
+            "quadruple": 90.44,
+            "familiar_5": 113.05
           },
           "ratePlans": [
             {
@@ -2259,25 +2262,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 49.3,
-                "double": 58.0,
-                "matrimonial": 58.0,
-                "triple": 72.5,
-                "matri_adicional": 78.3,
-                "quadruple": 92.8,
-                "familiar_5": 110.2
+                "single": 33.92,
+                "double": 45.22,
+                "matrimonial": 45.22,
+                "triple": 67.83,
+                "matri_adicional": 67.83,
+                "quadruple": 90.44,
+                "familiar_5": 113.05
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-3star-1.jpg",
-            "./assets/img/hotels/hotel-3star-2.jpg",
-            "./assets/img/hotels/hotel-3star-3.jpg"
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-2.jpg",
+            "./assets/img/hotels/huaraz/hospedaje-turistico-everest-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-3star-1.jpg",
-          "sourceUrl": "https://www.booking.com/threestars/city/pe/huaraz-departamento-de-ancash.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/hospedaje-turistico-everest-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         },
         {
           "id": "HTL-HUASCARAN-03",
@@ -2285,23 +2288,23 @@
           "category": "4★",
           "tier": "Superior",
           "city": "Huaraz",
-          "location": "Zona céntrica / base operativa por confirmar",
-          "description": "Opción superior para clientes que prefieren mayor comodidad y mejores servicios.",
+          "location": "Huaraz, Áncash",
+          "description": "Opción superior para pasajeros que prefieren mayor comodidad y mejores servicios durante su estadía en Huaraz.",
           "includes": [
-            "Desayuno",
             "Baño privado",
+            "Agua caliente",
+            "TV cable",
             "Wi-Fi",
-            "Recepción 24 horas",
-            "Mejor ubicación/servicios"
+            "Servicios superiores según disponibilidad"
           ],
           "roomRates": {
-            "single": 94.35,
-            "double": 111.0,
-            "matrimonial": 111.0,
-            "triple": 138.75,
-            "matri_adicional": 149.85,
-            "quadruple": 177.6,
-            "familiar_5": 210.9
+            "single": 97.98,
+            "double": 113.06,
+            "matrimonial": 113.06,
+            "triple": 169.59,
+            "matri_adicional": 169.59,
+            "quadruple": 226.12,
+            "familiar_5": 282.65
           },
           "ratePlans": [
             {
@@ -2309,25 +2312,25 @@
               "label": "Habitación estándar",
               "currency": "USD",
               "roomRates": {
-                "single": 94.35,
-                "double": 111.0,
-                "matrimonial": 111.0,
-                "triple": 138.75,
-                "matri_adicional": 149.85,
-                "quadruple": 177.6,
-                "familiar_5": 210.9
+                "single": 97.98,
+                "double": 113.06,
+                "matrimonial": 113.06,
+                "triple": 169.59,
+                "matri_adicional": 169.59,
+                "quadruple": 226.12,
+                "familiar_5": 282.65
               }
             }
           ],
           "images": [
-            "./assets/img/hotels/hotel-4star-1.jpg",
-            "./assets/img/hotels/hotel-4star-2.jpg",
-            "./assets/img/hotels/hotel-4star-3.jpg"
+            "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-2.jpg",
+            "./assets/img/hotels/huaraz/cordillera-hotel-3.jpg"
           ],
-          "image": "./assets/img/hotels/hotel-4star-1.jpg",
-          "sourceUrl": "https://www.booking.com/region/pe/ancash.en-gb.html",
-          "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
-          "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+          "image": "./assets/img/hotels/huaraz/cordillera-hotel-1.jpg",
+          "source": "BORRADOR HAURAZ.rtf",
+          "rateNote": "Tarifa convertida desde PEN con TC 3.3 e inflada para soportar cupón máximo 15% y comisión PayPal 5.4%. Validar disponibilidad antes de confirmar.",
+          "researchStatus": "CLIENT_DRAFT_RATE_UPDATED"
         }
       ]
     },

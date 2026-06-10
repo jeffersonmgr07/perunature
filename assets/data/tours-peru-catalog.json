@@ -5,7 +5,7 @@
   "currency": "USD",
   "status": "research_batch_01_02_03_combined",
   "createdAt": "2026-05-04",
-  "notes": "Catálogo combinado Peru Nature Batch 01 + 02 + 03. Incluye tours nacionales, paquetes planos, reservas nacionales y áreas naturales. Tarifas referenciales pendientes de validación.",
+  "notes": "Catálogo combinado Peru Nature Batch 01 + 02 + 03. Incluye tours nacionales, paquetes planos, reservas nacionales y áreas naturales. Tarifas referenciales pendientes de validación. Actualización Huaraz: productos y tarifas ajustadas desde BORRADOR HAURAZ.rtf con FX 3.3, cupón 15% y comisión PayPal.",
   "categories": [
     {
       "code": "full_day",
@@ -1342,15 +1342,15 @@
     {
       "id": "tour_ancash_laguna69_full_day",
       "slug": "laguna-69-trekking-full-day-desde-huaraz",
-      "title": "Laguna 69 Trekking Full Day desde Huaraz",
+      "title": "Caminata Laguna 69 Full Day desde Huaraz",
       "productKind": "tour",
       "productFamily": "flat-tour",
-      "shortDescription": "La caminata más famosa de la Cordillera Blanca hacia una laguna turquesa a 4,600 m s. n. m.",
-      "description": "Una ruta imprescindible para amantes de la montaña. El trekking a Laguna 69 atraviesa paisajes glaciares, quebradas, riachuelos y vistas de nevados hasta llegar a una de las lagunas altoandinas más fotogénicas del Parque Nacional Huascarán. Recomendado para viajeros aclimatados y con condición física moderada.",
+      "shortDescription": "Trekking de un día hacia Laguna 69, una de las lagunas turquesas más famosas de la Cordillera Blanca.",
+      "description": "Caminata full day desde Huaraz hacia Laguna 69, ubicada a aproximadamente 4,600 m s. n. m. La ruta parte desde Cebollapampa y recorre paisajes de alta montaña, quebradas, cascadas, flora altoandina y vistas de nevados como Huascarán, Huandoy, Yanapaccha, Pisco y Chacraraju. Recomendado para viajeros aclimatados y con condición física moderada.",
       "destination": "huaraz-ancash",
       "department": "ancash",
       "region": "andes",
-      "location": "Huaraz / Parque Nacional Huascarán",
+      "location": "Huaraz / Cordillera Blanca / Yungay",
       "categories": [
         "full_day",
         "trekking",
@@ -1366,16 +1366,16 @@
       ],
       "duration": {
         "type": "full_day",
-        "hours": 14,
+        "hours": 12,
         "label": "Full Day"
       },
       "difficulty": "medium",
       "pricing": {
-        "basePrice": 35,
+        "basePrice": 32,
         "currency": "USD",
-        "priceLabel": "Desde $35 por persona",
+        "priceLabel": "Desde $32 por persona",
         "note": "por persona",
-        "pricingStatus": "reference_pending_operator"
+        "pricingStatus": "final_from_huaraz_draft_inflated_coupon_paypal"
       },
       "rating": {
         "score": 4.8,
@@ -1385,56 +1385,75 @@
         "cover": "./assets/img/tours/laguna-69-cover.jpg",
         "gallery": [
           "./assets/img/tours/laguna-69-img1.jpg",
-          "./assets/img/tours/laguna-69-img2.jpg",
-          "./assets/img/tours/laguna-69-img3.jpg"
+          "./assets/img/tours/huaraz-llanganuco-img1.jpg",
+          "./assets/img/tours/huaraz-laguna-69-paquete-cover.jpg"
         ]
       },
-      "badge": "Top ventas",
-      "rankScore": 91,
+      "badge": "Trekking",
+      "rankScore": 93,
       "featured": true,
       "highlights": [
-        "Laguna turquesa a 4,600 m",
-        "Parque Nacional Huascarán",
-        "Nevados de la Cordillera Blanca",
-        "Trekking de alta montaña"
+        "Laguna 69 a 4,600 m s. n. m.",
+        "Caminata de 6 a 7 horas ida y vuelta",
+        "Quebrada Llanganuco y Cebollapampa",
+        "Vistas de nevados de la Cordillera Blanca",
+        "Ruta moderada para viajeros aclimatados"
       ],
       "includes": [
-        "Transporte turístico compartido",
-        "Guía de caminata",
-        "Recojo en zona céntrica",
-        "Asistencia durante el recorrido"
+        "Guía de caminata en idioma español.",
+        "Transporte turístico Huaraz – Cebollapampa – Huaraz.",
+        "Recojo de hotel en zona urbana de Huaraz.",
+        "Asistencia durante la caminata."
       ],
       "excludes": [
-        "Ingreso al Parque Nacional Huascarán",
-        "Alimentación",
-        "Bastones o equipo personal",
-        "Seguro de viaje"
+        "Ingreso al Parque Nacional Huascarán.",
+        "Desayuno, box lunch, almuerzo y bebidas.",
+        "Bastones de trekking, equipo personal o ropa técnica.",
+        "Seguro de viaje.",
+        "Propinas y gastos personales."
       ],
       "itinerary": [
         {
           "time": "05:00",
-          "title": "Salida desde Huaraz",
-          "description": "Recojo temprano y viaje por el Callejón de Huaylas hacia Yungay y Cebollapampa."
+          "title": "Recojo en Huaraz y salida al Callejón de Huaylas",
+          "description": "Recojo en el hotel y salida hacia el norte de Huaraz, pasando por pueblos como Paltay, Taricá, Marcará, Carhuaz, Tinco y Tingua rumbo a Yungay.",
+          "details": [
+            "Ruta en transporte turístico hacia la entrada del Parque Nacional Huascarán.",
+            "Se recomienda llevar ropa de abrigo desde la salida."
+          ],
+          "image": "./assets/img/tours/llanganuco-yungay-cover.jpg"
         },
         {
-          "time": "08:30",
-          "title": "Inicio de caminata",
-          "description": "Inicio del trekking desde la zona de Cebollapampa/Yuraccorral dentro del Parque Nacional Huascarán."
+          "time": "08:00",
+          "title": "Llanganuco y llegada a Cebollapampa",
+          "description": "Ingreso por la Quebrada Llanganuco, pasando por las lagunas Chinancocha y Orconcocha. Parada breve para fotografías y continuación hasta Cebollapampa, punto de inicio del trekking.",
+          "details": [
+            "Desayuno no incluido durante la ruta.",
+            "Cebollapampa se ubica aproximadamente a 3,850–3,900 m s. n. m."
+          ],
+          "image": "./assets/img/tours/huaraz-llanganuco-img1.jpg"
+        },
+        {
+          "time": "09:00",
+          "title": "Trekking hacia Laguna 69",
+          "description": "Inicio de caminata de aproximadamente 3 horas hacia Laguna 69. En ruta se observan paisajes glaciares, quebradas, flora altoandina y nevados como Huascarán, Huandoy, Yanapaccha, Pisco y Chacraraju.",
+          "details": [
+            "Dificultad moderada por altura.",
+            "Llevar agua, snack, bloqueador, impermeable y bastones si los usa."
+          ],
+          "distance": "Aprox. 8 km de ascenso",
+          "image": "./assets/img/tours/laguna-69-img1.jpg"
         },
         {
           "time": "12:30",
-          "title": "Llegada a Laguna 69",
-          "description": "Tiempo para descansar, tomar fotografías y contemplar la laguna turquesa al pie de nevados."
-        },
-        {
-          "time": "14:00",
-          "title": "Retorno caminando",
-          "description": "Descenso por la misma ruta hacia el punto de movilidad."
-        },
-        {
-          "time": "19:00",
-          "title": "Llegada a Huaraz",
-          "description": "Arribo aproximado a la ciudad."
+          "title": "Laguna 69 y retorno a Huaraz",
+          "description": "Tiempo libre de aproximadamente 1 hora para caminar alrededor de la laguna, descansar y tomar fotografías. Retorno por el mismo sendero hasta Cebollapampa y traslado en transporte turístico hacia Huaraz.",
+          "details": [
+            "Retorno caminando aproximado: 3 horas.",
+            "Arribo referencial a Huaraz: 19:00."
+          ],
+          "distance": "6 a 7 horas de caminata total",
+          "image": "./assets/img/tours/laguna-69-cover.jpg"
         }
       ],
       "availability": {
@@ -1450,7 +1469,9 @@
         "kind": "tour",
         "destinations": [
           "huaraz-ancash",
-          "huaraz-parque-nacional-huascarán"
+          "huaraz",
+          "huascaran",
+          "cordillera-blanca"
         ],
         "durationKeys": [
           "full_day",
@@ -1473,8 +1494,23 @@
         "region": "andes"
       },
       "internalNotes": {
-        "pricingUse": "Precio referencial para vitrina. Validar con operador, ingresos, temporada, comisiones y disponibilidad antes de publicar como tarifa final.",
-        "contentStatus": "draft_ready_for_review"
+        "source": "BORRADOR HAURAZ.rtf",
+        "pricingFormula": "85 PEN/3.3/(0.85*(1-0.045)); redondeado hacia arriba al dólar entero.",
+        "recommendations": [
+          "Box lunch",
+          "Mochila de accesorios personales",
+          "Gorra o sombrero",
+          "Lentes de sol",
+          "Agua mineral o bebida rehidratante",
+          "Repelente",
+          "Protector solar",
+          "Chaqueta impermeable y cortaviento con capucha",
+          "Botiquín personal",
+          "Zapatillas o botas de trekking",
+          "Guantes, medias gruesas y pantalón cómodo",
+          "Bastones de trekking opcionales"
+        ],
+        "contentStatus": "updated_from_client_draft_2026_06_10"
       }
     },
     {
@@ -10608,28 +10644,26 @@
     {
       "id": "huaraz_clasico_caminatas_cortas_4_dias_3_noches",
       "slug": "huaraz-clasico-caminatas-cortas-4-dias-3-noches",
-      "title": "Huaraz Clásico 4D/3N: lagunas, cultura y caminatas cortas",
+      "title": "Huaraz Clásico 4D/3N: Llanganuco, Chavín, Pastoruri y City Tour",
       "productKind": "package",
       "productFamily": "huaraz-package",
       "destination": "huaraz-ancash",
       "department": "ancash",
       "region": "andes",
-      "location": "Huaraz / Cordillera Blanca / Parque Nacional Huascarán",
+      "location": "Huaraz / Callejón de Huaylas / Parque Nacional Huascarán",
       "categories": [
         "multi_day",
         "nature",
         "cultural",
-        "reserve",
         "mountain"
       ],
       "tags": [
         "huaraz",
+        "ancash",
+        "cordillera blanca",
         "llanganuco",
         "pastoruri",
-        "chavin",
-        "laguna paron",
-        "caminatas cortas",
-        "paquete suave"
+        "chavin"
       ],
       "duration": {
         "type": "multi_day",
@@ -10637,117 +10671,144 @@
         "nights": 3,
         "label": "4D/3N"
       },
-      "difficulty": "low",
+      "difficulty": "medium",
       "pricing": {
-        "basePrice": 189,
+        "basePrice": 159,
         "currency": "USD",
-        "priceLabel": "Desde $189 por persona sin hotel",
-        "note": "tour base sin alojamiento",
-        "pricingStatus": "reference_pending_operator"
+        "priceLabel": "Desde $159 por persona",
+        "note": "por persona; alojamiento según selección",
+        "pricingStatus": "final_from_huaraz_draft_inflated_coupon_paypal"
       },
       "hotelAddOn": {
         "enabled": true,
         "destination": "huaraz-ancash",
         "nights": 3,
         "currency": "USD",
-        "note": "Alojamiento opcional por 3 noches en Huaraz. Tarifas referenciales por habitación y por noche."
+        "note": "Alojamiento en Huaraz según selección. Tarifas por habitación y por noche; se calculan para 3 noche(s)."
       },
       "rating": {
         "score": 4.8,
         "reviewsCount": 0
       },
-      "badge": "Caminatas suaves",
-      "rankScore": 94,
+      "badge": "Clásico Huaraz",
+      "rankScore": 97,
       "featured": true,
       "availability": {
         "daily": true,
         "schedule": [
           "Salidas diarias bajo disponibilidad",
-          "Horario referencial 08:30",
-          "Recojo en hotel céntrico"
+          "Mínimo 2 pasajeros",
+          "No aplica en Semana Santa, Fiestas Patrias ni feriados"
         ]
       },
       "language": [
         "Español",
-        "Inglés bajo solicitud"
+        "Otros idiomas bajo consulta"
       ],
       "internalNotes": {
-        "pricingUse": "Precio referencial de tour base sin alojamiento. Validar tarifa final con operador local, ingresos, temporada, comisiones y disponibilidad antes de confirmar.",
-        "contentStatus": "draft_ready_for_review"
+        "source": "BORRADOR HAURAZ.rtf",
+        "pricingFormula": "PEN/3.3/(0.85*(1-0.045)); redondeado hacia arriba al dólar entero.",
+        "recommendations": [
+          "Zapatillas o zapatos cómodos para caminatas cortas durante el tour.",
+          "Ropa fresca y de manga larga para el día.",
+          "Ropa abrigada para la tarde, madrugada y zonas de altura.",
+          "Gorra o sombrero, lentes de sol y protector solar.",
+          "Accesorios de uso personal, cámara y/o filmadora.",
+          "Impermeable para posibles lluvias entre diciembre y marzo."
+        ],
+        "important": [
+          "Tarifa no aplicable en Semana Santa, Fiestas Patrias, feriados nacionales o regionales.",
+          "Precio válido viajando a partir de 2 personas.",
+          "Niños de 0 a 4 años no pagan ni tienen derecho a servicios; comparten servicios con sus padres.",
+          "Niños de 5 a 14 años: 15% de descuento compartiendo cama, mínimo 2 adultos acompañantes."
+        ],
+        "contentStatus": "updated_from_client_draft_2026_06_10"
       },
-      "shortDescription": "Opción cómoda sin trekking fuerte: Llanganuco, Pastoruri, Chavín y Laguna Parón con caminatas cortas y paisajes de montaña.",
-      "description": "Paquete pensado para viajeros que desean conocer lo más representativo de Huaraz sin realizar caminatas largas ni rutas técnicas. Combina lagunas, miradores, cultura andina, el complejo arqueológico de Chavín de Huántar y paisajes de la Cordillera Blanca, manteniendo recorridos accesibles y caminatas breves para disfrutar con calma.",
+      "shortDescription": "Programa clásico de Huaraz con lagunas, cultura Chavín, Pastoruri y city tour con alojamiento según selección.",
+      "description": "Paquete ideal para conocer lo más representativo de Huaraz en cuatro días: Callejón de Huaylas, Campo Santo de Yungay, Laguna de Llanganuco, Caraz, Chavín de Huántar, Nevado Pastoruri, City Tour Huaraz, Willcahuaín y Aguas Termales de Monterrey. Incluye asistencia local, tours en servicio compartido y alojamiento según la selección del pasajero.",
       "highlights": [
-        "Sin trekking fuerte",
-        "Lagunas de Llanganuco y Callejón de Huaylas",
-        "Glaciar Pastoruri con caminata corta de altura",
-        "Templo de Chavín de Huántar",
-        "Laguna Parón y miradores accesibles"
+        "Laguna de Llanganuco y vistas del Huascarán",
+        "Monumento Arqueológico Chavín de Huántar",
+        "Nevado Pastoruri y Ruta del Cambio Climático",
+        "City Tour Huaraz, Willcahuaín y Monterrey",
+        "Alojamiento según selección"
       ],
       "includes": [
-        "Traslado terminal o aeropuerto local – hotel – terminal en Huaraz según horario",
-        "Tours compartidos o privados según modalidad elegida",
-        "Guía local en español",
-        "Recojo diario desde hotel céntrico",
-        "Asistencia de Peru Nature antes y durante el viaje",
-        "Botiquín básico en excursiones"
+        "Recepción y traslados: terminal – hotel – terminal.",
+        "Alojamiento en Huaraz (según selección).",
+        "Tours SIC/Pool según itinerario con transporte turístico durante las visitas.",
+        "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco, Caraz y Taricá.",
+        "Laguna Querococha, Monumento Arqueológico Chavín de Huántar y Museo Nacional Chavín.",
+        "Nevado Pastoruri, pinturas rupestres y Puya Raimondi.",
+        "City Tour Huaraz, Willcahuaín y Aguas Termales de Monterrey.",
+        "Desayunos en el hotel según programa y hotel seleccionado.",
+        "Boletos turísticos de ingreso incluidos según operación local.",
+        "Guía oficial de turismo en idioma español; otros idiomas bajo consulta.",
+        "Recojo en el hotel para cada día de tour.",
+        "Entrega de material informativo de Huaraz.",
+        "Asistencia permanente de nuestra agencia de viajes.",
+        "I.G.V."
       ],
       "excludes": [
-        "Alojamiento en Huaraz, se agrega como adicional en la reserva",
-        "Ingresos turísticos y boleto al Parque Nacional Huascarán",
-        "Alimentación no indicada",
-        "Paseos opcionales en bote o actividades no programadas",
-        "Bus Lima – Huaraz – Lima o vuelos nacionales",
-        "Seguro de viaje y gastos personales"
+        "Transporte Lima – Huaraz – Lima o vuelos nacionales.",
+        "Almuerzos, cenas, bebidas y alimentación no indicada.",
+        "Actividades opcionales como bote, caballo, servicios termales especiales u otros no mencionados.",
+        "Seguro de viaje o seguro médico.",
+        "Propinas y gastos personales.",
+        "Servicios no especificados en el programa."
       ],
       "itinerary": [
         {
           "time": "Día 1",
-          "title": "Llegada a Huaraz – aclimatación suave – mirador o baños termales",
-          "description": "Recepción en Huaraz y traslado al hotel seleccionado si se agrega alojamiento. Día de aclimatación con caminata ligera por la ciudad, visita panorámica a miradores cercanos o salida opcional a Monterrey/Chancos según hora de llegada.",
+          "title": "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco y Caraz",
+          "description": "Recepción en el terminal, traslado al hotel seleccionado y salida por el Callejón de Huaylas. Se aprecian pueblos andinos y vistas de la Cordillera Blanca y Cordillera Negra, incluyendo el Nevado Huascarán. Visita a Carhuaz, Mancos, Yungay, Campo Santo de Yungay y Parque Nacional Huascarán para conocer la Laguna de Llanganuco, con tiempo para caminatas cortas, fotos y actividades opcionales como bote o caballo según operación local. Retorno por Caraz y artesanías de Taricá.",
           "details": [
-            "Recomendado para adaptarse a la altitud antes de visitar zonas más altas.",
-            "Actividades flexibles según llegada del bus o vuelo.",
-            "Caminatas cortas, sin esfuerzo físico prolongado."
+            "Horario referencial: recepción 06:00, desayuno 08:00 y salida 09:00.",
+            "Incluye paradas paisajísticas, visita cultural y degustaciones locales según disponibilidad.",
+            "Arribo referencial a Huaraz: 19:00."
           ],
-          "meals": "No incluye alimentación",
-          "distance": "Caminata urbana ligera"
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminatas cortas",
+          "image": "./assets/img/tours/huaraz-llanganuco-img1.jpg"
         },
         {
           "time": "Día 2",
-          "title": "Lagunas de Llanganuco – Yungay – Caraz",
-          "description": "Salida por el Callejón de Huaylas hacia Yungay. Visita al Campo Santo y continuación al sector Llanganuco para conocer la laguna Chinancocha, rodeada por los nevados Huascarán y Huandoy. Paradas en Caraz o Taricá para productos locales y retorno a Huaraz.",
+          "title": "Chavín de Huántar, Laguna Querococha y Museo Nacional Chavín",
+          "description": "Salida hacia el milenario templo de Chavín, pasando por Recuay, Ticapampa y Cátac. Parada en la Laguna Querococha para fotografías, observación del mapa del Perú en formación natural y cruce del túnel de Cahuish hacia el valle de Conchucos. Visita al Monumento Arqueológico de Chavín, sus galerías, plazas ceremoniales, Cabezas Clava, Lanzón de Chavín y Museo Nacional Chavín.",
           "details": [
-            "Caminatas cortas para fotos y miradores.",
-            "Ideal para viajeros que buscan paisaje sin trekking exigente.",
-            "Posible paseo en bote opcional en temporada y según operación local."
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Recorrido cultural con paisajes altoandinos y pueblos del valle de Conchucos.",
+            "Arribo referencial a Huaraz: 19:00."
           ],
-          "meals": "Desayuno si el hotel lo incluye",
-          "distance": "Caminatas cortas en miradores"
+          "meals": "Desayuno en el hotel",
+          "distance": "Visitas culturales y caminatas cortas",
+          "image": "./assets/img/tours/huaraz-chavin-img1.jpg"
         },
         {
           "time": "Día 3",
-          "title": "Pastoruri: Ruta del Cambio Climático",
-          "description": "Excursión hacia el sector sur del Parque Nacional Huascarán. En ruta se observan paisajes altoandinos, lagunas, ojos de agua y puyas Raimondi. La visita a Pastoruri implica una caminata corta de altura, con opción de tomar caballo según disponibilidad local.",
+          "title": "Nevado Pastoruri, Puya Raimondi y pinturas rupestres",
+          "description": "Excursión por la Ruta del Cambio Climático hacia el sector Pastoruri. En ruta se visitan Recuay, Ticapampa, Cátac, la quebrada Pachacoto, laguna de Patococha, aguas gasificadas de Pumashim, Puya Raimondi, manantiales de altura y pinturas rupestres. Caminata corta para observar el nevado Pastoruri, cuevas de hielo y laguna congelada según condiciones climáticas.",
           "details": [
-            "Altitud alta; se recomienda ir despacio y llevar abrigo.",
-            "Caminata aproximada de 40 a 60 minutos según ritmo.",
-            "Enfoque escénico y educativo sobre glaciares y cambio climático."
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Altitud alta; se recomienda caminar despacio, llevar abrigo e hidratarse.",
+            "Arribo referencial a Huaraz: 18:00."
           ],
-          "meals": "Desayuno si el hotel lo incluye",
-          "distance": "Caminata corta de altura"
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminata corta de altura",
+          "image": "./assets/img/tours/huaraz-pastoruri-img1.jpg"
         },
         {
           "time": "Día 4",
-          "title": "Chavín de Huántar o Laguna Parón – retorno",
-          "description": "Según preferencia y disponibilidad, se programa visita cultural al templo de Chavín de Huántar o salida paisajística a Laguna Parón. Ambas opciones permiten cerrar el viaje con historia, naturaleza y paradas fotográficas antes del retorno a Huaraz y conexión al terminal.",
+          "title": "City Tour Huaraz, Willcahuaín y Baños Termales de Monterrey",
+          "description": "Tour por Huaraz y alrededores: Plaza de Armas, Santuario del Señor de la Soledad, Jr. José Olaya, mirador natural de Huaraz, campiña de Paria, Complejo Arqueológico de Willcahuaín, museo de sitio y Aguas Termales de Monterrey. Tarde libre para feria artesanal y traslado al terminal a la hora coordinada.",
           "details": [
-            "Chavín recomendado para viajeros interesados en arqueología y cultura preinca.",
-            "Parón recomendado para paisajes de laguna turquesa y miradores cortos.",
-            "El orden de tours puede variar por clima, feriados o disponibilidad del operador."
+            "Horario referencial: desayuno 08:00 y salida 10:00 o 14:00 según operación.",
+            "Duración aproximada: 4 horas.",
+            "Opcional sujeto a coordinación: Honcopampa, Catarata de Yuracyacu y Baños Termales de Chancos."
           ],
-          "meals": "Desayuno si el hotel lo incluye",
-          "distance": "Caminatas cortas"
+          "meals": "Desayuno en el hotel",
+          "distance": "City tour y caminatas suaves",
+          "image": "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg"
         }
       ],
       "search": {
@@ -10765,27 +10826,27 @@
           "multi_day"
         ],
         "themes": [
-          "caminatas cortas",
-          "suave",
           "naturaleza",
-          "cultural",
-          "lagunas"
+          "cultura",
+          "montaña",
+          "lagunas",
+          "cordillera blanca"
         ],
         "keywords": [
-          "huaraz sin trekking",
+          "huaraz",
           "llanganuco",
-          "pastoruri",
           "chavin",
-          "laguna paron",
-          "caminatas cortas"
+          "pastoruri",
+          "callejon de huaylas",
+          "cordillera blanca"
         ]
       },
       "images": {
         "cover": "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg",
         "gallery": [
           "./assets/img/tours/huaraz-llanganuco-img1.jpg",
-          "./assets/img/tours/huaraz-pastoruri-img1.jpg",
-          "./assets/img/tours/huaraz-chavin-img1.jpg"
+          "./assets/img/tours/huaraz-chavin-img1.jpg",
+          "./assets/img/tours/huaraz-pastoruri-img1.jpg"
         ]
       }
     },
@@ -10798,7 +10859,7 @@
       "destination": "huaraz-ancash",
       "department": "ancash",
       "region": "andes",
-      "location": "Huaraz / Cordillera Blanca / Parque Nacional Huascarán",
+      "location": "Huaraz / Callejón de Huaylas / Parque Nacional Huascarán",
       "categories": [
         "multi_day",
         "trekking",
@@ -10811,10 +10872,9 @@
         "huaraz",
         "laguna 69",
         "llanganuco",
-        "paron",
         "pastoruri",
-        "trekking un dia",
-        "cordillera blanca"
+        "willcahuain",
+        "trekking"
       ],
       "duration": {
         "type": "multi_day",
@@ -10824,115 +10884,143 @@
       },
       "difficulty": "medium",
       "pricing": {
-        "basePrice": 239,
+        "basePrice": 159,
         "currency": "USD",
-        "priceLabel": "Desde $239 por persona sin hotel",
-        "note": "tour base sin alojamiento",
-        "pricingStatus": "reference_pending_operator"
+        "priceLabel": "Desde $159 por persona",
+        "note": "por persona; alojamiento según selección",
+        "pricingStatus": "final_from_huaraz_draft_inflated_coupon_paypal"
       },
       "hotelAddOn": {
         "enabled": true,
         "destination": "huaraz-ancash",
         "nights": 3,
         "currency": "USD",
-        "note": "Alojamiento opcional por 3 noches en Huaraz. Tarifas referenciales por habitación y por noche."
+        "note": "Alojamiento en Huaraz según selección. Tarifas por habitación y por noche; se calculan para 3 noche(s)."
       },
       "rating": {
         "score": 4.8,
         "reviewsCount": 0
       },
-      "badge": "Mixto aventura",
-      "rankScore": 95,
+      "badge": "Laguna 69",
+      "rankScore": 96,
       "featured": true,
       "availability": {
         "daily": true,
         "schedule": [
           "Salidas diarias bajo disponibilidad",
-          "Horario referencial 08:30",
-          "Recojo en hotel céntrico"
+          "Mínimo 2 pasajeros",
+          "No aplica en Semana Santa, Fiestas Patrias ni feriados"
         ]
       },
       "language": [
         "Español",
-        "Inglés bajo solicitud"
+        "Otros idiomas bajo consulta"
       ],
       "internalNotes": {
-        "pricingUse": "Precio referencial de tour base sin alojamiento. Validar tarifa final con operador local, ingresos, temporada, comisiones y disponibilidad antes de confirmar.",
-        "contentStatus": "draft_ready_for_review"
+        "source": "BORRADOR HAURAZ.rtf",
+        "pricingFormula": "PEN/3.3/(0.85*(1-0.045)); redondeado hacia arriba al dólar entero.",
+        "recommendations": [
+          "Zapatillas o zapatos cómodos para caminatas cortas durante el tour.",
+          "Ropa fresca y de manga larga para el día.",
+          "Ropa abrigada para la tarde, madrugada y zonas de altura.",
+          "Gorra o sombrero, lentes de sol y protector solar.",
+          "Accesorios de uso personal, cámara y/o filmadora.",
+          "Impermeable para posibles lluvias entre diciembre y marzo."
+        ],
+        "important": [
+          "Tarifa no aplicable en Semana Santa, Fiestas Patrias, feriados nacionales o regionales.",
+          "Precio válido viajando a partir de 2 personas.",
+          "Niños de 0 a 4 años no pagan ni tienen derecho a servicios; comparten servicios con sus padres.",
+          "Niños de 5 a 14 años: 15% de descuento compartiendo cama, mínimo 2 adultos acompañantes."
+        ],
+        "contentStatus": "updated_from_client_draft_2026_06_10"
       },
-      "shortDescription": "Programa combinado con estadía en Huaraz, lagunas escénicas y un día fuerte de trekking a Laguna 69.",
-      "description": "Opción equilibrada para viajeros que desean conocer Huaraz con base cómoda en la ciudad y dedicar un día completo a una caminata retadora. Combina aclimatación, Llanganuco o Parón, Pastoruri o Chavín y el trekking a Laguna 69, una de las caminatas más famosas de la Cordillera Blanca.",
+      "shortDescription": "Paquete de Huaraz con Llanganuco, trekking a Laguna 69, Pastoruri y city tour con alojamiento según selección.",
+      "description": "Programa de cuatro días para viajeros activos que desean combinar los atractivos clásicos de Huaraz con un día completo de trekking a Laguna 69. Mantiene la base del paquete clásico —Callejón de Huaylas, Llanganuco, Pastoruri y City Tour— reemplazando la jornada cultural de Chavín por la caminata a una de las lagunas más famosas de la Cordillera Blanca.",
       "highlights": [
-        "Un día fuerte de trekking a Laguna 69",
-        "Base en Huaraz con hotel opcional",
-        "Lagunas de la Cordillera Blanca",
-        "Aclimatación antes del trekking",
-        "Ideal para viajeros activos con tiempo limitado"
+        "Trekking a Laguna 69 a 4,600 m",
+        "Lagunas de Llanganuco y Callejón de Huaylas",
+        "Nevado Pastoruri y Puya Raimondi",
+        "City Tour Huaraz y Willcahuaín",
+        "Alojamiento según selección"
       ],
       "includes": [
-        "Traslado terminal o aeropuerto local – hotel – terminal en Huaraz según horario",
-        "Tours diarios desde Huaraz según itinerario",
-        "Guía local para excursiones y trekking",
-        "Transporte turístico compartido o privado según modalidad",
-        "Recojo en hotel céntrico",
-        "Asistencia de Peru Nature y botiquín básico"
+        "Recepción y traslados: terminal – hotel – terminal.",
+        "Alojamiento en Huaraz (según selección).",
+        "Tours SIC/Pool según itinerario con transporte turístico durante las visitas.",
+        "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco, Caraz y Taricá.",
+        "Trekking Laguna 69 con transporte turístico y guía de caminata.",
+        "Nevado Pastoruri, pinturas rupestres y Puya Raimondi.",
+        "City Tour Huaraz, Willcahuaín y Aguas Termales de Monterrey.",
+        "Desayunos en el hotel según programa y hotel seleccionado.",
+        "Boletos turísticos de ingreso incluidos según operación local.",
+        "Guía oficial de turismo en idioma español; otros idiomas bajo consulta.",
+        "Recojo en el hotel para cada día de tour.",
+        "Entrega de material informativo de Huaraz.",
+        "Asistencia permanente de nuestra agencia de viajes.",
+        "I.G.V."
       ],
       "excludes": [
-        "Alojamiento en Huaraz, se agrega como adicional en la reserva",
-        "Ingresos al Parque Nacional Huascarán y atractivos turísticos",
-        "Alimentación, box lunch y bebidas",
-        "Bastones de trekking o equipo personal",
-        "Bus Lima – Huaraz – Lima o vuelos nacionales",
-        "Seguro de viaje, propinas y gastos personales"
+        "Transporte Lima – Huaraz – Lima o vuelos nacionales.",
+        "Almuerzos, cenas, bebidas y alimentación no indicada.",
+        "Actividades opcionales como bote, caballo, servicios termales especiales u otros no mencionados.",
+        "Seguro de viaje o seguro médico.",
+        "Propinas y gastos personales.",
+        "Servicios no especificados en el programa.",
+        "Box lunch para Laguna 69, salvo confirmación expresa."
       ],
       "itinerary": [
         {
           "time": "Día 1",
-          "title": "Llegada a Huaraz – aclimatación y paseo suave",
-          "description": "Recepción y traslado al hotel seleccionado si se agrega alojamiento. Tarde libre para aclimatar o paseo suave por Huaraz, miradores cercanos o baños termales según hora de llegada.",
+          "title": "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco y Caraz",
+          "description": "Recepción en el terminal, traslado al hotel seleccionado y salida por el Callejón de Huaylas. Se aprecian pueblos andinos y vistas de la Cordillera Blanca y Cordillera Negra, incluyendo el Nevado Huascarán. Visita a Carhuaz, Mancos, Yungay, Campo Santo de Yungay y Parque Nacional Huascarán para conocer la Laguna de Llanganuco, con tiempo para caminatas cortas, fotos y actividades opcionales como bote o caballo según operación local. Retorno por Caraz y artesanías de Taricá.",
           "details": [
-            "Día importante para adaptarse antes de Laguna 69.",
-            "Se recomienda hidratarse, comer ligero y evitar esfuerzos fuertes.",
-            "Actividad flexible según llegada del pasajero."
+            "Horario referencial: recepción 06:00, desayuno 08:00 y salida 09:00.",
+            "Incluye paradas paisajísticas, visita cultural y degustaciones locales según disponibilidad.",
+            "Arribo referencial a Huaraz: 19:00."
           ],
-          "meals": "No incluye alimentación",
-          "distance": "Caminata ligera opcional"
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminatas cortas",
+          "image": "./assets/img/tours/huaraz-llanganuco-img1.jpg"
         },
         {
           "time": "Día 2",
-          "title": "Llanganuco, Yungay y miradores de Cordillera Blanca",
-          "description": "Salida hacia el Callejón de Huaylas para visitar Yungay, el Campo Santo y las lagunas de Llanganuco. Jornada escénica de aclimatación con paradas fotográficas, caminatas cortas y vistas de nevados.",
+          "title": "Trekking Laguna 69 desde Cebollapampa",
+          "description": "Salida de madrugada hacia el norte de Huaraz por el Callejón de Huaylas, pasando por Yungay e ingresando al Parque Nacional Huascarán. Se atraviesa la Quebrada Llanganuco y sus lagunas hasta Cebollapampa, punto de inicio de la caminata. El trekking asciende entre quebradas, cascadas, flora altoandina y vistas de nevados como Huascarán, Huandoy, Yanapaccha, Pisco y Chacraraju hasta llegar a Laguna 69, ubicada aproximadamente a 4,600 m s. n. m. Retorno por el mismo sendero y regreso a Huaraz.",
           "details": [
-            "Sirve como aclimatación progresiva.",
-            "Caminatas suaves alrededor de miradores y lagunas.",
-            "Retorno a Huaraz por la tarde."
+            "Horario referencial: salida 05:00 y retorno aproximado 19:00.",
+            "Caminata moderada a exigente por altura: 6 a 7 horas ida y vuelta según ritmo.",
+            "Se recomienda box lunch, agua, ropa de abrigo, impermeable, bastones y protector solar."
           ],
-          "meals": "Desayuno si el hotel lo incluye",
-          "distance": "Caminatas cortas"
+          "meals": "Desayuno y box lunch no incluidos salvo confirmación",
+          "distance": "Aprox. 8 km de ascenso / 6 a 7 horas ida y vuelta",
+          "image": "./assets/img/tours/laguna-69-img1.jpg"
         },
         {
           "time": "Día 3",
-          "title": "Trekking Laguna 69 – día fuerte de montaña",
-          "description": "Salida de madrugada hacia Cebollapampa, pasando por Llanganuco. Inicio de caminata hacia Laguna 69, ubicada aproximadamente a 4,600 m, con ascenso progresivo entre quebradas, cascadas y vistas glaciares. Tiempo libre para fotos y retorno a Huaraz.",
+          "title": "Nevado Pastoruri, Puya Raimondi y pinturas rupestres",
+          "description": "Excursión por la Ruta del Cambio Climático hacia el sector Pastoruri. En ruta se visitan Recuay, Ticapampa, Cátac, la quebrada Pachacoto, laguna de Patococha, aguas gasificadas de Pumashim, Puya Raimondi, manantiales de altura y pinturas rupestres. Caminata corta para observar el nevado Pastoruri, cuevas de hielo y laguna congelada según condiciones climáticas.",
           "details": [
-            "Caminata retadora por altitud; requiere condición física moderada y aclimatación previa.",
-            "Duración referencial de caminata: 5 a 7 horas ida y vuelta según ritmo.",
-            "Llevar snack, agua, ropa de abrigo, impermeable y protector solar."
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Altitud alta; se recomienda caminar despacio, llevar abrigo e hidratarse.",
+            "Arribo referencial a Huaraz: 18:00."
           ],
-          "meals": "Desayuno si el hotel lo incluye; box lunch no incluido",
-          "distance": "Aprox. 12–14 km ida y vuelta"
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminata corta de altura",
+          "image": "./assets/img/tours/huaraz-pastoruri-img1.jpg"
         },
         {
           "time": "Día 4",
-          "title": "Pastoruri o Laguna Parón – cierre de viaje",
-          "description": "Última excursión antes del retorno. Se puede programar Pastoruri para ver paisajes altoandinos y la ruta del cambio climático, o Laguna Parón para una visita paisajística con caminatas cortas y miradores. Traslado final al terminal según horario.",
+          "title": "City Tour Huaraz, Willcahuaín y Baños Termales de Monterrey",
+          "description": "Tour por Huaraz y alrededores: Plaza de Armas, Santuario del Señor de la Soledad, Jr. José Olaya, mirador natural de Huaraz, campiña de Paria, Complejo Arqueológico de Willcahuaín, museo de sitio y Aguas Termales de Monterrey. Tarde libre para feria artesanal y traslado al terminal a la hora coordinada.",
           "details": [
-            "La elección final se valida según clima, condición física y disponibilidad.",
-            "Pastoruri tiene caminata corta de altura; Parón es más escénico y flexible.",
-            "El orden de los días puede variar por operación local."
+            "Horario referencial: desayuno 08:00 y salida 10:00 o 14:00 según operación.",
+            "Duración aproximada: 4 horas.",
+            "Opcional sujeto a coordinación: Honcopampa, Catarata de Yuracyacu y Baños Termales de Chancos."
           ],
-          "meals": "Desayuno si el hotel lo incluye",
-          "distance": "Caminata corta o media según opción"
+          "meals": "Desayuno en el hotel",
+          "distance": "City tour y caminatas suaves",
+          "image": "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg"
         }
       ],
       "search": {
@@ -10962,18 +11050,394 @@
           "trekking un dia",
           "llanganuco",
           "pastoruri",
-          "laguna paron"
+          "willcahuain"
         ]
       },
       "images": {
         "cover": "./assets/img/tours/huaraz-laguna-69-paquete-cover.jpg",
         "gallery": [
           "./assets/img/tours/laguna-69-img1.jpg",
-          "./assets/img/tours/llanganuco-yungay-img1.jpg",
-          "./assets/img/tours/pastoruri-img1.jpg"
+          "./assets/img/tours/huaraz-llanganuco-img1.jpg",
+          "./assets/img/tours/huaraz-pastoruri-img1.jpg"
+        ]
+      }
+    },
+    {
+      "id": "huaraz_express_2_dias_1_noche",
+      "slug": "huaraz-express-2-dias-1-noche",
+      "title": "Huaraz Express 2D/1N: Llanganuco y Chavín",
+      "productKind": "package",
+      "productFamily": "huaraz-package",
+      "destination": "huaraz-ancash",
+      "department": "ancash",
+      "region": "andes",
+      "location": "Huaraz / Callejón de Huaylas / Parque Nacional Huascarán",
+      "categories": [
+        "multi_day",
+        "nature",
+        "cultural",
+        "mountain"
+      ],
+      "tags": [
+        "huaraz",
+        "ancash",
+        "cordillera blanca",
+        "llanganuco",
+        "pastoruri",
+        "chavin"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 2,
+        "nights": 1,
+        "label": "2D/1N"
+      },
+      "difficulty": "medium",
+      "pricing": {
+        "basePrice": 84,
+        "currency": "USD",
+        "priceLabel": "Desde $84 por persona",
+        "note": "por persona; alojamiento según selección",
+        "pricingStatus": "final_from_huaraz_draft_inflated_coupon_paypal"
+      },
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "huaraz-ancash",
+        "nights": 1,
+        "currency": "USD",
+        "note": "Alojamiento en Huaraz según selección. Tarifas por habitación y por noche; se calculan para 1 noche(s)."
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "badge": "Express",
+      "rankScore": 94,
+      "featured": true,
+      "availability": {
+        "daily": true,
+        "schedule": [
+          "Salidas diarias bajo disponibilidad",
+          "Mínimo 2 pasajeros",
+          "No aplica en Semana Santa, Fiestas Patrias ni feriados"
+        ]
+      },
+      "language": [
+        "Español",
+        "Otros idiomas bajo consulta"
+      ],
+      "internalNotes": {
+        "source": "BORRADOR HAURAZ.rtf",
+        "pricingFormula": "PEN/3.3/(0.85*(1-0.045)); redondeado hacia arriba al dólar entero.",
+        "recommendations": [
+          "Zapatillas o zapatos cómodos para caminatas cortas durante el tour.",
+          "Ropa fresca y de manga larga para el día.",
+          "Ropa abrigada para la tarde, madrugada y zonas de altura.",
+          "Gorra o sombrero, lentes de sol y protector solar.",
+          "Accesorios de uso personal, cámara y/o filmadora.",
+          "Impermeable para posibles lluvias entre diciembre y marzo."
+        ],
+        "important": [
+          "Tarifa no aplicable en Semana Santa, Fiestas Patrias, feriados nacionales o regionales.",
+          "Precio válido viajando a partir de 2 personas.",
+          "Niños de 0 a 4 años no pagan ni tienen derecho a servicios; comparten servicios con sus padres.",
+          "Niños de 5 a 14 años: 15% de descuento compartiendo cama, mínimo 2 adultos acompañantes."
+        ],
+        "contentStatus": "updated_from_client_draft_2026_06_10"
+      },
+      "shortDescription": "Escapada express con Callejón de Huaylas, Llanganuco, Yungay y Chavín de Huántar.",
+      "description": "Paquete corto para conocer dos rutas esenciales de Huaraz: el circuito paisajístico del Callejón de Huaylas con Llanganuco y Yungay, más la visita cultural a Chavín de Huántar, Laguna Querococha y Museo Nacional Chavín. Incluye traslados, tours en servicio compartido, asistencia local y alojamiento según selección.",
+      "highlights": [
+        "Laguna de Llanganuco y Campo Santo de Yungay",
+        "Caraz y artesanos de Taricá",
+        "Chavín de Huántar y Laguna Querococha",
+        "Alojamiento según selección",
+        "Ideal para viajes cortos"
+      ],
+      "includes": [
+        "Recepción y traslados: terminal – hotel – terminal.",
+        "Alojamiento en Huaraz (según selección).",
+        "2 días de tours SIC/Pool con transporte turístico durante las visitas.",
+        "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco, Caraz y Taricá.",
+        "Laguna Querococha, Monumento Arqueológico Chavín de Huántar y Museo Nacional Chavín.",
+        "Desayunos en el hotel según programa y hotel seleccionado.",
+        "Boletos turísticos de ingreso incluidos según operación local.",
+        "Guía oficial de turismo en idioma español; otros idiomas bajo consulta.",
+        "Entrega de material informativo de Huaraz.",
+        "Recojo en el hotel para cada día de tour.",
+        "Asistencia permanente de nuestra agencia de viajes.",
+        "I.G.V."
+      ],
+      "excludes": [
+        "Transporte Lima – Huaraz – Lima o vuelos nacionales.",
+        "Almuerzos, cenas, bebidas y alimentación no indicada.",
+        "Actividades opcionales como bote, caballo, servicios termales especiales u otros no mencionados.",
+        "Seguro de viaje o seguro médico.",
+        "Propinas y gastos personales.",
+        "Servicios no especificados en el programa."
+      ],
+      "itinerary": [
+        {
+          "time": "Día 1",
+          "title": "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco y Caraz",
+          "description": "Recepción en el terminal, traslado al hotel seleccionado y salida por el Callejón de Huaylas. Se aprecian pueblos andinos y vistas de la Cordillera Blanca y Cordillera Negra, incluyendo el Nevado Huascarán. Visita a Carhuaz, Mancos, Yungay, Campo Santo de Yungay y Parque Nacional Huascarán para conocer la Laguna de Llanganuco, con tiempo para caminatas cortas, fotos y actividades opcionales como bote o caballo según operación local. Retorno por Caraz y artesanías de Taricá.",
+          "details": [
+            "Horario referencial: recepción 06:00, desayuno 08:00 y salida 09:00.",
+            "Incluye paradas paisajísticas, visita cultural y degustaciones locales según disponibilidad.",
+            "Arribo referencial a Huaraz: 19:00."
+          ],
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminatas cortas",
+          "image": "./assets/img/tours/huaraz-llanganuco-img1.jpg"
+        },
+        {
+          "time": "Día 2",
+          "title": "Chavín de Huántar, Laguna Querococha y Museo Nacional Chavín",
+          "description": "Salida hacia el milenario templo de Chavín, pasando por Recuay, Ticapampa y Cátac. Parada en la Laguna Querococha para fotografías, observación del mapa del Perú en formación natural y cruce del túnel de Cahuish hacia el valle de Conchucos. Visita al Monumento Arqueológico de Chavín, sus galerías, plazas ceremoniales, Cabezas Clava, Lanzón de Chavín y Museo Nacional Chavín.",
+          "details": [
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Recorrido cultural con paisajes altoandinos y pueblos del valle de Conchucos.",
+            "Arribo referencial a Huaraz: 19:00."
+          ],
+          "meals": "Desayuno en el hotel",
+          "distance": "Visitas culturales y caminatas cortas",
+          "image": "./assets/img/tours/huaraz-chavin-img1.jpg"
+        }
+      ],
+      "search": {
+        "kind": "package",
+        "destinations": [
+          "huaraz",
+          "huaraz-ancash",
+          "huascaran",
+          "cordillera-blanca"
+        ],
+        "durationKeys": [
+          "2d1n",
+          "2-dias",
+          "1-noches",
+          "multi_day"
+        ],
+        "themes": [
+          "naturaleza",
+          "cultura",
+          "montaña",
+          "lagunas",
+          "cordillera blanca"
+        ],
+        "keywords": [
+          "huaraz",
+          "llanganuco",
+          "chavin",
+          "pastoruri",
+          "callejon de huaylas",
+          "cordillera blanca"
+        ]
+      },
+      "images": {
+        "cover": "./assets/img/tours/llanganuco-yungay-cover.jpg",
+        "gallery": [
+          "./assets/img/tours/huaraz-llanganuco-img1.jpg",
+          "./assets/img/tours/huaraz-chavin-img1.jpg",
+          "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg"
+        ]
+      }
+    },
+    {
+      "id": "huaraz_paraiso_natural_3_dias_2_noches",
+      "slug": "huaraz-paraiso-natural-3-dias-2-noches",
+      "title": "Huaraz Paraíso Natural 3D/2N",
+      "productKind": "package",
+      "productFamily": "huaraz-package",
+      "destination": "huaraz-ancash",
+      "department": "ancash",
+      "region": "andes",
+      "location": "Huaraz / Callejón de Huaylas / Parque Nacional Huascarán",
+      "categories": [
+        "multi_day",
+        "nature",
+        "cultural",
+        "mountain"
+      ],
+      "tags": [
+        "huaraz",
+        "ancash",
+        "cordillera blanca",
+        "llanganuco",
+        "pastoruri",
+        "chavin"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 3,
+        "nights": 2,
+        "label": "3D/2N"
+      },
+      "difficulty": "medium",
+      "pricing": {
+        "basePrice": 116,
+        "currency": "USD",
+        "priceLabel": "Desde $116 por persona",
+        "note": "por persona; alojamiento según selección",
+        "pricingStatus": "final_from_huaraz_draft_inflated_coupon_paypal"
+      },
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "huaraz-ancash",
+        "nights": 2,
+        "currency": "USD",
+        "note": "Alojamiento en Huaraz según selección. Tarifas por habitación y por noche; se calculan para 2 noche(s)."
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "badge": "Paraíso Natural",
+      "rankScore": 95,
+      "featured": true,
+      "availability": {
+        "daily": true,
+        "schedule": [
+          "Salidas diarias bajo disponibilidad",
+          "Mínimo 2 pasajeros",
+          "No aplica en Semana Santa, Fiestas Patrias ni feriados"
+        ]
+      },
+      "language": [
+        "Español",
+        "Otros idiomas bajo consulta"
+      ],
+      "internalNotes": {
+        "source": "BORRADOR HAURAZ.rtf",
+        "pricingFormula": "PEN/3.3/(0.85*(1-0.045)); redondeado hacia arriba al dólar entero.",
+        "recommendations": [
+          "Zapatillas o zapatos cómodos para caminatas cortas durante el tour.",
+          "Ropa fresca y de manga larga para el día.",
+          "Ropa abrigada para la tarde, madrugada y zonas de altura.",
+          "Gorra o sombrero, lentes de sol y protector solar.",
+          "Accesorios de uso personal, cámara y/o filmadora.",
+          "Impermeable para posibles lluvias entre diciembre y marzo."
+        ],
+        "important": [
+          "Tarifa no aplicable en Semana Santa, Fiestas Patrias, feriados nacionales o regionales.",
+          "Precio válido viajando a partir de 2 personas.",
+          "Niños de 0 a 4 años no pagan ni tienen derecho a servicios; comparten servicios con sus padres.",
+          "Niños de 5 a 14 años: 15% de descuento compartiendo cama, mínimo 2 adultos acompañantes."
+        ],
+        "contentStatus": "updated_from_client_draft_2026_06_10"
+      },
+      "shortDescription": "Programa de naturaleza y cultura con Llanganuco, Chavín y Pastoruri en tres días.",
+      "description": "Paquete de tres días para disfrutar los paisajes más representativos de Huaraz y la Cordillera Blanca: Callejón de Huaylas, Campo Santo de Yungay, Laguna de Llanganuco, Caraz, Chavín de Huántar, Laguna Querococha, Nevado Pastoruri, pinturas rupestres y Puya Raimondi. Incluye asistencia local, tours compartidos y alojamiento según selección.",
+      "highlights": [
+        "Llanganuco y Campo Santo de Yungay",
+        "Chavín de Huántar y Laguna Querococha",
+        "Nevado Pastoruri y Ruta del Cambio Climático",
+        "Alojamiento según selección",
+        "Programa equilibrado de 3 días"
+      ],
+      "includes": [
+        "Recepción y traslados: terminal – hotel – terminal.",
+        "Alojamiento en Huaraz (según selección).",
+        "3 días de tours SIC/Pool según itinerario con transporte turístico.",
+        "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco, Caraz y Taricá.",
+        "Laguna Querococha, Monumento Arqueológico Chavín de Huántar y Museo Nacional Chavín.",
+        "Nevado Pastoruri, pinturas rupestres y Puya Raimondi.",
+        "Desayunos en el hotel según programa y hotel seleccionado.",
+        "Boletos turísticos de ingreso incluidos según operación local.",
+        "Guía oficial de turismo en idioma español; otros idiomas bajo consulta.",
+        "Entrega de material informativo de Huaraz.",
+        "Recojo en el hotel para cada día de tour.",
+        "Atención permanente de nuestra agencia de viajes.",
+        "I.G.V."
+      ],
+      "excludes": [
+        "Transporte Lima – Huaraz – Lima o vuelos nacionales.",
+        "Almuerzos, cenas, bebidas y alimentación no indicada.",
+        "Actividades opcionales como bote, caballo, servicios termales especiales u otros no mencionados.",
+        "Seguro de viaje o seguro médico.",
+        "Propinas y gastos personales.",
+        "Servicios no especificados en el programa."
+      ],
+      "itinerary": [
+        {
+          "time": "Día 1",
+          "title": "Callejón de Huaylas, Campo Santo de Yungay, Llanganuco y Caraz",
+          "description": "Recepción en el terminal, traslado al hotel seleccionado y salida por el Callejón de Huaylas. Se aprecian pueblos andinos y vistas de la Cordillera Blanca y Cordillera Negra, incluyendo el Nevado Huascarán. Visita a Carhuaz, Mancos, Yungay, Campo Santo de Yungay y Parque Nacional Huascarán para conocer la Laguna de Llanganuco, con tiempo para caminatas cortas, fotos y actividades opcionales como bote o caballo según operación local. Retorno por Caraz y artesanías de Taricá.",
+          "details": [
+            "Horario referencial: recepción 06:00, desayuno 08:00 y salida 09:00.",
+            "Incluye paradas paisajísticas, visita cultural y degustaciones locales según disponibilidad.",
+            "Arribo referencial a Huaraz: 19:00."
+          ],
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminatas cortas",
+          "image": "./assets/img/tours/huaraz-llanganuco-img1.jpg"
+        },
+        {
+          "time": "Día 2",
+          "title": "Chavín de Huántar, Laguna Querococha y Museo Nacional Chavín",
+          "description": "Salida hacia el milenario templo de Chavín, pasando por Recuay, Ticapampa y Cátac. Parada en la Laguna Querococha para fotografías, observación del mapa del Perú en formación natural y cruce del túnel de Cahuish hacia el valle de Conchucos. Visita al Monumento Arqueológico de Chavín, sus galerías, plazas ceremoniales, Cabezas Clava, Lanzón de Chavín y Museo Nacional Chavín.",
+          "details": [
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Recorrido cultural con paisajes altoandinos y pueblos del valle de Conchucos.",
+            "Arribo referencial a Huaraz: 19:00."
+          ],
+          "meals": "Desayuno en el hotel",
+          "distance": "Visitas culturales y caminatas cortas",
+          "image": "./assets/img/tours/huaraz-chavin-img1.jpg"
+        },
+        {
+          "time": "Día 3",
+          "title": "Nevado Pastoruri, Puya Raimondi y pinturas rupestres",
+          "description": "Excursión por la Ruta del Cambio Climático hacia el sector Pastoruri. En ruta se visitan Recuay, Ticapampa, Cátac, la quebrada Pachacoto, laguna de Patococha, aguas gasificadas de Pumashim, Puya Raimondi, manantiales de altura y pinturas rupestres. Caminata corta para observar el nevado Pastoruri, cuevas de hielo y laguna congelada según condiciones climáticas.",
+          "details": [
+            "Horario referencial: desayuno 08:00 y salida 09:00.",
+            "Altitud alta; se recomienda caminar despacio, llevar abrigo e hidratarse.",
+            "Arribo referencial a Huaraz: 18:00."
+          ],
+          "meals": "Desayuno en el hotel",
+          "distance": "Caminata corta de altura",
+          "image": "./assets/img/tours/huaraz-pastoruri-img1.jpg"
+        }
+      ],
+      "search": {
+        "kind": "package",
+        "destinations": [
+          "huaraz",
+          "huaraz-ancash",
+          "huascaran",
+          "cordillera-blanca"
+        ],
+        "durationKeys": [
+          "3d2n",
+          "3-dias",
+          "2-noches",
+          "multi_day"
+        ],
+        "themes": [
+          "naturaleza",
+          "cultura",
+          "montaña",
+          "lagunas",
+          "cordillera blanca"
+        ],
+        "keywords": [
+          "huaraz",
+          "llanganuco",
+          "chavin",
+          "pastoruri",
+          "callejon de huaylas",
+          "cordillera blanca"
+        ]
+      },
+      "images": {
+        "cover": "./assets/img/tours/huaraz-clasico-caminatas-cortas-cover.jpg",
+        "gallery": [
+          "./assets/img/tours/huaraz-llanganuco-img1.jpg",
+          "./assets/img/tours/huaraz-chavin-img1.jpg",
+          "./assets/img/tours/huaraz-pastoruri-img1.jpg"
         ]
       }
     }
   ],
-  "generatedAt": "2026-05-05"
+  "generatedAt": "2026-06-10T00:00:00-05:00"
 }
