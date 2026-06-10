@@ -456,12 +456,17 @@ body {
 .itinerary-item {
   position: relative;
   display: grid;
-  grid-template-columns: 46px 1fr;
+  grid-template-columns: 46px minmax(0, 1fr);
   gap: 14px;
   padding: 18px;
   border: 1px solid var(--pn-border);
   border-radius: 18px;
   background: #fbfcf8;
+}
+
+.itinerary-item--with-image {
+  grid-template-columns: 46px minmax(0, 1fr) 180px;
+  align-items: stretch;
 }
 
 .itinerary-number {
@@ -484,6 +489,24 @@ body {
 .itinerary-content p {
   color: var(--pn-muted);
   line-height: 1.7;
+}
+
+.itinerary-image {
+  margin: 0;
+  width: 100%;
+  min-height: 138px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #eaf5e4;
+  border: 1px solid var(--pn-border);
+}
+
+.itinerary-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 138px;
+  object-fit: cover;
+  display: block;
 }
 
 /* =========================================================
@@ -1085,7 +1108,7 @@ body {
 }
 .product-hotel-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
+  grid-template-columns: minmax(0, 1fr) 270px;
   gap: 18px;
   align-items: stretch;
   padding: 18px;
@@ -1120,6 +1143,67 @@ body {
   color: var(--pn-muted);
   line-height: 1.55;
 }
+
+.product-hotel-copy {
+  min-width: 0;
+}
+
+.product-hotel-gallery {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--pn-border);
+  background: #eaf5e4;
+  box-shadow: 0 10px 24px rgba(11,61,46,.08);
+}
+
+.product-hotel-gallery__slides {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 168px;
+}
+
+.product-hotel-gallery__slides img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.01);
+  transition: opacity .24s ease;
+}
+
+.product-hotel-gallery__slides img.active {
+  opacity: 1;
+}
+
+.product-hotel-gallery__dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.product-hotel-gallery__dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  cursor: pointer;
+}
+
+.product-hotel-gallery__dots button.active {
+  width: 20px;
+  background: var(--pn-lime);
+}
+
 .product-hotel-price {
   display: grid;
   align-content: center;
@@ -1134,6 +1218,17 @@ body {
 .pn-room-card.selected { border-color: rgba(126,217,87,.82); background: rgba(126,217,87,.08); }
 @media (max-width: 760px) {
   .product-page { padding-top: 88px; }
+  .itinerary-item--with-image {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+  .itinerary-image {
+    grid-column: 1 / -1;
+    min-height: 180px;
+  }
+  .itinerary-image img {
+    min-height: 180px;
+  }
+
   .product-hotel-card { grid-template-columns: 1fr; }
   .product-hotel-price { text-align: left; }
 }

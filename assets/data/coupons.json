@@ -1,18 +1,57 @@
 {
-  "version": "1.0.0",
-  "notes": "Cupones locales de respaldo. Para producción puedes reemplazar esta fuente por Google Sheets + Apps Script.",
+  "version": "2.0.0",
+  "updatedAt": "2026-06-09",
+  "notes": "Cupones locales de respaldo. En producción, Apps Script puede validar la pestaña Coupons del Google Sheet.",
   "coupons": [
     {
       "code": "PERUNATURE10",
+      "description": "Descuento general de bienvenida",
       "percent": 10,
+      "startsAt": "2026-06-09",
       "expiresAt": "2026-12-31",
-      "active": true
+      "active": true,
+      "destinations": "*",
+      "minSubtotal": 0
     },
     {
       "code": "HUARAZ15",
+      "description": "Campaña paquetes Huaraz",
       "percent": 15,
+      "startsAt": "2026-06-09",
       "expiresAt": "2026-09-30",
-      "active": true
+      "active": true,
+      "destinations": "huaraz-ancash,huaraz,huascaran",
+      "minSubtotal": 0
+    },
+    {
+      "code": "AMAZONIA10",
+      "description": "Campaña destinos Amazonía",
+      "percent": 10,
+      "startsAt": "2026-06-09",
+      "expiresAt": "2026-12-31",
+      "active": true,
+      "destinations": "iquitos-loreto,tambopata,tambopata-madre-de-dios,tarapoto-san-martin,pacaya-samiria,allpahuayo-mishana",
+      "minSubtotal": 0
+    },
+    {
+      "code": "FAMILIA8",
+      "description": "Descuento para grupos familiares",
+      "percent": 8,
+      "startsAt": "2026-06-09",
+      "expiresAt": "2026-12-31",
+      "active": true,
+      "destinations": "*",
+      "minSubtotal": 250
+    },
+    {
+      "code": "EARLYBIRD12",
+      "description": "Reserva anticipada",
+      "percent": 12,
+      "startsAt": "2026-06-09",
+      "expiresAt": "2026-08-31",
+      "active": false,
+      "destinations": "*",
+      "minSubtotal": 0
     }
   ]
 }

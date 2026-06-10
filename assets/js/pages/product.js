@@ -498,15 +498,20 @@ class PeruNatureProductPage {
     if (!this.elements.itinerary) return;
 
     const itinerary = Array.isArray(tour.itinerary) ? tour.itinerary : [];
+    const tourImages = this.normalizeImages(tour.images).map((image) => image.src).filter(Boolean);
 
     if (itinerary.length === 0) {
+      const fallbackImage = tourImages[0] || "./assets/img/tour-placeholder.jpg";
       this.elements.itinerary.innerHTML = `
-        <div class="itinerary-item">
+        <div class="itinerary-item itinerary-item--with-image">
           <div class="itinerary-number">1</div>
           <div class="itinerary-content">
             <h3>Itinerario por confirmar</h3>
             <p>Te compartiremos el detalle completo al momento de la consulta.</p>
           </div>
+          <figure class="itinerary-image">
+            <img src="${this.escapeHTML(fallbackImage)}" alt="Itinerario Peru Nature" onerror="this.src='./assets/img/tour-placeholder.jpg'">
+          </figure>
         </div>
       `;
       return;
@@ -518,13 +523,14 @@ class PeruNatureProductPage {
         const day = item.time || `Día ${index + 1}`;
         const description = item.description || item.activity || item.text || "";
         const details = Array.isArray(item.details) ? item.details : [];
+        const imageSrc = this.getItineraryImage(item, index, tourImages);
         const extras = [
           item.distance ? `<span><i class="fa-solid fa-route"></i>${this.escapeHTML(item.distance)}</span>` : "",
           item.meals ? `<span><i class="fa-solid fa-utensils"></i>${this.escapeHTML(item.meals)}</span>` : ""
         ].filter(Boolean).join("");
 
         return `
-          <div class="itinerary-item">
+          <div class="itinerary-item itinerary-item--with-image">
             <div class="itinerary-number">${this.escapeHTML(day).replace(/^Día\s*/i, "")}</div>
             <div class="itinerary-content">
               <h3>${this.escapeHTML(day)}: ${this.escapeHTML(title)}</h3>
@@ -532,6 +538,11 @@ class PeruNatureProductPage {
               ${details.length ? `<ul class="itinerary-details">${details.map((detail) => `<li>${this.escapeHTML(detail)}</li>`).join("")}</ul>` : ""}
               ${extras ? `<div class="itinerary-extra">${extras}</div>` : ""}
             </div>
+            ${imageSrc ? `
+              <figure class="itinerary-image">
+                <img src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}" onerror="this.src='./assets/img/tour-placeholder.jpg'">
+              </figure>
+            ` : ""}
           </div>
         `;
       })
@@ -688,7 +699,9 @@ class PeruNatureProductPage {
 
     if (this.couponEndpoint) {
       try {
-        const url = `${this.couponEndpoint}?action=coupon&code=${encodeURIComponent(coupon)}`;
+        const couponBase = this.calculateTotals();
+        const destination = this.currentTour?.hotelAddOn?.destination || this.currentTour?.destination || "";
+        const url = `${this.couponEndpoint}?action=coupon&code=${encodeURIComponent(coupon)}&destination=${encodeURIComponent(destination)}&subtotal=${encodeURIComponent(couponBase.subtotal || 0)}`;
         const response = await fetch(url, { cache: "no-store" });
         const data = await response.json();
         if (data.ok) found = { code: data.code, percent: data.percent, expiresAt: data.expiresAt, active: true };
@@ -794,26 +807,27 @@ class PeruNatureProductPage {
 
     section.hidden = false;
     container.innerHTML = hotels.map((hotel) => {
-      const minRate = Math.min(...Object.values(hotel.roomRates || {}).map(Number).filter(Boolean));
+      const minRate = this.getHotelMinRate(hotel);
       const selected = hotel.id === this.booking.selectedHotelId;
       const roomCombo = selected ? this.getSelectedRoomCombo() : null;
       const comboText = selected && roomCombo
         ? `${roomCombo.label} · ${this.formatMoney(this.getRoomComboPrice(roomCombo, hotel) * nights, "USD")} por ${nights} noche${nights > 1 ? "s" : ""}`
         : `Desde ${this.formatMoney(minRate * nights, "USD")} por ${nights} noche${nights > 1 ? "s" : ""}`;
       const includes = Array.isArray(hotel.includes) && hotel.includes.length
-        ? `<ul>${hotel.includes.slice(0, 4).map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul>`
+        ? `<ul>${hotel.includes.slice(0, 5).map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul>`
         : "";
       return `
         <article class="product-hotel-card ${selected ? "selected" : ""}">
-          <div>
+          <div class="product-hotel-copy">
             <span class="product-hotel-tier">${this.escapeHTML(hotel.tier || hotel.category || "Hotel")}</span>
             <h3>${this.escapeHTML(hotel.name)}</h3>
             <p>${this.escapeHTML(hotel.description || "")}</p>
             ${includes}
           </div>
           <div class="product-hotel-price">
+            ${this.renderHotelGallery(hotel)}
             <strong>${this.escapeHTML(comboText)}</strong>
-            ${selected ? `<small>Hotel seleccionado</small>` : `<small>Opcional</small>`}
+            ${selected ? `<small>Hotel seleccionado</small>` : ""}
             <button type="button" class="booking-whatsapp-btn product-hotel-select" data-hotel-id="${this.escapeHTML(hotel.id)}">
               ${selected ? "Editar acomodación" : "Ver acomodaciones"}
             </button>
@@ -824,6 +838,18 @@ class PeruNatureProductPage {
 
     container.querySelectorAll("[data-hotel-id]").forEach((button) => {
       button.addEventListener("click", () => this.openRoomModal(button.dataset.hotelId));
+    });
+
+    container.querySelectorAll("[data-hotel-gallery]").forEach((gallery) => {
+      const slides = [...gallery.querySelectorAll("[data-hotel-slide]")];
+      const dots = [...gallery.querySelectorAll("[data-hotel-dot]")];
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.hotelDot || 0);
+          slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === index));
+          dots.forEach((item, dotIndex) => item.classList.toggle("active", dotIndex === index));
+        });
+      });
     });
   }
 
@@ -905,7 +931,7 @@ class PeruNatureProductPage {
     }
 
     this.elements.hotelOptions.innerHTML = options.map((hotel) => {
-      const minRate = Math.min(...Object.values(hotel.roomRates || {}).map(Number).filter(Boolean));
+      const minRate = this.getHotelMinRate(hotel);
       const checked = hotel.id === this.booking.selectedHotelId ? "checked" : "";
       return `
         <label class="pn-hotel-card">
@@ -1006,6 +1032,7 @@ class PeruNatureProductPage {
       ],
       3: [
         { key: "triple_1", label: "1 habitación triple", description: "Tres pasajeros en una habitación triple.", rooms: { triple: 1 } },
+        { key: "matri_adicional_1", label: "1 matrimonial + cama adicional", description: "Una habitación matrimonial con cama adicional.", rooms: { matri_adicional: 1 } },
         { key: "double_1_single_1", label: "1 doble + 1 individual", description: "Dos pasajeros en doble y uno en simple.", rooms: { double: 1, single: 1 } },
         { key: "matrimonial_1_single_1", label: "1 matrimonial + 1 individual", description: "Pareja o dos pasajeros en matrimonial y uno en simple.", rooms: { matrimonial: 1, single: 1 } },
         { key: "single_3", label: "3 habitaciones individuales", description: "Tres habitaciones simples separadas.", rooms: { single: 3 } }
@@ -1016,6 +1043,11 @@ class PeruNatureProductPage {
         { key: "matrimonial_1_double_1", label: "1 matrimonial + 1 doble", description: "Dos habitaciones para cuatro pasajeros.", rooms: { matrimonial: 1, double: 1 } },
         { key: "triple_1_single_1", label: "1 triple + 1 individual", description: "Una triple y una simple.", rooms: { triple: 1, single: 1 } },
         { key: "single_4", label: "4 habitaciones individuales", description: "Cuatro habitaciones simples separadas.", rooms: { single: 4 } }
+      ],
+      5: [
+        { key: "familiar_5_1", label: "1 habitación familiar", description: "Una habitación familiar para cinco pasajeros.", rooms: { familiar_5: 1 } },
+        { key: "triple_1_double_1", label: "1 triple + 1 doble", description: "Dos habitaciones para cinco pasajeros.", rooms: { triple: 1, double: 1 } },
+        { key: "quadruple_1_single_1", label: "1 cuádruple + 1 individual", description: "Una habitación cuádruple y una individual.", rooms: { quadruple: 1, single: 1 } }
       ]
     };
 
@@ -1039,10 +1071,76 @@ class PeruNatureProductPage {
   }
 
   getRoomComboPrice(combo, hotel) {
-    if (!combo || !hotel?.roomRates) return 0;
+    const roomRates = this.getHotelRoomRates(hotel);
+    if (!combo || !roomRates) return 0;
     return Object.entries(combo.rooms || {}).reduce((sum, [type, qty]) => {
-      return sum + Number(hotel.roomRates[type] || 0) * Number(qty || 0);
+      return sum + Number(roomRates[type] || 0) * Number(qty || 0);
     }, 0);
+  }
+
+  getHotelRoomRates(hotel) {
+    if (!hotel) return {};
+    if (hotel.roomRates && Object.keys(hotel.roomRates).length) return hotel.roomRates;
+    const plan = Array.isArray(hotel.ratePlans)
+      ? hotel.ratePlans.find((item) => item.active !== false) || hotel.ratePlans[0]
+      : null;
+    return plan?.roomRates || {};
+  }
+
+  getHotelMinRate(hotel) {
+    const rates = this.getHotelRoomRates(hotel);
+    const values = Object.values(rates || {}).map(Number).filter((value) => value > 0);
+    return values.length ? Math.min(...values) : 0;
+  }
+
+  normalizeHotelImages(hotel) {
+    const fallback = "./assets/img/hotels/hotel-3star-1.jpg";
+    const raw = Array.isArray(hotel?.images)
+      ? hotel.images
+      : Array.isArray(hotel?.gallery)
+        ? hotel.gallery
+        : hotel?.image
+          ? [hotel.image]
+          : [];
+
+    const normalized = raw
+      .map((image, index) => {
+        if (typeof image === "string") return { src: image, alt: `${hotel?.name || "Hotel"} ${index + 1}` };
+        if (image && typeof image === "object") return { src: image.src || image.url || fallback, alt: image.alt || `${hotel?.name || "Hotel"} ${index + 1}` };
+        return null;
+      })
+      .filter(Boolean);
+
+    return normalized.length ? normalized.slice(0, 5) : [{ src: fallback, alt: hotel?.name || "Hotel Peru Nature" }];
+  }
+
+  renderHotelGallery(hotel) {
+    const images = this.normalizeHotelImages(hotel);
+    return `
+      <div class="product-hotel-gallery" data-hotel-gallery>
+        <div class="product-hotel-gallery__slides">
+          ${images.map((image, index) => `
+            <img
+              class="${index === 0 ? "active" : ""}"
+              data-hotel-slide="${index}"
+              src="${this.escapeHTML(image.src)}"
+              alt="${this.escapeHTML(image.alt)}"
+              loading="lazy"
+              onerror="this.src='./assets/img/hotels/hotel-3star-1.jpg'"
+            >
+          `).join("")}
+        </div>
+        ${images.length > 1 ? `
+          <div class="product-hotel-gallery__dots" aria-label="Fotos del hotel">
+            ${images.map((_image, index) => `<button type="button" class="${index === 0 ? "active" : ""}" data-hotel-dot="${index}" aria-label="Ver foto ${index + 1}"></button>`).join("")}
+          </div>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  getItineraryImage(item, index, tourImages = []) {
+    return item?.image || item?.imageSrc || item?.photo || item?.cover || tourImages[index + 1] || tourImages[index % Math.max(tourImages.length, 1)] || tourImages[0] || "./assets/img/tour-placeholder.jpg";
   }
 
   getLoggedCustomer() {
@@ -1373,10 +1471,14 @@ class PeruNatureProductPage {
             <span class="day-badge">${this.escapeHTML(dayLabel)}</span>
             <h2>${this.escapeHTML(title)}</h2>
           </div>
-          ${imageSrc ? `<img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}">` : ""}
-          <p>${this.escapeHTML(item.description || "")}</p>
-          ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map((d) => `<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
-          ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance, item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
+          <div class="day-layout">
+            <div class="day-copy">
+              <p>${this.escapeHTML(item.description || "")}</p>
+              ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map((d) => `<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
+              ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance, item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
+            </div>
+            ${imageSrc ? `<img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}">` : ""}
+          </div>
         </article>
       `;
     }).join("");
@@ -1401,15 +1503,16 @@ class PeruNatureProductPage {
           .hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}
           .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
           .summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}
-          .day{padding:20px 0;border-bottom:1px solid #dfe7dd;break-inside:avoid}
-          .day-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+          .day{padding:16px;border:1px solid #dfe7dd;border-radius:18px;margin:0 0 14px;break-inside:avoid;page-break-inside:avoid;background:#fff}
+          .day-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
           .day-badge{display:inline-flex;align-items:center;justify-content:center;background:#0b3d2e;color:#fff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;white-space:nowrap}
-          .day h2{margin:0;color:#0b3d2e;font-size:20px;line-height:1.25}
-          .day-image{width:100%;height:230px;object-fit:cover;border-radius:18px;margin:0 0 12px;border:1px solid #dfe7dd;display:block}
-          .day p{line-height:1.65;margin:0 0 8px}.day ul{margin:10px 0 0;padding-left:18px;line-height:1.6}.day-meta{color:#0b3d2e}
+          .day h2{margin:0;color:#0b3d2e;font-size:19px;line-height:1.25}
+          .day-layout{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:16px;align-items:start}
+          .day-image{width:190px;height:136px;object-fit:cover;border-radius:16px;border:1px solid #dfe7dd;display:block}
+          .day p{line-height:1.55;margin:0 0 7px}.day ul{margin:8px 0 0;padding-left:18px;line-height:1.45}.day-meta{color:#0b3d2e}
           .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}
-          @media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day,.box{break-inside:avoid}.day-image{height:190px}}
-          @media(max-width:700px){.summary,.cols{grid-template-columns:1fr}.hero-top{align-items:flex-start;flex-direction:column}}
+          @media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day,.box{break-inside:avoid;page-break-inside:avoid}.day-image{height:128px}}
+          @media(max-width:700px){.summary,.cols,.day-layout{grid-template-columns:1fr}.day-image{width:100%;height:170px}.hero-top{align-items:flex-start;flex-direction:column}}
         </style>
       </head>
       <body>
