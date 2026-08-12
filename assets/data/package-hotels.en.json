@@ -2,7 +2,7 @@
   "brand": "Peru Nature",
   "currency": "USD",
   "version": "2.0.0",
-  "updatedAt": "2026-06-10",
+  "updatedAt": "2026-08-12",
   "source": "peru_nature_catalogo_hoteles_google_sheets.xlsx",
   "notes": "Catálogo generado desde hoja maestra. Tarifas de venta referenciales tomadas de OTAs/promedios públicos; tarifa neta = venta -10% en la hoja. No copiar fotos de OTAs sin autorización. Huaraz actualizado con Sosa House Hotel Boutique, Hospedaje Turístico Everest y Cordillera Hotel; tarifas calculadas desde BORRADOR HAURAZ.rtf con FX 3.3, cupón 15% y PayPal 5.4%.",
   "destinations": {
@@ -6051,6 +6051,159 @@
           "sourceUrl": "https://www.booking.com/city/pe/iquitos.html",
           "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
           "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+        }
+      ]
+    },
+    "pachacamac": {
+      "label": "Pachacámac and Lurín Valley",
+      "city": "Pachacámac / Lurín",
+      "department": "Lima",
+      "region": "costa",
+      "hotels": [
+        {
+          "id": "HTL-PACHACAMAC-PALACIO-01",
+          "name": "Hotel Palacio del Sur",
+          "category": "2★",
+          "tier": "Budget",
+          "city": "Lurín",
+          "location": "Antigua Panamericana Sur km 34, Lurín",
+          "description": "A budget-friendly option near the Pachacámac Archaeological Sanctuary, suitable for a one-night getaway and travelers who prioritize price and location.",
+          "includes": [
+            "Private bathroom with shower",
+            "Hot water",
+            "Smart TV / cable TV depending on room",
+            "Wi-Fi",
+            "Front desk"
+          ],
+          "roomRates": {
+            "single": 39.0,
+            "double": 49.0,
+            "matrimonial": 49.0,
+            "triple": 65.0,
+            "matri_adicional": 65.0,
+            "quadruple": 88.0,
+            "familiar_5": 104.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Peru Nature 2026 retail rate",
+              "currency": "USD",
+              "roomRates": {
+                "single": 39.0,
+                "double": 49.0,
+                "matrimonial": 49.0,
+                "triple": 65.0,
+                "matri_adicional": 65.0,
+                "quadruple": 88.0,
+                "familiar_5": 104.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://www.palaciodelsur.com/",
+          "rateNote": "KAYAK showed rates from approximately PEN 108 per night on August 12, 2026. The hotel publishes single, double and triple room types but requests a direct quote for final prices. These roomRates are conservative retail rates with a commercial buffer and must be reconfirmed before issuing the voucher.",
+          "researchStatus": "PUBLIC_RATE_REFERENCE_PLUS_BUFFER"
+        },
+        {
+          "id": "HTL-PACHACAMAC-RUSTICA-02",
+          "name": "Rústica Pachacámac",
+          "category": "Country hotel",
+          "tier": "Standard",
+          "city": "Lurín",
+          "location": "Las Margaritas 14, Lurín",
+          "description": "A country-style hotel with spacious rooms and recreational facilities, suitable for couples, families and a relaxed stay along the Pachacámac route.",
+          "includes": [
+            "Bathroom with hot water",
+            "Cable TV",
+            "Safe",
+            "Minibar",
+            "Hotel facilities according to the booked rate conditions"
+          ],
+          "roomRates": {
+            "single": 61.0,
+            "double": 61.0,
+            "matrimonial": 61.0,
+            "triple": 79.0,
+            "matri_adicional": 79.0,
+            "quadruple": 143.0,
+            "familiar_5": 143.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Peru Nature 2026 retail rate",
+              "currency": "USD",
+              "roomRates": {
+                "single": 61.0,
+                "double": 61.0,
+                "matrimonial": 61.0,
+                "triple": 79.0,
+                "matri_adicional": 79.0,
+                "quadruple": 143.0,
+                "familiar_5": 143.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://rusticahoteles.com/hotel/pachacamac",
+          "rateNote": "Official website checked August 12, 2026: matrimonial room PEN 179, triple PEN 230 and family suite for up to 5 guests PEN 419 per night. Reference conversion used USD/PEN 3.38 plus an approximate 15% commercial margin, rounded for retail. Reconfirm availability and same-day promotions.",
+          "researchStatus": "OFFICIAL_PUBLIC_RATE_2026"
+        },
+        {
+          "id": "HTL-PACHACAMAC-QX-03",
+          "name": "Casa Boutique QX Pachacámac",
+          "category": "Boutique B&B",
+          "tier": "Superior",
+          "city": "Pachacámac",
+          "location": "Av. Jatosisa Mz B Lt 4, San Fernando, Pachacámac",
+          "description": "A boutique alternative with a pool, green areas and a relaxed atmosphere. Recommended for couples or travelers looking for a quieter, higher-comfort experience.",
+          "includes": [
+            "Wi-Fi",
+            "Parking",
+            "Outdoor swimming pool",
+            "Green areas and terrace",
+            "Private bathroom",
+            "Additional services depending on the booked rate plan"
+          ],
+          "roomRates": {
+            "single": 105.0,
+            "double": 105.0,
+            "matrimonial": 105.0,
+            "triple": 135.0,
+            "matri_adicional": 135.0,
+            "quadruple": 165.0,
+            "familiar_5": 178.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Peru Nature 2026 retail rate",
+              "currency": "USD",
+              "roomRates": {
+                "single": 105.0,
+                "double": 105.0,
+                "matrimonial": 105.0,
+                "triple": 135.0,
+                "matri_adicional": 135.0,
+                "quadruple": 165.0,
+                "familiar_5": 178.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://www.booking.com/hotel/pe/casa-qx.es.html",
+          "rateNote": "Tripadvisor showed an approximate average range of PEN 308–737 per night on August 12, 2026. PEN 308 was used as a low-end reference for a standard room and a commercial buffer was added for retail; triple/family configurations are prudent estimates and require a final quote from the property.",
+          "researchStatus": "OTA_PUBLIC_RANGE_REFERENCE"
         }
       ]
     }

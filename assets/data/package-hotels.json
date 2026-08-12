@@ -2,7 +2,7 @@
   "brand": "Peru Nature",
   "currency": "USD",
   "version": "2.0.0",
-  "updatedAt": "2026-06-10",
+  "updatedAt": "2026-08-12",
   "source": "peru_nature_catalogo_hoteles_google_sheets.xlsx",
   "notes": "Catálogo generado desde hoja maestra. Tarifas de venta referenciales tomadas de OTAs/promedios públicos; tarifa neta = venta -10% en la hoja. No copiar fotos de OTAs sin autorización. Huaraz actualizado con Sosa House Hotel Boutique, Hospedaje Turístico Everest y Cordillera Hotel; tarifas calculadas desde BORRADOR HAURAZ.rtf con FX 3.3, cupón 15% y PayPal 5.4%.",
   "destinations": {
@@ -6051,6 +6051,159 @@
           "sourceUrl": "https://www.booking.com/city/pe/iquitos.html",
           "rateNote": "Tarifa publicada referencial. Tarifa neta estimada en Google Sheet como venta -10%. Validar con hotel antes de confirmar.",
           "researchStatus": "PRESELECCION_OTA_POR_VALIDAR"
+        }
+      ]
+    },
+    "pachacamac": {
+      "label": "Pachacámac y Valle de Lurín",
+      "city": "Pachacámac / Lurín",
+      "department": "Lima",
+      "region": "costa",
+      "hotels": [
+        {
+          "id": "HTL-PACHACAMAC-PALACIO-01",
+          "name": "Hotel Palacio del Sur",
+          "category": "2★",
+          "tier": "Económico",
+          "city": "Lurín",
+          "location": "Antigua Panamericana Sur km 34, Lurín",
+          "description": "Opción económica cerca del Santuario de Pachacámac, conveniente para una escapada de una noche y para pasajeros que priorizan precio y ubicación.",
+          "includes": [
+            "Baño privado con ducha",
+            "Agua caliente",
+            "TV Smart / TV por cable según habitación",
+            "Wi-Fi",
+            "Recepción"
+          ],
+          "roomRates": {
+            "single": 39.0,
+            "double": 49.0,
+            "matrimonial": 49.0,
+            "triple": 65.0,
+            "matri_adicional": 65.0,
+            "quadruple": 88.0,
+            "familiar_5": 104.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Tarifa comercial Peru Nature 2026",
+              "currency": "USD",
+              "roomRates": {
+                "single": 39.0,
+                "double": 49.0,
+                "matrimonial": 49.0,
+                "triple": 65.0,
+                "matri_adicional": 65.0,
+                "quadruple": 88.0,
+                "familiar_5": 104.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://www.palaciodelsur.com/",
+          "rateNote": "KAYAK mostraba tarifas desde S/108 por noche al 12-08-2026. El hotel publica habitaciones individuales, dobles y triples pero solicita cotización para precio. RoomRates son tarifas de venta conservadoras con margen/buffer y deben reconfirmarse antes de emitir voucher.",
+          "researchStatus": "PUBLIC_RATE_REFERENCE_PLUS_BUFFER"
+        },
+        {
+          "id": "HTL-PACHACAMAC-RUSTICA-02",
+          "name": "Rústica Pachacámac",
+          "category": "Hotel campestre",
+          "tier": "Estándar",
+          "city": "Lurín",
+          "location": "Las Margaritas 14, Lurín",
+          "description": "Hotel campestre con habitaciones amplias y servicios recreativos, adecuado para parejas, familias y una estadía relajada dentro de la ruta de Pachacámac.",
+          "includes": [
+            "Baño con agua caliente",
+            "TV con cable",
+            "Caja fuerte",
+            "Frigobar",
+            "Áreas del hotel según condiciones de la reserva"
+          ],
+          "roomRates": {
+            "single": 61.0,
+            "double": 61.0,
+            "matrimonial": 61.0,
+            "triple": 79.0,
+            "matri_adicional": 79.0,
+            "quadruple": 143.0,
+            "familiar_5": 143.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Tarifa comercial Peru Nature 2026",
+              "currency": "USD",
+              "roomRates": {
+                "single": 61.0,
+                "double": 61.0,
+                "matrimonial": 61.0,
+                "triple": 79.0,
+                "matri_adicional": 79.0,
+                "quadruple": 143.0,
+                "familiar_5": 143.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://rusticahoteles.com/hotel/pachacamac",
+          "rateNote": "Web oficial consultada 12-08-2026: matrimonial S/179, triple S/230 y suite familiar 5 pax S/419 por noche. Conversión de referencia USD/PEN 3.38 y margen comercial aproximado de 15%, redondeado para venta. Confirmar disponibilidad y promociones del día.",
+          "researchStatus": "OFFICIAL_PUBLIC_RATE_2026"
+        },
+        {
+          "id": "HTL-PACHACAMAC-QX-03",
+          "name": "Casa Boutique QX Pachacámac",
+          "category": "Boutique B&B",
+          "tier": "Superior",
+          "city": "Pachacámac",
+          "location": "Av. Jatosisa Mz B Lt 4, San Fernando, Pachacámac",
+          "description": "Alternativa boutique con piscina, áreas verdes y enfoque de descanso. Recomendada para parejas o pasajeros que valoran una experiencia más tranquila y de mayor nivel.",
+          "includes": [
+            "Wi-Fi",
+            "Estacionamiento",
+            "Piscina al aire libre",
+            "Áreas verdes y terraza",
+            "Baño privado",
+            "Servicios adicionales según plan reservado"
+          ],
+          "roomRates": {
+            "single": 105.0,
+            "double": 105.0,
+            "matrimonial": 105.0,
+            "triple": 135.0,
+            "matri_adicional": 135.0,
+            "quadruple": 165.0,
+            "familiar_5": 178.0
+          },
+          "ratePlans": [
+            {
+              "code": "venta_2026",
+              "label": "Tarifa comercial Peru Nature 2026",
+              "currency": "USD",
+              "roomRates": {
+                "single": 105.0,
+                "double": 105.0,
+                "matrimonial": 105.0,
+                "triple": 135.0,
+                "matri_adicional": 135.0,
+                "quadruple": 165.0,
+                "familiar_5": 178.0
+              }
+            }
+          ],
+          "images": [
+            "./assets/img/tours/pachacamac-larco-cover.jpg"
+          ],
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg",
+          "sourceUrl": "https://www.booking.com/hotel/pe/casa-qx.es.html",
+          "rateNote": "Tripadvisor mostraba rango promedio aproximado S/308–S/737 por noche al 12-08-2026. Se tomó S/308 como referencia baja para habitación estándar y se aplicó margen/buffer comercial para venta; triples/familiares son estimaciones prudentes y requieren cotización final con el alojamiento.",
+          "researchStatus": "OTA_PUBLIC_RANGE_REFERENCE"
         }
       ]
     }

@@ -3,9 +3,9 @@
   "market": "peru",
   "brand": "Peru Nature",
   "currency": "USD",
-  "status": "research_batch_01_02_03_combined",
+  "status": "research_batch_01_02_03_pachacamac_2026",
   "createdAt": "2026-05-04",
-  "notes": "Catálogo combinado Peru Nature Batch 01 + 02 + 03. Incluye tours nacionales, paquetes planos, reservas nacionales y áreas naturales. Tarifas referenciales pendientes de validación. Actualización Huaraz: productos y tarifas ajustadas desde BORRADOR HAURAZ.rtf con FX 3.3, cupón 15% y comisión PayPal.",
+  "notes": "Peru Nature combined catalog Batch 01 + 02 + 03. Includes nationwide tours, flat-rate packages, national reserves and protected natural areas. Reference rates remain subject to validation. Huaraz products and rates were updated from BORRADOR HAURAZ.rtf using FX 3.3, a 15% coupon assumption and PayPal commission. Pachacámac 2026 integration adds two full-day tours plus a 2D/1N package with selectable accommodation.",
   "categories": [
     {
       "code": "full_day",
@@ -267,6 +267,12 @@
       "code": "yaguas",
       "name": "Yaguas National Park",
       "region": "amazonia"
+    },
+    {
+      "code": "pachacamac",
+      "name": "Pachacámac and Lurín Valley",
+      "department": "lima",
+      "region": "costa"
     }
   ],
   "tours": [
@@ -15205,7 +15211,458 @@
           "./assets/img/tours/huaraz-pastoruri-img1.jpg"
         ]
       }
+    },
+    {
+      "id": "tour_pachacamac_esencial_full_day",
+      "slug": "pachacamac-esencial-santuario-valle-verde-full-day",
+      "title": "Pachacámac Essentials: Sanctuary, Green Valley & Town",
+      "productKind": "tour",
+      "productFamily": "flat-tour",
+      "shortDescription": "A full-day trip from Lima featuring the Pachacámac Archaeological Sanctuary, the historic town center, a valley viewpoint and a country-style lunch.",
+      "description": "A cultural and scenic experience designed to discover Pachacámac beyond a quick visit to the sanctuary. The route connects the central coast’s major pre-Hispanic ceremonial center with the traditional town of Pachacámac, its historic church, the countryside of the Lurín Valley and one of its viewpoints. It is ideal for travelers looking for archaeology, local cuisine and a relaxed day trip from Lima.",
+      "destination": "pachacamac",
+      "department": "lima",
+      "region": "costa",
+      "location": "Lima / Lurín / Pachacámac",
+      "categories": [
+        "full_day",
+        "cultural",
+        "archaeological",
+        "gastronomy"
+      ],
+      "tags": [
+        "pachacamac",
+        "pachacamac sanctuary",
+        "lurin valley",
+        "pachacamac town",
+        "san miguel viewpoint",
+        "south lima",
+        "archaeology"
+      ],
+      "duration": {
+        "type": "full_day",
+        "hours": 9,
+        "label": "Full Day"
+      },
+      "difficulty": "low",
+      "pricing": {
+        "basePrice": 139,
+        "currency": "USD",
+        "priceLabel": "From $139 per person",
+        "note": "per person · minimum 2 travelers",
+        "pricingStatus": "commercial_reference_2026"
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "images": {
+        "cover": "./assets/img/tours/pachacamac-larco-cover.jpg",
+        "gallery": []
+      },
+      "badge": "New",
+      "rankScore": 91,
+      "featured": true,
+      "highlights": [
+        "Pachacámac Archaeological Sanctuary and Site Museum",
+        "Temple of the Sun and main sectors according to the operating circuit",
+        "Historic center and Santísimo Salvador Church",
+        "Viewpoint over the Pachacámac Valley",
+        "Country-style lunch included"
+      ],
+      "includes": [
+        "Pickup and return in Miraflores, Barranco or San Isidro",
+        "Tourist transportation",
+        "Professional Spanish-speaking guide",
+        "General admission to the Pachacámac Archaeological Sanctuary",
+        "Country-style lunch with a non-alcoholic beverage",
+        "Peru Nature assistance throughout the excursion"
+      ],
+      "excludes": [
+        "Alcoholic beverages",
+        "Shopping and personal expenses",
+        "Private activities or shows not listed",
+        "Pickup outside the selected areas"
+      ],
+      "itinerary": [
+        {
+          "time": "07:30",
+          "title": "Pickup in Lima",
+          "description": "Coordinated pickup in Miraflores, Barranco or San Isidro and departure toward South Lima."
+        },
+        {
+          "time": "09:00",
+          "title": "Pachacámac Archaeological Sanctuary",
+          "description": "Guided visit to the site museum and the open sectors of the sanctuary, including the main temples, plazas and archaeological viewpoints according to the current visitor circuit.",
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg"
+        },
+        {
+          "time": "12:15",
+          "title": "Pachacámac Town",
+          "description": "Walk around the main square and visit the exterior/interior of Santísimo Salvador Church according to opening hours."
+        },
+        {
+          "time": "13:15",
+          "title": "Country-style lunch",
+          "description": "Lunch at a selected restaurant in the Pachacámac Valley area."
+        },
+        {
+          "time": "14:45",
+          "title": "San Miguel viewpoint and countryside",
+          "description": "Scenic stop overlooking the valley, the town and the surrounding South Lima landscape."
+        },
+        {
+          "time": "16:00",
+          "title": "Return to Lima",
+          "description": "Departure back to Lima with estimated arrival between 17:00 and 17:30, depending on traffic."
+        }
+      ],
+      "availability": {
+        "daily": false,
+        "days": [
+          "Tuesday to Sunday"
+        ],
+        "startTimes": [
+          "07:30 · Tuesday to Sunday"
+        ]
+      },
+      "language": [
+        "Spanish",
+        "English on request"
+      ],
+      "search": {
+        "kind": "tour",
+        "destinations": [
+          "pachacamac",
+          "lima",
+          "lurin",
+          "lima-sur"
+        ],
+        "durationKeys": [
+          "full_day"
+        ],
+        "themes": [
+          "full_day",
+          "cultural",
+          "archaeological",
+          "gastronomy"
+        ],
+        "keywords": [
+          "pachacamac",
+          "sanctuary",
+          "lurin valley",
+          "pachacamac town",
+          "san miguel viewpoint"
+        ],
+        "department": "lima",
+        "region": "costa"
+      },
+      "internalNotes": {
+        "pricingUse": "Retail rate calculated for a minimum departure of 2 travelers. 2026 cost references: adult Sanctuary admission PEN 15; transportation and guiding allocated to a private/semi-private operation; estimated country-style lunch included. Target gross margin: approximately 25%–40% for 2 travelers and higher for 3–6 travelers, before advertising and taxes.",
+        "operationalNote": "The Sanctuary follows its official operating schedule and may close for maintenance or Ministry of Culture instructions. Reconfirm before issuing the service.",
+        "contentStatus": "ready_2026"
+      }
+    },
+    {
+      "id": "tour_pachacamac_lomas_lucumo_full_day",
+      "slug": "lomas-de-lucumo-pachacamac-rural-full-day",
+      "title": "Lomas de Lúcumo + Rural Pachacámac Full Day",
+      "productKind": "tour",
+      "productFamily": "flat-tour",
+      "shortDescription": "Guided trekking at Lomas de Lúcumo, a country-style lunch and a scenic route through the Pachacámac Valley.",
+      "description": "A nature-focused full day near Lima built around the Lomas de Lúcumo Ecotourism Circuit in Quebrada Verde. It includes a hike with a local guide, time for lunch in Pachacámac and a relaxed route through the town and valley. Access and the lush green appearance of the lomas are seasonal, so operations are always reconfirmed with the local association before accepting a booking.",
+      "destination": "pachacamac",
+      "department": "lima",
+      "region": "costa",
+      "location": "Lima / Quebrada Verde / Pachacámac",
+      "categories": [
+        "full_day",
+        "nature",
+        "trekking",
+        "community"
+      ],
+      "tags": [
+        "lomas de lucumo",
+        "pachacamac",
+        "quebrada verde",
+        "lima trekking",
+        "nature",
+        "lurin valley",
+        "ecotourism"
+      ],
+      "duration": {
+        "type": "full_day",
+        "hours": 10,
+        "label": "Full Day trekking"
+      },
+      "difficulty": "medium",
+      "pricing": {
+        "basePrice": 129,
+        "currency": "USD",
+        "priceLabel": "From $129 per person",
+        "note": "per person · minimum 2 travelers",
+        "pricingStatus": "commercial_reference_2026"
+      },
+      "rating": {
+        "score": 4.8,
+        "reviewsCount": 0
+      },
+      "images": {
+        "cover": "./assets/img/tours/pachacamac-larco-cover.jpg",
+        "gallery": []
+      },
+      "badge": "Nature",
+      "rankScore": 90,
+      "featured": true,
+      "highlights": [
+        "Lomas de Lúcumo Ecotourism Circuit",
+        "Local tourism guide",
+        "Approximately 3-hour Los Guardianes Route",
+        "Quebrada Verde and the coastal lomas ecosystem",
+        "Country-style lunch and a visit to Pachacámac"
+      ],
+      "includes": [
+        "Pickup and return in Miraflores, Barranco or San Isidro",
+        "Tourist transportation",
+        "Admission to Lomas de Lúcumo",
+        "Local tourism guide for the Los Guardianes Route",
+        "Peru Nature coordinator/guide",
+        "Country-style lunch with a non-alcoholic beverage",
+        "Assistance throughout the excursion"
+      ],
+      "excludes": [
+        "Rappelling or other optional adventure activities",
+        "Alcoholic beverages",
+        "Personal expenses",
+        "Technical trekking equipment"
+      ],
+      "itinerary": [
+        {
+          "time": "06:45",
+          "title": "Pickup in Lima",
+          "description": "Early departure toward Quebrada Verde to enter the circuit within its authorized operating hours."
+        },
+        {
+          "time": "08:00",
+          "title": "Lomas de Lúcumo",
+          "description": "Registration and start of the Los Guardianes Route with a local tourism guide. Approximately 3 hours of hiking among rock formations, seasonal vegetation and cultural traces within the landscape.",
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg"
+        },
+        {
+          "time": "11:30",
+          "title": "Departure toward Pachacámac",
+          "description": "Transfer from Quebrada Verde to the rural/country area of the district."
+        },
+        {
+          "time": "12:30",
+          "title": "Country-style lunch",
+          "description": "Time to have lunch and rest after the trek."
+        },
+        {
+          "time": "14:00",
+          "title": "Rural Pachacámac and viewpoint",
+          "description": "Walk through the town, the surroundings of the main square and a scenic valley stop depending on access conditions."
+        },
+        {
+          "time": "16:00",
+          "title": "Return to Lima",
+          "description": "Return to the pickup areas, with estimated arrival between 17:00 and 17:30."
+        }
+      ],
+      "availability": {
+        "daily": false,
+        "days": [
+          "Saturdays, Sundays and public holidays · official season",
+          "Monday to Friday only for organized groups with advance reservation"
+        ],
+        "startTimes": [
+          "06:45 · Saturdays, Sundays and public holidays",
+          "06:45 · Mon–Fri only with organized-group advance booking"
+        ]
+      },
+      "language": [
+        "Spanish",
+        "English on request"
+      ],
+      "search": {
+        "kind": "tour",
+        "destinations": [
+          "pachacamac",
+          "lima",
+          "quebrada-verde",
+          "lurin"
+        ],
+        "durationKeys": [
+          "full_day",
+          "trekking"
+        ],
+        "themes": [
+          "full_day",
+          "nature",
+          "trekking",
+          "community"
+        ],
+        "keywords": [
+          "lomas de lucumo",
+          "pachacamac nature",
+          "quebrada verde",
+          "trekking near lima",
+          "lurin valley"
+        ],
+        "department": "lima",
+        "region": "costa"
+      },
+      "internalNotes": {
+        "pricingUse": "Retail rate calculated using Lomas adult admission PEN 10 + local guide for the Los Guardianes Route PEN 60 per group of 1–14 travelers (published 2026 rates, before IGV) + transportation, coordinator and lunch. At USD 129 p/p it preserves a safer operating margin starting from 2 travelers and improves with groups.",
+        "seasonality": "For 2026, the association publishes a seasonal operating period and special access rules. Reconfirm actual opening before charging; the ecosystem may not appear green depending on weather conditions.",
+        "contentStatus": "ready_2026_seasonal"
+      }
+    },
+    {
+      "id": "package_pachacamac_2d1n",
+      "slug": "pachacamac-2-dias-1-noche-valle-lomas",
+      "title": "Pachacámac 2D/1N: Archaeology, Green Valley & Lomas",
+      "productKind": "package",
+      "productFamily": "flat-package",
+      "shortDescription": "A getaway from Lima combining the archaeological sanctuary, traditional town, local cuisine, the Pachacámac Valley and Lomas de Lúcumo when the circuit is open.",
+      "description": "A short getaway that turns Pachacámac into an overnight destination rather than just a stop along the way. Day 1 focuses on archaeology, history and local cuisine; Day 2 on nature and the rural landscape. Choose your stay at Hotel Palacio del Sur, Rústica Pachacámac or Casa Boutique QX. If Lomas de Lúcumo is not operating due to season or weather, Day 2 is replaced with an equivalent rural and scenic route coordinated in advance with the traveler.",
+      "destination": "pachacamac",
+      "department": "lima",
+      "region": "costa",
+      "location": "Lima / Lurín / Pachacámac / Quebrada Verde",
+      "categories": [
+        "multi_day",
+        "cultural",
+        "nature",
+        "archaeological",
+        "gastronomy"
+      ],
+      "tags": [
+        "pachacamac 2 days",
+        "pachacamac hotel",
+        "lomas de lucumo",
+        "pachacamac sanctuary",
+        "getaway from lima",
+        "lurin valley"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 2,
+        "nights": 1,
+        "label": "2D/1N"
+      },
+      "difficulty": "medium",
+      "pricing": {
+        "basePrice": 229,
+        "currency": "USD",
+        "priceLabel": "From $229 per person + hotel",
+        "note": "per person · accommodation selected separately",
+        "pricingStatus": "commercial_reference_2026"
+      },
+      "rating": {
+        "score": 4.9,
+        "reviewsCount": 0
+      },
+      "images": {
+        "cover": "./assets/img/tours/pachacamac-larco-cover.jpg",
+        "gallery": []
+      },
+      "badge": "Getaway",
+      "rankScore": 94,
+      "featured": true,
+      "highlights": [
+        "Two days of experiences in Pachacámac",
+        "Pachacámac Archaeological Sanctuary and Site Museum",
+        "Country-style lunch on Day 1",
+        "Lomas de Lúcumo with a local guide when open",
+        "Three accommodation options in Pachacámac/Lurín"
+      ],
+      "includes": [
+        "Initial pickup and final return in Miraflores, Barranco or San Isidro",
+        "Tourist transportation throughout the program",
+        "Spanish-speaking guide/coordinator",
+        "Admission to the Pachacámac Archaeological Sanctuary",
+        "Admission and local guide at Lomas de Lúcumo when the circuit is operating",
+        "Country-style lunch on Day 1",
+        "Breakfast according to the selected hotel rate plan when applicable",
+        "Peru Nature assistance"
+      ],
+      "excludes": [
+        "Accommodation: selected and added separately during booking",
+        "Lunch on Day 2",
+        "Dinner on Day 1",
+        "Alcoholic beverages",
+        "Personal expenses",
+        "Optional activities not listed"
+      ],
+      "hotelAddOn": {
+        "enabled": true,
+        "destination": "pachacamac",
+        "nights": 1,
+        "required": false,
+        "label": "Choose your hotel in Pachacámac"
+      },
+      "itinerary": [
+        {
+          "time": "Day 1",
+          "title": "Pachacámac Sanctuary + Green Valley",
+          "description": "Pickup in Lima, guided visit to the Archaeological Sanctuary and Site Museum, tour of Pachacámac town, country-style lunch and a valley viewpoint. Check in at the selected hotel in the late afternoon.",
+          "image": "./assets/img/tours/pachacamac-larco-cover.jpg"
+        },
+        {
+          "time": "Day 2",
+          "title": "Lomas de Lúcumo + Rural Pachacámac",
+          "description": "Breakfast according to the selected hotel. Departure toward Quebrada Verde for the Los Guardianes Route with a local guide when the circuit is open. Lunch on your own and return to Lima in the afternoon. Outside the operating season, an alternative rural/scenic route is coordinated."
+        }
+      ],
+      "availability": {
+        "daily": false,
+        "days": [
+          "Tuesday to Sunday · subject to Lomas operations"
+        ],
+        "startTimes": [
+          "07:30 · Tuesday to Sunday · subject to Lomas operations"
+        ]
+      },
+      "language": [
+        "Spanish",
+        "English on request"
+      ],
+      "search": {
+        "kind": "package",
+        "destinations": [
+          "pachacamac",
+          "lima",
+          "lurin",
+          "quebrada-verde"
+        ],
+        "durationKeys": [
+          "2d1n",
+          "multi_day"
+        ],
+        "themes": [
+          "multi_day",
+          "cultural",
+          "nature",
+          "archaeological",
+          "gastronomy"
+        ],
+        "keywords": [
+          "pachacamac 2d1n",
+          "pachacamac hotel",
+          "lomas de lucumo",
+          "lima getaway",
+          "lurin valley"
+        ],
+        "department": "lima",
+        "region": "costa"
+      },
+      "internalNotes": {
+        "pricingUse": "Base rate USD 229 p/p excluding hotel. The 2-traveler model accounts for transportation/guide over 2 days, official admission tickets, the Lomas local guide, Day 1 lunch and coordination. Hotel is added as a room/night charge; roomRates already contain a retail margin. Target total margin for 2 travelers: approximately USD 90–140 per booking depending on hotel and final costs; higher for 3–6 travelers.",
+        "operationalNote": "Reconfirm Lomas opening before final payment. If it is not operating, offer an agreed rural/scenic alternative route.",
+        "contentStatus": "ready_2026"
+      }
     }
   ],
-  "generatedAt": "2026-06-10T00:00:00-05:00"
+  "generatedAt": "2026-08-12T15:57:00-05:00"
 }

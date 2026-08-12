@@ -570,4 +570,23 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url>
+    <loc>https://perunature.pe/product.html?slug=pachacamac-esencial-santuario-valle-verde-full-day</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://perunature.pe/product.html?slug=lomas-de-lucumo-pachacamac-rural-full-day</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://perunature.pe/product.html?slug=pachacamac-2-dias-1-noche-valle-lomas</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
