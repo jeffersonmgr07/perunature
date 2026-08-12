@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-180.png" />
+  <title>Registro de operadores | Peru Nature</title>
+  <meta name="description" content="Registra a tu empresa como operador turístico aliado de Peru Nature y accede al portal privado de reservas asignadas." />
+  <meta name="robots" content="noindex, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Registro de operadores | Peru Nature" />
+  <meta property="og:description" content="Registra a tu empresa como operador turístico aliado de Peru Nature y accede al portal privado de reservas asignadas." />
+  <meta property="og:url" content="https://perunature.pe/registro-operadores.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Registro de operadores | Peru Nature" />
+  <meta name="twitter:description" content="Registra a tu empresa como operador turístico aliado de Peru Nature y accede al portal privado de reservas asignadas." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <link rel="canonical" href="https://perunature.pe/registro-operadores.html" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="auth-page">
+    <div class="container auth-shell">
+      <section class="auth-card">
+        <p class="eyebrow" data-i18n="operatorAuth.eyebrow">Portal privado de operadores</p>
+        <h1 data-i18n="operatorAuth.registerTitle">Registra a tu empresa</h1>
+        <p data-i18n="operatorAuth.registerIntro">Completa estos datos para solicitar tu acceso al portal de operadores. Un asesor de Peru Nature revisará tu solicitud antes de habilitar tu cuenta.</p>
+
+        <form id="operatorRegisterForm" class="auth-form">
+          <label><span data-i18n="operatorAuth.companyName">Nombre de la empresa / operador</span><input type="text" name="companyName" required></label>
+          <label><span data-i18n="operatorAuth.ruc">RUC</span><input type="text" name="ruc" required placeholder="20123456789"></label>
+          <label><span data-i18n="operatorAuth.contactName">Nombre de contacto</span><input type="text" name="contactName" required></label>
+          <label><span data-i18n="operatorAuth.region">Región donde operas</span><input type="text" name="region" placeholder="Ej. Cusco, Áncash, Loreto..." required></label>
+          <label><span data-i18n="auth.email">Correo electrónico</span><input type="email" name="email" required placeholder="empresa@ejemplo.com"></label>
+          <label><span data-i18n="operatorAuth.whatsapp">WhatsApp</span><input type="tel" name="whatsapp" placeholder="+51 999 999 999"></label>
+          <label><span data-i18n="auth.password">Contraseña</span><input type="password" name="password" required minlength="6"></label>
+          <label><span data-i18n="operatorAuth.yearsExperience">Años de experiencia operando</span><input type="text" name="yearsExperience"></label>
+          <label class="full"><span data-i18n="operatorAuth.servicesOffered">Servicios que ofreces (tours, hospedaje, transporte...)</span><input type="text" name="servicesOffered"></label>
+          <label class="full"><span data-i18n="operatorAuth.message">Cuéntanos brevemente sobre tu operación</span><textarea name="message" rows="3"></textarea></label>
+          <button type="submit"><i class="fa-solid fa-handshake"></i> <span data-i18n="operatorAuth.submitButton">Enviar solicitud</span></button>
+        </form>
+
+        <div class="auth-links">
+          <span><span data-i18n="operatorAuth.haveAccount">¿Tu empresa ya está registrada?</span> <a href="./login-operadores.html" data-i18n="auth.signInHere">Inicia sesión aquí</a></span>
+        </div>
+
+        <p id="authStatus" class="auth-status" aria-live="polite"></p>
+      </section>
+
+      <aside class="auth-side-card">
+        <h2 data-i18n="operatorAuth.sideTitle">¿Quieres ser operador aliado?</h2>
+        <p data-i18n="operatorAuth.sideText2">Revisa nuestro modelo de alianza, beneficios y requisitos antes de enviar tu solicitud.</p>
+        <a class="auth-button auth-button--ghost" href="./alianza-operadores.html"><i class="fa-solid fa-handshake"></i> <span data-i18n="operatorAuth.allianceButton">Ver programa de alianza</span></a>
+      </aside>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQPTMlnuoMUra2-LyZ_IHGOuiYzYXwORuAKKYqx_XJm04d3whsA_XetdPUI9cLF4Mq/exec";</script>
+  <script src="./assets/js/pages/operator-auth.js"></script>
+</body>
+</html>

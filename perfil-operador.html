@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-180.png" />
+  <title>Panel de operador | Peru Nature</title>
+  <meta name="description" content="Panel privado para operadores turísticos aliados de Peru Nature." />
+  <link rel="canonical" href="https://perunature.pe/perfil-operador.html" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Panel de operador | Peru Nature" />
+  <meta property="og:description" content="Panel privado para operadores turísticos aliados de Peru Nature." />
+  <meta property="og:url" content="https://perunature.pe/perfil-operador.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Panel de operador | Peru Nature" />
+  <meta name="twitter:description" content="Panel privado para operadores turísticos aliados de Peru Nature." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./assets/css/variables.css" />
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="stylesheet" href="./assets/css/header.css" />
+  <link rel="stylesheet" href="./assets/css/buttons.css" />
+  <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+  <link rel="stylesheet" href="./assets/css/content-page.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
+</head>
+<body>
+  <div id="header-container"></div>
+  <main class="auth-page">
+    <div class="container">
+      <section class="profile-card">
+        <div class="profile-top">
+          <div>
+            <h1 data-i18n="operatorProfile.title">Panel de operador</h1>
+            <p data-i18n="operatorProfile.intro">Información de tu cuenta de alianza con Peru Nature.</p>
+          </div>
+          <button id="logoutButton" class="auth-button auth-button--ghost" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span data-i18n="operatorProfile.logout">Cerrar sesión</span></button>
+        </div>
+        <div id="operatorInfo" class="profile-meta"></div>
+      </section>
+
+      <div class="profile-shell" style="margin-top:24px">
+        <section class="profile-panel">
+          <h2 data-i18n="operatorProfile.reservationsTitle">Reservas asignadas</h2>
+          <div class="content-note">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <p data-i18n="operatorProfile.reservationsNote">El panel de reservas asignadas por operador está en desarrollo. Mientras tanto, tu asesor Peru Nature te contactará por WhatsApp o correo con el detalle de cada reserva confirmada para tu empresa.</p>
+          </div>
+          <a class="auth-button" href="https://wa.me/51929715296?text=Hola%20Peru%20Nature,%20quiero%20revisar%20mis%20reservas%20asignadas" target="_blank" rel="noopener" style="max-width:320px"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="operatorProfile.reservationsCta">Consultar reservas por WhatsApp</span></a>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/i18n.js"></script>
+  <script src="./assets/js/pages/operator-profile.js"></script>
+</body>
+</html>

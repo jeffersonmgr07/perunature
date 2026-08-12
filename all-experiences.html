@@ -4,8 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-180.png" />
   <title>Experiencias en Perú | Peru Nature</title>
   <meta name="description" content="Explora tours, paquetes, reservas naturales, trekkings y expediciones documentales por todo el Perú con Peru Nature." />
+  <link rel="canonical" href="https://perunature.pe/all-experiences.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Experiencias en Perú | Peru Nature" />
+  <meta property="og:description" content="Explora tours, paquetes, reservas naturales, trekkings y expediciones documentales por todo el Perú con Peru Nature." />
+  <meta property="og:url" content="https://perunature.pe/all-experiences.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Experiencias en Perú | Peru Nature" />
+  <meta name="twitter:description" content="Explora tours, paquetes, reservas naturales, trekkings y expediciones documentales por todo el Perú con Peru Nature." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -16,6 +31,7 @@
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/all-experiences.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
 </head>
 
 <body>
@@ -24,18 +40,18 @@
   <main class="listing-page">
     <section class="listing-hero">
       <div class="container listing-hero__inner">
-        <span class="listing-kicker">Catálogo nacional</span>
-        <h1>Tours, paquetes y expediciones por todo el Perú</h1>
-        <p id="listingSummary">
+        <span class="listing-kicker" data-i18n="experiences.kicker">Catálogo nacional</span>
+        <h1 data-i18n="experiences.heroTitle">Tours, paquetes y expediciones por todo el Perú</h1>
+        <p id="listingSummary" data-i18n="experiences.summaryDefault">
           Explora experiencias seleccionadas en costa, Andes, Amazonía y norte del Perú. Encuentra tours de un día, paquetes por destino, trekkings, reservas naturales y próximas salidas documentales.
         </p>
 
         <div class="listing-hero__chips" aria-label="Categorías principales">
-          <a href="./all-experiences.html?region=costa">Costa</a>
-          <a href="./all-experiences.html?region=andes">Andes</a>
-          <a href="./all-experiences.html?region=amazonia">Amazonía</a>
-          <a href="./all-experiences.html?categoria=reserve">Reservas naturales</a>
-          <a href="./all-experiences.html?tipo=package">Paquetes</a>
+          <a href="./all-experiences.html?region=costa" data-i18n="experiences.chipCoast">Costa</a>
+          <a href="./all-experiences.html?region=andes" data-i18n="experiences.chipAndes">Andes</a>
+          <a href="./all-experiences.html?region=amazonia" data-i18n="experiences.chipAmazon">Amazonía</a>
+          <a href="./all-experiences.html?categoria=reserve" data-i18n="experiences.chipReserves">Reservas naturales</a>
+          <a href="./all-experiences.html?tipo=package" data-i18n="experiences.chipPackages">Paquetes</a>
         </div>
       </div>
     </section>
@@ -46,88 +62,88 @@
           <div class="filters-card">
             <div class="filters-card__header">
               <div>
-                <span>Explorar</span>
-                <h2>Filtrar experiencias</h2>
+                <span data-i18n="experiences.explore">Explorar</span>
+                <h2 data-i18n="experiences.filterExperiences">Filtrar experiencias</h2>
               </div>
-              <button type="button" id="clearFiltersBtn" class="clear-filters-btn" aria-label="Limpiar filtros">
+              <button type="button" id="clearFiltersBtn" class="clear-filters-btn" aria-label="Limpiar filtros" data-i18n="experiences.clear">
                 Limpiar
               </button>
             </div>
 
             <div class="filter-group filter-group--full">
-              <label for="filterSearch">Buscar</label>
-              <input type="text" id="filterSearch" placeholder="Laguna 69, Tambopata, Paracas..." />
+              <label for="filterSearch" data-i18n="experiences.search">Buscar</label>
+              <input type="text" id="filterSearch" placeholder="Laguna 69, Tambopata, Paracas..." data-i18n-placeholder="experiences.searchPlaceholder" />
             </div>
 
             <div class="filters-grid-mini">
               <div class="filter-group">
-                <label for="filterRegion">Región</label>
+                <label for="filterRegion" data-i18n="experiences.region">Región</label>
                 <select id="filterRegion">
-                  <option value="">Todas</option>
-                  <option value="costa">Costa</option>
-                  <option value="andes">Andes</option>
-                  <option value="amazonia">Amazonía</option>
-                  <option value="norte">Norte</option>
+                  <option value="" data-i18n="experiences.all">Todas</option>
+                  <option value="costa" data-i18n="experiences.chipCoast">Costa</option>
+                  <option value="andes" data-i18n="experiences.chipAndes">Andes</option>
+                  <option value="amazonia" data-i18n="experiences.chipAmazon">Amazonía</option>
+                  <option value="norte" data-i18n="experiences.north">Norte</option>
                 </select>
               </div>
 
               <div class="filter-group">
-                <label for="filterProductKind">Tipo</label>
+                <label for="filterProductKind" data-i18n="experiences.kind">Tipo</label>
                 <select id="filterProductKind">
-                  <option value="">Todos</option>
-                  <option value="tour">Tours</option>
-                  <option value="package">Paquetes</option>
+                  <option value="" data-i18n="experiences.allMasc">Todos</option>
+                  <option value="tour" data-i18n="experiences.tours">Tours</option>
+                  <option value="package" data-i18n="experiences.packages">Paquetes</option>
                 </select>
               </div>
             </div>
 
             <div class="filter-group">
-              <label for="filterDestination">Destino o departamento</label>
+              <label for="filterDestination" data-i18n="experiences.destinationOrDepartment">Destino o departamento</label>
               <select id="filterDestination">
-                <option value="">Todos los destinos</option>
+                <option value="" data-i18n="quote.allDestinations">Todos los destinos</option>
               </select>
             </div>
 
             <div class="filters-grid-mini">
               <div class="filter-group">
-                <label for="filterCategory">Categoría</label>
+                <label for="filterCategory" data-i18n="experiences.filterCategory">Categoría</label>
                 <select id="filterCategory">
-                  <option value="">Todas</option>
+                  <option value="" data-i18n="experiences.all">Todas</option>
                 </select>
               </div>
 
               <div class="filter-group">
-                <label for="filterDuration">Duración</label>
+                <label for="filterDuration" data-i18n="experiences.filterDuration">Duración</label>
                 <select id="filterDuration">
-                  <option value="">Todas</option>
-                  <option value="half_day">Medio día</option>
-                  <option value="full_day">Full Day</option>
-                  <option value="multi_day">2+ días</option>
+                  <option value="" data-i18n="experiences.all">Todas</option>
+                  <option value="half_day" data-i18n="product.halfDay">Medio día</option>
+                  <option value="full_day" data-i18n="product.fullDay">Full Day</option>
+                  <option value="multi_day" data-i18n="experiences.twoPlusDays">2+ días</option>
                 </select>
               </div>
             </div>
 
             <div class="filters-grid-mini">
               <div class="filter-group">
-                <label for="filterDifficulty">Dificultad</label>
+                <label for="filterDifficulty" data-i18n="experiences.filterDifficulty">Dificultad</label>
                 <select id="filterDifficulty">
-                  <option value="">Todas</option>
-                  <option value="low">Fácil</option>
-                  <option value="medium">Moderada</option>
-                  <option value="high">Alta</option>
-                  <option value="very_high">Muy alta</option>
+                  <option value="" data-i18n="experiences.all">Todas</option>
+                  <option value="low" data-i18n="product.difficultyLow">Fácil</option>
+                  <option value="medium" data-i18n="product.difficultyMedium">Moderada</option>
+                  <option value="high" data-i18n="product.difficultyHigh">Alta</option>
+                  <option value="very_high" data-i18n="product.difficultyVeryHigh">Muy alta</option>
                 </select>
               </div>
 
               <div class="filter-group">
-                <label for="filterSort">Orden</label>
+                <label for="filterSort" data-i18n="experiences.sortOrder">Orden</label>
                 <select id="filterSort">
-                  <option value="recommended">Recomendados</option>
-                  <option value="rank_desc">Ranking</option>
-                  <option value="price_asc">Menor precio</option>
-                  <option value="price_desc">Mayor precio</option>
-                  <option value="duration_asc">Duración</option>
-                  <option value="name_asc">Nombre A-Z</option>
+                  <option value="recommended" data-i18n="experiences.sortRecommended">Recomendados</option>
+                  <option value="rank_desc" data-i18n="experiences.sortRanking">Ranking</option>
+                  <option value="price_asc" data-i18n="experiences.sortPriceAsc">Menor precio</option>
+                  <option value="price_desc" data-i18n="experiences.sortPriceDesc">Mayor precio</option>
+                  <option value="duration_asc" data-i18n="experiences.filterDuration">Duración</option>
+                  <option value="name_asc" data-i18n="experiences.sortNameAsc">Nombre A-Z</option>
                 </select>
               </div>
             </div>
@@ -137,9 +153,9 @@
         <section class="results-area">
           <div class="results-top">
             <div>
-              <span id="resultsEyebrow" class="results-eyebrow">Vitrina de excursiones</span>
-              <h2 id="resultsTitle">Experiencias disponibles</h2>
-              <p id="resultsCount">Cargando experiencias...</p>
+              <span id="resultsEyebrow" class="results-eyebrow" data-i18n="experiences.showcase">Vitrina de excursiones</span>
+              <h2 id="resultsTitle" data-i18n="experiences.defaultTitle">Experiencias disponibles</h2>
+              <p id="resultsCount" data-i18n="experiences.loading">Cargando experiencias...</p>
             </div>
           </div>
 
@@ -149,9 +165,9 @@
 
           <div id="emptyState" class="empty-state" hidden>
             <i class="fa-solid fa-leaf"></i>
-            <h3>No encontramos experiencias</h3>
-            <p>Prueba con otro destino, región, categoría o palabra clave.</p>
-            <button type="button" id="emptyClearBtn">Ver todo el catálogo</button>
+            <h3 data-i18n="experiences.emptyTitle">No encontramos experiencias</h3>
+            <p data-i18n="experiences.emptyText">Prueba con otro destino, región, categoría o palabra clave.</p>
+            <button type="button" id="emptyClearBtn" data-i18n="experiences.emptyClear">Ver todo el catálogo</button>
           </div>
         </section>
       </div>

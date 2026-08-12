@@ -1,41 +1,42 @@
 <form class="pn-search" id="pnSearchForm">
   <div class="pn-search-tabs">
-    <button type="button" class="pn-tab is-active" data-tab="tours">Tours</button>
-    <button type="button" class="pn-tab" data-tab="paquetes">Paquetes</button>
-    <button type="button" class="pn-tab" data-tab="hoteles">Hoteles</button>
+    <button type="button" class="pn-tab is-active" data-tab="tours" data-i18n="searchBar.tabTours">Tours</button>
+    <button type="button" class="pn-tab" data-tab="paquetes" data-i18n="searchBar.tabPackages">Paquetes</button>
+    <button type="button" class="pn-tab" data-tab="hoteles" data-i18n="searchBar.tabHotels">Hoteles</button>
   </div>
 
   <div class="pn-search-box">
     <div class="pn-field pn-field--search">
-      <label>Destino</label>
-    
+      <label data-i18n="searchBar.destination">Destino</label>
+
       <input
         type="text"
         id="pnDestinoInput"
         placeholder="¿A dónde quieres viajar?"
+        data-i18n-placeholder="searchBar.destinationPlaceholder"
         autocomplete="off"
       />
-    
+
       <div class="pn-autocomplete" id="pnAutocomplete"></div>
     </div>
 
     <div class="pn-field">
-      <label>Fecha</label>
+      <label data-i18n="searchBar.date">Fecha</label>
       <input type="date" id="pnFecha">
     </div>
 
     <div class="pn-field">
-      <label>Viajeros</label>
+      <label data-i18n="searchBar.travelers">Viajeros</label>
       <select id="pnViajeros">
-        <option value="1">1 viajero</option>
-        <option value="2" selected>2 viajeros</option>
-        <option value="3">3 viajeros</option>
-        <option value="4">4 viajeros</option>
-        <option value="5">5+ viajeros</option>
+        <option value="1" data-i18n="searchBar.traveler1">1 viajero</option>
+        <option value="2" selected data-i18n="searchBar.traveler2">2 viajeros</option>
+        <option value="3" data-i18n="searchBar.traveler3">3 viajeros</option>
+        <option value="4" data-i18n="searchBar.traveler4">4 viajeros</option>
+        <option value="5" data-i18n="searchBar.traveler5">5+ viajeros</option>
       </select>
     </div>
 
-    <button type="submit" class="pn-search-btn">
+    <button type="submit" class="pn-search-btn" data-i18n="searchBar.searchButton">
       Buscar
     </button>
   </div>

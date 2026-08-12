@@ -3,7 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cotizar paquete | Peru Nature</title>
+
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-180.png" />
+  <title>Cotizador de viaje a tu medida | Peru Nature</title>
+  <meta name="description" content="Arma tu viaje a Perú a tu medida: agrega tours y hoteles por destino, elige tu acomodación según el número de viajeros y recibe tu cotización al instante." />
+  <link rel="canonical" href="https://perunature.pe/quote-packages.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Cotizador de viaje a tu medida | Peru Nature" />
+  <meta property="og:description" content="Arma tu viaje a Perú a tu medida: agrega tours y hoteles por destino, elige tu acomodación según el número de viajeros y recibe tu cotización al instante." />
+  <meta property="og:url" content="https://perunature.pe/quote-packages.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cotizador de viaje a tu medida | Peru Nature" />
+  <meta name="twitter:description" content="Arma tu viaje a Perú a tu medida: agrega tours y hoteles por destino, elige tu acomodación según el número de viajeros y recibe tu cotización al instante." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="./assets/css/variables.css" />
@@ -11,13 +28,152 @@
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <style>.simple-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.simple-card{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:42px;box-shadow:0 18px 45px rgba(11,61,46,.08)}.simple-card h1{margin:0 0 14px;color:#0b3d2e;font-size:clamp(32px,5vw,54px)}.simple-card p{color:#65736b;line-height:1.75;font-size:18px;max-width:760px}.simple-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.simple-actions a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 20px;font-weight:900}.simple-primary{background:#0b3d2e;color:#fff}.simple-secondary{border:1px solid rgba(11,61,46,.18);color:#0b3d2e}</style>
+  <link rel="stylesheet" href="./assets/css/quote-packages.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
 </head>
 <body>
   <div id="header-container"></div>
-  <main class="simple-page"><div class="container"><section class="simple-card"><h1>Cotiza un paquete a tu medida</h1><p>Cuéntanos tus fechas, destinos favoritos, número de viajeros y estilo de viaje. Un asesor diseñará una propuesta personalizada por Perú.</p><div class="simple-actions"><a class="simple-primary" href="https://wa.me/51929715296?text=Hola%20Peru%20Nature,%20quiero%20cotizar%20un%20paquete%20a%20mi%20medida" target="_blank" rel="noopener">Cotizar por WhatsApp</a><a class="simple-secondary" href="./all-experiences.html?tipo=package">Ver paquetes</a></div></section></div></main>
+
+  <main class="quote-page">
+    <section class="quote-hero">
+      <div class="container">
+        <span class="quote-hero__eyebrow" data-i18n="quote.eyebrow">Cotizador Peru Nature</span>
+        <h1 data-i18n="quote.heroTitle">Arma tu viaje a tu medida</h1>
+        <p data-i18n="quote.heroText">Agrega tours y hoteles por destino, elige tu acomodación según cuántos viajan, y arma tu propuesta de viaje al instante. Los vuelos estarán disponibles muy pronto.</p>
+      </div>
+    </section>
+
+    <section class="quote-body">
+      <div class="container quote-layout">
+        <div class="quote-main">
+
+          <div class="quote-card quote-basics">
+            <h2><span class="quote-step">1</span> <span data-i18n="quote.step1Title">Destino y viajeros</span></h2>
+            <div class="quote-basics-grid">
+              <label class="quote-field">
+                <span data-i18n="quote.destination">Destino</span>
+                <select id="quoteDestination">
+                  <option value="" data-i18n="quote.allDestinations">Todos los destinos</option>
+                </select>
+              </label>
+
+              <label class="quote-field">
+                <span data-i18n="quote.adults">Adultos</span>
+                <div class="qty-control" data-qty="adults">
+                  <button type="button" data-action="minus" aria-label="Menos adultos">−</button>
+                  <span id="quoteAdultsCount">2</span>
+                  <button type="button" data-action="plus" aria-label="Más adultos">+</button>
+                </div>
+              </label>
+
+              <label class="quote-field">
+                <span data-i18n="quote.children">Niños</span>
+                <div class="qty-control" data-qty="children">
+                  <button type="button" data-action="minus" aria-label="Menos niños">−</button>
+                  <span id="quoteChildrenCount">0</span>
+                  <button type="button" data-action="plus" aria-label="Más niños">+</button>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="quote-tabs" role="tablist">
+            <button type="button" class="quote-tab is-active" data-tab="tours" role="tab" aria-selected="true">
+              <i class="fa-solid fa-person-hiking"></i> <span data-i18n="quote.tabTours">Tours</span>
+            </button>
+            <button type="button" class="quote-tab" data-tab="hotels" role="tab" aria-selected="false">
+              <i class="fa-solid fa-bed"></i> <span data-i18n="quote.tabHotels">Hoteles</span>
+            </button>
+            <button type="button" class="quote-tab" data-tab="flights" role="tab" aria-selected="false">
+              <i class="fa-solid fa-plane"></i> <span data-i18n="quote.tabFlights">Vuelos</span>
+            </button>
+          </div>
+
+          <section class="quote-panel" id="panel-tours" role="tabpanel">
+            <div class="quote-panel-toolbar">
+              <input type="text" id="quoteTourSearch" placeholder="Buscar tour o paquete (ej. Laguna 69, Tambopata...)" data-i18n-placeholder="quote.tourSearchPlaceholder" />
+              <span id="quoteToursCount" class="quote-panel-count"></span>
+            </div>
+            <div class="quote-tours-grid" id="quoteToursGrid"></div>
+          </section>
+
+          <section class="quote-panel" id="panel-hotels" role="tabpanel" hidden>
+            <div class="quote-panel-toolbar">
+              <p data-i18n="quote.hotelsIntro">Elige un destino arriba para ver los hoteles disponibles. Cada hotel te mostrará las combinaciones de habitación válidas según la cantidad de viajeros.</p>
+            </div>
+            <div class="quote-hotels-grid" id="quoteHotelsGrid"></div>
+          </section>
+
+          <section class="quote-panel" id="panel-flights" role="tabpanel" hidden>
+            <div class="quote-flights-placeholder">
+              <div class="quote-flights-card">
+                <span class="quote-soon-badge" data-i18n="quote.comingSoon">Próximamente</span>
+                <i class="fa-solid fa-plane-departure"></i>
+                <h3 data-i18n="quote.domesticFlights">Vuelos nacionales</h3>
+                <p data-i18n="quote.domesticFlightsText">Conexiones entre Lima y los principales destinos del Perú.</p>
+                <button type="button" class="btn-secondary" disabled data-i18n="quote.addFlight">Agregar vuelo</button>
+              </div>
+              <div class="quote-flights-card">
+                <span class="quote-soon-badge" data-i18n="quote.comingSoon">Próximamente</span>
+                <i class="fa-solid fa-earth-americas"></i>
+                <h3 data-i18n="quote.internationalFlights">Vuelos internacionales</h3>
+                <p data-i18n="quote.internationalFlightsText">Conexiones desde tu país de origen hacia el Perú.</p>
+                <button type="button" class="btn-secondary" disabled data-i18n="quote.addFlight">Agregar vuelo</button>
+              </div>
+            </div>
+            <p class="quote-flights-note"><i class="fa-solid fa-circle-info"></i> <span data-i18n="quote.flightsNote">Estamos incorporando tarifas de vuelos actualizadas. Mientras tanto, tu asesor puede cotizarlos manualmente al enviar tu cotización por WhatsApp.</span></p>
+          </section>
+        </div>
+
+        <aside class="quote-summary" id="quoteSummary">
+          <div class="quote-summary-card">
+            <h2 data-i18n="quote.summaryTitle">Tu cotización</h2>
+            <p class="quote-summary-meta" id="quoteSummaryMeta">2 adultos</p>
+
+            <div id="quoteSummaryItems" class="quote-summary-items">
+              <p class="quote-summary-empty" data-i18n="quote.summaryEmpty">Aún no agregaste tours ni hoteles. Explora el catálogo y toca "Agregar" para empezar a armar tu viaje.</p>
+            </div>
+
+            <div class="quote-summary-totals" id="quoteSummaryTotals"></div>
+
+            <div class="quote-summary-actions">
+              <button type="button" class="btn-primary" id="quoteWhatsappBtn"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="quote.sendWhatsapp">Enviar por WhatsApp</span></button>
+              <button type="button" class="btn-secondary" id="quotePrintBtn"><i class="fa-solid fa-print"></i> <span data-i18n="quote.printPdf">Imprimir / Guardar PDF</span></button>
+              <button type="button" class="quote-clear-btn" id="quoteClearBtn" data-i18n="quote.clearQuote">Vaciar cotización</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de selección de habitación -->
+  <div class="quote-modal" id="quoteHotelModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="quoteHotelModalTitle">
+    <div class="quote-modal__backdrop" data-close-quote-modal></div>
+    <div class="quote-modal__dialog">
+      <button type="button" class="quote-modal__close" data-close-quote-modal aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="quote-modal__header">
+        <span class="quote-modal__kicker" data-i18n="quote.chooseAccommodation">Elige tu acomodación</span>
+        <h2 id="quoteHotelModalTitle">Hotel</h2>
+        <p id="quoteHotelModalSubtitle"></p>
+      </div>
+      <div class="quote-modal__body">
+        <label class="quote-nights-field">
+          <span data-i18n="quote.nights">Noches</span>
+          <input type="number" id="quoteHotelNights" min="1" max="30" value="3">
+        </label>
+        <div id="quoteRoomOptions" class="quote-room-options"></div>
+        <button type="button" class="btn-primary quote-confirm-room-btn" id="quoteConfirmRoomBtn" disabled data-i18n="quote.addRoomToQuote">Agregar habitación a la cotización</button>
+      </div>
+    </div>
+  </div>
+
   <div id="footer-container"></div>
+
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/i18n.js"></script>
+  <script src="./assets/js/pages/quote-packages.js"></script>
 </body>
 </html>

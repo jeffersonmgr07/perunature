@@ -3,7 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./assets/img/favicon-180.png" />
   <title>Login operadores | Peru Nature</title>
+  <meta name="description" content="Acceso privado para operadores turísticos aliados de Peru Nature: consulta tus reservas asignadas y tu información de alianza." />
+  <link rel="canonical" href="https://perunature.pe/login-operadores.html" />
+  <meta name="robots" content="noindex, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Login operadores | Peru Nature" />
+  <meta property="og:description" content="Acceso privado para operadores turísticos aliados de Peru Nature: consulta tus reservas asignadas y tu información de alianza." />
+  <meta property="og:url" content="https://perunature.pe/login-operadores.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Login operadores | Peru Nature" />
+  <meta name="twitter:description" content="Acceso privado para operadores turísticos aliados de Peru Nature: consulta tus reservas asignadas y tu información de alianza." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="./assets/css/variables.css" />
@@ -11,13 +29,43 @@
   <link rel="stylesheet" href="./assets/css/header.css" />
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <style>.simple-page{padding:140px 0 70px;background:#f5f7ef;min-height:70vh}.simple-card{background:#fff;border:1px solid rgba(11,61,46,.12);border-radius:28px;padding:42px;box-shadow:0 18px 45px rgba(11,61,46,.08)}.simple-card h1{margin:0 0 14px;color:#0b3d2e;font-size:clamp(32px,5vw,54px)}.simple-card p{color:#65736b;line-height:1.75;font-size:18px;max-width:780px}.simple-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.simple-actions a{min-height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 20px;font-weight:900}.simple-primary{background:var(--btn-gradient);color:#fff}.simple-secondary{border:1px solid rgba(11,61,46,.18);color:#0b3d2e}</style>
+  <link rel="stylesheet" href="./assets/css/auth.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
 </head>
 <body>
   <div id="header-container"></div>
-  <main class="simple-page"><div class="container"><section class="simple-card"><h1>Login operadores</h1><p>Este acceso será usado por operadores aliados para revisar reservas asignadas, confirmar disponibilidad, coordinar datos de pasajeros y actualizar el estado del servicio.</p><div class="simple-actions"><a class="simple-primary" href="https://wa.me/51929715296?text=Hola%20Peru%20Nature,%20soy%20operador%20aliado%20y%20necesito%20acceso" target="_blank" rel="noopener">Solicitar acceso</a><a class="simple-secondary" href="./alianza-operadores.html">Ver programa de alianza</a></div></section></div></main>
+  <main class="auth-page">
+    <div class="container auth-shell">
+      <section class="auth-card auth-card--narrow">
+        <p class="eyebrow" data-i18n="operatorAuth.eyebrow">Portal privado de operadores</p>
+        <h1 data-i18n="operatorAuth.loginTitle">Acceso para operadores aliados</h1>
+        <p data-i18n="operatorAuth.loginIntro">Ingresa con el correo y contraseña de tu empresa para revisar tus reservas asignadas y tu información de alianza.</p>
+
+        <form id="operatorLoginForm" class="auth-form auth-form--single">
+          <label><span data-i18n="auth.email">Correo electrónico</span><input type="email" name="email" required placeholder="empresa@ejemplo.com"></label>
+          <label><span data-i18n="auth.password">Contraseña</span><input type="password" name="password" required placeholder="Tu contraseña"></label>
+          <button type="submit"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="auth.signInButton">Ingresar</span></button>
+        </form>
+
+        <div class="auth-links">
+          <span><span data-i18n="operatorAuth.noAccount">¿Tu empresa aún no está registrada?</span> <a href="./registro-operadores.html" data-i18n="operatorAuth.registerHere">Regístrate aquí</a></span>
+        </div>
+
+        <p id="authStatus" class="auth-status" aria-live="polite"></p>
+      </section>
+
+      <aside class="auth-side-card">
+        <h2 data-i18n="operatorAuth.sideTitle">¿Quieres ser operador aliado?</h2>
+        <p data-i18n="operatorAuth.sideText">Conoce cómo funciona nuestra alianza comercial, qué beneficios ofrecemos y qué requisitos evaluamos antes de habilitar tu cuenta.</p>
+        <a class="auth-button auth-button--ghost" href="./alianza-operadores.html"><i class="fa-solid fa-handshake"></i> <span data-i18n="operatorAuth.allianceButton">Ver programa de alianza</span></a>
+        <a class="auth-button auth-button--ghost" href="https://wa.me/51929715296?text=Hola%20Peru%20Nature,%20soy%20operador%20y%20tengo%20una%20consulta" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> <span data-i18n="operatorAuth.whatsappButton">Escribir por WhatsApp</span></a>
+      </aside>
+    </div>
+  </main>
   <div id="footer-container"></div>
   <script src="./assets/js/app.js"></script>
   <script src="./assets/js/i18n.js"></script>
+  <script>window.PN_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQPTMlnuoMUra2-LyZ_IHGOuiYzYXwORuAKKYqx_XJm04d3whsA_XetdPUI9cLF4Mq/exec";</script>
+  <script src="./assets/js/pages/operator-auth.js"></script>
 </body>
 </html>

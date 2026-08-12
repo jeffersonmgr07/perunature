@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /login.html
+Disallow: /registro.html
+Disallow: /mi-reserva.html
+Disallow: /perfil.html
+Disallow: /perfil-operador.html
+Disallow: /login-operadores.html
+Disallow: /registro-operadores.html
+
+Sitemap: https://perunature.pe/sitemap.xml

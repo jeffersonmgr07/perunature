@@ -9,6 +9,18 @@
     name="description"
     content="Tours documentales programados por Perú con fechas fijas, grupos reducidos y cupos limitados. Reserva tu experiencia con Peru Nature."
   />
+  <link rel="canonical" href="https://perunature.pe/documentary-tours.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Peru Nature" />
+  <meta property="og:title" content="Tours documentales programados | Peru Nature" />
+  <meta property="og:description" content="Tours documentales programados por Perú con fechas fijas, grupos reducidos y cupos limitados. Reserva tu experiencia con Peru Nature." />
+  <meta property="og:url" content="https://perunature.pe/documentary-tours.html" />
+  <meta property="og:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
+  <meta property="og:locale" content="es_PE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tours documentales programados | Peru Nature" />
+  <meta name="twitter:description" content="Tours documentales programados por Perú con fechas fijas, grupos reducidos y cupos limitados. Reserva tu experiencia con Peru Nature." />
+  <meta name="twitter:image" content="https://perunature.pe/assets/img/hero-1.jpg" />
 
   <link rel="icon" href="./assets/img/favicon.png" type="image/png" />
 
@@ -33,11 +45,10 @@
   <link rel="stylesheet" href="./assets/css/layout.css" />
   <link rel="stylesheet" href="./assets/css/buttons.css" />
   <link rel="stylesheet" href="./assets/css/footer.css" />
-  <link rel="stylesheet" href="./assets/css/responsive.css" />
-  <link rel="stylesheet" href="./assets/css/documentary-tours.css" />
 
   <!-- CSS de esta página -->
   <link rel="stylesheet" href="./assets/css/documentary-tours.css" />
+  <link rel="stylesheet" href="./assets/css/responsive.css" />
 </head>
 
 <body>
@@ -48,27 +59,16 @@
     <!-- Hero -->
     <section class="documentary-hero">
       <div class="container documentary-hero-inner">
-        <span class="documentary-eyebrow">
-          Tours documentales programados
-        </span>
+        <span class="documentary-eyebrow" data-i18n="docTours.heroEyebrow">Tours documentales programados</span>
 
-        <h1>
-          Expediciones reales por el Perú para viajeros que buscan algo diferente.
-        </h1>
+        <h1 data-i18n="docTours.heroTitle">Expediciones reales por el Perú para viajeros que buscan algo diferente.</h1>
 
-        <p>
-          Viajes con fechas fijas, grupos reducidos y rutas diseñadas para vivir,
-          registrar y contar historias de naturaleza, cultura y aventura.
-        </p>
+        <p data-i18n="docTours.heroText">Viajes con fechas fijas, grupos reducidos y rutas diseñadas para vivir, registrar y contar historias de naturaleza, cultura y aventura.</p>
 
         <div class="documentary-hero-actions">
-          <a href="#documentaryToursSection" class="documentary-hero-btn">
-            Ver próximas salidas
-          </a>
+          <a href="#documentaryToursSection" class="documentary-hero-btn" data-i18n="docTours.heroCtaPrimary">Ver próximas salidas</a>
 
-          <a href="https://wa.me/51929715296" target="_blank" rel="noopener" class="documentary-hero-link">
-            Consultar por WhatsApp
-          </a>
+          <a href="https://wa.me/51929715296" target="_blank" rel="noopener" class="documentary-hero-link" data-i18n="docTours.heroCtaSecondary">Consultar por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -78,29 +78,20 @@
       <div class="container documentary-intro-grid">
         <article>
           <span>01</span>
-          <h2>Fechas programadas</h2>
-          <p>
-            Cada salida tiene fecha de inicio y retorno definida para que puedas
-            planificar con anticipación.
-          </p>
+          <h2 data-i18n="docTours.intro1Title">Fechas programadas</h2>
+          <p data-i18n="docTours.intro1Text">Cada salida tiene fecha de inicio y retorno definida para que puedas planificar con anticipación.</p>
         </article>
 
         <article>
           <span>02</span>
-          <h2>Cupos limitados</h2>
-          <p>
-            Grupos pequeños de máximo 20 personas para mantener una experiencia
-            más cercana, segura y personalizada.
-          </p>
+          <h2 data-i18n="docTours.intro2Title">Cupos limitados</h2>
+          <p data-i18n="docTours.intro2Text">Grupos pequeños de máximo 20 personas para mantener una experiencia más cercana, segura y personalizada.</p>
         </article>
 
         <article>
           <span>03</span>
-          <h2>Reserva con anticipo</h2>
-          <p>
-            Separa tu cupo con un anticipo. El saldo restante se coordina antes
-            o durante la experiencia según el programa.
-          </p>
+          <h2 data-i18n="docTours.intro3Title">Reserva con anticipo</h2>
+          <p data-i18n="docTours.intro3Text">Separa tu cupo con un anticipo. El saldo restante se coordina antes o durante la experiencia según el programa.</p>
         </article>
       </div>
     </section>
@@ -109,30 +100,22 @@
     <section id="documentaryToursSection" class="documentary-tours-section">
       <div class="container">
         <div class="section-heading">
-          <span>Próximas salidas</span>
-          <h2>Tours documentales disponibles</h2>
-          <p>
-            Explora las próximas expediciones programadas y reserva tu cupo antes
-            de que se agoten.
-          </p>
+          <span data-i18n="docTours.sectionEyebrow">Próximas salidas</span>
+          <h2 data-i18n="docTours.sectionTitle">Tours documentales disponibles</h2>
+          <p data-i18n="docTours.sectionText">Explora las próximas expediciones programadas y reserva tu cupo antes de que se agoten.</p>
         </div>
 
         <!-- Loading -->
         <div id="documentaryToursLoading" class="documentary-loading">
           <div class="documentary-spinner"></div>
-          <p>Cargando salidas programadas...</p>
+          <p data-i18n="docTours.loadingText">Cargando salidas programadas...</p>
         </div>
 
         <!-- Empty -->
         <div id="documentaryToursEmpty" class="documentary-empty hidden">
-          <h3>No hay salidas disponibles por ahora</h3>
-          <p>
-            Estamos preparando nuevas expediciones documentales. Escríbenos para
-            recibir información anticipada.
-          </p>
-          <a href="https://wa.me/51929715296" target="_blank" rel="noopener">
-            Consultar próximas fechas
-          </a>
+          <h3 data-i18n="docTours.emptyTitle">No hay salidas disponibles por ahora</h3>
+          <p data-i18n="docTours.emptyText">Estamos preparando nuevas expediciones documentales. Escríbenos para recibir información anticipada.</p>
+          <a href="https://wa.me/51929715296" target="_blank" rel="noopener" data-i18n="docTours.emptyCta">Consultar próximas fechas</a>
         </div>
 
         <!-- Cards dinámicas -->

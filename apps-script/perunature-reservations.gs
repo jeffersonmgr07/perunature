@@ -27,6 +27,10 @@ function doPost(e) {
     if (action === 'saveReservation') return saveReservation_(ss, body.reservation || body);
     if (action === 'createPayPalOrder') return createPayPalOrder_(ss, body.reservation || {});
     if (action === 'capturePayPalOrder') return capturePayPalOrder_(ss, body.orderID || '', body.reservation || {});
+    if (action === 'submitComplaint') return submitComplaint_(ss, body.complaint || {});
+    if (action === 'submitOperatorApplication') return submitOperatorApplication_(ss, body.application || {});
+    if (action === 'registerOperator') return registerOperator_(ss, body.operator || {});
+    if (action === 'loginOperator') return loginOperator_(ss, body.email || '', body.password || '');
 
     return json_({ ok: false, message: 'Acción no válida.' });
   } catch (error) {
@@ -215,6 +219,119 @@ function findReservation_(ss, code, lastname) {
     reservation: rowToObject_(reservationHeader, reservation),
     passengers: passengersFound.map(function (r) { return rowToObject_(passengerHeader, r); })
   });
+}
+
+function submitComplaint_(ss, complaint) {
+  const sheet = getOrCreateSheet_(ss, 'Complaints', [
+    'createdAt', 'folio', 'type', 'consumerName', 'consumerDocType', 'consumerDocNumber',
+    'consumerAddress', 'consumerPhone', 'consumerEmail', 'guardianName', 'serviceType',
+    'serviceDescription', 'claimedAmount', 'detail', 'request', 'status'
+  ]);
+
+  const email = String(complaint.consumerEmail || '').trim();
+  const detail = String(complaint.detail || '').trim();
+  if (!email || !detail) return json_({ ok: false, message: 'Correo y detalle del reclamo son obligatorios.' });
+
+  const folio = 'PNQ' + Date.now().toString(16).toUpperCase().slice(-8);
+  sheet.appendRow([
+    new Date().toISOString(),
+    folio,
+    complaint.type || 'reclamo',
+    complaint.consumerName || '',
+    complaint.consumerDocType || '',
+    complaint.consumerDocNumber || '',
+    complaint.consumerAddress || '',
+    complaint.consumerPhone || '',
+    email,
+    complaint.guardianName || '',
+    complaint.serviceType || '',
+    complaint.serviceDescription || '',
+    complaint.claimedAmount || '',
+    detail,
+    complaint.request || '',
+    'Recibido'
+  ]);
+
+  return json_({ ok: true, folio: folio });
+}
+
+function submitOperatorApplication_(ss, application) {
+  const sheet = getOrCreateSheet_(ss, 'OperatorApplications', [
+    'createdAt', 'companyName', 'category', 'ruc', 'region', 'contactName', 'email', 'whatsapp',
+    'website', 'yearsExperience', 'servicesOffered', 'message', 'status'
+  ]);
+
+  const email = String(application.email || '').trim();
+  const companyName = String(application.companyName || '').trim();
+  if (!email || !companyName) return json_({ ok: false, message: 'Empresa y correo son obligatorios.' });
+
+  sheet.appendRow([
+    new Date().toISOString(),
+    companyName,
+    application.category || '',
+    application.ruc || '',
+    application.region || '',
+    application.contactName || '',
+    email,
+    application.whatsapp || '',
+    application.website || '',
+    application.yearsExperience || '',
+    application.servicesOffered || '',
+    application.message || '',
+    'Nueva'
+  ]);
+
+  return json_({ ok: true });
+}
+
+function registerOperator_(ss, operator) {
+  const sheet = getOrCreateSheet_(ss, 'Operators', [
+    'createdAt', 'email', 'passwordHash', 'companyName', 'ruc', 'contactName', 'whatsapp', 'region', 'status'
+  ]);
+  const email = String(operator.email || '').trim().toLowerCase();
+  const password = String(operator.password || '');
+  if (!email || !password) return json_({ ok: false, message: 'Correo y contraseña son obligatorios.' });
+
+  const values = sheet.getDataRange().getValues();
+  const header = values.shift();
+  const emailIndex = header.indexOf('email');
+  const exists = values.some(function (row) { return String(row[emailIndex] || '').trim().toLowerCase() === email; });
+  if (exists) return json_({ ok: false, message: 'Este correo ya está registrado.' });
+
+  sheet.appendRow([
+    new Date().toISOString(),
+    email,
+    hashPassword_(password),
+    operator.companyName || '',
+    operator.ruc || '',
+    operator.contactName || '',
+    operator.whatsapp || '',
+    operator.region || '',
+    'Pendiente'
+  ]);
+
+  return json_({ ok: true, message: 'Registro recibido. Un asesor validará tu cuenta antes de habilitar el acceso.' });
+}
+
+function loginOperator_(ss, email, password) {
+  const sheet = getOrCreateSheet_(ss, 'Operators', []);
+  const values = sheet.getDataRange().getValues();
+  if (!values.length) return json_({ ok: false, message: 'No hay operadores registrados.' });
+  const header = values.shift();
+  const emailIndex = header.indexOf('email');
+  const hashIndex = header.indexOf('passwordHash');
+  const statusIndex = header.indexOf('status');
+  const normalizedEmail = String(email || '').trim().toLowerCase();
+  const row = values.find(function (r) { return String(r[emailIndex] || '').trim().toLowerCase() === normalizedEmail; });
+  if (!row || String(row[hashIndex] || '') !== hashPassword_(String(password || ''))) {
+    return json_({ ok: false, message: 'Correo o contraseña incorrectos.' });
+  }
+  const status = String(row[statusIndex] || '').toLowerCase();
+  if (status !== 'aprobado' && status !== 'activo') {
+    return json_({ ok: false, message: 'Tu cuenta de operador aún está en revisión. Te avisaremos apenas esté activa.' });
+  }
+  const token = createSession_(ss, normalizedEmail);
+  return json_({ ok: true, operator: publicCustomer_(rowToObject_(header, row)), token: token });
 }
 
 function createPayPalOrder_(ss, reservation) {
