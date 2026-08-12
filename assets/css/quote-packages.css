@@ -1,0 +1,404 @@
+/* =========================================================
+   QUOTE BUILDER (Cotizador) | Peru Nature
+========================================================= */
+
+.quote-page { background: #f5f7ef; }
+
+.quote-hero {
+  padding: 148px 0 44px;
+  background: linear-gradient(135deg, rgba(7, 26, 18, .95), rgba(11, 61, 46, .88)), url('../img/hero-1.jpg') center / cover;
+  color: #fff;
+}
+.quote-hero__eyebrow {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-size: .8rem;
+  margin-bottom: 12px;
+}
+.quote-hero h1 { font-size: clamp(30px, 4.4vw, 48px); margin: 0 0 12px; }
+.quote-hero p { font-size: 17px; line-height: 1.7; color: rgba(255, 255, 255, .84); max-width: 720px; margin: 0; }
+
+.quote-body { padding: 40px 0 90px; }
+
+.quote-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+.quote-card {
+  background: #fff;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 16px 40px rgba(11, 61, 46, .06);
+  margin-bottom: 22px;
+}
+
+.quote-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 18px;
+  color: var(--color-primary);
+  font-size: 19px;
+}
+
+.quote-step {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.quote-basics-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.quote-field span { display: block; font-weight: 800; color: var(--color-primary); font-size: 13px; margin-bottom: 6px; }
+.quote-field select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(11, 61, 46, .16);
+  font: inherit;
+  background: #fff;
+  color: #21362d;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(11, 61, 46, .16);
+  border-radius: 14px;
+  padding: 6px 10px;
+}
+.qty-control button {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 61, 46, .18);
+  background: #f5f7ef;
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+}
+.qty-control button:hover { background: var(--color-accent); color: #fff; border-color: transparent; }
+.qty-control span { font-weight: 800; color: var(--color-primary); min-width: 20px; text-align: center; }
+
+/* Tabs */
+.quote-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 999px;
+  padding: 6px;
+  width: fit-content;
+}
+.quote-tab {
+  border: 0;
+  background: transparent;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: var(--color-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.quote-tab.is-active { background: var(--color-primary); color: #fff; }
+
+.quote-panel { min-height: 200px; }
+
+.quote-panel-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.quote-panel-toolbar input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 61, 46, .16);
+  font: inherit;
+}
+.quote-panel-toolbar p { margin: 0; color: #65736b; font-size: .92rem; }
+.quote-panel-count { color: #65736b; font-size: .85rem; font-weight: 700; white-space: nowrap; }
+
+/* Tours grid */
+.quote-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.quote-tour-card {
+  background: #fff;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(11, 61, 46, .06);
+  display: flex;
+  flex-direction: column;
+}
+.quote-tour-card__image { position: relative; height: 140px; background: #eaf5e4; }
+.quote-tour-card__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.quote-tour-card__badge {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(11, 61, 46, .85);
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.quote-tour-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.quote-tour-card__body h3 { margin: 0; font-size: 15px; color: var(--color-primary); line-height: 1.3; }
+.quote-tour-card__meta { display: flex; gap: 10px; color: #65736b; font-size: .78rem; flex-wrap: wrap; }
+.quote-tour-card__price { font-weight: 900; color: var(--color-primary); margin-top: auto; }
+.quote-tour-card__price small { font-weight: 600; color: #65736b; }
+
+.quote-add-btn {
+  border: 1px solid var(--color-primary);
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.quote-add-btn:hover { background: var(--color-primary); color: #fff; }
+.quote-add-btn.is-added { background: var(--color-primary); color: #fff; }
+.quote-add-btn.is-added:hover { background: #b3261e; border-color: #b3261e; }
+
+.quote-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: #65736b;
+}
+
+/* Hotels grid */
+.quote-hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.quote-hotel-card {
+  background: #fff;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(11, 61, 46, .06);
+  display: flex;
+  flex-direction: column;
+}
+.quote-hotel-card__image { height: 140px; background: #eaf5e4; }
+.quote-hotel-card__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.quote-hotel-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.quote-hotel-card__body h3 { margin: 0; font-size: 15px; color: var(--color-primary); }
+.quote-hotel-card__category { color: #65736b; font-size: .8rem; }
+.quote-hotel-card__price { font-weight: 900; color: var(--color-primary); margin-top: 6px; }
+.quote-hotel-card__price small { font-weight: 600; color: #65736b; }
+
+/* Room modal */
+.quote-modal {
+  position: fixed; inset: 0; z-index: 1200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.quote-modal[hidden] { display: none; }
+.quote-modal__backdrop { position: absolute; inset: 0; background: rgba(7, 20, 14, .58); }
+.quote-modal__dialog {
+  position: relative;
+  background: #fff;
+  border-radius: 28px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .3);
+}
+.quote-modal__close {
+  position: absolute; top: 18px; right: 18px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(11, 61, 46, .16);
+  background: #fff;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+.quote-modal__kicker { display: block; color: var(--color-primary-light); font-weight: 900; text-transform: uppercase; font-size: .75rem; letter-spacing: .06em; margin-bottom: 6px; }
+.quote-modal__header h2 { margin: 0 0 6px; color: var(--color-primary); font-size: 22px; }
+.quote-modal__header p { margin: 0 0 18px; color: #65736b; }
+
+.quote-nights-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f5f7ef;
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.quote-nights-field span { font-weight: 800; color: var(--color-primary); }
+.quote-nights-field input { width: 70px; padding: 8px; border-radius: 10px; border: 1px solid rgba(11, 61, 46, .16); font: inherit; text-align: center; }
+
+.quote-room-options { display: grid; gap: 10px; margin-bottom: 20px; }
+.quote-room-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgba(11, 61, 46, .14);
+  border-radius: 16px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+.quote-room-option:has(input:checked) { border-color: var(--color-primary); background: #eaf5e4; }
+.quote-room-option input { accent-color: var(--color-primary); width: 18px; height: 18px; }
+.quote-room-option strong { display: block; color: var(--color-primary); font-size: .94rem; }
+.quote-room-option small { color: #65736b; }
+.quote-room-option em { margin-left: auto; font-style: normal; font-weight: 900; color: var(--color-primary); white-space: nowrap; }
+
+.quote-confirm-room-btn { width: 100%; }
+.quote-confirm-room-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* Flights placeholder */
+.quote-flights-placeholder {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.quote-flights-card {
+  position: relative;
+  background: #fff;
+  border: 1px dashed rgba(11, 61, 46, .25);
+  border-radius: 20px;
+  padding: 26px;
+  text-align: center;
+  opacity: .82;
+}
+.quote-flights-card i { font-size: 30px; color: var(--color-primary-light); margin-bottom: 12px; }
+.quote-flights-card h3 { margin: 0 0 6px; color: var(--color-primary); }
+.quote-flights-card p { margin: 0 0 16px; color: #65736b; font-size: .88rem; }
+.quote-flights-card button { width: 100%; cursor: not-allowed; }
+.quote-soon-badge {
+  position: absolute; top: 14px; right: 14px;
+  background: #fff3d6; color: #a8720a;
+  font-size: .68rem; font-weight: 900;
+  padding: 4px 10px; border-radius: 999px;
+  text-transform: uppercase;
+}
+.quote-flights-note {
+  margin: 18px 0 0;
+  display: flex;
+  gap: 8px;
+  color: #65736b;
+  font-size: .88rem;
+  align-items: flex-start;
+}
+.quote-flights-note i { color: var(--color-primary-light); margin-top: 2px; }
+
+/* Summary sidebar */
+.quote-summary-card {
+  position: sticky;
+  top: 96px;
+  background: #fff;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 24px;
+  padding: 26px;
+  box-shadow: 0 18px 45px rgba(11, 61, 46, .08);
+}
+.quote-summary-card h2 { margin: 0 0 4px; color: var(--color-primary); font-size: 19px; }
+.quote-summary-meta { margin: 0 0 16px; color: #65736b; font-size: .88rem; }
+
+.quote-summary-items { display: grid; gap: 12px; margin-bottom: 16px; max-height: 360px; overflow-y: auto; }
+.quote-summary-empty { color: #65736b; font-size: .88rem; line-height: 1.6; margin: 0; }
+
+.quote-summary-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 10px;
+  padding: 12px;
+  border: 1px solid rgba(11, 61, 46, .1);
+  border-radius: 14px;
+  background: #fbfcf8;
+}
+.quote-summary-item strong { color: var(--color-primary); font-size: .88rem; grid-column: 1; }
+.quote-summary-item .quote-summary-item__price { font-weight: 900; color: var(--color-primary); grid-column: 2; white-space: nowrap; }
+.quote-summary-item small { color: #65736b; font-size: .78rem; grid-column: 1 / -1; }
+.quote-summary-item__remove {
+  grid-column: 1 / -1;
+  justify-self: start;
+  border: 0;
+  background: none;
+  color: #b3261e;
+  font-size: .78rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.quote-summary-totals {
+  border-top: 1px solid rgba(11, 61, 46, .12);
+  padding-top: 14px;
+  margin-bottom: 18px;
+  display: grid;
+  gap: 4px;
+}
+.quote-summary-totals .quote-total-line {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 900;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+.quote-summary-totals .quote-total-line small { font-weight: 600; color: #65736b; font-size: .78rem; }
+
+.quote-summary-actions { display: grid; gap: 10px; }
+.quote-summary-actions .btn-primary,
+.quote-summary-actions .btn-secondary {
+  width: 100%;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+}
+.quote-summary-actions .btn-secondary { background: #fff; color: var(--color-primary); border: 1px solid rgba(11, 61, 46, .2); }
+.quote-clear-btn {
+  border: 0; background: none; color: #65736b; font-size: .82rem;
+  text-decoration: underline; cursor: pointer; padding: 4px;
+}
+
+@media (max-width: 1080px) {
+  .quote-layout { grid-template-columns: 1fr; }
+  .quote-summary-card { position: static; }
+}
+
+@media (max-width: 720px) {
+  .quote-basics-grid { grid-template-columns: 1fr; }
+  .quote-tabs { width: 100%; overflow-x: auto; }
+  .quote-hero { padding-top: 128px; }
+}

@@ -28,6 +28,16 @@
   margin: 0 auto;
 }
 
+.eyebrow {
+  display: inline-block;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  font-size: .78rem;
+  margin-bottom: 10px;
+}
+
 .auth-card h1,
 .lookup-form h1,
 .profile-card h1 {
@@ -67,7 +77,8 @@
 }
 
 .auth-form input,
-.auth-form select {
+.auth-form select,
+.auth-form textarea {
   width: 100%;
   margin-top: 6px;
   border: 1px solid rgba(11, 61, 46, .16);
@@ -76,6 +87,11 @@
   font: inherit;
   color: #21362d;
   background: #fff;
+}
+
+.auth-form textarea {
+  resize: vertical;
+  min-height: 90px;
 }
 
 .auth-form .full {
@@ -104,6 +120,11 @@
   background: #fff;
   color: #0b3d2e;
   border: 1px solid rgba(11, 61, 46, .18);
+}
+
+.auth-side-card .auth-button {
+  width: 100%;
+  margin-top: 12px;
 }
 
 .auth-links {

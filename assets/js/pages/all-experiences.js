@@ -4,16 +4,18 @@
 ========================================================= */
 
 class PeruNatureExperiencesPage {
+  t(key, fallback) {
+    const lang = window.PeruNatureI18n?.getLang?.() || "es";
+    const dict = window.PeruNatureI18n?.translations?.[lang];
+    return dict?.[key] || fallback;
+  }
+
   constructor() {
     this.params = new URLSearchParams(window.location.search);
 
     this.sources = [
       "./assets/data/tours.json",
       "./assets/data/tours-peru-catalog.json",
-      "./assets/data/tours-peru-batch-01.json",
-      "./assets/data/tours-peru-batch-02.json",
-      "./assets/data/tours-reservas-peru.json",
-      "./assets/data/packages-peru.json",
       "./assets/data/documentary-tours.json"
     ];
 
@@ -27,9 +29,11 @@ class PeruNatureExperiencesPage {
       region: this.normalizeValue(this.params.get("region") || ""),
       productKind: this.normalizeProductKind(this.params.get("tipo") || this.params.get("kind") || ""),
       destination: this.normalizeValue(this.params.get("destino") || this.params.get("destination") || ""),
-      category: this.normalizeValue(this.params.get("categoria") || this.params.get("category") || ""),
+      category: this.normalizeCategoryParam(this.params.get("categoria") || this.params.get("category") || ""),
       duration: this.normalizeValue(this.params.get("duracion") || this.params.get("duration") || ""),
       difficulty: this.normalizeValue(this.params.get("dificultad") || this.params.get("difficulty") || ""),
+      date: this.params.get("fecha") || this.params.get("date") || "",
+      travelers: this.params.get("viajeros") || this.params.get("travelers") || "",
       sort: this.params.get("orden") || this.params.get("sort") || "recommended"
     };
 
@@ -118,14 +122,7 @@ class PeruNatureExperiencesPage {
   }
 
   async fetchJson(path) {
-    try {
-      const response = await fetch(path, { cache: "no-store" });
-      if (!response.ok) return null;
-      return await response.json();
-    } catch (error) {
-      console.warn(`[Peru Nature] No se pudo cargar ${path}`, error);
-      return null;
-    }
+    return window.PeruNatureData.fetchLocalizedJson(path);
   }
 
   extractProducts(data, source) {
@@ -328,8 +325,8 @@ class PeruNatureExperiencesPage {
   }
 
   populateFilters() {
-    this.populateSelect(this.filterDestination, this.getDestinationOptions(), "Todos los destinos");
-    this.populateSelect(this.filterCategory, this.getCategoryOptions(), "Todas");
+    this.populateSelect(this.filterDestination, this.getDestinationOptions(), this.t("quote.allDestinations", "Todos los destinos"));
+    this.populateSelect(this.filterCategory, this.getCategoryOptions(), this.t("experiences.all", "Todas"));
   }
 
   populateSelect(select, options, defaultLabel) {
@@ -419,6 +416,8 @@ class PeruNatureExperiencesPage {
       category: "",
       duration: "",
       difficulty: "",
+      date: "",
+      travelers: "",
       sort: "recommended"
     };
 
@@ -486,9 +485,19 @@ class PeruNatureExperiencesPage {
       product.destination,
       product.department,
       ...(product.search?.destinations || [])
-    ].map((item) => this.normalizeValue(item));
+    ].map((item) => this.normalizeValue(item)).filter(Boolean);
 
-    return values.includes(value);
+    if (values.includes(value)) return true;
+
+    // Enlaces como ?destino=paracas o ?destino=trujillo usan la palabra suelta,
+    // mientras el catálogo guarda códigos compuestos (paracas-ica,
+    // trujillo-la-libertad). Comparamos también por "token" para que ambos
+    // formatos encuentren los mismos resultados.
+    const valueTokens = value.split("-").filter(Boolean);
+    return values.some((item) => {
+      const tokens = item.split("-").filter(Boolean);
+      return tokens.includes(value) || valueTokens.some((token) => tokens.includes(token));
+    });
   }
 
   matchesDuration(product, duration) {
@@ -522,17 +531,19 @@ class PeruNatureExperiencesPage {
 
   renderHeader(count) {
     const title = this.getDynamicTitle();
+    document.title = title === this.t("experiences.defaultTitle", "Experiencias disponibles") ? "Experiencias en Perú | Peru Nature" : `${title} | Peru Nature`;
 
     if (this.resultsCount) {
-      this.resultsCount.textContent = `${count} experiencia${count === 1 ? "" : "s"} encontrada${count === 1 ? "" : "s"}`;
+      const noun = count === 1 ? this.t("experiences.foundSingular", "experiencia encontrada") : this.t("experiences.foundPlural", "experiencias encontradas");
+      this.resultsCount.textContent = `${count} ${noun}`;
     }
 
     if (this.resultsTitle) this.resultsTitle.textContent = title;
 
     if (this.listingSummary) {
       this.listingSummary.textContent = this.filters.destination
-        ? `Tours, paquetes y experiencias seleccionadas para ${this.getDestinationLabel(this.filters.destination)}.`
-        : "Explora experiencias seleccionadas en costa, Andes, Amazonía y norte del Perú. Encuentra tours planos, paquetes por destino, trekkings, reservas naturales y próximas salidas documentales.";
+        ? `${this.t("experiences.summaryForDestinationPre", "Tours, paquetes y experiencias seleccionadas para")} ${this.getDestinationLabel(this.filters.destination)}.`
+        : this.t("experiences.summaryDefault", "Explora experiencias seleccionadas en costa, Andes, Amazonía y norte del Perú. Encuentra tours planos, paquetes por destino, trekkings, reservas naturales y próximas salidas documentales.");
     }
   }
 
@@ -540,13 +551,15 @@ class PeruNatureExperiencesPage {
     if (!this.activeFilters) return;
 
     const labels = [];
-    if (this.filters.search) labels.push(`Búsqueda: ${this.filters.search}`);
-    if (this.filters.region) labels.push(`Región: ${this.formatLabel(this.filters.region)}`);
-    if (this.filters.productKind) labels.push(`Tipo: ${this.formatKind(this.filters.productKind)}`);
-    if (this.filters.destination) labels.push(`Destino: ${this.getDestinationLabel(this.filters.destination)}`);
-    if (this.filters.category) labels.push(`Categoría: ${this.getCategoryLabel(this.filters.category)}`);
-    if (this.filters.duration) labels.push(`Duración: ${this.formatLabel(this.filters.duration)}`);
-    if (this.filters.difficulty) labels.push(`Dificultad: ${this.formatDifficulty(this.filters.difficulty)}`);
+    if (this.filters.search) labels.push(`${this.t("experiences.filterSearch", "Búsqueda")}: ${this.filters.search}`);
+    if (this.filters.region) labels.push(`${this.t("experiences.filterRegion", "Región")}: ${this.formatLabel(this.filters.region)}`);
+    if (this.filters.productKind) labels.push(`${this.t("experiences.filterKind", "Tipo")}: ${this.formatKind(this.filters.productKind)}`);
+    if (this.filters.destination) labels.push(`${this.t("experiences.filterDestination", "Destino")}: ${this.getDestinationLabel(this.filters.destination)}`);
+    if (this.filters.category) labels.push(`${this.t("experiences.filterCategory", "Categoría")}: ${this.getCategoryLabel(this.filters.category)}`);
+    if (this.filters.duration) labels.push(`${this.t("experiences.filterDuration", "Duración")}: ${this.formatLabel(this.filters.duration)}`);
+    if (this.filters.difficulty) labels.push(`${this.t("experiences.filterDifficulty", "Dificultad")}: ${this.formatDifficulty(this.filters.difficulty)}`);
+    if (this.filters.date) labels.push(`${this.t("experiences.filterDate", "Fecha")}: ${this.formatDate(this.filters.date)}`);
+    if (this.filters.travelers) labels.push(`${this.t("experiences.filterTravelers", "Viajeros")}: ${this.filters.travelers}`);
 
     this.activeFilters.hidden = labels.length === 0;
     this.activeFilters.innerHTML = labels.map((label) => `<span class="active-filter-pill">${this.escapeHtml(label)}</span>`).join("");
@@ -569,10 +582,10 @@ class PeruNatureExperiencesPage {
     const image = product.image || "./assets/img/tour-placeholder.jpg";
     const badge = product.badge || this.getDefaultBadge(product.productKind, product.categories);
     const price = product.pricing?.priceLabel || this.formatPrice(product.pricing);
-    const duration = product.duration?.label || "Duración por confirmar";
-    const location = product.location || this.getDestinationLabel(product.destination) || "Perú";
-    const region = product.region ? this.formatLabel(product.region) : "Perú";
-    const shortDescription = product.shortDescription || product.description || "Experiencia seleccionada por Peru Nature.";
+    const duration = product.duration?.label || this.t("experiences.durationTbd", "Duración por confirmar");
+    const location = product.location || this.getDestinationLabel(product.destination) || this.t("experiences.peru", "Perú");
+    const region = product.region ? this.formatLabel(product.region) : this.t("experiences.peru", "Perú");
+    const shortDescription = product.shortDescription || product.description || this.t("experiences.defaultDescription", "Experiencia seleccionada por Peru Nature.");
     const tags = this.getCardTags(product);
     const url = this.getProductUrl(product);
 
@@ -599,12 +612,12 @@ class PeruNatureExperiencesPage {
 
           <div class="experience-card__footer">
             <div class="experience-price">
-              <span>Desde</span>
+              <span>${this.t("experiences.from", "Desde")}</span>
               <strong>${this.escapeHtml(price.replace(/^Desde\s*/i, ""))}</strong>
             </div>
 
             <a class="experience-card__link" href="${this.escapeHtml(url)}">
-              Ver experiencia
+              ${this.t("experiences.viewExperience", "Ver experiencia")}
             </a>
           </div>
         </div>
@@ -617,7 +630,11 @@ class PeruNatureExperiencesPage {
       return `./documentary-tours.html#documentaryToursSection`;
     }
 
-    return `./product.html?slug=${encodeURIComponent(product.slug)}`;
+    const params = new URLSearchParams({ slug: product.slug });
+    if (this.filters.date) params.set("fecha", this.filters.date);
+    if (this.filters.travelers) params.set("viajeros", this.filters.travelers);
+
+    return `./product.html?${params.toString()}`;
   }
 
   getCardTags(product) {
@@ -640,6 +657,8 @@ class PeruNatureExperiencesPage {
     if (this.filters.category) params.set("categoria", this.filters.category);
     if (this.filters.duration) params.set("duracion", this.filters.duration);
     if (this.filters.difficulty) params.set("dificultad", this.filters.difficulty);
+    if (this.filters.date) params.set("fecha", this.filters.date);
+    if (this.filters.travelers) params.set("viajeros", this.filters.travelers);
     if (this.filters.sort && this.filters.sort !== "recommended") params.set("orden", this.filters.sort);
 
     const query = params.toString();
@@ -648,11 +667,11 @@ class PeruNatureExperiencesPage {
   }
 
   getDynamicTitle() {
-    if (this.filters.destination) return `Experiencias en ${this.getDestinationLabel(this.filters.destination)}`;
-    if (this.filters.region) return `Experiencias en ${this.formatLabel(this.filters.region)}`;
-    if (this.filters.productKind) return `${this.formatKind(this.filters.productKind)} disponibles`;
-    if (this.filters.category) return `${this.getCategoryLabel(this.filters.category)} en Perú`;
-    return "Experiencias disponibles";
+    if (this.filters.destination) return `${this.t("experiences.titleIn", "Experiencias en")} ${this.getDestinationLabel(this.filters.destination)}`;
+    if (this.filters.region) return `${this.t("experiences.titleIn", "Experiencias en")} ${this.formatLabel(this.filters.region)}`;
+    if (this.filters.productKind) return `${this.formatKind(this.filters.productKind)} ${this.t("experiences.titleAvailable", "disponibles")}`;
+    if (this.filters.category) return `${this.getCategoryLabel(this.filters.category)} ${this.t("experiences.titleInPeru", "en Perú")}`;
+    return this.t("experiences.defaultTitle", "Experiencias disponibles");
   }
 
   getImage(item) {
@@ -699,12 +718,12 @@ class PeruNatureExperiencesPage {
   }
 
   getDefaultBadge(kind, categories = []) {
-    if (kind === "documentary") return "Tour documental";
-    if (kind === "package") return "Paquete";
-    if (categories.includes("reserve")) return "Reserva natural";
-    if (categories.includes("trekking")) return "Trekking";
-    if (categories.includes("full_day")) return "Full Day";
-    return "Experiencia";
+    if (kind === "documentary") return this.t("experiences.badgeDocumentary", "Tour documental");
+    if (kind === "package") return this.t("experiences.badgePackage", "Paquete");
+    if (categories.includes("reserve")) return this.t("experiences.badgeReserve", "Reserva natural");
+    if (categories.includes("trekking")) return this.t("experiences.badgeTrekking", "Trekking");
+    if (categories.includes("full_day")) return this.t("experiences.badgeFullDay", "Full Day");
+    return this.t("experiences.badgeDefault", "Experiencia");
   }
 
   getDestinationLabel(value) {
@@ -719,9 +738,9 @@ class PeruNatureExperiencesPage {
 
   formatKind(value) {
     const labels = {
-      tour: "Tour",
-      package: "Paquete",
-      documentary: "Documental"
+      tour: this.t("experiences.kindTour", "Tour"),
+      package: this.t("experiences.kindPackage", "Paquete"),
+      documentary: this.t("experiences.kindDocumentary", "Documental")
     };
 
     return labels[value] || this.formatLabel(value);
@@ -729,13 +748,19 @@ class PeruNatureExperiencesPage {
 
   formatDifficulty(value) {
     const labels = {
-      low: "Fácil",
-      medium: "Moderada",
-      high: "Alta",
-      very_high: "Muy alta"
+      low: this.t("product.difficultyLow", "Fácil"),
+      medium: this.t("product.difficultyMedium", "Moderada"),
+      high: this.t("product.difficultyHigh", "Alta"),
+      very_high: this.t("product.difficultyVeryHigh", "Muy alta")
     };
 
     return labels[value] || this.formatLabel(value);
+  }
+
+  formatDate(value) {
+    const date = new Date(`${value}T00:00:00`);
+    if (Number.isNaN(date.getTime())) return value;
+    return date.toLocaleDateString("es-PE", { day: "2-digit", month: "short", year: "numeric" });
   }
 
   formatPrice(pricing = {}) {
@@ -752,12 +777,62 @@ class PeruNatureExperiencesPage {
     return `${currency} `;
   }
 
+  normalizeCategoryParam(value) {
+    const key = this.normalizeValue(value);
+    if (!key) return "";
+
+    // Los enlaces de navegación/footer usan palabras en español; el catálogo
+    // guarda los códigos de categoría en inglés. Sin este mapeo, esos enlaces
+    // siempre devolvían "no encontramos experiencias".
+    const map = {
+      naturaleza: "nature",
+      natural: "nature",
+      cultura: "cultural",
+      culturales: "cultural",
+      cultural: "cultural",
+      aventura: "adventure",
+      aventuras: "adventure",
+      "vida-silvestre": "wildlife",
+      fauna: "wildlife",
+      gastronomia: "gastronomy",
+      playa: "beach",
+      playas: "beach",
+      bienestar: "wellness",
+      comunidad: "community",
+      comunitario: "community",
+      historico: "historical",
+      historia: "historical",
+      arqueologia: "archaeological",
+      arqueologico: "archaeological",
+      marino: "marine",
+      documental: "documentary",
+      documentales: "documentary",
+      expedicion: "expedition",
+      expediciones: "expedition",
+      trekking: "trekking",
+      caminata: "trekking",
+      reserva: "reserve",
+      reservas: "reserve",
+      amazonia: "amazon",
+      amazonica: "amazon",
+      selva: "amazon"
+    };
+
+    return map[key] || key;
+  }
+
   normalizeProductKind(value) {
     const key = this.normalizeValue(value);
     if (["paquete", "paquetes", "packages", "multi_day", "multi-day"].includes(key)) return "package";
     if (["tours", "tour", "flat-tour", "full_day", "half_day"].includes(key)) return "tour";
     if (["documental", "documentales", "documentary", "documentary-tour"].includes(key)) return "documentary";
-    return key || "tour";
+    // OJO: antes esto devolvía "tour" cuando `key` venía vacío (sin ?tipo= en
+    // la URL), lo que forzaba el filtro de tipo a "tour" en cualquier
+    // búsqueda por texto/destino/categoría y ocultaba TODOS los paquetes en
+    // silencio (ej. buscar "guacamayos" daba 0 resultados aunque exista el
+    // paquete). Un valor vacío debe significar "sin filtro de tipo", que es
+    // justamente lo que ya interpreta getFilteredProducts().
+    return key;
   }
 
   normalizeRegion(value) {
@@ -804,24 +879,47 @@ class PeruNatureExperiencesPage {
   }
 
   formatLabel(value) {
+    const key = String(value || "").toLowerCase();
+    if (key === "half_day") return this.t("product.halfDay", "Medio día");
+    if (key === "full_day") return this.t("product.fullDay", "Full Day");
+    if (key === "multi_day") return this.t("experiences.multiDay", "Paquete");
+
     return String(value || "")
       .replace(/[-_]/g, " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase())
-      .replace("Full Day", "Full Day")
-      .replace("Half Day", "Medio día")
-      .replace("Multi Day", "Paquete");
+      .replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
   humanizeDestination(value) {
     const labels = {
-      "paracas-ica": "Paracas e Ica",
-      "huaraz-ancash": "Huaraz / Áncash",
-      "tarapoto-san-martin": "Tarapoto / San Martín",
-      "puerto-maldonado-madre-de-dios": "Puerto Maldonado / Madre de Dios",
-      "iquitos-loreto": "Iquitos / Loreto",
-      "chachapoyas-amazonas": "Chachapoyas / Amazonas",
-      "lima": "Lima",
-      "callao": "Callao"
+      "paracas-ica": this.t("experiences.destParacasIca", "Paracas e Ica"),
+      "huaraz-ancash": this.t("experiences.destHuarazAncash", "Huaraz / Áncash"),
+      "tarapoto-san-martin": this.t("experiences.destTarapotoSanMartin", "Tarapoto / San Martín"),
+      "puerto-maldonado-madre-de-dios": this.t("experiences.destPuertoMaldonado", "Puerto Maldonado / Madre de Dios"),
+      "iquitos-loreto": this.t("experiences.destIquitosLoreto", "Iquitos / Loreto"),
+      "chachapoyas-amazonas": this.t("experiences.destChachapoyasAmazonas", "Chachapoyas / Amazonas"),
+      "lima": this.t("experiences.destLima", "Lima"),
+      "callao": this.t("experiences.destCallao", "Callao"),
+      "ancash": "Áncash",
+      "san-martin": "San Martín",
+      "madre-de-dios": "Madre de Dios",
+      "loreto": "Loreto",
+      "amazonas": "Amazonas",
+      "la-libertad": "La Libertad",
+      "lambayeque": "Lambayeque",
+      "piura": "Piura",
+      "tumbes": "Tumbes",
+      "junin": "Junín",
+      "pasco": "Pasco",
+      "ucayali": "Ucayali",
+      "huanuco": "Huánuco",
+      "ayacucho": "Ayacucho",
+      "cajamarca": "Cajamarca",
+      "moquegua": "Moquegua",
+      "tacna": "Tacna",
+      "huancavelica": "Huancavelica",
+      "ica": "Ica",
+      "arequipa": "Arequipa",
+      "puno": "Puno"
     };
 
     return labels[value] || this.formatLabel(value);
@@ -839,4 +937,11 @@ class PeruNatureExperiencesPage {
 
 document.addEventListener("DOMContentLoaded", () => {
   window.peruNatureExperiencesPage = new PeruNatureExperiencesPage();
+});
+
+// Recarga el catálogo completo al cambiar de idioma (el localStorage ya
+// quedó actualizado antes de este evento), en vez de reintentar
+// reconciliar filtros y tarjetas ya renderizadas a mitad de sesión.
+document.addEventListener("peruNature:languageChanged", () => {
+  window.location.reload();
 });

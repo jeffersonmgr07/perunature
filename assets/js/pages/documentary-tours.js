@@ -31,13 +31,8 @@ class PeruNatureDocumentaryTours {
 
   async loadTours() {
     try {
-      const response = await fetch("./assets/data/documentary-tours.json");
-
-      if (!response.ok) {
-        throw new Error("No se pudo cargar documentary-tours.json");
-      }
-
-      const data = await response.json();
+      const data = await window.PeruNatureData.fetchLocalizedJson("./assets/data/documentary-tours.json");
+      if (!data) throw new Error("No se pudo cargar documentary-tours.json");
       this.tours = Array.isArray(data.tours) ? data.tours : [];
 
       this.tours.sort((a, b) => {
@@ -108,7 +103,7 @@ class PeruNatureDocumentaryTours {
 
             <span>
               <i class="fa-solid fa-person-hiking"></i>
-              Dificultad ${this.escapeHTML(this.formatText(tour.difficulty || "Por confirmar"))}
+              ${this.t("booking.difficulty", "Dificultad")} ${this.escapeHTML(this.formatDifficulty(tour.difficulty))}
             </span>
           </div>
 
@@ -119,7 +114,7 @@ class PeruNatureDocumentaryTours {
           <div class="documentary-seats">
             <div class="seats-info">
               <strong>${availableSeats}</strong>
-              <span>cupos disponibles de ${tour.maxGroupSize || 20}</span>
+              <span>${this.t("docTours.seatsAvailableOf", "cupos disponibles de")} ${tour.maxGroupSize || 20}</span>
             </div>
 
             <div class="seats-bar">
@@ -129,9 +124,9 @@ class PeruNatureDocumentaryTours {
 
           <div class="documentary-card-bottom">
             <div class="documentary-price">
-              <span>Precio total</span>
+              <span>${this.t("docTours.totalPrice", "Precio total")}</span>
               <strong>${price}</strong>
-              <small>Anticipo: ${deposit}</small>
+              <small>${this.t("docTours.deposit", "Anticipo")}: ${deposit}</small>
             </div>
 
             <div class="documentary-actions">
@@ -139,7 +134,7 @@ class PeruNatureDocumentaryTours {
                 href="./documentary-product.html?slug=${encodeURIComponent(tour.slug)}"
                 class="documentary-btn-secondary"
               >
-                Ver detalles
+                ${this.t("docTours.viewDetails", "Ver detalles")}
               </a>
 
               <a
@@ -150,7 +145,7 @@ class PeruNatureDocumentaryTours {
                 ${availableSeats <= 0 ? "aria-disabled='true'" : ""}
               >
                 <i class="fa-brands fa-whatsapp"></i>
-                Reservar cupo
+                ${this.t("docTours.bookSpot", "Reservar cupo")}
               </a>
             </div>
           </div>
@@ -164,7 +159,7 @@ class PeruNatureDocumentaryTours {
       return `
         <span>
           <i class="fa-solid fa-check"></i>
-          Experiencia documental programada
+          ${this.t("docTours.scheduledExperience", "Experiencia documental programada")}
         </span>
       `;
     }
@@ -193,20 +188,20 @@ class PeruNatureDocumentaryTours {
   getTourStatus(availableSeats) {
     if (availableSeats <= 0) {
       return {
-        label: "Agotado",
+        label: this.t("docTours.statusSoldOut", "Agotado"),
         className: "is-sold-out"
       };
     }
 
     if (availableSeats <= 5) {
       return {
-        label: "Últimos cupos",
+        label: this.t("docTours.statusLimited", "Últimos cupos"),
         className: "is-limited"
       };
     }
 
     return {
-      label: "Disponible",
+      label: this.t("docTours.statusAvailable", "Disponible"),
       className: "is-available"
     };
   }
@@ -258,7 +253,7 @@ class PeruNatureDocumentaryTours {
   }
 
   formatDateRange(startDate, endDate) {
-    if (!startDate || !endDate) return "Fecha por confirmar";
+    if (!startDate || !endDate) return this.t("docTours.dateToConfirm", "Fecha por confirmar");
 
     const start = new Date(`${startDate}T00:00:00`);
     const end = new Date(`${endDate}T00:00:00`);
@@ -277,11 +272,33 @@ class PeruNatureDocumentaryTours {
     return `${startFormatted} - ${endFormatted}`;
   }
 
+  t(key, fallback) {
+    const lang = window.PeruNatureI18n?.getLang?.() || "es";
+    const dict = window.PeruNatureI18n?.translations?.[lang];
+    return dict?.[key] || fallback;
+  }
+
+  formatDifficulty(value) {
+    const labels = {
+      baja: this.t("product.difficultyLow", "Fácil"),
+      low: this.t("product.difficultyLow", "Fácil"),
+      media: this.t("product.difficultyMedium", "Moderada"),
+      medium: this.t("product.difficultyMedium", "Moderada"),
+      alta: this.t("product.difficultyHigh", "Alta"),
+      high: this.t("product.difficultyHigh", "Alta"),
+      muy_alta: this.t("product.difficultyVeryHigh", "Muy alta"),
+      very_high: this.t("product.difficultyVeryHigh", "Muy alta")
+    };
+    const key = String(value || "").toLowerCase();
+    return labels[key] || this.formatText(value || this.t("product.toConfirm", "Por confirmar"));
+  }
+
   formatDuration(duration) {
-    if (!duration) return "Por confirmar";
+    if (!duration) return this.t("product.toConfirm", "Por confirmar");
 
     if (typeof duration === "number") {
-      return `${duration} días`;
+      const unit = this.t("common.days", "días");
+      return `${duration} ${unit}`;
     }
 
     if (typeof duration === "string") {
@@ -351,4 +368,8 @@ class PeruNatureDocumentaryTours {
 
 document.addEventListener("DOMContentLoaded", () => {
   new PeruNatureDocumentaryTours();
+});
+
+document.addEventListener("peruNature:languageChanged", () => {
+  window.location.reload();
 });

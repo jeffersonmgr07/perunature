@@ -70,6 +70,16 @@
 .footer-link-col a:hover,
 .footer-link-col a:hover span { color: var(--color-accent); }
 
+.footer-claim-book {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
+}
+.footer-claim-book i { font-size: .85rem; }
+.footer-claim-book:hover { color: #fff !important; }
+
 .payment-grid { display: grid; gap: 9px; }
 .payment-grid span {
   display: inline-flex;

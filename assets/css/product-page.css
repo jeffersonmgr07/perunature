@@ -480,6 +480,37 @@ body {
   font-weight: 800;
 }
 
+/* Agenda horaria (tours de un día): la insignia circular de 42px no alcanza
+   para una hora completa ("07:30"), así que usamos una píldora que se ajusta
+   al contenido. */
+.itinerary-item--schedule {
+  grid-template-columns: 92px minmax(0, 1fr);
+}
+
+.itinerary-item--schedule.itinerary-item--with-image {
+  grid-template-columns: 92px minmax(0, 1fr) 180px;
+}
+
+.itinerary-time-pill {
+  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: var(--pn-green);
+  color: var(--pn-white);
+  font-weight: 800;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.itinerary-time-pill i {
+  font-size: 11px;
+  color: var(--pn-accent);
+}
+
 .itinerary-content h3 {
   margin: 0 0 6px;
   color: var(--pn-green);

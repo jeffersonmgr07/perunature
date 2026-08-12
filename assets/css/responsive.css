@@ -1,0 +1,102 @@
+/* =========================================================
+   RESPONSIVE | Peru Nature
+   Capa final de ajustes responsive globales.
+   Se carga después de todos los demás CSS para poder
+   afinar comportamientos que los estilos por componente
+   no cubren (tipografía fluida, safe-area en iOS, tap
+   targets, tablas/formularios angostos, impresión).
+========================================================= */
+
+/* Tipografía fluida para títulos grandes en toda la web */
+h1 {
+  font-size: clamp(1.7rem, 4vw + 0.5rem, 3rem);
+}
+h2 {
+  font-size: clamp(1.4rem, 2.6vw + 0.4rem, 2.25rem);
+}
+
+/* Evita overflow horizontal accidental en cualquier página */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Respeta el "notch"/safe-area en iPhones para elementos fijos */
+.wa-float {
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  right: calc(20px + env(safe-area-inset-right, 0px));
+}
+
+/* Tap targets mínimos recomendados (44px) en móvil */
+@media (max-width: 768px) {
+  .btn,
+  button,
+  .pn-search-btn,
+  .nav a,
+  .footer-accordion summary,
+  .experience-card__link {
+    min-height: 44px;
+  }
+
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Formularios: evita el zoom automático de iOS en inputs < 16px */
+  input, select, textarea {
+    font-size: max(16px, 1em);
+  }
+}
+
+/* Pantallas muy pequeñas (< 380px) */
+@media (max-width: 380px) {
+  .pn-search-tabs {
+    flex-wrap: wrap;
+  }
+
+  .footer-social {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Pantallas grandes: evita que el contenido se estire demasiado */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+/* Accesibilidad: respeta preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Impresión (itinerarios, cotizaciones, comprobantes) */
+@media print {
+  .header, .footer, .wa-float, .mobile-menu-btn,
+  .reservation-menu, .lang-switcher, #emptyClearBtn,
+  .experience-card__link, .pn-search, nav {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}

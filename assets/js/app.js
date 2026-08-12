@@ -1,3 +1,30 @@
+// Carga un JSON de catálogo respetando el idioma activo: si hay un
+// selector en inglés, intenta "archivo.en.json" primero y solo si no
+// existe (o falla) cae de vuelta al archivo en español. Así el sitio
+// nunca muestra un catálogo vacío mientras se van agregando
+// traducciones, y cada página deja de tener que reimplementar esta
+// lógica por su cuenta.
+async function fetchLocalizedJson(path) {
+  const tryFetch = async (url) => {
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (_error) {
+      return null;
+    }
+  };
+
+  const lang = window.PeruNatureI18n?.getLang?.() || localStorage.getItem("pn_lang") || "es";
+  if (lang === "en") {
+    const localized = await tryFetch(path.replace(/\.json$/i, ".en.json"));
+    if (localized) return localized;
+  }
+  return tryFetch(path);
+}
+
+window.PeruNatureData = { fetchLocalizedJson };
+
 async function loadComponent(id, file) {
   const target = document.getElementById(id);
   if (!target) return false;
@@ -119,7 +146,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   initCustomerHeader();
   document.dispatchEvent(new CustomEvent('peruNature:componentsReady'));
 
-  if (window.PeruNatureSearchBar) new PeruNatureSearchBar();
+  if (window.PeruNatureSearchBar) window.peruNatureSearchBarInstance = new PeruNatureSearchBar();
   initHeroSlider();
 });
 

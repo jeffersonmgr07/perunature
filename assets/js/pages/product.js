@@ -137,20 +137,15 @@ class PeruNatureProductPage {
   async loadTours() {
     const sources = [
       "./assets/data/tours.json",
-      "./assets/data/tours-peru-catalog.json",
-      "./assets/data/tours-peru-batch-01.json",
-      "./assets/data/tours-peru-batch-02.json",
-      "./assets/data/tours-reservas-peru.json",
-      "./assets/data/packages-peru.json"
+      "./assets/data/tours-peru-catalog.json"
     ];
 
     const productsBySlug = new Map();
 
     const results = await Promise.allSettled(
       sources.map(async (source) => {
-        const response = await fetch(source, { cache: "no-store" });
-        if (!response.ok) return [];
-        const data = await response.json();
+        const data = await window.PeruNatureData.fetchLocalizedJson(source);
+        if (!data) return [];
         return Array.isArray(data.tours) ? data.tours : Array.isArray(data.products) ? data.products : Array.isArray(data.packages) ? data.packages : [];
       })
     );
@@ -169,10 +164,8 @@ class PeruNatureProductPage {
 
   async loadPackageHotels() {
     try {
-      const response = await fetch("./assets/data/package-hotels.json", { cache: "no-store" });
-      if (!response.ok) return;
-      const data = await response.json();
-      this.packageHotels = data.destinations || {};
+      const data = await window.PeruNatureData.fetchLocalizedJson("./assets/data/package-hotels.json");
+      this.packageHotels = data?.destinations || {};
     } catch (error) {
       console.warn("[Peru Nature] No se pudo cargar package-hotels.json", error);
       this.packageHotels = {};
@@ -199,6 +192,7 @@ class PeruNatureProductPage {
     const tour = this.currentTour;
 
     document.title = `${tour.title} | Peru Nature`;
+    this.renderSeoTags(tour);
 
     this.renderBasicInfo(tour);
     this.renderGallery(tour);
@@ -213,6 +207,71 @@ class PeruNatureProductPage {
     this.renderBookingCard(tour);
     this.initBookingPanel(tour);
     this.renderWhatsAppButton(tour);
+  }
+
+  renderSeoTags(tour) {
+    const title = `${tour.title} | Peru Nature`;
+    const description = (tour.shortDescription || tour.description || "").slice(0, 160) || `Descubre ${tour.title} con Peru Nature.`;
+    const image = this.normalizeImages(tour.images)[0]?.src || "./assets/img/tour-placeholder.jpg";
+    const absoluteImage = image.startsWith("http") ? image : `https://perunature.pe/${image.replace(/^\.\//, "")}`;
+    const url = `https://perunature.pe/product.html?slug=${encodeURIComponent(tour.slug)}`;
+
+    this.setMetaTag("name", "description", description);
+    this.setMetaTag("property", "og:title", title);
+    this.setMetaTag("property", "og:description", description);
+    this.setMetaTag("property", "og:image", absoluteImage);
+    this.setMetaTag("property", "og:url", url);
+    this.setMetaTag("property", "og:type", "product");
+    this.setMetaTag("name", "twitter:title", title);
+    this.setMetaTag("name", "twitter:description", description);
+    this.setMetaTag("name", "twitter:image", absoluteImage);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", url);
+
+    this.renderProductJsonLd(tour, description, absoluteImage, url);
+  }
+
+  setMetaTag(attr, key, content) {
+    let tag = document.querySelector(`meta[${attr}="${key}"]`);
+    if (!tag) {
+      tag = document.createElement("meta");
+      tag.setAttribute(attr, key);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute("content", content);
+  }
+
+  renderProductJsonLd(tour, description, image, url) {
+    const existing = document.getElementById("productJsonLd");
+    if (existing) existing.remove();
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "productJsonLd";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TouristTrip",
+      name: tour.title,
+      description,
+      image,
+      url,
+      touristType: tour.productKind === "package" ? "Paquete turístico" : "Tour",
+      provider: { "@type": "TravelAgency", name: "Peru Nature", url: "https://perunature.pe/" },
+      offers: tour.pricing?.basePrice ? {
+        "@type": "Offer",
+        price: tour.pricing.basePrice,
+        priceCurrency: tour.pricing.currency || "USD",
+        availability: "https://schema.org/InStock",
+        url
+      } : undefined
+    });
+    document.head.appendChild(script);
   }
 
   renderBasicInfo(tour) {
@@ -234,7 +293,7 @@ class PeruNatureProductPage {
       badges.push(`
         <span class="product-badge">
           <i class="fa-solid fa-star"></i>
-          Destacado
+          ${this.t("product.featured", "Destacado")}
         </span>
       `);
     }
@@ -261,7 +320,7 @@ class PeruNatureProductPage {
       badges.push(`
         <span class="product-badge">
           <i class="fa-solid fa-suitcase-rolling"></i>
-          Paquete
+          ${this.t("product.multiDay", "Paquete")}
         </span>
       `);
     }
@@ -286,7 +345,7 @@ class PeruNatureProductPage {
     this.elements.rating.innerHTML = `
       <i class="fa-solid fa-star"></i>
       <span>${ratingValue}</span>
-      ${reviews ? `<small>(${reviews} reseñas)</small>` : ""}
+      ${reviews ? `<small>(${reviews} ${this.t("product.reviews", "reseñas")})</small>` : ""}
     `;
   }
 
@@ -517,36 +576,88 @@ class PeruNatureProductPage {
       return;
     }
 
-    this.elements.itinerary.innerHTML = itinerary
-      .map((item, index) => {
-        const title = item.title || item.time || `Parada ${index + 1}`;
-        const day = item.time || `Día ${index + 1}`;
-        const description = item.description || item.activity || item.text || "";
-        const details = Array.isArray(item.details) ? item.details : [];
-        const imageSrc = this.getItineraryImage(item, index, tourImages);
-        const extras = [
-          item.distance ? `<span><i class="fa-solid fa-route"></i>${this.escapeHTML(item.distance)}</span>` : "",
-          item.meals ? `<span><i class="fa-solid fa-utensils"></i>${this.escapeHTML(item.meals)}</span>` : ""
-        ].filter(Boolean).join("");
+    // Los tours de un día guardan `time` como hora de reloj ("07:30") para
+    // armar una agenda horaria; los paquetes multi-día guardan `time` como
+    // etiqueta de día ("Día 1"). Antes ambos casos usaban la misma insignia
+    // circular de 42px pensada solo para un número de día, así que una hora
+    // completa quedaba encimada y desbordada. Detectamos el formato y
+    // renderizamos cada caso con su propia plantilla.
+    const isScheduleFormat = itinerary.every((item) => this.isClockTime(item.time));
 
-        return `
-          <div class="itinerary-item itinerary-item--with-image">
-            <div class="itinerary-number">${this.escapeHTML(day).replace(/^Día\s*/i, "")}</div>
-            <div class="itinerary-content">
-              <h3>${this.escapeHTML(day)}: ${this.escapeHTML(title)}</h3>
-              <p>${this.escapeHTML(description)}</p>
-              ${details.length ? `<ul class="itinerary-details">${details.map((detail) => `<li>${this.escapeHTML(detail)}</li>`).join("")}</ul>` : ""}
-              ${extras ? `<div class="itinerary-extra">${extras}</div>` : ""}
-            </div>
-            ${imageSrc ? `
-              <figure class="itinerary-image">
-                <img src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}" onerror="this.src='./assets/img/tour-placeholder.jpg'">
-              </figure>
-            ` : ""}
-          </div>
-        `;
-      })
+    this.elements.itinerary.innerHTML = itinerary
+      .map((item, index) => isScheduleFormat
+        ? this.renderScheduleItineraryItem(item, index, tourImages)
+        : this.renderDayItineraryItem(item, index, tourImages))
       .join("");
+  }
+
+  isClockTime(value) {
+    return /^\d{1,2}:\d{2}\s*(am|pm)?$/i.test(String(value || "").trim());
+  }
+
+  buildItineraryExtras(item) {
+    return [
+      item.distance ? `<span><i class="fa-solid fa-route"></i>${this.escapeHTML(item.distance)}</span>` : "",
+      item.meals ? `<span><i class="fa-solid fa-utensils"></i>${this.escapeHTML(item.meals)}</span>` : ""
+    ].filter(Boolean).join("");
+  }
+
+  buildItineraryDetails(details) {
+    return details.length
+      ? `<ul class="itinerary-details">${details.map((detail) => `<li>${this.escapeHTML(detail)}</li>`).join("")}</ul>`
+      : "";
+  }
+
+  buildItineraryFigure(imageSrc, title) {
+    return imageSrc
+      ? `
+        <figure class="itinerary-image">
+          <img src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}" onerror="this.src='./assets/img/tour-placeholder.jpg'">
+        </figure>
+      `
+      : "";
+  }
+
+  renderDayItineraryItem(item, index, tourImages) {
+    const title = item.title || item.time || `Parada ${index + 1}`;
+    const day = item.time || `Día ${index + 1}`;
+    const description = item.description || item.activity || item.text || "";
+    const details = Array.isArray(item.details) ? item.details : [];
+    const imageSrc = this.getItineraryImage(item, index, tourImages);
+
+    return `
+      <div class="itinerary-item itinerary-item--with-image">
+        <div class="itinerary-number">${this.escapeHTML(day).replace(/^Día\s*/i, "")}</div>
+        <div class="itinerary-content">
+          <h3>${this.escapeHTML(day)}: ${this.escapeHTML(title)}</h3>
+          <p>${this.escapeHTML(description)}</p>
+          ${this.buildItineraryDetails(details)}
+          ${this.buildItineraryExtras(item) ? `<div class="itinerary-extra">${this.buildItineraryExtras(item)}</div>` : ""}
+        </div>
+        ${this.buildItineraryFigure(imageSrc, title)}
+      </div>
+    `;
+  }
+
+  renderScheduleItineraryItem(item, index, tourImages) {
+    const time = String(item.time || "").trim() || `${index + 1}`;
+    const title = item.title || `Parada ${index + 1}`;
+    const description = item.description || item.activity || item.text || "";
+    const details = Array.isArray(item.details) ? item.details : [];
+    const imageSrc = this.getItineraryImage(item, index, tourImages);
+
+    return `
+      <div class="itinerary-item itinerary-item--schedule itinerary-item--with-image">
+        <div class="itinerary-time-pill"><i class="fa-regular fa-clock" aria-hidden="true"></i>${this.escapeHTML(time)}</div>
+        <div class="itinerary-content">
+          <h3>${this.escapeHTML(title)}</h3>
+          <p>${this.escapeHTML(description)}</p>
+          ${this.buildItineraryDetails(details)}
+          ${this.buildItineraryExtras(item) ? `<div class="itinerary-extra">${this.buildItineraryExtras(item)}</div>` : ""}
+        </div>
+        ${this.buildItineraryFigure(imageSrc, title)}
+      </div>
+    `;
   }
 
   renderAvailability(tour) {
@@ -623,6 +734,8 @@ class PeruNatureProductPage {
       if (this.elements.modalBookingDate.value && this.elements.modalBookingDate.value < minDate) this.elements.modalBookingDate.value = "";
     }
 
+    this.applyBookingPrefillFromURL(minDate);
+
     document.querySelectorAll(".booking-form .qty-btn").forEach((button) => {
       button.addEventListener("click", () => {
         const target = button.dataset.target;
@@ -670,6 +783,29 @@ class PeruNatureProductPage {
       this.saveReservationToGoogleSheet({ paymentStatus: "pending", paypalId: "" });
       this.sendBookingToWhatsApp(this.currentTour, true);
     });
+  }
+
+  applyBookingPrefillFromURL(minDate) {
+    const params = new URLSearchParams(window.location.search);
+    const fecha = params.get("fecha");
+    const viajeros = parseInt(params.get("viajeros"), 10);
+
+    if (fecha && fecha >= minDate) {
+      this.booking.date = fecha;
+      if (this.elements.bookingDate) this.elements.bookingDate.value = fecha;
+      if (this.elements.modalBookingDate) this.elements.modalBookingDate.value = fecha;
+    }
+
+    if (Number.isFinite(viajeros) && viajeros >= 1) {
+      // La búsqueda inicial permite "5+"; lo tratamos como 5 adultos de partida
+      // y el usuario puede seguir ajustando con los contadores +/-.
+      this.booking.adults = Math.min(viajeros, 5);
+      this.setText(this.elements.adultsCount, this.booking.adults);
+      this.ensureSelectedRoomStillValid();
+      this.renderProductHotelOptions();
+    }
+
+    if (fecha || Number.isFinite(viajeros)) this.updateBookingTotals();
   }
 
   changeTravelers(target, action) {
@@ -774,8 +910,8 @@ class PeruNatureProductPage {
     if (!this.elements.modal) return;
 
     if (!this.reservationCode) this.reservationCode = this.createReservationCode();
-    this.setText(this.elements.reservationCodeLabel, `Código de reserva: ${this.reservationCode}`);
-    this.setText(this.elements.modalTitle, "Datos de tu reserva");
+    this.setText(this.elements.reservationCodeLabel, `${this.t("product.bookingCode", "Código de reserva")}: ${this.reservationCode}`);
+    this.setText(this.elements.modalTitle, this.t("booking.modalTitle", "Datos de tu reserva"));
 
     this.renderPassengerForms();
     this.updateBookingTotals();
@@ -859,7 +995,11 @@ class PeruNatureProductPage {
     if (!hotel || !this.elements.roomModal) return;
     this.pendingHotelId = hotelId;
     this.setText(this.elements.roomModalTitle, hotel.name);
-    this.setText(this.elements.roomModalSubtitle, `${hotel.category || "Hotel"}. Tarifas calculadas para ${this.getHotelNights()} noche(s) y ${this.getTravelerCount()} viajero(s).`);
+    const nightsN = this.getHotelNights();
+    const paxN = this.getTravelerCount();
+    const nightsWord = nightsN === 1 ? this.t("quote.night", "noche") : this.t("quote.nightsPlural", "noches");
+    const paxWord = paxN === 1 ? this.t("quote.traveler", "viajero") : this.t("quote.travelers", "viajeros");
+    this.setText(this.elements.roomModalSubtitle, `${hotel.category || "Hotel"}. ${this.t("booking.ratesCalculatedFor", "Tarifas calculadas para")} ${nightsN} ${nightsWord} ${this.t("common.and", "y")} ${paxN} ${paxWord}.`);
     this.renderProductRoomOptions(hotel);
     this.elements.roomModal.classList.remove("hidden");
     this.elements.roomModal.setAttribute("aria-hidden", "false");
@@ -925,7 +1065,8 @@ class PeruNatureProductPage {
     }
 
     this.elements.hotelBlock.hidden = false;
-    this.setText(this.elements.hotelNightsLabel, `Alojamiento opcional por ${nights} noche${nights > 1 ? "s" : ""}. Tarifas por habitación y por noche.`);
+    const nightsLabelWord = nights === 1 ? this.t("quote.night", "noche") : this.t("quote.nightsPlural", "noches");
+    this.setText(this.elements.hotelNightsLabel, `${this.t("booking.optionalAccommodationFor", "Alojamiento opcional por")} ${nights} ${nightsLabelWord}. ${this.t("booking.roomModalSubtitle", "Tarifas por habitación y por noche.")}`);
 
     if (!this.booking.selectedHotelId || !options.some((hotel) => hotel.id === this.booking.selectedHotelId)) {
       this.booking.selectedHotelId = options[0].id;
@@ -941,7 +1082,7 @@ class PeruNatureProductPage {
             <strong>${this.escapeHTML(hotel.name)}</strong>
             <small>${this.escapeHTML(hotel.category || "Hotel")}. ${this.escapeHTML(hotel.description || "")}</small>
           </span>
-          <em>Desde ${this.formatMoney(minRate, "USD")}/noche</em>
+          <em>${this.t("quote.from", "Desde")} ${this.formatMoney(minRate, "USD")}/${this.t("quote.nightAbbrev", "noche")}</em>
         </label>
       `;
     }).join("");
@@ -977,7 +1118,7 @@ class PeruNatureProductPage {
             <strong>${this.escapeHTML(combo.label)}</strong>
             <small>${this.escapeHTML(combo.description)}</small>
           </span>
-          <em>${this.formatMoney(price, "USD")}/noche</em>
+          <em>${this.formatMoney(price, "USD")}/${this.t("quote.nightAbbrev", "noche")}</em>
         </label>
       `;
     }).join("");
@@ -1022,33 +1163,34 @@ class PeruNatureProductPage {
   }
 
   getRoomCombinations(travelers) {
+    const t = (key, fallback) => this.t(key, fallback);
     const combosByCount = {
       1: [
-        { key: "single_1", label: "1 habitación individual", description: "Una habitación simple.", rooms: { single: 1 } }
+        { key: "single_1", label: t("product.combo.single_1Label", "1 habitación individual"), description: t("product.combo.single_1Desc", "Una habitación simple."), rooms: { single: 1 } }
       ],
       2: [
-        { key: "matrimonial_1", label: "1 habitación matrimonial", description: "Una cama matrimonial para 2 pasajeros.", rooms: { matrimonial: 1 } },
-        { key: "double_1", label: "1 habitación doble", description: "Dos camas en una habitación doble.", rooms: { double: 1 } },
-        { key: "single_2", label: "2 habitaciones individuales", description: "Dos habitaciones simples separadas.", rooms: { single: 2 } }
+        { key: "matrimonial_1", label: t("product.combo.matrimonial_1Label", "1 habitación matrimonial"), description: t("product.combo.matrimonial_1Desc", "Una cama matrimonial para 2 pasajeros."), rooms: { matrimonial: 1 } },
+        { key: "double_1", label: t("product.combo.double_1Label", "1 habitación doble"), description: t("product.combo.double_1Desc", "Dos camas en una habitación doble."), rooms: { double: 1 } },
+        { key: "single_2", label: t("product.combo.single_2Label", "2 habitaciones individuales"), description: t("product.combo.single_2Desc", "Dos habitaciones simples separadas."), rooms: { single: 2 } }
       ],
       3: [
-        { key: "triple_1", label: "1 habitación triple", description: "Tres pasajeros en una habitación triple.", rooms: { triple: 1 } },
-        { key: "matri_adicional_1", label: "1 matrimonial + cama adicional", description: "Una habitación matrimonial con cama adicional.", rooms: { matri_adicional: 1 } },
-        { key: "double_1_single_1", label: "1 doble + 1 individual", description: "Dos pasajeros en doble y uno en simple.", rooms: { double: 1, single: 1 } },
-        { key: "matrimonial_1_single_1", label: "1 matrimonial + 1 individual", description: "Pareja o dos pasajeros en matrimonial y uno en simple.", rooms: { matrimonial: 1, single: 1 } },
-        { key: "single_3", label: "3 habitaciones individuales", description: "Tres habitaciones simples separadas.", rooms: { single: 3 } }
+        { key: "triple_1", label: t("product.combo.triple_1Label", "1 habitación triple"), description: t("product.combo.triple_1Desc", "Tres pasajeros en una habitación triple."), rooms: { triple: 1 } },
+        { key: "matri_adicional_1", label: t("product.combo.matri_adicional_1Label", "1 matrimonial + cama adicional"), description: t("product.combo.matri_adicional_1Desc", "Una habitación matrimonial con cama adicional."), rooms: { matri_adicional: 1 } },
+        { key: "double_1_single_1", label: t("product.combo.double_1_single_1Label", "1 doble + 1 individual"), description: t("product.combo.double_1_single_1Desc", "Dos pasajeros en doble y uno en simple."), rooms: { double: 1, single: 1 } },
+        { key: "matrimonial_1_single_1", label: t("product.combo.matrimonial_1_single_1Label", "1 matrimonial + 1 individual"), description: t("product.combo.matrimonial_1_single_1Desc", "Pareja o dos pasajeros en matrimonial y uno en simple."), rooms: { matrimonial: 1, single: 1 } },
+        { key: "single_3", label: t("product.combo.single_3Label", "3 habitaciones individuales"), description: t("product.combo.single_3Desc", "Tres habitaciones simples separadas."), rooms: { single: 3 } }
       ],
       4: [
-        { key: "quadruple_1", label: "1 habitación cuádruple", description: "Cuatro pasajeros en una habitación familiar/cuádruple.", rooms: { quadruple: 1 } },
-        { key: "double_2", label: "2 habitaciones dobles", description: "Dos habitaciones dobles.", rooms: { double: 2 } },
-        { key: "matrimonial_1_double_1", label: "1 matrimonial + 1 doble", description: "Dos habitaciones para cuatro pasajeros.", rooms: { matrimonial: 1, double: 1 } },
-        { key: "triple_1_single_1", label: "1 triple + 1 individual", description: "Una triple y una simple.", rooms: { triple: 1, single: 1 } },
-        { key: "single_4", label: "4 habitaciones individuales", description: "Cuatro habitaciones simples separadas.", rooms: { single: 4 } }
+        { key: "quadruple_1", label: t("product.combo.quadruple_1Label", "1 habitación cuádruple"), description: t("product.combo.quadruple_1Desc", "Cuatro pasajeros en una habitación familiar/cuádruple."), rooms: { quadruple: 1 } },
+        { key: "double_2", label: t("product.combo.double_2Label", "2 habitaciones dobles"), description: t("product.combo.double_2Desc", "Dos habitaciones dobles."), rooms: { double: 2 } },
+        { key: "matrimonial_1_double_1", label: t("product.combo.matrimonial_1_double_1Label", "1 matrimonial + 1 doble"), description: t("product.combo.matrimonial_1_double_1Desc", "Dos habitaciones para cuatro pasajeros."), rooms: { matrimonial: 1, double: 1 } },
+        { key: "triple_1_single_1", label: t("product.combo.triple_1_single_1Label", "1 triple + 1 individual"), description: t("product.combo.triple_1_single_1Desc", "Una triple y una simple."), rooms: { triple: 1, single: 1 } },
+        { key: "single_4", label: t("product.combo.single_4Label", "4 habitaciones individuales"), description: t("product.combo.single_4Desc", "Cuatro habitaciones simples separadas."), rooms: { single: 4 } }
       ],
       5: [
-        { key: "familiar_5_1", label: "1 habitación familiar", description: "Una habitación familiar para cinco pasajeros.", rooms: { familiar_5: 1 } },
-        { key: "triple_1_double_1", label: "1 triple + 1 doble", description: "Dos habitaciones para cinco pasajeros.", rooms: { triple: 1, double: 1 } },
-        { key: "quadruple_1_single_1", label: "1 cuádruple + 1 individual", description: "Una habitación cuádruple y una individual.", rooms: { quadruple: 1, single: 1 } }
+        { key: "familiar_5_1", label: t("product.combo.familiar_5_1Label", "1 habitación familiar"), description: t("product.combo.familiar_5_1Desc", "Una habitación familiar para cinco pasajeros."), rooms: { familiar_5: 1 } },
+        { key: "triple_1_double_1", label: t("product.combo.triple_1_double_1Label", "1 triple + 1 doble"), description: t("product.combo.triple_1_double_1Desc", "Dos habitaciones para cinco pasajeros."), rooms: { triple: 1, double: 1 } },
+        { key: "quadruple_1_single_1", label: t("product.combo.quadruple_1_single_1Label", "1 cuádruple + 1 individual"), description: t("product.combo.quadruple_1_single_1Desc", "Una habitación cuádruple y una individual."), rooms: { quadruple: 1, single: 1 } }
       ]
     };
 
@@ -1062,12 +1204,12 @@ class PeruNatureProductPage {
     if (remainder === 2) rooms.double = 1;
 
     const labelParts = [];
-    if (rooms.triple) labelParts.push(`${rooms.triple} triple${rooms.triple > 1 ? "s" : ""}`);
-    if (rooms.double) labelParts.push("1 doble");
-    if (rooms.single) labelParts.push("1 individual");
+    if (rooms.triple) labelParts.push(`${rooms.triple} ${rooms.triple > 1 ? t("product.combo.triplesWord", "triples") : t("product.combo.tripleWord", "triple")}`);
+    if (rooms.double) labelParts.push(t("product.combo.oneDouble", "1 doble"));
+    if (rooms.single) labelParts.push(t("product.combo.oneSingle", "1 individual"));
 
     return [
-      { key: `auto_${travelers}`, label: labelParts.join(" + "), description: `Combinación sugerida para ${travelers} pasajeros.`, rooms }
+      { key: `auto_${travelers}`, label: labelParts.join(" + "), description: `${t("product.combo.suggestedFor", "Combinación sugerida para")} ${travelers} ${t("product.combo.passengers", "pasajeros")}.`, rooms }
     ];
   }
 
@@ -1458,8 +1600,8 @@ class PeruNatureProductPage {
     const includes = Array.isArray(tour.includes) ? tour.includes : [];
     const excludes = Array.isArray(tour.excludes) ? tour.excludes : [];
     const hotelText = totals.hotel && totals.roomCombo
-      ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} noches)`
-      : "Alojamiento no agregado / por confirmar";
+      ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} ${this.t("quote.nightsPlural", "noches")})`
+      : this.t("product.noAccommodationYet", "Alojamiento no agregado / por confirmar");
     const normalizedImages = this.normalizeImages(tour.images).map((image) => image.src).filter(Boolean);
     const heroImage = normalizedImages[0] || "./assets/img/tour-placeholder.jpg";
     const itineraryHtml = itinerary.map((item, index) => {
@@ -1484,12 +1626,13 @@ class PeruNatureProductPage {
       `;
     }).join("");
 
+    const printLang = window.PeruNatureI18n?.getLang?.() || "es";
     const html = `
       <!doctype html>
-      <html lang="es">
+      <html lang="${printLang}">
       <head>
         <meta charset="utf-8">
-        <title>${this.escapeHTML(tour.title)} | ${this.escapeHTML(this.reservationCode || "Reserva")}</title>
+        <title>${this.escapeHTML(tour.title)} | ${this.escapeHTML(this.reservationCode || this.t("product.booking", "Reserva"))}</title>
         <style>
           *{box-sizing:border-box}
           body{font-family:Arial,Helvetica,sans-serif;margin:0;color:#23352c;background:#fff}
@@ -1521,26 +1664,26 @@ class PeruNatureProductPage {
           <section class="hero">
             <div class="hero-top">
               <div class="hero-logo"><img src="./assets/img/logos/logo-header.png" alt="Peru Nature"></div>
-              <div class="code-badge">Código de reserva: ${this.escapeHTML(this.reservationCode || "Por generar")}</div>
+              <div class="code-badge">${this.t("product.bookingCode", "Código de reserva")}: ${this.escapeHTML(this.reservationCode || this.t("product.toBeGenerated", "Por generar"))}</div>
             </div>
             <h1>${this.escapeHTML(tour.title)}</h1>
-            <p>${this.escapeHTML(tour.shortDescription || tour.description || "Experiencia Peru Nature")}</p>
+            <p>${this.escapeHTML(tour.shortDescription || tour.description || this.t("product.defaultExperience", "Experiencia Peru Nature"))}</p>
           </section>
           <section class="summary">
-            <div><span>Duración</span><strong>${this.escapeHTML(this.formatDuration(tour.duration))}</strong></div>
-            <div><span>Destino</span><strong>${this.escapeHTML(tour.location || this.formatText(tour.destination))}</strong></div>
-            <div><span>Viajeros</span><strong>${this.booking.adults} adulto(s), ${this.booking.children} niño(s)</strong></div>
-            <div><span>Total estimado</span><strong class="total">${this.escapeHTML(this.formatMoney(totals.total, totals.currency))}</strong></div>
+            <div><span>${this.t("product.navDetails", "Duración")}</span><strong>${this.escapeHTML(this.formatDuration(tour.duration))}</strong></div>
+            <div><span>${this.t("product.destination", "Destino")}</span><strong>${this.escapeHTML(tour.location || this.formatText(tour.destination))}</strong></div>
+            <div><span>${this.t("product.travelers", "Viajeros")}</span><strong>${this.booking.adults} ${this.t("quote.adultsPlural", "adultos")}, ${this.booking.children} ${this.t("quote.childrenPlural", "niños")}</strong></div>
+            <div><span>${this.t("product.estimatedTotal", "Total estimado")}</span><strong class="total">${this.escapeHTML(this.formatMoney(totals.total, totals.currency))}</strong></div>
           </section>
-          <section class="box"><h2>Alojamiento</h2><p>${this.escapeHTML(hotelText)}</p></section>
-          <h2>Itinerario detallado</h2>
+          <section class="box"><h2>${this.t("product.accommodation", "Alojamiento")}</h2><p>${this.escapeHTML(hotelText)}</p></section>
+          <h2>${this.t("product.detailedItinerary", "Itinerario detallado")}</h2>
           ${itineraryHtml}
           <section class="cols">
-            <div class="box"><h2>Incluye</h2><ul>${includes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
-            <div class="box"><h2>No incluye</h2><ul>${excludes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
+            <div class="box"><h2>${this.t("product.includes", "Incluye")}</h2><ul>${includes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
+            <div class="box"><h2>${this.t("product.excludes", "No incluye")}</h2><ul>${excludes.map((item) => `<li>${this.escapeHTML(item)}</li>`).join("")}</ul></div>
           </section>
-          <p style="margin-top:24px;color:#66736b;line-height:1.6">Tarifas referenciales sujetas a disponibilidad, temporada, ingresos y confirmación del operador local. Peru Nature confirmará la reserva antes de emitir servicios finales.</p>
-          <button class="no-print" onclick="window.print()" style="margin-top:18px;border:0;border-radius:999px;background:#0b3d2e;color:#fff;padding:13px 20px;font-weight:900;cursor:pointer">Imprimir</button>
+          <p style="margin-top:24px;color:#66736b;line-height:1.6">${this.t("product.printDisclaimer", "Tarifas referenciales sujetas a disponibilidad, temporada, ingresos y confirmación del operador local. Peru Nature confirmará la reserva antes de emitir servicios finales.")}</p>
+          <button class="no-print" onclick="window.print()" style="margin-top:18px;border:0;border-radius:999px;background:#0b3d2e;color:#fff;padding:13px 20px;font-weight:900;cursor:pointer">${this.t("product.printButton", "Imprimir")}</button>
         </main>
         <script>window.onload=()=>setTimeout(()=>window.print(),350)</script>
       </body>
@@ -1637,8 +1780,8 @@ class PeruNatureProductPage {
 
   getPrintDayLabel(item, index) {
     const time = String(item?.time || "").trim();
-    if (/d[ií]a\s*\d+/i.test(time)) return time;
-    return `Día ${index + 1}`;
+    if (/d[ií]a\s*\d+/i.test(time) || /day\s*\d+/i.test(time)) return time;
+    return `${this.t("product.day", "Día")} ${index + 1}`;
   }
 
   extractAvailabilityItems(tour) {
@@ -1681,10 +1824,10 @@ class PeruNatureProductPage {
   }
 
   getPriceNote(pricing) {
-    if (!pricing) return "precio por confirmar";
+    if (!pricing) return this.t("product.priceTbd", "precio por confirmar");
     if (pricing.note) return pricing.note;
-    if (pricing.perPerson === false) return "precio por servicio";
-    return "por persona";
+    if (pricing.perPerson === false) return this.t("product.pricePerService", "precio por servicio");
+    return this.t("quote.perPerson", "por persona");
   }
 
   getCurrencySymbol(currency) {
@@ -1708,15 +1851,27 @@ class PeruNatureProductPage {
   }
 
   formatDifficulty(value) {
-    const labels = { low: "Fácil", medium: "Moderada", high: "Alta", very_high: "Muy alta", media: "Media" };
+    const labels = {
+      low: this.t("product.difficultyLow", "Fácil"),
+      medium: this.t("product.difficultyMedium", "Moderada"),
+      media: this.t("product.difficultyMedium", "Moderada"),
+      high: this.t("product.difficultyHigh", "Alta"),
+      very_high: this.t("product.difficultyVeryHigh", "Muy alta")
+    };
     const key = String(value || "").toLowerCase();
     return labels[key] || this.formatText(value);
+  }
+
+  t(key, fallback) {
+    const lang = window.PeruNatureI18n?.getLang?.() || "es";
+    const dict = window.PeruNatureI18n?.translations?.[lang];
+    return dict?.[key] || fallback;
   }
 
   formatText(value) {
     if (!value) return "";
     return String(value)
-      .replace(/-/g, " ")
+      .replace(/[-_]/g, " ")
       .replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
@@ -1749,4 +1904,14 @@ class PeruNatureProductPage {
 
 document.addEventListener("DOMContentLoaded", () => {
   new PeruNatureProductPage();
+});
+
+// Recargamos la ficha completa al cambiar de idioma en vez de intentar
+// reescribir el DOM ya renderizado (galería, formulario de reserva,
+// PayPal, etc.): es mucho más simple y evita duplicar listeners o
+// perder de vista el estado de widgets interactivos a mitad de render.
+// El idioma ya quedó guardado en localStorage antes de este evento, así
+// que la nueva carga toma el catálogo correcto automáticamente.
+document.addEventListener("peruNature:languageChanged", () => {
+  window.location.reload();
 });

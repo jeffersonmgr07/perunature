@@ -23,9 +23,8 @@ class PeruNatureSearchBar {
 
   async loadDestinations() {
     try {
-      const res = await fetch("./assets/data/destinations.json", { cache: "no-store" });
-      const data = await res.json();
-      this.destinations = data.destinations || [];
+      const data = await window.PeruNatureData.fetchLocalizedJson("./assets/data/destinations.json");
+      this.destinations = data?.destinations || [];
     } catch (e) {
       console.error("Error cargando destinos", e);
     }
@@ -111,13 +110,38 @@ class PeruNatureSearchBar {
   submitSearch() {
     const fecha = document.getElementById("pnFecha")?.value || "";
     const viajeros = document.getElementById("pnViajeros")?.value || "";
+    const typed = this.input.value.trim();
+
+    // Si el usuario escribió un destino pero nunca hizo clic en una sugerencia
+    // del autocompletado, selectedDestination queda vacío y el texto se
+    // perdía por completo. Intentamos resolverlo a un código conocido; si no
+    // hay coincidencia exacta, lo mandamos como búsqueda libre (q=) en vez de
+    // descartarlo.
+    if (!this.selectedDestination && typed) {
+      const match = this.destinations.find(
+        (d) => d.name.toLowerCase() === typed.toLowerCase()
+      );
+      if (match) this.selectedDestination = match.code;
+    }
 
     const params = new URLSearchParams();
 
     if (this.selectedDestination) params.set("destino", this.selectedDestination);
-    if (this.currentTab) params.set("tipo", this.currentTab);
+    else if (typed) params.set("q", typed);
+
     if (fecha) params.set("fecha", fecha);
     if (viajeros) params.set("viajeros", viajeros);
+
+    // El tab "Hoteles" no tiene catálogo propio: los hoteles solo existen
+    // como acomodación dentro de un paquete/cotización, así que lo enviamos
+    // directo al cotizador en vez de a una búsqueda que siempre da 0 resultados.
+    if (this.currentTab === "hoteles") {
+      params.set("foco", "hoteles");
+      window.location.href = `./quote-packages.html?${params.toString()}`;
+      return;
+    }
+
+    if (this.currentTab) params.set("tipo", this.currentTab);
 
     // 🔥 REDIRECCIÓN PRINCIPAL
     window.location.href = `./all-experiences.html?${params.toString()}`;
@@ -125,3 +149,7 @@ class PeruNatureSearchBar {
 }
 
 window.PeruNatureSearchBar = PeruNatureSearchBar;
+
+document.addEventListener("peruNature:languageChanged", () => {
+  window.peruNatureSearchBarInstance?.loadDestinations?.();
+});
