@@ -56,6 +56,10 @@
     {
       "code": "huaraz",
       "name": "Huaraz"
+    },
+    {
+      "code": "huancaya",
+      "name": "Huancaya and Nor Yauyos"
     }
   ],
   "tours": [
@@ -247,6 +251,138 @@
           "14:00"
         ]
       }
+    },
+    {
+      "id": "tour_huancaya_nor_yauyos_2d1n",
+      "slug": "huancaya-nor-yauyos-2-dias",
+      "title": "Huancaya and Nor Yauyos – Lakes, waterfalls and adventure",
+      "shortDescription": "Discover Huancaya’s lagoons, waterfalls and Andean trails on a 2-day trip from Lima, with accommodation included.",
+      "description": "Escapada a la Reserva Paisajística Nor Yauyos-Cochas, con caminatas por paisajes altoandinos, lagunas, cascadas y encuentros con la cultura local. El recorrido incluye transporte turístico desde Lima, guía, alimentación programada y una noche en Hotel Las Lagunas o similar. La salida desde Lima se realiza la noche anterior a la primera jornada de excursiones. Los servicios están sujetos a disponibilidad y confirmación de la reserva.",
+      "destination": "huancaya",
+      "department": "lima",
+      "region": "andes",
+      "location": "Huancaya, Yauyos – Lima",
+      "productKind": "tour",
+      "categories": [
+        "multi_day",
+        "nature",
+        "adventure"
+      ],
+      "tags": [
+        "huancaya",
+        "nor yauyos",
+        "lagunas",
+        "cascadas",
+        "trekking",
+        "lima",
+        "yauyos",
+        "huallhua",
+        "cabracancha",
+        "turismo de naturaleza"
+      ],
+      "duration": {
+        "type": "multi_day",
+        "days": 2,
+        "nights": 1,
+        "label": "2 días / 1 noche"
+      },
+      "difficulty": "moderate",
+      "language": "Español",
+      "pricing": {
+        "basePrice": 119.9,
+        "currency": "USD",
+        "priceLabel": "USD 119.90 por persona · alojamiento incluido"
+      },
+      "images": {
+        "cover": "./assets/img/tours/huancaya/laguna-bote.jpg",
+        "gallery": [
+          "./assets/img/tours/huancaya/puente-colgante.jpg",
+          "./assets/img/tours/huancaya/cascadas-bote.jpg",
+          "./assets/img/tours/huancaya/mirador-laguna.jpg",
+          "./assets/img/tours/huancaya/cascadas-grupo.jpg",
+          "./assets/img/tours/huancaya/senderismo.jpg",
+          "./assets/img/tours/huancaya/hotel-triple.jpg"
+        ]
+      },
+      "highlights": [
+        "Lagunas y cascadas de Huancaya y Nor Yauyos",
+        "Caminatas por Cabracancha y Ruta del Pescador",
+        "Laguna Huallhua y cascada Carhuayno",
+        "Puente colgante y miradores naturales",
+        "1 noche en Hotel Las Lagunas o similar",
+        "Recojo personalizado coordinable con costo adicional; condiciones especiales para grupos grandes"
+      ],
+      "includes": [
+        "Transporte turístico Lima – Huancaya – Lima y recorridos programados",
+        "1 noche de alojamiento en Hotel Las Lagunas o similar",
+        "Acomodación según disponibilidad; habitaciones triples para grupos de 9 si se confirma",
+        "2 desayunos, 2 almuerzos y 1 cena",
+        "Excursiones por lagunas, Huancaya, Cabracancha y Ruta del Pescador",
+        "Kayak/remo y puente colgante según operación y disponibilidad",
+        "Guía local, coordinación y botiquín de primeros auxilios"
+      ],
+      "excludes": [
+        "Ingreso turístico a Huancaya (referencia: S/ 10 por persona)",
+        "Ingreso turístico a Vitis (referencia: S/ 5 por persona)",
+        "Paseo opcional en bote por Laguna Huallhua (referencia: S/ 20)",
+        "Canopy, paddle surf y otras actividades no confirmadas como incluidas",
+        "Bebidas adicionales, gastos personales y seguro de viaje individual",
+        "Recojo personalizado si se solicita fuera de los puntos de encuentro"
+      ],
+      "itinerary": [
+        {
+          "time": "Noche previa",
+          "title": "Salida de Lima hacia Huancaya",
+          "description": "Abordaje en puntos de encuentro por confirmar: Plaza Norte, Museo de la Nación (San Borja) y Mall del Sur. Se puede coordinar recojo personalizado con costo adicional, o recojo especial para grupos grandes, previa coordinación. Traslado nocturno en transporte turístico.",
+          "image": "./assets/img/tours/huancaya/laguna-bote.jpg"
+        },
+        {
+          "time": "Día 1",
+          "title": "Llegada, desayuno y lagunas",
+          "description": "Recepción en Huancaya, distribución del alojamiento y desayuno. Recorrido panorámico por lagunas, cascadas y miradores naturales de la reserva.",
+          "image": "./assets/img/tours/huancaya/cascadas-bote.jpg"
+        },
+        {
+          "time": "Día 1",
+          "title": "Caminatas por Cabracancha",
+          "description": "Tras el almuerzo, exploración de senderos de Cabracancha, cascadas de Atao, antiguo puente de piedra y sectores de interés histórico y cultural.",
+          "image": "./assets/img/tours/huancaya/senderismo.jpg"
+        },
+        {
+          "time": "Día 1",
+          "title": "Pueblo de Huancaya y descanso",
+          "description": "City tour por calles, plaza y espacios culturales de Huancaya. Cena incluida. Pernocte en Hotel Las Lagunas o similar, en habitaciones según la distribución de la reserva.",
+          "image": "./assets/img/tours/huancaya/mirador-laguna.jpg"
+        },
+        {
+          "time": "Día 2",
+          "title": "Catarata Carhuayno y Laguna Huallhua",
+          "description": "Visita a miradores y descenso de aproximadamente 345 escalones hasta Laguna Huallhua. Paseo en bote disponible con pago adicional.",
+          "image": "./assets/img/tours/huancaya/cascadas-grupo.jpg"
+        },
+        {
+          "time": "Día 2",
+          "title": "Ruta del Pescador y regreso a Lima",
+          "description": "Caminata interpretativa, vistas de cascadas y puente colgante. Parada en Laguna Piquecocha si el recorrido lo permite. Retorno previsto a Lima por la noche.",
+          "image": "./assets/img/tours/huancaya/puente-colgante.jpg"
+        }
+      ],
+      "availability": {
+        "daily": true,
+        "startTimes": [
+          "Salida nocturna del día anterior"
+        ]
+      },
+      "accommodationIncluded": {
+        "name": "Hotel Las Lagunas o similar",
+        "nights": 1,
+        "description": "Alojamiento incluido en Huancaya. La distribución y el tipo de habitación se confirman con la reserva. Habitaciones triples sujetas a disponibilidad.",
+        "images": [
+          "./assets/img/tours/huancaya/hotel-triple.jpg"
+        ]
+      },
+      "featured": false,
+      "rankScore": 60
     }
   ]
 }

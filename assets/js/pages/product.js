@@ -753,8 +753,13 @@ class PeruNatureProductPage {
       }
     });
 
+    this.elements.bookingDate?.addEventListener("change", () => {
+      this.booking.date = this.elements.bookingDate.value;
+      if (this.elements.modalBookingDate) this.elements.modalBookingDate.value = this.booking.date;
+    });
     this.elements.bookingForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      this.booking.date = this.elements.bookingDate?.value || "";
       this.openReservationModal(tour);
     });
   }
@@ -935,6 +940,23 @@ class PeruNatureProductPage {
     const container = this.elements.productHotelOptions;
     if (!section || !container) return;
 
+    const included = this.currentTour?.accommodationIncluded;
+    if (included) {
+      section.hidden = false;
+      const heading = section.querySelector(".section-title-row h2");
+      const subtitle = section.querySelector(".section-title-row p");
+      if (heading) heading.textContent = "Alojamiento incluido";
+      if (subtitle) subtitle.textContent = "El alojamiento ya está incluido en el precio del tour; no se cobra como extra.";
+      const photo = included.images?.[0] || "";
+      container.innerHTML = `<article class="pn-included-hotel">
+        ${photo ? `<img src="${this.escapeHTML(photo)}" alt="Habitación del alojamiento previsto en Huancaya" loading="lazy">` : ""}
+        <div><span class="pn-included-hotel__tag">Incluido en tu experiencia</span>
+        <h3>${this.escapeHTML(included.name || "Alojamiento")}</h3>
+        <p>${this.escapeHTML(included.description || "")}</p>
+        <strong>${Number(included.nights || 1)} noche · Sin costo adicional</strong></div>
+      </article>`;
+      return;
+    }
     const hotels = this.getHotelOptionsForTour();
     const nights = this.getHotelNights();
     if (!hotels.length || nights <= 0) {
@@ -1333,6 +1355,7 @@ class PeruNatureProductPage {
               <i class="fa-solid fa-chevron-${collapsed ? "down" : "up"}"></i>
             </button>
           </div>
+          ${!isContact ? `<label class="pn-passenger-defer"><input type="checkbox" data-passenger-defer> <span>Ingresaré los datos después</span></label>` : ""}
           <div class="pn-passenger-card__body">
             <div class="pn-passenger-grid">
               <label>Nombre(s)<input type="text" name="passenger_${i}_name" placeholder="Nombre completo" value="${this.escapeHTML(firstName)}"${required}></label>
@@ -1375,6 +1398,7 @@ class PeruNatureProductPage {
 
     this.elements.passengerForms.innerHTML = cards.join("");
     this.bindPassengerCardToggles();
+    this.bindDeferredPassengers();
     this.bindPassengerValidationWatcher();
   }
 
@@ -1386,6 +1410,24 @@ class PeruNatureProductPage {
         button.setAttribute("aria-expanded", collapsed ? "false" : "true");
         const icon = button.querySelector("i");
         if (icon) icon.className = `fa-solid fa-chevron-${collapsed ? "down" : "up"}`;
+      });
+    });
+  }
+
+  bindDeferredPassengers() {
+    this.elements.passengerForms?.querySelectorAll("[data-passenger-defer]").forEach((checkbox) => {
+      checkbox.addEventListener("change", () => {
+        const card = checkbox.closest(".pn-passenger-card");
+        if (!card) return;
+        card.classList.toggle("is-deferred", checkbox.checked);
+        card.classList.toggle("is-collapsed", checkbox.checked);
+        const toggle = card.querySelector("[data-passenger-toggle]");
+        if (toggle) toggle.setAttribute("aria-expanded", String(!checkbox.checked));
+        const icon = toggle?.querySelector("i");
+        if (icon) icon.className = `fa-solid fa-chevron-${checkbox.checked ? "down" : "up"}`;
+        card.querySelectorAll(".pn-passenger-card__body input, .pn-passenger-card__body select").forEach((field) => {
+          field.disabled = checkbox.checked;
+        });
       });
     });
   }
@@ -1701,9 +1743,10 @@ class PeruNatureProductPage {
   collectPassengerData() {
     const data = [];
     this.elements.passengerForms?.querySelectorAll(".pn-passenger-card").forEach((card, index) => {
-      if (card.querySelector("input[name='contact_email']")) return;
+      // El contacto principal también es pasajero y debe enviarse al backend.
       data.push({
         passenger: index + 1,
+        detailsPending: Boolean(card.querySelector("[data-passenger-defer]")?.checked),
         name: card.querySelector("input[name$='_name']")?.value || "",
         lastname: card.querySelector("input[name$='_lastname']")?.value || "",
         documentType: card.querySelector("select[name$='_doctype']")?.value || "",

@@ -75,6 +75,15 @@
         "gastronomy"
       ],
       "featured": true
+    },
+    {
+      "code": "huancaya",
+      "name": "Huancaya and Nor Yauyos",
+      "region": "andes",
+      "type": [
+        "naturaleza",
+        "aventura"
+      ]
     }
   ]
 }
