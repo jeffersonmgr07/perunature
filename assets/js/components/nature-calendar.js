@@ -48,7 +48,7 @@
         cells.push(`<button type="button" class="pn-nature-calendar__day${date===input.value?' is-selected':''}${date===todayISO()?' is-today':''}" data-date="${date}" ${disabled?'disabled':''} aria-label="${date}" aria-pressed="${date===input.value}">${day}</button>`);
       }
       pop.innerHTML=`<div class="pn-nature-calendar__head"><button type="button" class="pn-nature-calendar__nav" data-month="-1" aria-label="Mes anterior">‹</button><strong>${monthName}</strong><button type="button" class="pn-nature-calendar__nav" data-month="1" aria-label="Mes siguiente">›</button></div><div class="pn-nature-calendar__grid">${(lang==='en-US'?DAYS_EN:DAYS_ES).map(x=>`<span class="pn-nature-calendar__weekday">${x}</span>`).join('')}${cells.join('')}</div><div class="pn-nature-calendar__foot"><button type="button" data-today>${lang==='en-US'?'Today':'Hoy'}</button><button type="button" data-clear>${lang==='en-US'?'Clear':'Limpiar'}</button></div>`;
-      pop.querySelectorAll('[data-month]').forEach(el=>el.addEventListener('click',()=>{view=new Date(year,month+Number(el.dataset.month),1);render();}));
+      pop.querySelectorAll('[data-month]').forEach(el=>el.addEventListener('click',(event)=>{event.preventDefault();event.stopPropagation();view=new Date(year,month+Number(el.dataset.month),1);render();position();}));
       const pick=value=>{if(value && (value<minimum||value>maximum))return;input.value=value;input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));updateButton();close();button.focus();};
       pop.querySelectorAll('[data-date]').forEach(el=>el.addEventListener('click',()=>pick(el.dataset.date)));
       pop.querySelector('[data-today]').addEventListener('click',()=>pick(todayISO()));

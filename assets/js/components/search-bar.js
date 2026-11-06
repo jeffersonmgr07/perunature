@@ -86,6 +86,20 @@ class PeruNatureSearchBar {
     const panel=document.getElementById('pnTravelersPopover');
     const input=document.getElementById('pnViajeros');
     if(!toggle||!panel||!input)return;
+    // Portal al body: evita clipping por el hero, también en pantallas de PC.
+    document.body.appendChild(panel);
+    panel.classList.add('pn-traveler-popover--portal');
+    const position=()=>{
+      if(panel.hidden)return;
+      const r=toggle.getBoundingClientRect();
+      const width=Math.min(380,window.innerWidth-24);
+      panel.style.width=width+'px';
+      panel.style.left=Math.max(12,Math.min(r.left,window.innerWidth-width-12))+'px';
+      const height=panel.offsetHeight||220;
+      panel.style.top=((window.innerHeight-r.bottom>=height+10 || r.top<height+10)?Math.min(window.innerHeight-height-12,r.bottom+8):Math.max(12,r.top-height-8))+'px';
+    };
+    window.addEventListener('resize',position);
+    window.addEventListener('scroll',position,true);
     let adults=2, children=0;
     const render=()=>{
       const n=adults+children;input.value=String(n);
@@ -97,7 +111,7 @@ class PeruNatureSearchBar {
       panel.querySelector('[data-traveler="children"][data-delta="-1"]').disabled=children<=0;
     };
     const close=()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false');};
-    toggle.addEventListener('click',()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));});
+    toggle.addEventListener('click',()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));position();});
     panel.querySelectorAll('[data-traveler]').forEach(b=>b.addEventListener('click',()=>{
       const delta=Number(b.dataset.delta);
       if(b.dataset.traveler==='adults')adults=Math.max(1,Math.min(30,adults+delta));

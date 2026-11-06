@@ -121,6 +121,15 @@ function initReservationMenu() {
   });
 }
 
+function initFooterAccordions() {
+  const details=Array.from(document.querySelectorAll('.footer-perunature .footer-accordion'));
+  if(!details.length)return;
+  const mobile=window.matchMedia('(max-width: 720px)').matches;
+  details.forEach(item=>{if(mobile)item.removeAttribute('open');else item.setAttribute('open','');});
+  const mq=window.matchMedia('(max-width: 720px)');
+  mq.addEventListener?.('change',e=>details.forEach(item=>{if(e.matches)item.removeAttribute('open');else item.setAttribute('open','');}));
+}
+
 function initMobileMenu() {
   const button = document.querySelector('.mobile-menu-btn');
   const nav = document.getElementById('mainNavigation');
@@ -142,6 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ]);
 
   initMobileMenu();
+  initFooterAccordions();
   initReservationMenu();
   initCustomerHeader();
   document.dispatchEvent(new CustomEvent('peruNature:componentsReady'));

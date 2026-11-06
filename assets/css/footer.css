@@ -127,3 +127,11 @@
   .footer-links-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
 }
+/* Libro de reclamaciones y redes */
+.pn-claim-desktop-image{display:block;margin:5px 0 0;max-width:100%;}
+.pn-claim-desktop-image img{display:block;width:100%;max-width:180px;height:auto;object-fit:contain}
+@media(min-width:721px){.pn-claim-mobile-icon{display:none!important}}
+@media(max-width:720px){.pn-claim-desktop-image{display:none!important}.pn-claim-mobile-icon{display:inline-block!important}}
+.footer-social a svg{display:block;width:22px;height:22px;flex:none}
+@media(min-width:721px) and (max-width:1500px){.footer-social{margin-right:72px;flex-wrap:wrap;justify-content:flex-end}}
+@media(max-width:720px){.footer-accordion summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer}.footer-accordion summary::after{content:'⌄';display:inline-flex;color:#a2dfa6;font-size:1.35rem;line-height:1;transition:transform .2s}.footer-accordion[open] summary::after{transform:rotate(180deg)}.footer-accordion{padding-bottom:8px}}

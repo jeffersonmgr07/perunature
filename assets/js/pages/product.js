@@ -283,7 +283,12 @@ class PeruNatureProductPage {
 
   renderBasicInfo(tour) {
     this.setText(this.elements.breadcrumbTitle, tour.title);
-    this.setText(this.elements.title, tour.title);
+    const match=String(tour.title||'').match(/^(.+?)\s+[–—]\s+(.+)$/);
+    const mainTitle=match?.[1]||tour.title;
+    const secondary=match?.[2]||this.formatDuration(tour.duration)||'';
+    this.setText(this.elements.title,mainTitle);
+    const subtitle=document.getElementById('productSubtitle');
+    if(subtitle){subtitle.textContent=secondary;subtitle.hidden=!secondary;}
     this.setText(this.elements.shortDescription, tour.shortDescription || "");
     this.setText(this.elements.location, tour.location || tour.destination || "Perú");
 
@@ -954,8 +959,26 @@ class PeruNatureProductPage {
       this.booking.discountPercent = Number(found.percent || 0);
       this.booking.coupon = coupon;
       this.setText(this.elements.discountMessage, `Cupón aplicado: ${this.booking.discountPercent}% de descuento.`);
+      this.launchCouponConfetti();
     }
     this.updateBookingTotals();
+  }
+
+  launchCouponConfetti() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const source=this.elements.applyDiscountBtn;
+    if(!source)return;
+    const rect=source.getBoundingClientRect();
+    const palette=['#a684d6','#c5a6ee','#7ed957','#0b5c3c','#d9b65d','#edd7a0'];
+    const layer=document.createElement('div');layer.className='pn-confetti-layer';layer.setAttribute('aria-hidden','true');document.body.appendChild(layer);
+    for(let i=0;i<42;i++){
+      const dot=document.createElement('span');dot.className='pn-confetti-dot';
+      dot.style.left=(rect.left+rect.width/2)+'px';dot.style.top=(rect.top+rect.height/2)+'px';
+      dot.style.background=palette[i%palette.length];dot.style.setProperty('--dx',((Math.random()-.5)*300)+'px');
+      dot.style.setProperty('--dy',(-80-Math.random()*160)+'px');dot.style.setProperty('--rot',(Math.random()*720)+'deg');
+      dot.style.animationDelay=(Math.random()*100)+'ms';layer.append(dot);
+    }
+    window.setTimeout(()=>layer.remove(),1500);
   }
 
   updateBookingTotals() {
@@ -1492,6 +1515,7 @@ class PeruNatureProductPage {
     this.bindPassengerCardToggles();
     this.bindDeferredPassengers();
     this.bindPassengerValidationWatcher();
+    window.PNPassengerControls?.enhance(this.elements.passengerForms);
   }
 
   bindPassengerCardToggles() {
@@ -1517,7 +1541,7 @@ class PeruNatureProductPage {
         if (toggle) toggle.setAttribute("aria-expanded", String(!checkbox.checked));
         const icon = toggle?.querySelector("i");
         if (icon) icon.className = `fa-solid fa-chevron-${checkbox.checked ? "down" : "up"}`;
-        card.querySelectorAll(".pn-passenger-card__body input, .pn-passenger-card__body select").forEach((field) => {
+        card.querySelectorAll(".pn-passenger-card__body input, .pn-passenger-card__body select, .pn-passenger-card__body button").forEach((field) => {
           field.disabled = checkbox.checked;
         });
       });
@@ -1565,12 +1589,12 @@ class PeruNatureProductPage {
     return [
       { label: "nombre(s)", el: root.querySelector("input[name='passenger_1_name']") },
       { label: "apellido(s)", el: root.querySelector("input[name='passenger_1_lastname']") },
-      { label: "tipo de documento", el: root.querySelector("select[name='passenger_1_doctype']") },
+      { label: "tipo de documento", el: root.querySelector("[name='passenger_1_doctype']") },
       { label: "número de documento", el: root.querySelector("input[name='passenger_1_doc']") },
       { label: "nacionalidad", el: root.querySelector("input[name='passenger_1_nationality']") },
       { label: "fecha de nacimiento", el: root.querySelector("input[name='passenger_1_birthdate']") },
-      { label: "género", el: root.querySelector("select[name='passenger_1_gender']") },
-      { label: "idioma", el: root.querySelector("select[name='passenger_1_language']") },
+      { label: "género", el: root.querySelector("[name='passenger_1_gender']") },
+      { label: "idioma", el: root.querySelector("[name='passenger_1_language']") },
       { label: "email de contacto", el: root.querySelector("input[name='contact_email']") },
       { label: "WhatsApp de contacto", el: root.querySelector("input[name='contact_phone']") }
     ];
@@ -1581,23 +1605,28 @@ class PeruNatureProductPage {
     const email = this.elements.passengerForms?.querySelector("input[name='contact_email']");
     const emailValue = String(email?.value || "").trim();
     const invalidEmail = emailValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue);
+    const phone=this.elements.passengerForms?.querySelector("input[name='contact_phone']");
+    const local=this.elements.passengerForms?.querySelector("input[name='contact_phone_local']");
+    const invalidPhone=Boolean(local && !/^[0-9]{6,15}$/.test(local.value));
 
     this.getPrimaryPassengerRequiredFields().forEach((field) => field.el?.classList.remove("pn-field-error"));
     email?.classList.remove("pn-field-error");
 
-    if (!missing.length && !invalidEmail) return true;
+    if (!missing.length && !invalidEmail && !invalidPhone) return true;
 
     if (showMessage) {
       const first = missing[0]?.el || email;
       missing.forEach((field) => field.el?.classList.add("pn-field-error"));
       if (invalidEmail) email?.classList.add("pn-field-error");
+      if (invalidPhone) local?.classList.add("pn-field-error");
       const card = first?.closest(".pn-passenger-card");
       if (card?.classList.contains("is-collapsed")) {
         const toggle = card.querySelector("[data-passenger-toggle]");
         toggle?.click();
       }
-      first?.focus({ preventScroll: false });
-      const message = invalidEmail
+      if(first?.type==='hidden') first.closest('.pn-choice')?.querySelector('.pn-choice__trigger')?.focus();
+      else first?.focus({ preventScroll: false });
+      const message = invalidPhone ? "Ingresa un número de WhatsApp válido, solo dígitos (6 a 15)." : invalidEmail
         ? "Revisa el email de contacto del pasajero 1 antes de continuar al pago."
         : `Completa los datos obligatorios del pasajero 1 antes de continuar al pago: ${missing.map((field) => field.label).join(", ")}.`;
       this.setText(this.elements.paypalStatus, message);
@@ -1606,9 +1635,24 @@ class PeruNatureProductPage {
     return false;
   }
 
-  renderPayPalButtons(totals = this.calculateTotals()) {
+  async renderPayPalButtons(totals = this.calculateTotals()) {
     if (!this.elements.paypalButtons) return;
     this.elements.paypalButtons.innerHTML = "";
+    const clientId=String(window.PN_PAYPAL_CLIENT_ID||'').trim();
+    if(!clientId || !window.PN_PAYPAL_PAYMENTS_ENABLED){
+      this.setText(this.elements.paypalStatus,'Pago online temporalmente no disponible. Confirma tu reserva con nuestro asesor.');
+      return;
+    }
+    if(!this._paypalSdkPromise){
+      this._paypalSdkPromise=new Promise((resolve,reject)=>{
+        const tag=document.createElement('script');
+        tag.src='https://www.paypal.com/sdk/js?client-id='+encodeURIComponent(clientId)+'&currency=USD&components=buttons';
+        tag.onload=resolve;tag.onerror=()=>reject(new Error('SDK de PayPal no disponible'));
+        document.head.appendChild(tag);
+      });
+    }
+    try{await this._paypalSdkPromise;}catch(err){this.setText(this.elements.paypalStatus,'No fue posible cargar PayPal. Contacta con nuestro asesor.');return;}
+    if(this.elements.modal?.classList.contains('hidden'))return;
 
     if (!window.paypal || !window.paypal.Buttons) {
       this.setText(this.elements.paypalStatus, "PayPal no cargó todavía. Revisa la conexión o configura el Client ID de producción.");
@@ -1629,7 +1673,8 @@ class PeruNatureProductPage {
         if (!this.validatePrimaryPassengerData(true)) {
           throw new Error("Completa los datos obligatorios del pasajero 1 antes de continuar al pago.");
         }
-        const amount = Math.max(1, Number(totals.total || 0)).toFixed(2);
+        if(Number(totals.total)<=0)throw new Error('El total de la reserva no permite procesar un cobro online.');
+        const amount = Number(totals.total).toFixed(2);
         if (this.reservationEndpoint) {
           try {
             const response = await fetch(this.reservationEndpoint, {
@@ -1643,13 +1688,7 @@ class PeruNatureProductPage {
             console.warn("[Peru Nature] PayPal server-side no disponible, se usará creación en navegador.", error);
           }
         }
-        return actions.order.create({
-          purchase_units: [{
-            reference_id: this.reservationCode || this.createReservationCode(),
-            description: String(this.currentTour?.title || "Reserva Peru Nature").slice(0, 120),
-            amount: { currency_code: totals.currency || "USD", value: amount }
-          }]
-        });
+        throw new Error('El servidor no pudo crear la orden de PayPal. No se realizará ningún cargo.');
       },
       onApprove: async (data, actions) => {
         let details = null;
@@ -1665,8 +1704,15 @@ class PeruNatureProductPage {
             console.warn("[Peru Nature] No se pudo capturar PayPal desde Apps Script. Intentando captura del navegador.", error);
           }
         }
-        if (!details?.ok && actions?.order) {
-          details = await actions.order.capture();
+        if (!details?.ok) {
+          this.setText(this.elements.paypalStatus,'No se pudo verificar el pago con nuestro servidor. Contacta con un asesor.');
+          return;
+        }
+        // Una orden creada/aprobada no equivale a pago capturado.
+        const captureStatus=details?.status || details?.data?.status || details?.purchase_units?.[0]?.payments?.captures?.[0]?.status;
+        if(captureStatus!=='COMPLETED' && !details?.captureVerified){
+          this.setText(this.elements.paypalStatus,'El pago aún no está confirmado. Contacta con nuestro asesor.');
+          return;
         }
         const paypalId = details?.id || details?.orderID || data?.orderID || "confirmado";
         this.setText(this.elements.paypalStatus, `Pago aprobado. ID: ${paypalId}`);
@@ -1844,12 +1890,12 @@ class PeruNatureProductPage {
         detailsPending: Boolean(card.querySelector("[data-passenger-defer]")?.checked),
         name: card.querySelector("input[name$='_name']")?.value || "",
         lastname: card.querySelector("input[name$='_lastname']")?.value || "",
-        documentType: card.querySelector("select[name$='_doctype']")?.value || "",
+        documentType: card.querySelector("[name$='_doctype']")?.value || "",
         documentNumber: card.querySelector("input[name$='_doc']")?.value || "",
         nationality: card.querySelector("input[name$='_nationality']")?.value || "",
         birthdate: card.querySelector("input[name$='_birthdate']")?.value || "",
-        gender: card.querySelector("select[name$='_gender']")?.value || "",
-        language: card.querySelector("select[name$='_language']")?.value || ""
+        gender: card.querySelector("[name$='_gender']")?.value || "",
+        language: card.querySelector("[name$='_language']")?.value || ""
       });
     });
     return data;

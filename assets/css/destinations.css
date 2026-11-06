@@ -196,7 +196,7 @@
   overflow: hidden;
   background:
     linear-gradient(135deg, rgba(11, 61, 46, .88), rgba(31, 92, 63, .88)),
-    url('../img/cta/custom-package.jpg') center / cover no-repeat;
+    url('../img/hero-2.jpg') center / cover no-repeat;
   color: #fff;
   box-shadow: 0 24px 70px rgba(0,0,0,.18);
 }
@@ -246,3 +246,5 @@
     min-height: auto;
   }
 }
+/* Titular destacado de escritorio en una línea */
+@media(min-width:901px){.featured-section .section-heading h2{white-space:nowrap;font-size:clamp(24px,2.5vw,36px);letter-spacing:-.035em}}
