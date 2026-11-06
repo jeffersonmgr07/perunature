@@ -113,6 +113,7 @@
             </p>
 
             <div class="product-meta-row">
+              <div class="product-meta-info">
               <div class="product-rating" id="productRating">
                 <!-- Rating dinámico -->
               </div>
@@ -121,6 +122,11 @@
                 <i class="fa-solid fa-location-dot"></i>
                 <span id="productLocation">Ubicación</span>
               </div>
+              </div>
+              <button type="button" id="productVideoButton" class="pn-tour-video-button" aria-haspopup="dialog" aria-controls="productVideoModal" hidden>
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                <span>Ver video</span>
+              </button>
             </div>
           </div>
         </header>
@@ -350,6 +356,19 @@
     </section>
   </main>
 
+
+  <!-- Visor de video de experiencias: se abre sin salir del sitio -->
+  <div id="productVideoModal" class="pn-tour-video-modal" role="dialog" aria-modal="true" aria-labelledby="productVideoTitle" aria-hidden="true" hidden>
+    <div class="pn-tour-video-dialog" role="document">
+      <header class="pn-tour-video-header">
+        <h2 id="productVideoTitle">Video de la experiencia</h2>
+        <button type="button" id="productVideoClose" class="pn-tour-video-close" aria-label="Cerrar video">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+      <video id="productVideoPlayer" class="pn-tour-video-player" controls playsinline preload="none"></video>
+    </div>
+  </div>
 
   <!-- Modal de reserva de paquetes / experiencias -->
   <div id="reservationModal" class="pn-reservation-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reservationModalTitle">

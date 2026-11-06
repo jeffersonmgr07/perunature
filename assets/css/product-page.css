@@ -1317,3 +1317,28 @@ body {
 .pn-night-dot{width:9px;height:9px;display:block;background:#fff;border-radius:50%}
 /* Ocultar detalles sin valor aunque otra regla intente mostrar los divs */
 #childrenSidebarRow[hidden],#hotelSidebarRow[hidden],#discountRow[hidden]{display:none!important}
+
+/* =========================================================
+   VIDEO DE LA EXPERIENCIA · modal y botón por tour
+   ========================================================= */
+.product-meta-info{display:flex;align-items:center;flex-wrap:wrap;gap:14px 18px;min-width:0}
+.pn-tour-video-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:232px;min-height:46px;margin-left:auto;border:1px solid #2faa52;border-radius:999px;background:linear-gradient(135deg,#248b48,#43b961);color:#fff;font:inherit;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 6px 16px rgba(14,92,52,.15);transition:filter .15s ease,transform .15s ease}
+.pn-tour-video-button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.pn-tour-video-button:focus-visible,.pn-tour-video-close:focus-visible{outline:3px solid #b9e88c;outline-offset:3px}
+.pn-tour-video-button[hidden],.pn-tour-video-modal[hidden]{display:none!important}
+.pn-tour-video-modal{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 16px max(16px,env(safe-area-inset-bottom));background:rgba(2,15,11,.91);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)}
+.pn-tour-video-dialog{display:flex;flex-direction:column;align-items:stretch;width:min(100%,490px);max-height:100%;background:#09251b;border:1px solid #3c6b52;border-radius:20px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55)}
+.pn-tour-video-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 13px 11px 18px;min-height:62px}
+.pn-tour-video-header h2{font-size:15px;font-weight:800;line-height:1.3;color:#fff;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pn-tour-video-close{width:40px;height:40px;display:grid;place-items:center;flex:0 0 40px;border:1px solid #527866;border-radius:50%;background:#183e2f;color:#fff;font-size:18px;cursor:pointer}
+.pn-tour-video-close:hover{background:#286042}
+.pn-tour-video-player{display:block;width:100%;max-height:calc(100dvh - 110px);aspect-ratio:9 / 16;object-fit:contain;background:#000}
+@media(max-width:600px){
+  .product-meta-row{display:grid!important;grid-template-columns:minmax(0,1fr) 103px;align-items:center!important;gap:8px 10px!important}
+  .product-meta-info{display:flex;flex-direction:column;align-items:flex-start;gap:9px;min-width:0}
+  .product-meta-info .product-location{font-size:13px;min-width:0}
+  .pn-tour-video-button{margin:0;min-width:0;width:103px;min-height:38px;padding:8px 6px;font-size:12px;gap:5px}
+  .pn-tour-video-modal{padding:16px 10px max(16px,env(safe-area-inset-bottom))}
+  .pn-tour-video-dialog{width:min(100%,440px);border-radius:16px}
+  .pn-tour-video-player{max-height:calc(100dvh - 115px)}
+}

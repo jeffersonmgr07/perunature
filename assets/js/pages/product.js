@@ -40,6 +40,11 @@ class PeruNatureProductPage {
       shortDescription: document.getElementById("productShortDescription"),
       rating: document.getElementById("productRating"),
       location: document.getElementById("productLocation"),
+      videoButton: document.getElementById("productVideoButton"),
+      videoModal: document.getElementById("productVideoModal"),
+      videoPlayer: document.getElementById("productVideoPlayer"),
+      videoTitle: document.getElementById("productVideoTitle"),
+      videoClose: document.getElementById("productVideoClose"),
 
       galleryMainImage: document.getElementById("galleryMainImage"),
       galleryThumbs: document.getElementById("galleryThumbs"),
@@ -125,6 +130,7 @@ class PeruNatureProductPage {
     }
 
     this.renderProduct();
+    this.bindVideoModal();
     this.bindReservationModal();
     this.showContent();
   }
@@ -195,6 +201,7 @@ class PeruNatureProductPage {
     this.renderSeoTags(tour);
 
     this.renderBasicInfo(tour);
+    this.renderTourVideo(tour);
     this.renderGallery(tour);
     this.renderDescription(tour);
     this.renderHighlights(tour);
@@ -282,6 +289,60 @@ class PeruNatureProductPage {
 
     this.renderBadges(tour);
     this.renderRating(tour);
+  }
+
+  // Cada experiencia puede definir video: "./assets/videos/archivo.mp4" en su JSON.
+  // Evitar mostrar un botón que no funcione cuando el tour aún no tiene video.
+  renderTourVideo(tour) {
+    const videoSrc = typeof tour.video === "string" ? tour.video : tour.video?.src;
+    if (!this.elements.videoButton) return;
+    this.elements.videoButton.hidden = !videoSrc;
+    this.tourVideoSrc = videoSrc || "";
+    if (this.elements.videoTitle) this.elements.videoTitle.textContent = `Video: ${tour.title}`;
+  }
+
+  bindVideoModal() {
+    if (this.videoModalReady || !this.elements.videoButton || !this.elements.videoModal) return;
+    this.videoModalReady = true;
+    this.elements.videoButton.addEventListener("click", () => this.openTourVideo());
+    this.elements.videoClose?.addEventListener("click", () => this.closeTourVideo());
+    this.elements.videoModal.addEventListener("click", (event) => {
+      if (event.target === this.elements.videoModal) this.closeTourVideo();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !this.elements.videoModal.hidden) this.closeTourVideo();
+    });
+  }
+
+  openTourVideo() {
+    if (!this.tourVideoSrc || !this.elements.videoModal || !this.elements.videoPlayer) return;
+    this.videoPreviousFocus = document.activeElement;
+    this.videoPreviousOverflow = document.body.style.overflow;
+    const player = this.elements.videoPlayer;
+    player.src = new URL(this.tourVideoSrc, window.location.href).href;
+    const cover = this.normalizeImages(this.currentTour?.images)[0]?.src;
+    if (cover) player.poster = new URL(cover, window.location.href).href;
+    this.elements.videoModal.hidden = false;
+    this.elements.videoModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    this.elements.videoClose?.focus();
+    // Iniciado por un clic real: navegadores que permiten la reproducción lo iniciarán.
+    const playing = player.play();
+    if (playing && typeof playing.catch === "function") playing.catch(() => {});
+  }
+
+  closeTourVideo() {
+    if (!this.elements.videoModal || this.elements.videoModal.hidden) return;
+    const player = this.elements.videoPlayer;
+    if (player) {
+      player.pause();
+      player.removeAttribute("src");
+      player.load(); // Detiene completamente el audio y la descarga.
+    }
+    this.elements.videoModal.hidden = true;
+    this.elements.videoModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = this.videoPreviousOverflow || "";
+    this.videoPreviousFocus?.focus?.();
   }
 
   renderBadges(tour) {
@@ -1689,13 +1750,15 @@ class PeruNatureProductPage {
       const imageSrc = absoluteImage(source);
       const title = item.title || `Actividad ${index+1}`;
       const time = dayLabel === "Noche previa" ? "21:00 (referencial)" : (/^\d{1,2}:\d{2}/.test(rawDay) ? rawDay : "");
-      return `${badge}<article class="day">
+      const firstOfDay = isNewDay ? '<section class="print-day-start">' : '';
+      const endOfFirstDay = isNewDay ? '</section>' : '';
+      return `${firstOfDay}${badge}<article class="day">
         <div class="day-heading"><h2>${this.escapeHTML(title)}${time ? `<small> · ${this.escapeHTML(time)}</small>` : ""}</h2></div>
         <div class="day-layout"><div class="day-copy"><p>${this.escapeHTML(item.description || "")}</p>
           ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map(d=>`<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
           ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance,item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
         </div><img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}"></div>
-      </article>`;
+      </article>${endOfFirstDay}`;
     }).join("");
 
     const printLang = window.PeruNatureI18n?.getLang?.() || "es";
@@ -1719,6 +1782,8 @@ class PeruNatureProductPage {
           .hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}
           .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
           .summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}
+          .print-day-start{display:flow-root;break-inside:avoid-page;page-break-inside:avoid}
+          .print-day-start .print-day-divider{break-after:avoid-page;page-break-after:avoid}
           .print-day-divider{display:flex;align-items:center;gap:10px;margin:22px 0 10px;color:#0b3d2e}.print-day-divider strong{font-size:18px}.day-badge--night{width:37px;height:37px;padding:0;font-size:13px}.day{padding:16px;border:1px solid #dfe7dd;border-radius:18px;margin:0 0 14px;break-inside:avoid;page-break-inside:avoid;background:#fff}
           .day-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
           .day-badge{display:inline-flex;align-items:center;justify-content:center;background:#0b3d2e;color:#fff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;white-space:nowrap}
@@ -1727,7 +1792,7 @@ class PeruNatureProductPage {
           .day-image{width:190px;height:136px;object-fit:cover;border-radius:16px;border:1px solid #dfe7dd;display:block}
           .day p{line-height:1.55;margin:0 0 7px}.day ul{margin:8px 0 0;padding-left:18px;line-height:1.45}.day-meta{color:#0b3d2e}
           .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.box{border:1px solid #dfe7dd;border-radius:18px;padding:18px}.box h2{margin:0 0 10px;color:#0b3d2e}.box li{margin-bottom:8px}.total{font-size:24px;color:#0b3d2e}
-          @media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day,.box{break-inside:avoid;page-break-inside:avoid}.day-image{height:128px}}
+          @media print{main{padding:0}.hero{border-radius:18px}.no-print{display:none}.day,.box{break-inside:avoid;page-break-inside:avoid}.print-day-start{break-inside:avoid-page!important;page-break-inside:avoid!important}.print-day-start>.day{break-inside:avoid-page;page-break-inside:avoid}.print-day-start>.print-day-divider{break-after:avoid-page;page-break-after:avoid}.day-image{height:128px}}
           @media(max-width:700px){.summary,.cols,.day-layout{grid-template-columns:1fr}.day-image{width:100%;height:170px}.hero-top{align-items:flex-start;flex-direction:column}}
         </style>
       </head>

@@ -382,7 +382,8 @@
         ]
       },
       "featured": false,
-      "rankScore": 60
+      "rankScore": 60,
+      "video": "./assets/videos/huancaya-nor-yauyos.mp4"
     }
   ]
 }
