@@ -1,0 +1,42 @@
+PERÚ NATURE – ACTUALIZACIÓN DE PAYPAL (06/11/2026)
+
+ARCHIVOS:
+  01_PERUNATURE_GS_SEGURO.gs   → sustituye el Apps Script actual, sin tocar las propiedades.
+  02_PRECIOS_PN.gs             → nuevo archivo separado en el MISMO proyecto Apps Script.
+  assets/js/pages/product.js   → reemplaza el archivo de GitHub con esta ruta.
+  assets/js/paypal-config.js   → debes editarlo TÚ con el Client ID público LIVE.
+
+CONFIGURACIÓN DE APP SCRIPT (Project Settings → Script properties):
+  PAYPAL_CLIENT_ID = Client ID LIVE de tu app PayPal Business
+  PAYPAL_CLIENT_SECRET = Client Secret LIVE (NO compartir ni poner en GitHub)
+  PAYPAL_ENV = live
+  PAYPAL_MERCHANT_ID = [opcional pero recomendado, id del vendedor de PayPal]
+
+ANTES DE ACTIVAR:
+1. Haz copia de seguridad de Apps Script y de las hojas de Google Sheets.
+2. Sustituye el GS e incorpora el archivo 02_PRECIOS_PN.gs en el mismo proyecto.
+3. Ejecuta pnTestPrices_() (debe devolver USD 971.19); autorizando permisos si se solicita.
+4. Ejecuta pnAddPromoCoupon_() para crear PERUNATURE10 en la hoja Coupons.
+5. Publica Apps Script con Implementar > Administrar implementaciones > Editar > Nueva versión.
+6. Sube a GitHub assets/js/pages/product.js y luego configura
+   assets/js/paypal-config.js con:
+       window.PN_PAYPAL_CLIENT_ID = "TU_CLIENT_ID_LIVE";
+       window.PN_PAYPAL_PAYMENTS_ENABLED = true;
+   SOLO tras confirmar el flujo y la comunicación con el servidor.
+7. Comprueba que window.PN_APPS_SCRIPT_URL apunte a la implementación actual /exec.
+8. Haz prueba de extremo a extremo con un monto controlado autorizado por ti,
+   y confirma el capture ID y el estado pagado en tu cuenta de PayPal/Sheet.
+9. Si el navegador falla al leer respuesta JSON de Apps Script, revisa CORS/redirecciones
+   y usa una capa de API con CORS (p.ej. Cloudflare Worker). No actives pagos hasta corregirlo.
+
+SEGURIDAD:
+- El precio se recalcula en Apps Script desde el manifiesto 02_PRECIOS_PN.gs.
+- Cambios de tarifas en GitHub requieren actualizar MANIFIESTO en Apps Script.
+- El navegador NO puede marcar una reserva como pagada.
+- Solo PayPal con captura COMPLETED y monto/moneda correctos marca pagado.
+- El alojamiento incluido no se vuelve a cobrar como complemento.
+- El código público PERUNATURE10 caduca 31/12/2026 (cambiable en sheet).
+- No se verificó con credenciales LIVE ni con PayPal real en este entorno.
+- No hay inventario automatizado de hoteles/asientos ni confirmación de disponibilidad.
+- El módulo de login existente usa SHA-256 sin sal; debe migrarse a contraseñas
+  con hash robusto / servicio de autenticación antes de manejar cuentas a gran escala.

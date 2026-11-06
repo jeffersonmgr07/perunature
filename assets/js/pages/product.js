@@ -1685,7 +1685,7 @@ class PeruNatureProductPage {
             const json = await response.json();
             if (json?.ok && json?.orderID) return json.orderID;
           } catch (error) {
-            console.warn("[Peru Nature] PayPal server-side no disponible, se usará creación en navegador.", error);
+            console.warn("[Peru Nature] No fue posible crear la orden en el servidor.", error);
           }
         }
         throw new Error('El servidor no pudo crear la orden de PayPal. No se realizará ningún cargo.');
@@ -1701,7 +1701,7 @@ class PeruNatureProductPage {
             });
             details = await response.json();
           } catch (error) {
-            console.warn("[Peru Nature] No se pudo capturar PayPal desde Apps Script. Intentando captura del navegador.", error);
+            console.warn("[Peru Nature] No fue posible verificar la captura en el servidor.", error);
           }
         }
         if (!details?.ok) {
@@ -1716,7 +1716,7 @@ class PeruNatureProductPage {
         }
         const paypalId = details?.id || details?.orderID || data?.orderID || "confirmado";
         this.setText(this.elements.paypalStatus, `Pago aprobado. ID: ${paypalId}`);
-        this.saveReservationToGoogleSheet({ paymentStatus: "paid", paypalId });
+        // El servidor ya registró la captura verificada. Nunca marcar 'paid' desde el navegador.
       },
       onCancel: () => this.setText(this.elements.paypalStatus, "Pago cancelado. Puedes intentarlo nuevamente o consultar por WhatsApp."),
       onError: () => this.setText(this.elements.paypalStatus, "No se pudo procesar PayPal. Verifica el Client ID o intenta nuevamente.")
@@ -1922,6 +1922,10 @@ class PeruNatureProductPage {
       discountPercent: this.booking.discountPercent,
       hotel: totals.hotel?.name || "",
       room: totals.roomCombo?.label || "",
+      hotelId: this.booking.selectedHotelId || "",
+      roomKey: this.booking.selectedRoomKey || "",
+      travelDate: this.booking.date || "",
+      travelTime: this.booking.time || "",
       hotelSubtotal: totals.hotelSubtotal,
       baseSubtotal: totals.adultsSubtotal + totals.childrenSubtotal,
       discount: totals.discount,
