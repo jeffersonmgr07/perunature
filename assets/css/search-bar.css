@@ -144,3 +144,12 @@
 .pn-stepper button:disabled{opacity:.35;cursor:not-allowed;}
 .pn-traveler-done{width:100%;border:0;border-radius:12px;background:#0a603b;color:white;padding:11px;font-weight:800;cursor:pointer;margin-top:6px;}
 @media(max-width:900px){.pn-search{width:100%;max-width:530px;margin:18px auto 0;}.pn-search-box{width:100%;max-width:100%;box-sizing:border-box;padding:11px;gap:9px;border-radius:22px;}.pn-field{padding:11px 15px;border-radius:16px;}.pn-search-tabs{margin-bottom:8px;}.pn-search-btn{min-height:48px;}.pn-search .pn-nature-calendar__trigger{width:100%;}}
+
+/* Selector de viajeros: panel siempre visible por encima de la siguiente sección */
+.pn-search,.pn-search-box,.pn-field:has(.pn-traveler-toggle){overflow:visible!important}
+.pn-search{isolation:isolate;z-index:80!important}.pn-field:has(.pn-traveler-toggle){z-index:85!important}
+.pn-traveler-popover{width:100%;min-width:0;max-width:100%;box-sizing:border-box;left:0;right:0;z-index:10000!important}
+.pn-search:has(.pn-traveler-popover:not([hidden])){z-index:9999!important}
+.pn-search-tabs{display:flex;width:max-content;max-width:100%;margin-inline:auto;justify-content:center}
+.pn-traveler-row{min-width:0}.pn-traveler-row>div:first-child{min-width:0;flex:1}.pn-stepper{flex:0 0 auto;gap:7px}.pn-stepper button{flex:0 0 36px;width:36px;height:36px}
+@media(max-width:900px){.pn-search{width:100%;max-width:100%;}.pn-traveler-popover{position:relative;top:auto;margin-top:14px;box-shadow:none;border-radius:15px;padding:13px 12px;}.pn-field:has(.pn-traveler-toggle){padding-bottom:12px}.pn-field{width:100%;box-sizing:border-box}.pn-search-box{margin-inline:auto}.pn-traveler-popover:not([hidden]){display:block}.pn-search-tabs{margin-left:auto;margin-right:auto}}

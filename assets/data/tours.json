@@ -333,7 +333,7 @@
         {
           "time": "Noche previa",
           "title": "Salida de Lima hacia Huancaya",
-          "description": "Abordaje en puntos de encuentro por confirmar: Plaza Norte, Museo de la Nación (San Borja) y Mall del Sur. Se puede coordinar recojo personalizado con costo adicional, o recojo especial para grupos grandes, previa coordinación. Traslado nocturno en transporte turístico.",
+          "description": "Salida referencial a las 21:00 desde Lima, con puntos de encuentro por confirmar: Plaza Norte, Museo de la Nación (San Borja) y Mall del Sur. Se puede coordinar recojo personalizado con costo adicional, o recojo especial para grupos grandes, previa coordinación. Viaje nocturno en transporte turístico.",
           "image": "./assets/img/tours/huancaya/laguna-bote.jpg"
         },
         {
@@ -370,7 +370,7 @@
       "availability": {
         "daily": true,
         "startTimes": [
-          "Salida nocturna del día anterior"
+          "21:00 – salida nocturna el día anterior (hora referencial)"
         ]
       },
       "accommodationIncluded": {

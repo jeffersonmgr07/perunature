@@ -359,6 +359,8 @@ class PeruNatureProductPage {
     this.elements.galleryMainImage.src = firstImage.src;
     this.elements.galleryMainImage.alt = firstImage.alt;
 
+    this.galleryImages = images;
+    this.galleryCurrentIndex = 0;
     this.elements.galleryThumbs.innerHTML = images
       .slice(0, 4)
       .map((image, index) => {
@@ -374,9 +376,32 @@ class PeruNatureProductPage {
       })
       .join("");
 
+    const gallery = this.elements.galleryMainImage.closest(".gallery-main");
+    if (gallery) {
+      gallery.querySelectorAll(".pn-gallery-control,.pn-gallery-position").forEach((node) => node.remove());
+      const goTo = (delta) => {
+        this.galleryCurrentIndex = (this.galleryCurrentIndex + delta + images.length) % images.length;
+        const next = images[this.galleryCurrentIndex];
+        this.elements.galleryMainImage.src = next.src;
+        this.elements.galleryMainImage.alt = next.alt;
+        gallery.querySelector(".pn-gallery-position").textContent = `${this.galleryCurrentIndex + 1} / ${images.length}`;
+      };
+      if (images.length > 1) {
+        gallery.insertAdjacentHTML("beforeend", `<button type="button" class="pn-gallery-control pn-gallery-prev" aria-label="Imagen anterior">‹</button><span class="pn-gallery-position">1 / ${images.length}</span><button type="button" class="pn-gallery-control pn-gallery-next" aria-label="Siguiente imagen">›</button>`);
+        gallery.querySelector(".pn-gallery-prev").addEventListener("click", () => goTo(-1));
+        gallery.querySelector(".pn-gallery-next").addEventListener("click", () => goTo(1));
+        let touchStartX = 0;
+        gallery.addEventListener("touchstart", (event) => { touchStartX = event.changedTouches[0]?.clientX || 0; }, { passive: true });
+        gallery.addEventListener("touchend", (event) => {
+          const diff = (event.changedTouches[0]?.clientX || 0) - touchStartX;
+          if (Math.abs(diff) > 45) goTo(diff < 0 ? 1 : -1);
+        }, { passive: true });
+      }
+    }
     this.elements.galleryThumbs.querySelectorAll(".gallery-thumb").forEach((thumb) => {
       thumb.addEventListener("click", () => {
         const index = Number(thumb.dataset.index);
+        this.galleryCurrentIndex = index;
         const selectedImage = images[index];
 
         this.elements.galleryMainImage.src = selectedImage.src;
@@ -627,7 +652,7 @@ class PeruNatureProductPage {
 
     return `
       <div class="itinerary-item itinerary-item--with-image">
-        <div class="itinerary-number">${this.escapeHTML(day).replace(/^Día\s*/i, "")}</div>
+        <div class="itinerary-number ${/noche previa/i.test(day) ? "itinerary-number--previous" : ""}">${/noche previa/i.test(day) ? "<span class=\"pn-night-dot\"></span>" : this.escapeHTML(day).replace(/^Día\s*/i, "")}</div>
         <div class="itinerary-content">
           <h3>${this.escapeHTML(day)}: ${this.escapeHTML(title)}</h3>
           <p>${this.escapeHTML(description)}</p>
@@ -884,6 +909,12 @@ class PeruNatureProductPage {
     this.setText(this.elements.discountTotal, `- ${this.formatMoney(totals.discount, totals.currency)}`);
     this.setText(this.elements.hotelSidebarTotal, this.formatMoney(totals.hotelSubtotal, totals.currency));
     this.setText(this.elements.bookingTotal, this.formatMoney(totals.total, totals.currency));
+    const childRow = document.getElementById("childrenSidebarRow");
+    if (childRow) childRow.hidden = this.booking.children <= 0;
+    const adultsLabel = document.getElementById("adultsSummaryLabel");
+    const childrenLabel = document.getElementById("childrenSummaryLabel");
+    if (adultsLabel) { adultsLabel.removeAttribute("data-i18n"); adultsLabel.textContent = `Adultos × ${String(this.booking.adults).padStart(2,"0")}`; }
+    if (childrenLabel) { childrenLabel.removeAttribute("data-i18n"); childrenLabel.textContent = `Niños × ${String(this.booking.children).padStart(2,"0")}`; }
 
     if (this.elements.hotelSidebarRow) this.elements.hotelSidebarRow.hidden = totals.hotelSubtotal <= 0;
     if (this.elements.discountRow) this.elements.discountRow.hidden = totals.discount <= 0;
@@ -1443,14 +1474,14 @@ class PeruNatureProductPage {
 
   renderModalSummary(totals = this.calculateTotals()) {
     if (!this.elements.modalBookingSummary) return;
-    const hotelLine = totals.hotel && totals.roomCombo
-      ? `<div><span>Hotel (${totals.hotelNights} noche${totals.hotelNights > 1 ? "s" : ""})</span><strong>${this.formatMoney(totals.hotelSubtotal, totals.currency)}</strong></div>`
-      : `<div><span>Hotel</span><strong>Sin alojamiento</strong></div>`;
-
+    const includedHotel = this.currentTour?.accommodationIncluded?.name;
+    const hotelLine = totals.hotelSubtotal > 0 && totals.hotel && totals.roomCombo
+      ? `<div><span>Hotel (${totals.hotelNights} noches)</span><strong>${this.formatMoney(totals.hotelSubtotal, totals.currency)}</strong></div>`
+      : (includedHotel ? `<div><span>Alojamiento incluido</span><strong>${this.escapeHTML(includedHotel)}</strong></div>` : "");
     this.elements.modalBookingSummary.innerHTML = `
       <div><span>Código</span><strong>${this.escapeHTML(this.reservationCode || "Por generar")}</strong></div>
-      <div><span>Adultos (${this.booking.adults})</span><strong>${this.formatMoney(totals.adultsSubtotal, totals.currency)}</strong></div>
-      <div><span>Niños (${this.booking.children})</span><strong>${this.formatMoney(totals.childrenSubtotal, totals.currency)}</strong></div>
+      <div><span>Adultos × ${String(this.booking.adults).padStart(2,"0")}</span><strong>${this.formatMoney(totals.adultsSubtotal, totals.currency)}</strong></div>
+      ${this.booking.children > 0 ? `<div><span>Niños × ${String(this.booking.children).padStart(2,"0")}</span><strong>${this.formatMoney(totals.childrenSubtotal, totals.currency)}</strong></div>` : ""}
       ${hotelLine}
       ${totals.discount > 0 ? `<div><span>Descuento</span><strong>- ${this.formatMoney(totals.discount, totals.currency)}</strong></div>` : ""}
       <div class="booking-summary__total"><span>Total a pagar</span><strong>${this.formatMoney(totals.total, totals.currency)}</strong></div>
@@ -1596,7 +1627,7 @@ class PeruNatureProductPage {
     const totals = this.calculateTotals();
     const hotelText = totals.hotel && totals.roomCombo
       ? `${totals.hotel.name} / ${totals.roomCombo.label} / ${totals.hotelNights} noches`
-      : "Sin alojamiento agregado";
+      : (tour.accommodationIncluded?.name || "Sin alojamiento agregado");
 
     const message = [
       "Hola Peru Nature, quiero reservar esta experiencia:",
@@ -1642,30 +1673,29 @@ class PeruNatureProductPage {
     const includes = Array.isArray(tour.includes) ? tour.includes : [];
     const excludes = Array.isArray(tour.excludes) ? tour.excludes : [];
     const hotelText = totals.hotel && totals.roomCombo
-      ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} ${this.t("quote.nightsPlural", "noches")})`
-      : this.t("product.noAccommodationYet", "Alojamiento no agregado / por confirmar");
+      ? `${totals.hotel.name} — ${totals.roomCombo.label} (${totals.hotelNights} noches)`
+      : (tour.accommodationIncluded?.name ? `${tour.accommodationIncluded.name} — ${tour.accommodationIncluded.nights || 1} noche incluida` : this.t("product.noAccommodationYet", "Alojamiento por confirmar"));
     const normalizedImages = this.normalizeImages(tour.images).map((image) => image.src).filter(Boolean);
-    const heroImage = normalizedImages[0] || "./assets/img/tour-placeholder.jpg";
+    const absoluteImage = (src) => { try { return new URL(src, window.location.href).href; } catch (_) { return src; } };
+    const heroImage = absoluteImage(normalizedImages[0] || "./assets/img/tour-placeholder.jpg");
+    let previousDay = null;
     const itineraryHtml = itinerary.map((item, index) => {
-      const dayLabel = this.getPrintDayLabel(item, index);
-      const imageSrc = item.image || item.imageSrc || item.photo || normalizedImages[index + 1] || normalizedImages[index % normalizedImages.length] || heroImage;
-      const title = item.title || `Día ${index + 1}`;
-      return `
-        <article class="day">
-          <div class="day-heading">
-            <span class="day-badge">${this.escapeHTML(dayLabel)}</span>
-            <h2>${this.escapeHTML(title)}</h2>
-          </div>
-          <div class="day-layout">
-            <div class="day-copy">
-              <p>${this.escapeHTML(item.description || "")}</p>
-              ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map((d) => `<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
-              ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance, item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
-            </div>
-            ${imageSrc ? `<img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}">` : ""}
-          </div>
-        </article>
-      `;
+      const rawDay = String(item.time || "").trim();
+      const dayLabel = /noche previa/i.test(rawDay) ? "Noche previa" : (/^d[ií]a\s*\d+/i.test(rawDay) ? rawDay : this.getPrintDayLabel(item,index));
+      const isNewDay = dayLabel !== previousDay;
+      previousDay = dayLabel;
+      const badge = isNewDay ? `<div class="print-day-divider"><span class="day-badge ${dayLabel === "Noche previa" ? "day-badge--night" : ""}">${dayLabel === "Noche previa" ? "●" : this.escapeHTML(dayLabel)}</span><strong>${dayLabel === "Noche previa" ? "Noche previa" : this.escapeHTML(dayLabel)}</strong></div>` : "";
+      const source = item.image || item.imageSrc || item.photo || normalizedImages[index+1] || normalizedImages[index % Math.max(normalizedImages.length,1)] || heroImage;
+      const imageSrc = absoluteImage(source);
+      const title = item.title || `Actividad ${index+1}`;
+      const time = dayLabel === "Noche previa" ? "21:00 (referencial)" : (/^\d{1,2}:\d{2}/.test(rawDay) ? rawDay : "");
+      return `${badge}<article class="day">
+        <div class="day-heading"><h2>${this.escapeHTML(title)}${time ? `<small> · ${this.escapeHTML(time)}</small>` : ""}</h2></div>
+        <div class="day-layout"><div class="day-copy"><p>${this.escapeHTML(item.description || "")}</p>
+          ${Array.isArray(item.details) && item.details.length ? `<ul>${item.details.map(d=>`<li>${this.escapeHTML(d)}</li>`).join("")}</ul>` : ""}
+          ${item.distance || item.meals ? `<p class="day-meta"><strong>${this.escapeHTML([item.distance,item.meals].filter(Boolean).join(" · "))}</strong></p>` : ""}
+        </div><img class="day-image" src="${this.escapeHTML(imageSrc)}" alt="${this.escapeHTML(title)}"></div>
+      </article>`;
     }).join("");
 
     const printLang = window.PeruNatureI18n?.getLang?.() || "es";
@@ -1689,7 +1719,7 @@ class PeruNatureProductPage {
           .hero h1{font-size:34px;margin:14px 0 8px}.hero p{line-height:1.55;margin:0;color:#eef7ee}
           .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
           .summary div{border:1px solid #dfe7dd;border-radius:16px;padding:12px}.summary span{display:block;color:#66736b;font-size:12px;font-weight:700}.summary strong{display:block;color:#0b3d2e;margin-top:5px}
-          .day{padding:16px;border:1px solid #dfe7dd;border-radius:18px;margin:0 0 14px;break-inside:avoid;page-break-inside:avoid;background:#fff}
+          .print-day-divider{display:flex;align-items:center;gap:10px;margin:22px 0 10px;color:#0b3d2e}.print-day-divider strong{font-size:18px}.day-badge--night{width:37px;height:37px;padding:0;font-size:13px}.day{padding:16px;border:1px solid #dfe7dd;border-radius:18px;margin:0 0 14px;break-inside:avoid;page-break-inside:avoid;background:#fff}
           .day-heading{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
           .day-badge{display:inline-flex;align-items:center;justify-content:center;background:#0b3d2e;color:#fff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:900;white-space:nowrap}
           .day h2{margin:0;color:#0b3d2e;font-size:19px;line-height:1.25}
@@ -1705,7 +1735,7 @@ class PeruNatureProductPage {
         <main>
           <section class="hero">
             <div class="hero-top">
-              <div class="hero-logo"><img src="./assets/img/logos/logo-header.png" alt="Peru Nature"></div>
+              <div class="hero-logo"><img src="${this.escapeHTML(absoluteImage("./assets/img/logos/logo-header.png"))}" alt="Peru Nature"></div>
               <div class="code-badge">${this.t("product.bookingCode", "Código de reserva")}: ${this.escapeHTML(this.reservationCode || this.t("product.toBeGenerated", "Por generar"))}</div>
             </div>
             <h1>${this.escapeHTML(tour.title)}</h1>
@@ -1727,13 +1757,13 @@ class PeruNatureProductPage {
           <p style="margin-top:24px;color:#66736b;line-height:1.6">${this.t("product.printDisclaimer", "Tarifas referenciales sujetas a disponibilidad, temporada, ingresos y confirmación del operador local. Peru Nature confirmará la reserva antes de emitir servicios finales.")}</p>
           <button class="no-print" onclick="window.print()" style="margin-top:18px;border:0;border-radius:999px;background:#0b3d2e;color:#fff;padding:13px 20px;font-weight:900;cursor:pointer">${this.t("product.printButton", "Imprimir")}</button>
         </main>
-        <script>window.onload=()=>setTimeout(()=>window.print(),350)</script>
+        <script>window.addEventListener("load", () => { if (!/iPhone|iPad|iPod/i.test(navigator.userAgent)) setTimeout(() => window.print(), 700); });</script>
       </body>
       </html>
     `;
 
     const win = window.open("", "_blank");
-    if (!win) return;
+    if (!win) { window.alert("Tu navegador bloqueó la ventana de impresión. Permite ventanas emergentes e inténtalo otra vez."); return; }
     win.document.open();
     win.document.write(html);
     win.document.close();

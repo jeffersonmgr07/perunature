@@ -1291,3 +1291,29 @@ body {
 
 /* Huancaya: included accommodation (no extra charge) */
 .pn-included-hotel{display:grid;grid-template-columns:minmax(180px,38%) 1fr;gap:20px;padding:16px;border:1px solid #d9e8dd;border-radius:18px;background:#f8fbf8;align-items:center}.pn-included-hotel img{width:100%;height:210px;object-fit:cover;border-radius:12px}.pn-included-hotel h3{color:#123b28;margin:8px 0}.pn-included-hotel p{line-height:1.6}.pn-included-hotel__tag{font-size:.75rem;font-weight:800;color:#177047;text-transform:uppercase;letter-spacing:.06em}.pn-passenger-defer{display:flex;gap:10px;align-items:center;cursor:pointer;padding:10px 16px;margin:8px 12px;color:#17442e;background:#eff7f0;border-radius:10px;font-size:.9rem;font-weight:600}.pn-passenger-defer input{width:18px;height:18px;accent-color:#087b42;flex-shrink:0}.pn-passenger-card.is-deferred{border-color:#aacdb6}.pn-passenger-card.is-deferred .pn-passenger-card__head h4:after{content:' · Pendiente';font-size:.8em;color:#43885d}@media(max-width:700px){.pn-included-hotel{grid-template-columns:1fr}.pn-included-hotel img{height:190px}}
+
+/* Presentación móvil de la experiencia y galería deslizable */
+.gallery-main{position:relative}.pn-gallery-control,.pn-gallery-position{display:none}
+@media(max-width:768px){
+ .product-page .container{width:calc(100% - 20px)!important;max-width:none!important;margin-inline:10px!important;padding-inline:0!important}
+ .product-gallery{display:block!important;margin:16px 0!important;width:100%;max-width:100%;}
+ .gallery-main{min-height:0!important;height:auto!important;aspect-ratio:4/3;overflow:hidden;position:relative;border-radius:19px}
+ .gallery-main img{width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;object-fit:cover!important;display:block}
+ .gallery-thumbs{display:none!important}
+ .pn-gallery-control{display:grid;place-items:center;position:absolute;top:50%;transform:translateY(-50%);width:38px;height:42px;background:#072a20a8;color:#fff;border:0;border-radius:999px;font-size:32px;z-index:3;cursor:pointer}
+ .pn-gallery-prev{left:9px}.pn-gallery-next{right:9px}
+ .pn-gallery-position{display:block;position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:#072a20b8;color:#fff;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:800}
+ .product-layout,.product-main,.product-content,.product-section-nav{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+ .product-section{width:100%;padding:16px 13px!important;margin-inline:0;box-sizing:border-box}
+ .itinerary-item,.itinerary-item--with-image,.itinerary-item--schedule,.itinerary-item--schedule.itinerary-item--with-image{display:grid!important;grid-template-columns:36px minmax(0,1fr)!important;gap:6px 10px!important;padding:12px 9px!important;align-items:start}
+ .itinerary-number{width:34px;height:34px;font-size:.85rem;grid-column:1;grid-row:1}
+ .itinerary-content{display:contents!important}
+ .itinerary-content h3{grid-column:2;grid-row:1;margin:0;align-self:center;font-size:1rem;line-height:1.35}
+ .itinerary-content p,.itinerary-details,.itinerary-extra{grid-column:1/-1!important;margin-left:0!important}
+ .itinerary-image{grid-column:1/-1!important;margin:5px 0 0!important;width:100%!important;height:175px!important;overflow:hidden;border-radius:12px}
+ .itinerary-image img{display:block;width:100%!important;height:100%!important;object-fit:cover!important;max-height:none!important}
+ .itinerary-time-pill{grid-column:1;grid-row:1;white-space:normal;padding:5px;font-size:10px}
+}
+.pn-night-dot{width:9px;height:9px;display:block;background:#fff;border-radius:50%}
+/* Ocultar detalles sin valor aunque otra regla intente mostrar los divs */
+#childrenSidebarRow[hidden],#hotelSidebarRow[hidden],#discountRow[hidden]{display:none!important}

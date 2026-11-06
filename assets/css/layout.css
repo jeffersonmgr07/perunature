@@ -153,3 +153,6 @@
 }
 
 @media(max-width:680px){.hero-content{width:100%;max-width:100%;}.hero-kicker{font-size:.69rem;min-height:27px;margin-bottom:10px;padding:3px 10px;}.hero h1{font-size:clamp(2rem,9vw,2.75rem);line-height:1.05;margin-bottom:10px;letter-spacing:-.045em;}.hero p{font-size:.89rem;line-height:1.45;margin-bottom:12px;}.hero-container{width:100%;box-sizing:border-box;}.hero{min-height:auto;}.hero-content #search-bar-container{width:100%;}}
+
+/* Home móvil: mensaje conciso y búsqueda centrada */
+@media(max-width:680px){.hero-container{padding-left:14px!important;padding-right:14px!important}.hero-content{margin-inline:auto}.hero-content>.hero-kicker{display:inline-flex;margin-bottom:12px}.hero h1{max-width:370px}.hero-content #search-bar-container{margin-inline:auto}}

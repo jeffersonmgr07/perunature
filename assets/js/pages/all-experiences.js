@@ -372,7 +372,11 @@ class PeruNatureExperiencesPage {
   }
 
   applyInitialFiltersToUI() {
-    if (this.filterSearch) this.filterSearch.value = this.filters.search;
+    if (this.filterSearch) {
+      this.filterSearch.placeholder = "Escribe un destino";
+      // Heredar nombre legible del destino elegido en el buscador del inicio.
+      this.filterSearch.value = this.filters.search || (this.filters.destination ? this.getDestinationLabel(this.filters.destination) : "");
+    }
     if (this.filterRegion) this.filterRegion.value = this.filters.region;
     if (this.filterProductKind) this.filterProductKind.value = this.filters.productKind;
     if (this.filterDestination) this.filterDestination.value = this.filters.destination;
@@ -548,21 +552,12 @@ class PeruNatureExperiencesPage {
   }
 
   renderActiveFilters() {
-    if (!this.activeFilters) return;
-
-    const labels = [];
-    if (this.filters.search) labels.push(`${this.t("experiences.filterSearch", "Búsqueda")}: ${this.filters.search}`);
-    if (this.filters.region) labels.push(`${this.t("experiences.filterRegion", "Región")}: ${this.formatLabel(this.filters.region)}`);
-    if (this.filters.productKind) labels.push(`${this.t("experiences.filterKind", "Tipo")}: ${this.formatKind(this.filters.productKind)}`);
-    if (this.filters.destination) labels.push(`${this.t("experiences.filterDestination", "Destino")}: ${this.getDestinationLabel(this.filters.destination)}`);
-    if (this.filters.category) labels.push(`${this.t("experiences.filterCategory", "Categoría")}: ${this.getCategoryLabel(this.filters.category)}`);
-    if (this.filters.duration) labels.push(`${this.t("experiences.filterDuration", "Duración")}: ${this.formatLabel(this.filters.duration)}`);
-    if (this.filters.difficulty) labels.push(`${this.t("experiences.filterDifficulty", "Dificultad")}: ${this.formatDifficulty(this.filters.difficulty)}`);
-    if (this.filters.date) labels.push(`${this.t("experiences.filterDate", "Fecha")}: ${this.formatDate(this.filters.date)}`);
-    if (this.filters.travelers) labels.push(`${this.t("experiences.filterTravelers", "Viajeros")}: ${this.filters.travelers}`);
-
-    this.activeFilters.hidden = labels.length === 0;
-    this.activeFilters.innerHTML = labels.map((label) => `<span class="active-filter-pill">${this.escapeHtml(label)}</span>`).join("");
+    // Los filtros activos siguen aplicándose internamente; no generan una fila
+    // redundante de insignias entre el resultado y las tarjetas.
+    if (this.activeFilters) {
+      this.activeFilters.hidden = true;
+      this.activeFilters.innerHTML = "";
+    }
   }
 
   renderCards(products) {

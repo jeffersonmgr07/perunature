@@ -309,7 +309,7 @@
                 <div class="booking-discount-box">
                   <label for="bookingCoupon" data-i18n="booking.coupon">Cupón de descuento</label>
                   <div class="booking-discount-row">
-                    <input type="text" id="bookingCoupon" placeholder="PERUNATURE10" />
+                    <input type="text" id="bookingCoupon" placeholder="" />
                     <button type="button" id="applyDiscountBtn" data-i18n="booking.apply">Aplicar</button>
                   </div>
                   <p class="booking-discount-message" id="discountMessage"></p>
@@ -319,8 +319,8 @@
                 <div class="booking-summary-wrap">
                   <div class="booking-summary-title" data-i18n="booking.paymentDetails">Detalle de reserva</div>
                   <div class="booking-summary booking-price-summary">
-                    <div><span data-i18n="booking.adultsTotal">Adultos</span><strong id="adultsTotal">USD 0</strong></div>
-                    <div><span data-i18n="booking.childrenTotal">Niños</span><strong id="childrenTotal">USD 0</strong></div>
+                    <div><span id="adultsSummaryLabel" data-i18n="booking.adultsTotal">Adultos</span><strong id="adultsTotal">USD 0</strong></div>
+                    <div id="childrenSidebarRow"><span id="childrenSummaryLabel" data-i18n="booking.childrenTotal">Niños</span><strong id="childrenTotal">USD 0</strong></div>
                     <div id="hotelSidebarRow" hidden><span data-i18n="product.navHotels">Hoteles</span><strong id="hotelSidebarTotal">USD 0</strong></div>
                     <div id="discountRow" hidden><span data-i18n="booking.discount">Descuento</span><strong id="discountTotal">- USD 0</strong></div>
                     <div class="booking-summary__total"><span data-i18n="booking.total">Total</span><strong id="bookingTotal">USD 0</strong></div>
