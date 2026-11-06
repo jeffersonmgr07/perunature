@@ -123,3 +123,24 @@
 .pn-autocomplete-item:hover {
   background: #f2f5ef;
 }
+
+/* Peru Nature home search refinements */
+.pn-search{width:min(1050px,100%);margin:28px auto 0;}
+.pn-field{min-width:0;}
+.pn-field--search{z-index:15;}
+.pn-autocomplete{color:#153b2a;background:#fff;z-index:1000;max-height:260px;overflow-y:auto;}
+.pn-autocomplete-item{color:#173a2a!important;background:#fff;}
+.pn-autocomplete-item:hover{background:#eef5eb;}
+.pn-field:has(.pn-traveler-toggle){position:relative;z-index:12;}
+.pn-traveler-toggle{width:100%;border:0;background:transparent;text-align:left;color:#14251a;font:inherit;font-weight:800;display:flex;justify-content:space-between;align-items:center;cursor:pointer;padding:3px 0;}
+.pn-traveler-popover{position:absolute;top:calc(100% + 10px);left:0;z-index:1200;width:min(330px,calc(100vw - 36px));padding:18px;background:#fff;color:#153b2a;border-radius:18px;border:1px solid #d7e9dc;box-shadow:0 20px 55px #071e1640;}
+.pn-traveler-popover[hidden]{display:none!important;}
+.pn-traveler-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;}
+.pn-traveler-row+.pn-traveler-row{border-top:1px solid #edf2ed;}
+.pn-traveler-row strong,.pn-traveler-row small{display:block;color:#133d2a;}
+.pn-traveler-row small{color:#607667;font-size:.7rem;margin-top:2px;}
+.pn-stepper{display:flex;gap:10px;align-items:center;}.pn-stepper output{min-width:17px;text-align:center;font-weight:800;}
+.pn-stepper button{height:34px;width:34px;display:grid;place-items:center;line-height:1;border-radius:50%;background:#eef6ef;border:1px solid #b7d5bf;color:#08633a;font-weight:800;font-size:1.2rem;cursor:pointer;}
+.pn-stepper button:disabled{opacity:.35;cursor:not-allowed;}
+.pn-traveler-done{width:100%;border:0;border-radius:12px;background:#0a603b;color:white;padding:11px;font-weight:800;cursor:pointer;margin-top:6px;}
+@media(max-width:900px){.pn-search{width:100%;max-width:530px;margin:18px auto 0;}.pn-search-box{width:100%;max-width:100%;box-sizing:border-box;padding:11px;gap:9px;border-radius:22px;}.pn-field{padding:11px 15px;border-radius:16px;}.pn-search-tabs{margin-bottom:8px;}.pn-search-btn{min-height:48px;}.pn-search .pn-nature-calendar__trigger{width:100%;}}

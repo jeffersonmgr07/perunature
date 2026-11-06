@@ -19,6 +19,7 @@ class PeruNatureSearchBar {
 
     await this.loadDestinations();
     this.bindEvents();
+    this.initTravelerSelector();
   }
 
   async loadDestinations() {
@@ -78,6 +79,35 @@ class PeruNatureSearchBar {
         this.autocomplete.classList.remove("is-active");
       }
     });
+  }
+
+  initTravelerSelector() {
+    const toggle=document.getElementById('pnTravelersToggle');
+    const panel=document.getElementById('pnTravelersPopover');
+    const input=document.getElementById('pnViajeros');
+    if(!toggle||!panel||!input)return;
+    let adults=2, children=0;
+    const render=()=>{
+      const n=adults+children;input.value=String(n);
+      input.dataset.adults=String(adults);input.dataset.children=String(children);
+      toggle.innerHTML=`${n} ${n===1?'viajero':'viajeros'} <span aria-hidden="true">⌄</span>`;
+      document.getElementById('pnAdultsCount').textContent=adults;
+      document.getElementById('pnChildrenCount').textContent=children;
+      panel.querySelector('[data-traveler="adults"][data-delta="-1"]').disabled=adults<=1;
+      panel.querySelector('[data-traveler="children"][data-delta="-1"]').disabled=children<=0;
+    };
+    const close=()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false');};
+    toggle.addEventListener('click',()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));});
+    panel.querySelectorAll('[data-traveler]').forEach(b=>b.addEventListener('click',()=>{
+      const delta=Number(b.dataset.delta);
+      if(b.dataset.traveler==='adults')adults=Math.max(1,Math.min(30,adults+delta));
+      else children=Math.max(0,Math.min(30-adults,children+delta));
+      render();
+    }));
+    document.getElementById('pnTravelersDone').addEventListener('click',close);
+    document.addEventListener('click',e=>{if(!panel.contains(e.target)&&!toggle.contains(e.target))close();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+    render();
   }
 
   renderAutocomplete(results) {

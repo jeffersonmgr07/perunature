@@ -27,13 +27,13 @@
 
     <div class="pn-field">
       <label data-i18n="searchBar.travelers">Viajeros</label>
-      <select id="pnViajeros">
-        <option value="1" data-i18n="searchBar.traveler1">1 viajero</option>
-        <option value="2" selected data-i18n="searchBar.traveler2">2 viajeros</option>
-        <option value="3" data-i18n="searchBar.traveler3">3 viajeros</option>
-        <option value="4" data-i18n="searchBar.traveler4">4 viajeros</option>
-        <option value="5" data-i18n="searchBar.traveler5">5+ viajeros</option>
-      </select>
+      <input type="hidden" id="pnViajeros" value="2" />
+      <button type="button" class="pn-traveler-toggle" id="pnTravelersToggle" aria-expanded="false" aria-controls="pnTravelersPopover">2 viajeros <span aria-hidden="true">⌄</span></button>
+      <div class="pn-traveler-popover" id="pnTravelersPopover" hidden>
+        <div class="pn-traveler-row"><div><strong>Adultos</strong><small>12 años o más</small></div><div class="pn-stepper"><button type="button" data-traveler="adults" data-delta="-1" aria-label="Restar adulto">−</button><output id="pnAdultsCount">2</output><button type="button" data-traveler="adults" data-delta="1" aria-label="Agregar adulto">+</button></div></div>
+        <div class="pn-traveler-row"><div><strong>Niños</strong><small>Menores de 11 años</small></div><div class="pn-stepper"><button type="button" data-traveler="children" data-delta="-1" aria-label="Restar niño">−</button><output id="pnChildrenCount">0</output><button type="button" data-traveler="children" data-delta="1" aria-label="Agregar niño">+</button></div></div>
+        <button type="button" class="pn-traveler-done" id="pnTravelersDone">Listo</button>
+      </div>
     </div>
 
     <button type="submit" class="pn-search-btn" data-i18n="searchBar.searchButton">

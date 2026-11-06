@@ -12,6 +12,17 @@
   };
   let opened = null;
   const close = () => {if(opened){opened.pop.hidden = true;opened.button.setAttribute('aria-expanded','false');opened=null;}};
+  const position = () => {
+    if(!opened) return;
+    const rect=opened.button.getBoundingClientRect(), pop=opened.pop;
+    const margin=10, width=Math.min(330,innerWidth-2*margin);
+    pop.style.width=width+'px';
+    pop.style.left=Math.max(margin,Math.min(rect.left,innerWidth-width-margin))+'px';
+    const availableBelow=innerHeight-rect.bottom-12;
+    const popHeight=pop.offsetHeight||345;
+    if(availableBelow>=popHeight || rect.top<popHeight+12){pop.style.top=Math.min(rect.bottom+8,innerHeight-popHeight-margin)+'px';}
+    else{pop.style.top=Math.max(margin,rect.top-popHeight-8)+'px';}
+  };
   const create = input => {
     if (!input || input.dataset.natureCalendar) return;
     input.dataset.natureCalendar = '1';
@@ -21,7 +32,7 @@
     input.classList.add('pn-nature-calendar__native');input.tabIndex=-1;
     const button=document.createElement('button');button.type='button';button.className='pn-nature-calendar__trigger';button.setAttribute('aria-label','Seleccionar fecha de viaje');button.setAttribute('aria-haspopup','dialog');button.setAttribute('aria-expanded','false');
     const pop=document.createElement('div');pop.className='pn-nature-calendar__popover';pop.setAttribute('role','dialog');pop.setAttribute('aria-label','Calendario Perú Nature');pop.hidden=true;
-    container.append(button,pop);
+    container.append(button);document.body.appendChild(pop);
     let view=new Date();view.setDate(1);
     const updateButton=()=>{button.innerHTML=`<span>${format(input.value)}</span><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>`;};
     const render=()=>{
@@ -47,14 +58,16 @@
       if(opened?.pop===pop){close();return;}close();
       if(input.value){const [y,m]=input.value.split('-').map(Number);view=new Date(y,m-1,1);}
       else if(input.min && input.min>todayISO()){const [y,m]=input.min.split('-').map(Number);view=new Date(y,m-1,1);}
-      render();pop.hidden=false;button.setAttribute('aria-expanded','true');opened={pop,button};
+      render();pop.hidden=false;button.setAttribute('aria-expanded','true');opened={pop,button};position();
     });
     input.addEventListener('change',updateButton);
     updateButton();
   };
   const init=()=>{['pnFecha','bookingDate'].forEach(id=>create(document.getElementById(id)));};
-  document.addEventListener('click',event=>{if(opened && !opened.pop.parentElement.contains(event.target))close();});
+  document.addEventListener('click',event=>{if(opened && !opened.pop.contains(event.target) && !opened.button.contains(event.target))close();});
   document.addEventListener('keydown',event=>{if(event.key==='Escape')close();});
+  window.addEventListener('resize',position);
+  window.addEventListener('scroll',position,true);
   document.addEventListener('peruNature:componentsReady',init);
   document.addEventListener('DOMContentLoaded',init);
   if(document.readyState!=='loading')init();

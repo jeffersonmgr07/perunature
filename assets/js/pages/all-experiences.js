@@ -580,7 +580,9 @@ class PeruNatureExperiencesPage {
 
   cardTemplate(product) {
     const image = product.image || "./assets/img/tour-placeholder.jpg";
-    const badge = product.badge || this.getDefaultBadge(product.productKind, product.categories);
+    const rawBadge = product.badge || this.getDefaultBadge(product.productKind, product.categories);
+    const cats=product.categories||[];
+    const badge = /^(experiencia|tour|paquete|andes|full day)$/i.test(rawBadge) ? (cats.includes('cultural') ? 'Cultural' : cats.includes('trekking') ? 'Senderismo' : cats.includes('nature') || cats.includes('reserve') ? 'Naturaleza' : product.destination==='huancaya' ? 'Paisajístico' : 'Naturaleza') : rawBadge;
     const price = product.pricing?.priceLabel || this.formatPrice(product.pricing);
     const duration = product.duration?.label || this.t("experiences.durationTbd", "Duración por confirmar");
     const location = product.location || this.getDestinationLabel(product.destination) || this.t("experiences.peru", "Perú");
@@ -594,7 +596,7 @@ class PeruNatureExperiencesPage {
         <div class="experience-card__image">
           <img src="${this.escapeHtml(image)}" alt="${this.escapeHtml(product.title)}" loading="lazy" onerror="this.src='./assets/img/tour-placeholder.jpg'">
           <span class="experience-card__badge">${this.escapeHtml(badge)}</span>
-          <span class="experience-card__region">${this.escapeHtml(region)}</span>
+
         </div>
 
         <div class="experience-card__content">
@@ -606,14 +608,12 @@ class PeruNatureExperiencesPage {
           <h3>${this.escapeHtml(product.title)}</h3>
           <p>${this.escapeHtml(shortDescription)}</p>
 
-          <div class="experience-card__tags">
-            ${tags.map((tag) => `<span>${this.escapeHtml(tag)}</span>`).join("")}
-          </div>
+
 
           <div class="experience-card__footer">
             <div class="experience-price">
-              <span>${this.t("experiences.from", "Desde")}</span>
-              <strong>${this.escapeHtml(price.replace(/^Desde\s*/i, ""))}</strong>
+              <strong>${this.escapeHtml((() => {const v=Number(product.pricing?.basePrice||0);return v ? `${String(product.pricing?.currency||'USD').toUpperCase()==='USD'?'USD':this.currencySymbol(product.pricing?.currency||'USD')} ${v.toFixed(2)}` : price.replace(/^Desde\s*/i,'').replace(/\s*(por persona|·.*)$/i,'');})())}</strong>
+              <span>por persona</span>
             </div>
 
             <a class="experience-card__link" href="${this.escapeHtml(url)}">
@@ -944,4 +944,32 @@ document.addEventListener("DOMContentLoaded", () => {
 // reconciliar filtros y tarjetas ya renderizadas a mitad de sesión.
 document.addEventListener("peruNature:languageChanged", () => {
   window.location.reload();
+});
+
+/* Collapsible advanced filters, independent of catalog loading. */
+document.addEventListener('DOMContentLoaded',()=>{
+  const b=document.getElementById('advancedFiltersToggle'),panel=document.getElementById('advancedFilters');
+  if(!b||!panel)return;
+  const update=()=>{if(window.innerWidth>940){panel.hidden=false;b.setAttribute('aria-expanded','true');}else if(b.dataset.userOpened!=='1'){panel.hidden=true;b.setAttribute('aria-expanded','false');}};
+  b.addEventListener('click',()=>{const next=panel.hidden;panel.hidden=!next;b.dataset.userOpened=next?'1':'0';b.setAttribute('aria-expanded',String(next));});
+  window.addEventListener('resize',update);update();
+  const input=document.getElementById('filterSearch');
+  input?.setAttribute('autocomplete','off');
+  // Destination suggestions are built from the actual catalog, not a static list.
+  if(input){
+    const suggestions=document.createElement('div');suggestions.className='pn-filter-suggestions';suggestions.hidden=true;
+    input.parentElement.appendChild(suggestions);
+    const close=()=>{suggestions.hidden=true;};
+    input.addEventListener('input',()=>{
+      const q=input.value.trim().toLocaleLowerCase('es');
+      if(q.length<2){close();return;}
+      const selects=[...document.querySelectorAll('#filterDestination option')].filter(o=>o.value && o.textContent.toLocaleLowerCase('es').includes(q)).slice(0,7);
+      if(!selects.length){close();return;}
+      suggestions.replaceChildren();
+      selects.forEach(o=>{const b=document.createElement('button');b.type='button';b.textContent=o.textContent;b.addEventListener('click',()=>{input.value=o.textContent;input.dispatchEvent(new Event('input',{bubbles:true}));close();});suggestions.appendChild(b);});
+      suggestions.hidden=false;
+    });
+    document.addEventListener('click',e=>{if(!suggestions.contains(e.target)&&e.target!==input)close();});
+    input.addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+  }
 });

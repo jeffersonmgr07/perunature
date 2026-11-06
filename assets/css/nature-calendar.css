@@ -21,3 +21,8 @@
 .pn-search .pn-nature-calendar__trigger{background:#fff;border:0;min-height:30px;padding:2px 0;border-radius:0}
 .pn-search .pn-nature-calendar__popover{top:calc(100% + 14px)}
 @media(max-width:450px){.pn-nature-calendar__popover{left:0;width:min(310px,calc(100vw - 45px))}}
+
+/* Overlay rendered directly under body: never clipped by hero or sticky sections. */
+.pn-nature-calendar__popover{position:fixed!important;top:0;left:0;z-index:2147483000!important;max-height:calc(100dvh - 20px);overflow-y:auto;}
+.pn-search .pn-nature-calendar__trigger{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;color:#14251a!important;min-height:30px;}
+.pn-search .pn-nature-calendar{background:transparent!important;}
